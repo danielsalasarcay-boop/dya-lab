@@ -1,0 +1,256 @@
+{
+  "loopi": {
+    "title": "loopi | Las mejores mini lumpias de Caracas",
+    "h1": "",
+    "h1Font": "Poppins, Inter, system-ui, sans-serif",
+    "fonts": [
+      [
+        "Poppins",
+        69
+      ],
+      [
+        "Bungee",
+        66
+      ]
+    ],
+    "colors": [
+      [
+        "fg rgb(255, 248, 238)",
+        181
+      ],
+      [
+        "fg rgb(17, 17, 17)",
+        173
+      ],
+      [
+        "bg rgb(17, 17, 17)",
+        35
+      ],
+      [
+        "fg rgb(107, 107, 107)",
+        23
+      ],
+      [
+        "fg rgb(255, 165, 0)",
+        21
+      ],
+      [
+        "bg rgb(255, 255, 255)",
+        17
+      ],
+      [
+        "bg rgb(231, 22, 0)",
+        14
+      ],
+      [
+        "bg rgb(255, 248, 238)",
+        9
+      ],
+      [
+        "bg rgb(255, 165, 0)",
+        8
+      ],
+      [
+        "fg rgb(255, 255, 255)",
+        5
+      ],
+      [
+        "bg rgb(172, 0, 177)",
+        5
+      ],
+      [
+        "bg rgba(255, 255, 255, 0.08)",
+        5
+      ]
+    ],
+    "sections": [
+      "mobile-nav",
+      "main",
+      "hero",
+      "hero-lluvia",
+      "hero-slogan",
+      "productos",
+      "grid-salados",
+      "grid-postres",
+      "salsas",
+      "salsas-grid",
+      "tips",
+      "contacto",
+      "dato-whatsapp",
+      "dato-email",
+      "dato-horario",
+      "dato-delivery",
+      "dato-pago",
+      "footer-telefono",
+      "footer-email",
+      "footer-anio"
+    ]
+  },
+  "quality-bikes": {
+    "title": "Quality Bikes | Motos de Lujo en Caracas",
+    "h1Font": null,
+    "fonts": [
+      [
+        "Inter",
+        68
+      ],
+      [
+        "Space Mono",
+        27
+      ],
+      [
+        "Space Grotesk",
+        15
+      ],
+      [
+        "Montserrat",
+        1
+      ],
+      [
+        "Cormorant Garamond",
+        1
+      ]
+    ],
+    "colors": [
+      [
+        "fg rgb(20, 24, 29)",
+        160
+      ],
+      [
+        "fg rgb(255, 255, 255)",
+        35
+      ],
+      [
+        "bg rgb(255, 255, 255)",
+        13
+      ],
+      [
+        "fg rgb(0, 52, 98)",
+        13
+      ],
+      [
+        "fg oklab(0.999994 0.0000455677 0.0000200868 / 0.7)",
+        12
+      ],
+      [
+        "fg oklab(0.207098 -0.00320024 -0.0112586 / 0.5)",
+        10
+      ],
+      [
+        "fg oklab(0.207098 -0.00320024 -0.0112586 / 0.6)",
+        10
+      ],
+      [
+        "fg oklab(0.999994 0.0000455678 0.0000200868 / 0.85)",
+        9
+      ],
+      [
+        "fg rgba(0, 0, 0, 0)",
+        8
+      ],
+      [
+        "fg rgb(213, 28, 41)",
+        5
+      ],
+      [
+        "fg oklab(0.999994 0.0000455677 0.0000200868 / 0.6)",
+        5
+      ],
+      [
+        "fg oklab(0.207098 -0.00320024 -0.0112586 / 0.8)",
+        5
+      ]
+    ],
+    "sections": [
+      "ig-grad-footer",
+      "_R_"
+    ]
+  },
+  "mar-caribe": {
+    "title": "Alimentos Mar Caribe — Vannamei Shrimp & Wild-Caught Weak Fish | Wholesale Exporter",
+    "h1": "Premium\nseafood",
+    "h1Font": "Geist, \"Helvetica Neue\", Arial, sans-serif",
+    "fonts": [
+      [
+        "Inter",
+        196
+      ],
+      [
+        "Geist",
+        38
+      ]
+    ],
+    "colors": [
+      [
+        "fg rgb(14, 28, 43)",
+        153
+      ],
+      [
+        "fg rgb(255, 255, 255)",
+        151
+      ],
+      [
+        "fg rgb(60, 74, 90)",
+        71
+      ],
+      [
+        "fg rgb(107, 122, 140)",
+        28
+      ],
+      [
+        "fg rgb(6, 26, 51)",
+        27
+      ],
+      [
+        "fg rgb(238, 246, 248)",
+        24
+      ],
+      [
+        "fg rgb(10, 37, 64)",
+        23
+      ],
+      [
+        "bg rgb(255, 255, 255)",
+        21
+      ],
+      [
+        "fg rgb(88, 197, 214)",
+        18
+      ],
+      [
+        "bg rgba(255, 255, 255, 0.92)",
+        17
+      ],
+      [
+        "bg rgb(5, 8, 15)",
+        15
+      ],
+      [
+        "bg rgba(6, 26, 51, 0.74)",
+        15
+      ]
+    ],
+    "sections": [
+      "header",
+      "nav-menu",
+      "main",
+      "hero",
+      "eyeStage",
+      "eyeFish",
+      "eyeColor",
+      "eyeMacro",
+      "eyeRing",
+      "eyeUI",
+      "eyeLabels",
+      "about",
+      "about-title",
+      "products",
+      "products-title",
+      "markets",
+      "markets-title",
+      "contact",
+      "contact-title",
+      "name"
+    ]
+  }
+}

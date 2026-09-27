@@ -49,7 +49,8 @@ export function Work({ t }: { t: Dictionary }) {
                       src={img.mobile}
                       alt={t.work.mobileAlt.replace("{name}", c.name)}
                       sizes="(min-width:1024px) 150px, 26vw"
-                      className="absolute bottom-0 right-0 w-[26%] max-w-[170px]"
+                      className="absolute bottom-0 right-0 w-[28%] max-w-[190px]"
+                      statusBg={c.statusBg}
                     />
                   </div>
 

@@ -97,3 +97,71 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23dde8e1' stroke-opacity='0.07' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 14l-9 7 9 7M30 14l9 7-9 7M62 56l-9 7 9 7M72 56l9 7-9 7'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 84px 84px;
 }
+
+/* iPhone Pro Max (mockup CSS) */
+.iphone {
+  position: relative;
+  container-type: inline-size;
+  filter: drop-shadow(0 30px 28px rgb(20 38 27 / 0.28)) drop-shadow(0 8px 10px rgb(20 38 27 / 0.18));
+}
+.iphone-body {
+  position: relative;
+  border-radius: 17.5cqw;
+  padding: 1.6cqw;
+  /* marco de titanio: brillo en los cantos y centro más oscuro */
+  background:
+    linear-gradient(90deg, #8d9197 0%, #d9dcdf 2.5%, #4b4f55 6%, #3a3d42 50%, #4b4f55 94%, #d9dcdf 97.5%, #8d9197 100%);
+  box-shadow: inset 0 0 0 0.35cqw rgb(255 255 255 / 0.18), inset 0 0 0 0.7cqw rgb(0 0 0 / 0.35);
+}
+.iphone-screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15.8cqw;
+  background: #000;
+  border: 2.4cqw solid #050505; /* bisel negro */
+  isolation: isolate;
+}
+.iphone-screen img { border-radius: 0 0 13.6cqw 13.6cqw; }
+.iphone-island {
+  position: absolute;
+  top: 2.4cqw;
+  left: 50%;
+  width: 27cqw;
+  height: 8cqw;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #000;
+  box-shadow: inset 0 0 0 0.3cqw #111;
+}
+.iphone-island::after { /* lente de la cámara frontal */
+  content: "";
+  position: absolute;
+  right: 2.4cqw;
+  top: 50%;
+  width: 3.2cqw;
+  height: 3.2cqw;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2b3a55 0 25%, #0b0f18 60%);
+}
+.iphone-btn {
+  position: absolute;
+  width: 1.1cqw;
+  border-radius: 1cqw;
+  background: linear-gradient(90deg, #5b5f65, #c9ccd0 50%, #5b5f65);
+}
+.iphone-btn-l { left: -0.8cqw; }
+.iphone-btn-r { right: -0.8cqw; }
+.iphone-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 13cqw;
+  padding: 1.5cqw 7.5cqw 0 9.5cqw;
+  color: #fff;
+  font: 600 4.6cqw/1 -apple-system, "SF Pro Text", system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+.iphone-status-icons { display: flex; align-items: center; gap: 1.4cqw; }
+.iphone-status-icons svg { height: 3.4cqw; width: auto; fill: currentColor; }
+.iphone-btn-cam { background: linear-gradient(90deg, #3f4247, #7d8187 50%, #3f4247); }

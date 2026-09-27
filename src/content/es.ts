@@ -101,6 +101,7 @@ export const es = {
           "LOOPI vende mini lumpias saladas y dulces en cajitas de 12 y 24. El sitio es su tienda: el cliente elige sabores y salsas, arma el pedido y lo envía por WhatsApp. En la misma página resuelve lo que se pregunta antes de comprar: cómo cocinarlas, zona de delivery, horario y métodos de pago.",
         tags: ["Web", "Catálogo", "Pedidos por WhatsApp"],
         accent: "#E71600",
+        statusBg: "#e61600",
       },
       {
         slug: "quality-bikes",
@@ -113,6 +114,7 @@ export const es = {
           "Quality Bikes vende motos de alta cilindrada de ocho marcas —BMW, Ducati, Kawasaki y Triumph, entre otras— además de aceites, combustibles de competencia y cauchos. El sitio muestra lo que está hoy en el showroom con ficha por moto, deja reservar los modelos que vienen en camino y lleva al cliente a WhatsApp o a la tienda.",
         tags: ["Web", "Catálogo", "Reservas"],
         accent: "#003462",
+        statusBg: "#050505",
       },
       {
         slug: "mar-caribe",
@@ -125,6 +127,7 @@ export const es = {
           "Alimentos Mar Caribe procesa y exporta camarón y pescado a distribuidores de América y Europa. Su sitio, en inglés y español, le habla a un comprador mayorista: fichas por especie con tallas, cortes y empaques, los mercados a los que ya envía, sus certificaciones y un formulario para pedir cotización.",
         tags: ["Web", "Bilingüe", "B2B · Cotizaciones"],
         accent: "#061A33",
+        statusBg: "#000000",
       },
     ],
   },

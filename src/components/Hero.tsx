@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Dictionary } from "@/content/es";
 import { Eyebrow } from "./Eyebrow";
-import { BrowserFrame } from "./Frames";
+import { BrowserFrame, PhoneFrame } from "./Frames";
 import loopiHero from "../../public/work/loopi/loopi-hero.webp";
 import qbHero from "../../public/work/quality-bikes/quality-bikes-hero.webp";
 import mcHero from "../../public/work/mar-caribe/mar-caribe-hero.webp";
@@ -46,9 +46,7 @@ export function Hero({ t }: { t: Dictionary }) {
           <BrowserFrame domain={loopi.domain} className="absolute right-[22%] top-[38%] w-[78%]">
             <Image src={loopiHero} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} loading="eager" />
           </BrowserFrame>
-          <div className="absolute bottom-[-2%] right-[2%] w-[21%] overflow-hidden rounded-[1.1rem] border-4 border-ink bg-ink shadow-[0_30px_50px_-25px_rgb(20_38_27/0.6)]">
-            <Image src={loopiMobile} alt="" sizes="140px" className="rounded-[0.8rem]" quality={70} />
-          </div>
+          <PhoneFrame src={loopiMobile} alt="" sizes="150px" className="absolute bottom-[-4%] right-[1%] w-[23%]" statusBg={loopi.statusBg} preload />
         </div>
       </div>
     </section>

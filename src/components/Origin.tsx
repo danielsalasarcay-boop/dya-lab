@@ -3,7 +3,7 @@ import { Eyebrow } from "./Eyebrow";
 
 export function Origin({ t }: { t: Dictionary }) {
   return (
-    <section id="origen" aria-labelledby="origen-titulo" className="bg-sage py-20 sm:py-28">
+    <section id="origen" aria-labelledby="origen-titulo" className="bg-sage py-16 sm:py-20">
       {/* TEXTO PENDIENTE: origen — reemplazar title y body en src/content/es.ts (origin) */}
       <div className="wrap grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
         <div>

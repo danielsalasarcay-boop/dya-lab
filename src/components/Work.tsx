@@ -2,6 +2,7 @@ import type { StaticImageData } from "next/image";
 import type { Dictionary } from "@/content/es";
 import { Eyebrow } from "./Eyebrow";
 import { BrowserFrame, PhoneFrame, ScrollShot } from "./Frames";
+import { CaseCard } from "./CaseCard";
 
 import loopiDesktop from "../../public/work/loopi/loopi-desktop-full.webp";
 import loopiMobile from "../../public/work/loopi/loopi-mobile-hero.webp";
@@ -18,54 +19,52 @@ const shots: Record<string, { desktop: StaticImageData; mobile: StaticImageData 
 
 export function Work({ t }: { t: Dictionary }) {
   return (
-    <section id="trabajo" aria-labelledby="trabajo-titulo" className="py-20 sm:py-28">
+    <section id="trabajo" aria-labelledby="trabajo-titulo" className="py-16 sm:py-20">
       <div className="wrap">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <Eyebrow n="03">{t.work.eyebrow}</Eyebrow>
             <h2 id="trabajo-titulo" className="h2 mt-5 max-w-[16ch] text-green">{t.work.title}</h2>
           </div>
-          <p className="max-w-[26rem] text-lg text-muted">
-            {t.work.lead} <span className="hidden [@media(hover:hover)]:inline">{t.work.hoverHint}.</span>
+          <p className="max-w-[24rem] text-muted">
+            {t.work.lead} <span className="md:hidden">{t.work.swipeHint}</span> <span className="hidden [@media(hover:hover)]:inline">{t.work.hoverHint}.</span>
           </p>
         </div>
 
-        <ol className="mt-14 space-y-20 sm:space-y-28">
-          {t.work.cases.map((c, i) => {
+        {/* Móvil: carrusel deslizable; tablet/desktop: cuadrícula */}
+        <ul className="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
+          {t.work.cases.map((c) => {
             const img = shots[c.slug];
-            const flip = i % 2 === 1;
             return (
-              <li key={c.slug} id={`caso-${c.slug}`} className="case scroll-mt-24">
-                <article className={`grid items-center gap-10 lg:gap-14 ${flip ? "lg:grid-cols-[1fr_1.45fr] lg:[&>*:first-child]:order-2" : "lg:grid-cols-[1.45fr_1fr]"}`}>
-                  <div className="relative pb-10 pr-8 sm:pr-14">
+              <CaseCard key={c.slug} id={`caso-${c.slug}`}>
+                <article className="card flex h-full flex-col overflow-hidden bg-paper">
+                  {/* Captura web con recorrido + iPhone */}
+                  <div className="relative bg-sage/60 px-4 pb-6 pt-4">
                     <BrowserFrame domain={c.domain}>
                       <ScrollShot
                         src={img.desktop}
                         alt={t.work.desktopAlt.replace("{name}", c.name)}
-                        sizes="(min-width:1240px) 680px, (min-width:1024px) 55vw, 90vw"
+                        sizes="(min-width:1240px) 380px, (min-width:1024px) 30vw, (min-width:768px) 46vw, 92vw"
                       />
                     </BrowserFrame>
                     <PhoneFrame
                       src={img.mobile}
                       alt={t.work.mobileAlt.replace("{name}", c.name)}
-                      sizes="(min-width:1024px) 150px, 26vw"
-                      className="absolute bottom-0 right-0 w-[28%] max-w-[190px]"
+                      sizes="110px"
+                      className="absolute -bottom-1 right-3 w-[24%] max-w-[110px]"
                       statusBg={c.statusBg}
                     />
                   </div>
 
-                  <div>
-                    <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-coral-ink">
-                      {String(i + 1).padStart(2, "0")} / {String(t.work.cases.length).padStart(2, "0")}
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+                      <span className="text-coral-ink">Cliente</span> · {c.sector}
                     </p>
-                    <h3 className="mt-3 font-display text-[34px] font-extrabold leading-[1.05] tracking-[-0.035em] text-green sm:text-[44px]">
-                      {c.name}
-                    </h3>
-                    <p className="mt-3 text-[15px] font-medium text-ink">{c.sector}</p>
-                    <p className="mt-5 text-[17px] leading-relaxed text-muted">{c.summary}</p>
-                    <ul className="mt-6 flex flex-wrap gap-2" aria-label="Qué incluyó">
+                    <h3 className="mt-2 font-display text-[24px] font-bold leading-tight tracking-[-0.02em] text-green">{c.name}</h3>
+                    <p className="mt-3 text-[15px] leading-relaxed text-muted">{c.summary}</p>
+                    <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Qué incluyó">
                       {c.tags.map((tag) => (
-                        <li key={tag} className="rounded-full border border-line bg-paper px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-ink">
+                        <li key={tag} className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[10.5px] uppercase tracking-wider text-ink">
                           {tag}
                         </li>
                       ))}
@@ -74,17 +73,17 @@ export function Work({ t }: { t: Dictionary }) {
                       href={c.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-ghost mt-8"
+                      className="mt-auto inline-flex items-center gap-2 pt-6 text-[15px] font-semibold text-green hover:text-coral-ink"
                       aria-label={`${t.work.visit}: ${c.name} (se abre en una pestaña nueva)`}
                     >
-                      {t.work.visit} <span aria-hidden>↗</span>
+                      {t.work.visit} <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
                     </a>
                   </div>
                 </article>
-              </li>
+              </CaseCard>
             );
           })}
-        </ol>
+        </ul>
       </div>
     </section>
   );

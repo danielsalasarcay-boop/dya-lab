@@ -88,18 +88,19 @@ export const es = {
     visit: "Ver sitio",
     desktopAlt: "Página de inicio de {name} en computadora",
     mobileAlt: "Página de inicio de {name} en teléfono",
-    hoverHint: "Pasa el cursor para recorrer la página",
+    swipeHint: "Desliza para ver los tres →",
+    hoverHint: "Pasa el cursor por cada ficha para recorrer la página",
     cases: [
       {
         slug: "loopi",
         name: "LOOPI",
         url: "https://loopivzla.com",
         domain: "loopivzla.com",
-        sector: "Mini lumpias congeladas · Caracas",
+        sector: "Comida · Caracas",
         // FALTA CONTEXTO: ¿qué usaba LOOPI para vender antes de la web (solo Instagram, catálogo en PDF…)? ¿También hicieron su marca/logo? Si es así, añadir la etiqueta "Marca".
         summary:
-          "LOOPI vende mini lumpias saladas y dulces en cajitas de 12 y 24. El sitio es su tienda: el cliente elige sabores y salsas, arma el pedido y lo envía por WhatsApp. En la misma página resuelve lo que se pregunta antes de comprar: cómo cocinarlas, zona de delivery, horario y métodos de pago.",
-        tags: ["Web", "Catálogo", "Pedidos por WhatsApp"],
+          "Tienda de mini lumpias saladas y dulces: el cliente elige sabores y salsas, arma su pedido y lo envía por WhatsApp. Delivery, horario y pagos en la misma página.",
+        tags: ["Web", "Catálogo", "Pedidos"],
         accent: "#E71600",
         statusBg: "#e61600",
       },
@@ -108,10 +109,10 @@ export const es = {
         name: "Quality Bikes",
         url: "https://qualitybikesvzla.com",
         domain: "qualitybikesvzla.com",
-        sector: "Concesionario multimarca de motos · Caracas",
+        sector: "Motos · Caracas",
         // FALTA CONTEXTO: ¿qué necesitaba Quality Bikes al llegar (no tenía web, tenía una vieja, vendía solo por Instagram)?
         summary:
-          "Quality Bikes vende motos de alta cilindrada de ocho marcas —BMW, Ducati, Kawasaki y Triumph, entre otras— además de aceites, combustibles de competencia y cauchos. El sitio muestra lo que está hoy en el showroom con ficha por moto, deja reservar los modelos que vienen en camino y lleva al cliente a WhatsApp o a la tienda.",
+          "Motos de alta cilindrada de ocho marcas: el showroom de hoy con ficha por moto, reserva de los modelos que vienen en camino y contacto directo por WhatsApp.",
         tags: ["Web", "Catálogo", "Reservas"],
         accent: "#003462",
         statusBg: "#050505",
@@ -121,11 +122,11 @@ export const es = {
         name: "Alimentos Mar Caribe",
         url: "https://alimentosmarcaribe.com",
         domain: "alimentosmarcaribe.com",
-        sector: "Procesadora y exportadora de productos del mar · Zulia",
+        sector: "Exportación de mariscos · Zulia",
         // FALTA CONTEXTO: ¿el sitio reemplazó a uno anterior? ¿qué le pedían los importadores que no tenían (fichas técnicas, idioma)?
         summary:
-          "Alimentos Mar Caribe procesa y exporta camarón y pescado a distribuidores de América y Europa. Su sitio, en inglés y español, le habla a un comprador mayorista: fichas por especie con tallas, cortes y empaques, los mercados a los que ya envía, sus certificaciones y un formulario para pedir cotización.",
-        tags: ["Web", "Bilingüe", "B2B · Cotizaciones"],
+          "Web bilingüe para un exportador de camarón y pescado: fichas por especie con tallas y empaques, mercados, certificaciones y cotización para mayoristas.",
+        tags: ["Web", "B2B", "ES / EN"],
         accent: "#061A33",
         statusBg: "#000000",
       },

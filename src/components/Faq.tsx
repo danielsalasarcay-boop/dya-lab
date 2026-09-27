@@ -3,7 +3,7 @@ import { Eyebrow } from "./Eyebrow";
 
 export function Faq({ t }: { t: Dictionary }) {
   return (
-    <section id="preguntas" aria-labelledby="preguntas-titulo" className="border-t border-line bg-paper py-20 sm:py-28">
+    <section id="preguntas" aria-labelledby="preguntas-titulo" className="border-t border-line bg-paper py-16 sm:py-20">
       {/* CONFIRMAR: cada respuesta en src/content/es.ts (faq) */}
       <div className="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
         <div>

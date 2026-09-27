@@ -266,6 +266,8 @@ export const es = {
     whatsapp: "WhatsApp",
     email: "Correo",
     floating: "Escríbenos por WhatsApp",
+    // Mensaje que llega prellenado al tocar el botón flotante o el número directo.
+    whatsappGreeting: "¡Hola D&A Lab! 👋 Vi su página web y me gustaría hablar sobre un proyecto para mi negocio.",
   },
 
   footer: {

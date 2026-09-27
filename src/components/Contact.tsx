@@ -19,7 +19,7 @@ export function Contact({ t }: { t: Dictionary }) {
             <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-mist">{c.direct}</p>
             <ul className="mt-4 space-y-3">
               <li>
-                <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 text-xl font-semibold hover:text-coral-soft">
+                <a href={whatsappLink(c.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 text-xl font-semibold hover:text-coral-soft">
                   <WhatsAppIcon className="size-6" />
                   {site.whatsappDisplay}
                   <span className="sr-only">{c.whatsapp}, </span>

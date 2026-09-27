@@ -2,10 +2,10 @@ import { whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 // Botón flotante de WhatsApp, fijo en todas las pantallas.
-export function WhatsAppFloat({ label }: { label: string }) {
+export function WhatsAppFloat({ label, message }: { label: string; message: string }) {
   return (
     <a
-      href={whatsappLink()}
+      href={whatsappLink(message)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${label} (se abre en una pestaña nueva)`}

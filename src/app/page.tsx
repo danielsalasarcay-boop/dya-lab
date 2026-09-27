@@ -75,7 +75,7 @@ export default function Home() {
         <Contact t={t} />
       </main>
       <Footer t={t} />
-      <WhatsAppFloat label={t.contact.floating} />
+      <WhatsAppFloat label={t.contact.floating} message={t.contact.whatsappGreeting} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </>
   );

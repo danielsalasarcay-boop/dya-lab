@@ -3,7 +3,7 @@ import { Logo } from "./Logo";
 
 export function Footer({ t }: { t: Dictionary }) {
   return (
-    <footer className="bg-green-deep pb-24 pt-14 text-bone md:pb-14">
+    <footer className="bg-green-deep pb-24 pt-14 text-bone">
       <div className="wrap flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div>
           <Logo mono className="h-10 w-auto text-bone" />

@@ -14,14 +14,15 @@ export function Contact({ t }: { t: Dictionary }) {
           <h2 id="contacto-titulo" className="display mt-5 text-[length:var(--text-h2)] lg:text-[80px]">{c.title}</h2>
           <p className="mt-5 max-w-[26rem] text-lg text-mist">{c.lead}</p>
 
-          {/* PENDIENTE: número de WhatsApp y correo en src/lib/site.ts */}
+          {/* PENDIENTE: correo en src/lib/site.ts */}
           <div className="mt-12">
             <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-mist">{c.direct}</p>
             <ul className="mt-4 space-y-3">
               <li>
                 <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 text-xl font-semibold hover:text-coral-soft">
                   <WhatsAppIcon className="size-6" />
-                  {c.whatsapp}
+                  {site.whatsappDisplay}
+                  <span className="sr-only">{c.whatsapp}, </span>
                   <span className="sr-only">(se abre en una pestaña nueva)</span>
                 </a>
               </li>

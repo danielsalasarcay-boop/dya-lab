@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Manual de marca D&A Lab */
+  --color-green: #1f4d38;      /* Forest Green */
+  --color-green-deep: #173b2b;
+  --color-coral: #f07a5a;      /* Coral: fondos y gráficos; texto encima en charcoal */
+  --color-coral-ink: #b04a2e;  /* coral oscurecido para texto sobre cream/blanco (AA) */
+  --color-coral-soft: #f9a68f; /* coral aclarado para texto sobre verde (AA) */
+  --color-bone: #faf6f0;       /* Cream */
+  --color-paper: #ffffff;
+  --color-ink: #2b2b2b;        /* Charcoal */
+  --color-sage: #dde8e1;       /* Light Sage */
+  --color-muted: #5b605c;
+  --color-mist: #dde8e1;       /* texto secundario sobre verde = Light Sage */
+  --color-line: rgb(31 77 56 / 0.14);
+
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --text-display: clamp(2.4rem, 1.2rem + 5vw, 5.1rem);
+  --text-h2: clamp(1.9rem, 1.2rem + 2.6vw, 3.3rem);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--color-coral); color: var(--color-ink); }
+
+:focus-visible {
+  outline: 3px solid var(--color-coral);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-10; }
+  .display { font-family: var(--font-display); letter-spacing: -0.035em; line-height: 1.02; font-weight: 800; }
+  .h2 { font-family: var(--font-display); font-size: var(--text-h2); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; text-wrap: balance; }
+  .btn { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-[15px] font-semibold transition-[background-color,color,transform] duration-200 active:scale-[0.98]; }
+  .btn-primary { @apply bg-green text-bone hover:bg-green-deep; }
+  .btn-ghost { @apply border-[1.5px] border-green text-green hover:bg-green hover:text-bone; }
+  .btn-coral { @apply bg-coral text-ink hover:bg-[#f39479]; }
+  .card { @apply rounded-3xl border border-line bg-paper; }
+}
+
+/* Recorrido de página completa en los casos */
+.scrollshot-img {
+  transform: translateY(0);
+  transition: transform var(--dur, 8s) cubic-bezier(0.45, 0, 0.55, 1);
+  will-change: auto;
+}
+@media (hover: hover) {
+  .case:hover .scrollshot-img,
+  .case:focus-within .scrollshot-img {
+    transform: translateY(calc(-100% + 100cqh));
+  }
+}
+
+/* Pantalla de carga (logo vertical) */
+.loader {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center;
+  background: var(--color-bone);
+  pointer-events: none;
+  animation: loader-out 0.45s cubic-bezier(0.7, 0, 0.3, 1) 0.85s forwards;
+}
+.loader-logo { display: flex; flex-direction: column; align-items: center; }
+.loader-mark { animation: loader-mark 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+/* Solo opacidad: el <g> ya trae un transform como atributo y no se debe pisar. */
+.loader-mark .logo-accent { animation: loader-accent 0.5s ease-out 0.2s both; }
+.loader-word { animation: loader-word 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both; }
+@keyframes loader-mark { from { opacity: 0; transform: scale(0.92); } }
+@keyframes loader-accent { from { opacity: 0; } }
+@keyframes loader-word { from { opacity: 0; transform: translateY(10px); } }
+@keyframes loader-out { to { opacity: 0; visibility: hidden; } }
+.no-loader .loader { display: none; }
+@media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+/* Patrón de corchetes < > del manual de marca (sobre fondos verdes) */
+.bracket-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23dde8e1' stroke-opacity='0.07' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 14l-9 7 9 7M30 14l9 7-9 7M62 56l-9 7 9 7M72 56l9 7-9 7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 84px 84px;
 }

@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# D&A Lab — sitio del estudio
 
-## Getting Started
+Sitio de una página (Next.js 16 App Router + TypeScript + Tailwind 4) para vender diseño web e identidad visual.
 
-First, run the development server:
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # build de producción
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Dónde se edita cada cosa
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Qué | Archivo |
+| --- | --- |
+| Todos los textos (hero, servicios, casos, paquetes, FAQ…) | `src/content/es.ts` |
+| WhatsApp, correo, dominio, redes | `src/lib/site.ts` |
+| Colores y tipografías (manual de marca) | `src/app/globals.css` (`@theme`) |
+| Logo (vector) | `src/components/Logo.tsx`, fuente en `brand/` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Pendientes marcados en el código: `grep -rn "PENDIENTE\|FALTA CONTEXTO\|CONFIRMAR" src`
 
-## Learn More
+## Capturas de los casos
 
-To learn more about Next.js, take a look at the following resources:
+`node scripts/capture.mjs` vuelve a tomar las capturas reales de los tres sitios
+(desktop 1440×900, móvil 390×844, hero con el mismo encuadre) y las guarda en WebP en `public/work/<cliente>/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`node scripts/og.mjs` regenera la imagen para redes (`src/app/opengraph-image.png`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Idiomas
 
-## Deploy on Vercel
+Solo español. La estructura está lista para inglés: crear `src/content/en.ts` con el tipo `Dictionary`,
+registrarlo en `src/content/index.ts` y mover la página a `app/[lang]/`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pensado para Vercel sin configuración extra. Definir `NEXT_PUBLIC_SITE_URL` con el dominio final.

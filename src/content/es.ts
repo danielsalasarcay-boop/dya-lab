@@ -36,7 +36,7 @@ export const es = {
     titleA: "Webs y marcas para negocios que",
     titleB: "quieren vender.",
     lead: "Diseñamos tu sitio y tu identidad visual a la medida de cómo vendes: por catálogo, por WhatsApp o por cotización.",
-    ctaWork: "Ver los seis sitios",
+    ctaWork: "Ver trabajo",
     ctaTalk: "Hablemos",
     proof: "Sitios en producción para",
   },

@@ -10,14 +10,10 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
   const [errors, setErrors] = useState<Partial<Record<Field, boolean>>>({});
   const needRef = useRef<HTMLTextAreaElement>(null);
 
-  // Los botones de "Paquetes" llevan data-plan: prellenamos el campo con el plan elegido.
+  // Los botones de "Paquetes" llevan a /contacto?plan=…: prellenamos el campo con el plan elegido.
   useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      const el = (e.target as HTMLElement).closest<HTMLElement>("[data-plan]");
-      if (el && needRef.current && !needRef.current.value) needRef.current.value = `Paquete ${el.dataset.plan}. `;
-    };
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    const plan = new URLSearchParams(window.location.search).get("plan");
+    if (plan && needRef.current && !needRef.current.value) needRef.current.value = `Paquete ${plan}. `;
   }, []);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {

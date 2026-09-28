@@ -44,7 +44,7 @@ export function Plans({ t }: { t: Dictionary }) {
               </ul>
 
               <a
-                href={`#contacto`}
+                href={`/contacto?plan=${encodeURIComponent(p.name)}`}
                 data-plan={p.name}
                 className={`btn mt-8 w-full ${p.featured ? "btn-coral" : "btn-primary"}`}
                 aria-label={`${t.plans.cta}: ${p.name}`}

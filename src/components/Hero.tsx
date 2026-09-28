@@ -53,7 +53,7 @@ export function Hero({ t }: { t: Dictionary }) {
           </p>
           <div className="hero-up mt-8 flex flex-wrap gap-3" style={{ ["--i" as string]: after + 2 }}>
             <a href="#trabajo" className="btn btn-coral btn-shine">{t.hero.ctaWork}</a>
-            <a href="#contacto" className="btn btn-ghost">{t.hero.ctaTalk}</a>
+            <a href="/contacto" className="btn btn-ghost">{t.hero.ctaTalk}</a>
           </div>
         </div>
 

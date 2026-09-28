@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { site, whatsappLink } from "@/lib/site";
@@ -12,6 +14,7 @@ import type { Dictionary } from "@/content/es";
 // - barra de progreso de lectura;
 // - móvil/tablet: menú a pantalla completa con enlaces en cascada.
 export function Header({ t }: { t: Dictionary }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
@@ -40,16 +43,17 @@ export function Header({ t }: { t: Dictionary }) {
 
   // Sección activa: la que cruza la franja central de la pantalla.
   useEffect(() => {
-    const ids = t.nav.map((n) => n.href.slice(1));
+    const ids = t.nav.filter((n) => n.href.startsWith("/#")).map((n) => n.href.slice(2));
     const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
+        entries.forEach((e) => { if (e.isIntersecting) setActive(`/#${e.target.id}`); });
       },
       { rootMargin: "-45% 0px -50% 0px" },
     );
     els.forEach((el) => io.observe(el));
     const top = () => { if (window.scrollY < window.innerHeight * 0.5) setActive(null); };
+    if (!els.length) return () => io.disconnect();
     window.addEventListener("scroll", top, { passive: true });
     return () => { io.disconnect(); window.removeEventListener("scroll", top); };
   }, [t.nav]);
@@ -57,7 +61,8 @@ export function Header({ t }: { t: Dictionary }) {
   // Posición de la píldora bajo el enlace activo.
   useEffect(() => {
     const place = () => {
-      const a = active && navRef.current?.querySelector<HTMLElement>(`a[href="#${active}"]`);
+      const key = pathname === "/contacto" ? "/contacto" : active;
+      const a = key && navRef.current?.querySelector<HTMLElement>(`a[href="${key}"]`);
       if (!a || !navRef.current) return setPill(null);
       const base = navRef.current.getBoundingClientRect();
       const r = a.getBoundingClientRect();
@@ -66,7 +71,7 @@ export function Header({ t }: { t: Dictionary }) {
     place();
     window.addEventListener("resize", place);
     return () => window.removeEventListener("resize", place);
-  }, [active, scrolled]);
+  }, [active, scrolled, pathname]);
 
   // Menú: bloquear scroll, Escape, foco.
   useEffect(() => {
@@ -92,9 +97,9 @@ export function Header({ t }: { t: Dictionary }) {
       <div className="header-shell">
         <div className="header-bar relative flex items-center justify-between gap-4">
           {/* Logo a color sobre placa blanca */}
-          <a href="#inicio" onClick={() => setOpen(false)} className="header-logo rounded-xl bg-paper px-3 py-1.5 text-green shadow-[0_1px_2px_rgb(0_0_0/0.15)]" aria-label="D&A Lab, ir al inicio">
+          <Link href="/#inicio" onClick={() => setOpen(false)} className="header-logo rounded-xl bg-paper px-3 py-1.5 text-green shadow-[0_1px_2px_rgb(0_0_0/0.15)]" aria-label="D&A Lab, ir al inicio">
             <Logo className="h-7 w-auto sm:h-8" />
-          </a>
+          </Link>
 
           <nav aria-label="Principal" className="hidden lg:block">
             <ul ref={navRef} className="relative flex items-center gap-1 text-[15px] font-medium">
@@ -104,7 +109,7 @@ export function Header({ t }: { t: Dictionary }) {
                 style={{ transform: `translateX(${pill?.x ?? 0}px)`, width: pill?.w ?? 0, opacity: pill ? 1 : 0 }}
               />
               {t.nav.map((item) => {
-                const on = active === item.href.slice(1);
+                const on = active === item.href || pathname === item.href;
                 return (
                   <li key={item.href}>
                     <a
@@ -121,7 +126,7 @@ export function Header({ t }: { t: Dictionary }) {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href="#contacto" className="btn btn-coral btn-shine hidden min-h-10 px-5 text-[14px] sm:inline-flex">
+            <a href="/contacto" className="btn btn-coral btn-shine hidden min-h-10 px-5 text-[14px] sm:inline-flex">
               {t.navCta} <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
             </a>
             <button
@@ -151,7 +156,7 @@ export function Header({ t }: { t: Dictionary }) {
           <p className="mm-fade mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-mist/70" style={{ ["--i" as string]: 0 }}>{t.menuLabel}</p>
           <ul className="flex flex-col">
             {t.nav.map((item, i) => {
-              const on = active === item.href.slice(1);
+              const on = active === item.href || pathname === item.href;
               return (
                 <li key={item.href} className="mm-line border-b border-bone/10" style={{ ["--i" as string]: i }}>
                   <a
@@ -179,7 +184,7 @@ export function Header({ t }: { t: Dictionary }) {
           </ul>
 
           <div className="mm-fade mt-auto pt-8" style={{ ["--i" as string]: t.nav.length }}>
-            <a href="#contacto" onClick={() => setOpen(false)} className="btn btn-coral w-full">
+            <a href="/contacto" onClick={() => setOpen(false)} className="btn btn-coral w-full">
               {t.navCta} <span aria-hidden>→</span>
             </a>
             <div className="mt-5 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-[14px] text-mist">

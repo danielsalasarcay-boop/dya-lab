@@ -17,12 +17,13 @@ export const es = {
   },
 
   nav: [
-    { href: "#trabajo", label: "Trabajo" },
-    { href: "#movimiento", label: "Movimiento" },
-    { href: "#servicios", label: "Servicios" },
-    { href: "#proceso", label: "Proceso" },
-    { href: "#paquetes", label: "Paquetes" },
-    { href: "#preguntas", label: "Preguntas" },
+    { href: "/#trabajo", label: "Trabajo" },
+    { href: "/#movimiento", label: "Movimiento" },
+    { href: "/#servicios", label: "Servicios" },
+    { href: "/#proceso", label: "Proceso" },
+    { href: "/#paquetes", label: "Paquetes" },
+    { href: "/#preguntas", label: "Preguntas" },
+    { href: "/contacto", label: "Contacto" },
   ],
   navCta: "Hablemos",
   skip: "Saltar al contenido",
@@ -310,6 +311,8 @@ export const es = {
   },
 
   contact: {
+    metaTitle: "Contacto — D&A Lab",
+    metaDescription: "Cuéntanos qué vendes y te respondemos por WhatsApp con los próximos pasos para tu web o tu marca.",
     eyebrow: "Contacto",
     title: "Cuéntanos qué vendes.",
     lead: "Te respondemos por WhatsApp con los próximos pasos.",

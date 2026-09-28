@@ -40,7 +40,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--color-coral); color: var(--color-ink); }
 
 :focus-visible {
   outline: 3px solid var(--color-coral);
@@ -388,3 +387,14 @@ body:has(.mobile-menu[data-open]) .wa-float { opacity: 0; pointer-events: none; 
   .wa-float, .wa-wave, .wa-icon svg { animation: none !important; }
   .wa-bubble { display: none; }
 }
+
+/* Logo de partículas del hero: el wordmark y su línea entran después del monograma */
+.hero-logo-word { animation: hero-up 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--hero-delay) + 1.3s) both; }
+.hero-logo-line { animation: hero-line 0.9s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--hero-delay) + 1.6s) both; }
+@keyframes hero-line { from { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .hero-logo-word, .hero-logo-line { animation: none; } }
+
+/* Sin resaltado al seleccionar texto ni al tocar (excepto formulario y datos de contacto) */
+html { -webkit-tap-highlight-color: transparent; }
+body { -webkit-user-select: none; user-select: none; }
+input, textarea, [data-selectable] { -webkit-user-select: text; user-select: text; }

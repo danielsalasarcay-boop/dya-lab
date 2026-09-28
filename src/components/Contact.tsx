@@ -15,7 +15,7 @@ export function Contact({ t }: { t: Dictionary }) {
           <p className="mt-2 text-[15px] text-mist">{c.lead}</p>
 
           {/* PENDIENTE: correo en src/lib/site.ts */}
-          <ul className="mt-4 space-y-0.5" aria-label={c.direct}>
+          <ul data-selectable className="mt-4 space-y-0.5" aria-label={c.direct}>
             <li>
               <a href={whatsappLink(c.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
                 <WhatsAppIcon className="size-5" />

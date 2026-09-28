@@ -4,6 +4,15 @@ import loopiHero from "../../public/work/loopi/loopi-hero.webp";
 import qbHero from "../../public/work/quality-bikes/quality-bikes-hero.webp";
 import mcHero from "../../public/work/mar-caribe/mar-caribe-hero.webp";
 import loopiMobile from "../../public/work/loopi/loopi-mobile-hero.webp";
+import qbMobile from "../../public/work/quality-bikes/quality-bikes-mobile-hero.webp";
+import mcMobile from "../../public/work/mar-caribe/mar-caribe-mobile-hero.webp";
+import { HeroLogo } from "./HeroLogo";
+
+const SHOTS = {
+  loopi: { img: loopiHero, mobile: loopiMobile },
+  "quality-bikes": { img: qbHero, mobile: qbMobile },
+  "mar-caribe": { img: mcHero, mobile: mcMobile },
+} as const;
 
 // Titular que entra palabra por palabra (máscara). El texto completo sigue en el h1.
 function Words({ text, from, className = "" }: { text: string; from: number; className?: string }) {
@@ -22,7 +31,6 @@ function Words({ text, from, className = "" }: { text: string; from: number; cla
 
 export function Hero({ t }: { t: Dictionary }) {
   const cases = t.work.cases;
-  const [, qb, mc] = cases;
   const nA = t.hero.titleA.split(" ").length;
   const nB = t.hero.titleB.split(" ").length;
   const after = nA + nB; // los elementos siguientes entran después del titular
@@ -31,7 +39,10 @@ export function Hero({ t }: { t: Dictionary }) {
     <section id="inicio" className="hero relative overflow-hidden pb-16 pt-10 sm:pt-16 lg:pb-24">
       <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
         <div>
-          <h1 className="display text-[length:var(--text-display)] text-green">
+          <div className="hero-up mb-6 sm:mb-8" style={{ ["--i" as string]: 0 }}>
+            <HeroLogo label="D&A Lab" />
+          </div>
+          <h1 className="display text-[clamp(2.1rem,1.1rem+3.4vw,3.9rem)] text-green">
             <Words text={t.hero.titleA} from={1} />
             <Words text={t.hero.titleB} from={1 + nA} className="text-coral-ink" />
           </h1>
@@ -45,14 +56,12 @@ export function Hero({ t }: { t: Dictionary }) {
         </div>
 
         <HeroCollage
-          // Rotación del frente: los sitios que no están ya en las ventanas de atrás.
-          sites={cases
-            .filter((c) => c.slug !== qb.slug && c.slug !== mc.slug)
+          trio={cases
+            .filter((c) => c.slug in SHOTS)
+            .map((c) => ({ slug: c.slug, domain: c.domain, statusBg: c.statusBg, statusFg: c.statusFg, ...SHOTS[c.slug as keyof typeof SHOTS] }))}
+          extras={cases
+            .filter((c) => !(c.slug in SHOTS))
             .map((c) => ({ slug: c.slug, domain: c.domain, statusBg: c.statusBg, statusFg: c.statusFg }))}
-          back={{ src: mcHero, domain: mc.domain }}
-          middle={{ src: qbHero, domain: qb.domain }}
-          front={loopiHero}
-          phone={loopiMobile}
         />
       </div>
     </section>

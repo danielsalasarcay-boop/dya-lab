@@ -1,29 +1,46 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { BrowserFrame, PhoneFrame } from "./Frames";
 
 type Site = { slug: string; domain: string; statusBg: string; statusFg?: string };
+type Shot = Site & { img: StaticImageData; mobile: StaticImageData };
+
+// Orden de las 3 ventanas: cambia en cada visita (progresivo, guardado en el navegador).
+// En el servidor y en la hidratación se usa 0; luego React re-renderiza con el turno real
+// (queda cubierto por la pantalla de carga).
+let turn: number | null = null;
+function readTurn() {
+  if (turn === null) {
+    try {
+      const n = Number(localStorage.getItem("dal-hero-turn") ?? "-1") + 1;
+      localStorage.setItem("dal-hero-turn", String(n));
+      turn = n;
+    } catch {
+      turn = Math.floor(Math.random() * 3);
+    }
+  }
+  return turn;
+}
+const noop = () => () => {};
 
 // Collage del hero:
 // - las ventanas entran en cascada y flotan; con cursor, se mueven en capas (parallax 3D);
 // - la ventana del frente y el iPhone reproducen los videos reales de cada sitio,
 //   uno tras otro (cambia el dominio de la barra). El video se monta encima de la
 //   captura y solo aparece cuando ya se reproduce: la carga inicial no cambia.
-export function HeroCollage({
-  sites,
-  back,
-  middle,
-  front,
-  phone,
-}: {
-  sites: Site[];
-  back: { src: StaticImageData; domain: string };
-  middle: { src: StaticImageData; domain: string };
-  front: StaticImageData;
-  phone: StaticImageData;
-}) {
+export function HeroCollage({ trio, extras }: { trio: Shot[]; extras: Site[] }) {
+  const k = useSyncExternalStore(noop, readTurn, () => 0) % trio.length;
+  const frontShot = trio[k];
+  const middleShot = trio[(k + 1) % trio.length];
+  const backShot = trio[(k + 2) % trio.length];
+  const back = { src: backShot.img, domain: backShot.domain };
+  const middle = { src: middleShot.img, domain: middleShot.domain };
+  const front = frontShot.img;
+  const phone = frontShot.mobile;
+  // Videos del frente: primero el sitio que está al frente, luego los demás proyectos.
+  const sites: Site[] = [frontShot, ...extras];
   const rootRef = useRef<HTMLDivElement>(null);
   const [idx, setIdx] = useState(0);
   const [live, setLive] = useState(false);

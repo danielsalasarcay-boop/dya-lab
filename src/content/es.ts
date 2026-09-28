@@ -38,16 +38,15 @@ export const es = {
     proof: "Sitios en producción para",
   },
 
-  // TEXTO PENDIENTE: origen — versión provisional para ver el espacio.
   origin: {
     eyebrow: "Por qué existe",
+    aside: "Antes de diseñar preguntamos: ¿cómo te llega un pedido hoy?",
     title: "No partimos de una plantilla. Partimos de cómo vendes tú.",
     body: [
       "Un negocio que recibe pedidos por WhatsApp no necesita la misma web que uno que cotiza contenedores para exportar.",
-      "Por eso cada proyecto empieza entendiendo a quién le vendes y cómo te compra.",
+      "Por eso lo primero que miramos es a quién le vendes y cómo te compra.",
       "Lo demás —colores, letras, fotos— sale de ahí.",
     ],
-    pendingNote: "Texto provisional",
   },
 
   services: {
@@ -59,12 +58,12 @@ export const es = {
         name: "Diseño y desarrollo web a medida",
         promise: "Un sitio que trabaja para tu negocio, no una tarjeta de presentación.",
         includes: [
-          "Diseño hecho para tu marca, sin plantillas",
-          "Se ve y carga bien en el teléfono, que es donde te buscan",
-          "Tus productos, precios o servicios en un solo lugar",
-          "El cliente te escribe por WhatsApp, te pide cotización o reserva",
-          "Listo para Google y para compartirse bien en redes",
-          "Publicado en tu dominio y a tu nombre",
+          "Te escriben por WhatsApp desde cualquier parte del sitio",
+          "Piden cotización o hacen su reserva sin llamar ni esperar",
+          "Se usa bien en el teléfono, que es donde te buscan",
+          "Carga rápido, así nadie se va antes de ver tus productos",
+          "Te encuentran en Google y tu link se ve bien al compartirlo",
+          "El dominio y el sitio quedan a tu nombre, no al nuestro",
         ],
       },
       {
@@ -72,10 +71,12 @@ export const es = {
         name: "Identidad visual y logos",
         promise: "Que te reconozcan antes de leer tu nombre.",
         includes: [
-          "Logo principal y sus versiones (horizontal, ícono, una tinta)",
-          "Colores y tipografías definidos",
-          "Guía corta para que tu marca se vea igual en todas partes",
-          "Archivos listos para imprenta, redes y web",
+          "Tu logo en todas sus versiones: horizontal, ícono, una tinta",
+          "Funciona igual en un aviso grande y en la foto de perfil",
+          "Colores y tipografías fijos: tu marca siempre se ve igual",
+          "Archivos listos para imprenta, redes y web, sin pedir conversiones",
+          "Una guía corta para que cualquiera que te diseñe siga la línea",
+          "Los originales son tuyos y los usas con quien quieras",
         ],
       },
     ],

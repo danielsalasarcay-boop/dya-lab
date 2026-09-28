@@ -4,12 +4,11 @@ import { Eyebrow } from "./Eyebrow";
 export function Origin({ t }: { t: Dictionary }) {
   return (
     <section id="origen" aria-labelledby="origen-titulo" className="bg-sage py-16 sm:py-20">
-      {/* TEXTO PENDIENTE: origen — reemplazar title y body en src/content/es.ts (origin) */}
       <div className="wrap grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
         <div>
           <Eyebrow n="01" tone="sage">{t.origin.eyebrow}</Eyebrow>
-          <p className="mt-4 inline-block rounded-full border border-dashed border-green px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-green">
-            {t.origin.pendingNote}
+          <p className="mt-5 max-w-[20ch] font-display text-[20px] font-semibold leading-snug tracking-[-0.01em] text-green sm:text-[22px]">
+            {t.origin.aside}
           </p>
         </div>
         <div>

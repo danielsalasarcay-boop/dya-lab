@@ -9,6 +9,8 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
+    // Motor de partículas copiado literal del prompt (no se edita).
+    "public/dya-hero/**",
     "out/**",
     "build/**",
     "next-env.d.ts",

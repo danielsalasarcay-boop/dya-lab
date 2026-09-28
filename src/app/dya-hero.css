@@ -1,0 +1,74 @@
+/* CSS copiado literal del prompt "Hero de partículas D&A Lab". No editar. */
+/* ============ D&A HERO — CSS (copiar tal cual) ============ */
+.dya-hero{
+  --dya-green:#1F4D38;
+  --dya-accent:#B34A2E;
+  --dya-accent-hover:#9C3F26;
+  --dya-cream:#FAF6F0;
+  --dya-ink:#2B2B2B;
+  --dya-sage:#DDE8E1;
+  --dya-muted:#6B6760;
+  position:relative;
+  background:var(--dya-cream);
+  color:var(--dya-ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  overflow:hidden;
+}
+.dya-hero *,.dya-hero *::before,.dya-hero *::after{box-sizing:border-box}
+.dya-hero__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.dya-hero__stage{position:relative;height:clamp(420px,74vh,640px);max-width:1200px;margin:0 auto}
+.dya-hero__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.dya-hero__fallback{
+  position:absolute;inset:0;margin:0;padding:0 16px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:Montserrat,system-ui,sans-serif;font-weight:800;
+  font-size:clamp(44px,9vw,120px);line-height:1.02;white-space:pre-line;
+  color:var(--dya-accent);
+}
+.dya-hero--js .dya-hero__fallback{visibility:hidden}
+.dya-hero__line{
+  position:absolute;left:16px;right:16px;top:13%;margin:0;
+  text-align:center;font-size:clamp(15px,1.6vw,19px);line-height:1.45;color:var(--dya-ink);
+}
+.dya-hero__cta-wrap{position:absolute;left:16px;right:16px;top:79%;text-align:center}
+.dya-hero__cta{
+  display:inline-block;background:var(--dya-accent);color:#fff;text-decoration:none;
+  border-radius:999px;padding:13px 28px;font-size:16px;font-weight:500;line-height:1;
+  transition:background-color .2s ease,transform .2s ease;
+}
+.dya-hero__cta:hover{background:var(--dya-accent-hover);transform:translateY(-1px)}
+.dya-hero__cta:focus-visible{outline:2px solid var(--dya-green);outline-offset:3px}
+.dya-hero__overlay{position:absolute;top:0;bottom:0;left:0;right:0;max-width:1200px;margin:0 auto;pointer-events:none}
+.dya-note{
+  position:absolute;display:flex;gap:10px;align-items:center;width:230px;
+  background:#fff;border:1px solid var(--dya-sage);border-radius:14px;
+  padding:10px 14px;font-size:13px;line-height:1.35;
+  box-shadow:0 6px 20px rgba(31,77,56,.08);
+}
+.dya-note svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--dya-accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dya-note strong{display:block;font-weight:500;color:var(--dya-ink)}
+.dya-note span{color:var(--dya-muted)}
+.dya-note--1{left:24px;top:24px}
+.dya-note--2{right:24px;top:24px}
+.dya-note--3{right:24px;bottom:24px}
+.dya-hero__count{
+  position:absolute;left:24px;bottom:24px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:500;font-size:12px;line-height:1;letter-spacing:.04em;
+  color:var(--dya-green);background:var(--dya-sage);padding:9px 12px;border-radius:999px;
+}
+.dya-hero__count b{color:var(--dya-accent);font-weight:500}
+.dya-hero--js .dya-reveal{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease}
+.dya-hero--js .dya-reveal.is-on{opacity:1;transform:none}
+@media (max-width:720px){
+  .dya-hero__stage{height:clamp(380px,64vh,500px)}
+  .dya-hero__line{top:9%}
+  .dya-hero__cta-wrap{top:81%}
+  .dya-hero__overlay{position:static;display:grid;gap:10px;padding:4px 16px 32px;max-width:520px;pointer-events:auto}
+  .dya-note,.dya-hero__count{position:static;width:auto}
+  .dya-hero__count{justify-self:start}
+}
+@media (prefers-reduced-motion:reduce){
+  .dya-hero--js .dya-reveal{transition:none}
+  .dya-hero__cta{transition:none}
+}
+/* ============ FIN CSS ============ */

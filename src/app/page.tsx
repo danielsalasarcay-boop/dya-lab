@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 import { Origin } from "@/components/Origin";
 import { Services } from "@/components/Services";
 import { Work } from "@/components/Work";
+import { Motion } from "@/components/Motion";
 import { Process } from "@/components/Process";
 import { Plans } from "@/components/Plans";
 import { Faq } from "@/components/Faq";
@@ -69,6 +70,7 @@ export default function Home() {
         <Origin t={t} />
         <Services t={t} />
         <Work t={t} />
+        <Motion t={t} />
         <Process t={t} />
         <Plans t={t} />
         <Faq t={t} />

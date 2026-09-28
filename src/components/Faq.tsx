@@ -7,7 +7,7 @@ export function Faq({ t }: { t: Dictionary }) {
       {/* CONFIRMAR: cada respuesta en src/content/es.ts (faq) */}
       <div className="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
         <div>
-          <Eyebrow n="06">{t.faq.eyebrow}</Eyebrow>
+          <Eyebrow n="07">{t.faq.eyebrow}</Eyebrow>
           <h2 id="preguntas-titulo" className="h2 mt-5 text-green">{t.faq.title}</h2>
         </div>
         <div className="border-t border-line">

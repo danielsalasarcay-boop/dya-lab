@@ -167,3 +167,8 @@ body {
 @keyframes steps-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .steps-detail { animation: steps-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 @keyframes steps-in { from { opacity: 0; transform: translateY(6px); filter: blur(3px); } }
+
+/* Sección de partículas: apuntar sus fuentes a las que ya carga el sitio (next/font). */
+.dya-hero { font-family: var(--font-sans); }
+.dya-hero__fallback { font-family: var(--font-display); }
+.dya-hero__count { font-family: var(--font-mono); }

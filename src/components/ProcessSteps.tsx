@@ -70,7 +70,7 @@ export function ProcessSteps({ steps, label }: { steps: Step[]; label: string })
                 on ? "text-ink" : "text-sage hover:text-bone"
               }`}
             >
-              <span className={`font-mono text-[14px] transition-colors duration-300 sm:text-[11px] ${on ? "text-ink/70" : "text-coral-soft"}`}>0{i + 1}</span>
+              <span className={`font-mono text-[14px] transition-colors duration-300 sm:text-[11px] ${on ? "text-ink" : "text-coral-soft"}`}>0{i + 1}</span>
               <span className="sr-only sm:not-sr-only">{s.name}</span>
             </button>
           );

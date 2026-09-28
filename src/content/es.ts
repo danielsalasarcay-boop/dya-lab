@@ -337,12 +337,7 @@ export const es = {
   },
 
   footer: {
-    kicker: "¿Empezamos?",
-    closing: "Tu negocio merece una web que venda.",
-    cta: "Hablemos",
     colNav: "Navegación",
-    colWork: "Proyectos",
-    colContact: "Contacto",
     available: "Disponibles para nuevos proyectos",
     localTime: "Caracas",
     madeIn: "Hecho en Venezuela",

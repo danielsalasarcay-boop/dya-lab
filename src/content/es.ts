@@ -163,18 +163,11 @@ export const es = {
   motion: {
     eyebrow: "Webs con movimiento",
     title: "Webs que no se ven como todas.",
-    lead: "Animaciones y efectos hechos para tu marca, no sacados de una plantilla: un sitio actual que la gente recuerda. Elige una historia y pasa el cursor (o el dedo) por las letras.",
-    storiesLabel: "Historia",
-    stories: [
-      { id: "sueno", label: "La web que soñaste" },
-      { id: "plantilla", label: "A tu medida" },
-      { id: "viaje", label: "Te compran" },
-      { id: "chat", label: "¡Pedido!" },
-      { id: "mundo", label: "El mundo" },
-    ],
+    lead: "Efectos hechos para tu marca, no sacados de una plantilla. Pasa el cursor por las letras.",
+    // Orden en que se encadenan solas. Los ids viven en public/dya-hero/dya-hero.js.
+    stories: ["sueno", "plantilla", "viaje", "chat", "mundo"],
   },
 
-  // CONFIRMAR: plazos de cada paso.
   process: {
     eyebrow: "Cómo trabajamos",
     title: "Cuatro pasos. Sabes qué toca y cuánto tarda.",

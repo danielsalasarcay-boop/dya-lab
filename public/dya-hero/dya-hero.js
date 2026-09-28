@@ -238,8 +238,8 @@
       canvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       var mobile = W < 720;
-      var step = mobile ? 3 : 5;
-      var cap = mobile ? 1400 : 2000;
+      var step = mobile ? 3 : 4;
+      var cap = mobile ? 1600 : 3200;
       var targets = [];
       var count = 0;
       for (var w = 0; w < N; w++) {

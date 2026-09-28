@@ -8,80 +8,112 @@ import "../app/dya-hero.css";
 
 type InitFn = (root: HTMLElement, opts?: { story?: string }) => () => void;
 declare global {
-  interface Window { initDyaHero?: InitFn }
+  interface Window {
+    initDyaHero?: InitFn;
+    DYA_HERO_STORIES?: Record<string, { words: unknown[] }>;
+  }
 }
 
-// Sección "Webs con movimiento": el hero de partículas de D&A Lab (motor en
-// public/dya-hero/dya-hero.js, copiado literal). Arranca cuando la sección
-// entra en pantalla; los botones reinician la animación con otra historia.
+// Tiempos del motor (public/dya-hero/dya-hero.js): dispersión inicial y salto
+// entre palabras. Con eso se calcula cuándo aterriza la última y toca cambiar.
+const T_SCATTER = 900;
+const T_WORD = 1900;
+const REPOSO = 2800;
+
+// Sección "Webs con movimiento": solo el lienzo de partículas, a todo el ancho.
+// Sin botones: las historias se encadenan solas mientras la sección se ve, y se
+// detienen cuando sale de pantalla para no gastar batería de balde.
 export function Motion({ t }: { t: Dictionary }) {
   const m = t.motion;
   const rootRef = useRef<HTMLElement>(null);
   const destroyRef = useRef<(() => void) | null>(null);
-  const [story, setStory] = useState(m.stories[0].id);
-  const [engine, setEngine] = useState(false);
-  const [seen, setSeen] = useState(false);
+  const [indice, setIndice] = useState(0);
+  const [motor, setMotor] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = rootRef.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && setSeen(true), { threshold: 0.35 });
+    let respondio = false;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        respondio = true;
+        setVisible(e.isIntersecting);
+      },
+      { threshold: 0.25 },
+    );
     io.observe(el);
-    return () => io.disconnect();
+    // Seguro: si el observador no contesta (pestaña de fondo, navegador raro),
+    // arrancamos igual en vez de dejar el lienzo congelado para siempre.
+    const red = window.setTimeout(() => { if (!respondio) setVisible(true); }, 2500);
+    return () => { window.clearTimeout(red); io.disconnect(); };
+  }, []);
+
+  // onReady de <Script> no dispara si el archivo ya estaba en caché, así que
+  // el arranque no puede colgar de él: se comprueba y, si no, se sondea.
+  useEffect(() => {
+    const reloj = window.setInterval(() => {
+      if (typeof window.initDyaHero === "function") {
+        setMotor(true);
+        window.clearInterval(reloj);
+      }
+    }, 120);
+    return () => window.clearInterval(reloj);
   }, []);
 
   useEffect(() => {
     const root = rootRef.current;
-    if (!engine || !seen || !root || !window.initDyaHero) return;
-    // Igual que la barra de historias del prompt: reinicio limpio en cada historia.
+    if (!motor || !visible || !root || !window.initDyaHero) return;
+
+    const id = m.stories[indice % m.stories.length];
+
+    // Reinicio limpio: el motor recuerda en sessionStorage que ya se reprodujo
+    // y se saltaría la entrada, que es justo lo que queremos ver cada vez.
     try { sessionStorage.removeItem("dya-hero-played"); } catch {}
     destroyRef.current?.();
     root.classList.remove("dya-hero--js");
     root.querySelectorAll(".is-on").forEach((e) => e.classList.remove("is-on"));
-    destroyRef.current = window.initDyaHero(root, { story });
-    return () => { destroyRef.current?.(); destroyRef.current = null; };
-  }, [engine, seen, story]);
+    destroyRef.current = window.initDyaHero(root, { story: id });
+
+    const quieto = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    let reloj = 0;
+    if (!quieto) {
+      const palabras = window.DYA_HERO_STORIES?.[id]?.words.length ?? 2;
+      reloj = window.setTimeout(() => setIndice((v) => v + 1), T_SCATTER + (palabras - 1) * T_WORD + REPOSO);
+    }
+
+    return () => {
+      window.clearTimeout(reloj);
+      destroyRef.current?.();
+      destroyRef.current = null;
+    };
+  }, [motor, visible, indice, m.stories]);
 
   return (
     <section id="movimiento" aria-labelledby="movimiento-titulo" className="py-16 sm:py-20">
-      <Script src="/dya-hero/dya-hero.js" strategy="lazyOnload" onReady={() => setEngine(true)} />
+      <Script src="/dya-hero/dya-hero.js" strategy="lazyOnload" onReady={() => setMotor(true)} />
+
       <div className="wrap">
-        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <div>
-            <Eyebrow n="05">{m.eyebrow}</Eyebrow>
-            <h2 id="movimiento-titulo" className="h2 mt-5 max-w-[16ch] text-green">{m.title}</h2>
-          </div>
-          <p className="max-w-[26rem] text-muted">{m.lead}</p>
-        </div>
-
-        <div className="-mx-4 mt-8 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden" role="group" aria-label={m.storiesLabel}>
-          {m.stories.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              aria-pressed={story === s.id}
-              onClick={() => setStory(s.id)}
-              className={`min-h-10 shrink-0 rounded-full border px-4 text-[14px] font-semibold transition-colors ${
-                story === s.id ? "border-green bg-green text-bone" : "border-line bg-paper text-green hover:border-green"
-              }`}
-            >
-              {s.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-5 overflow-hidden rounded-3xl border border-line">
-          {/* Markup del prompt (data-dya-*). El h1 original pasa a ser el h2 de la sección.
-              Sin botón, notificaciones ni contador (el motor los omite si no existen). */}
-          <section ref={rootRef} className="dya-hero" data-dya-hero data-dya-manual data-story={story} aria-label={m.title}>
-            <div className="dya-hero__stage">
-              <canvas className="dya-hero__canvas" data-dya-canvas aria-hidden="true" />
-              <p className="dya-hero__fallback" data-dya-fallback aria-hidden="true">{"la web que\nsoñaste."}</p>
-              <p className="dya-hero__line dya-reveal" data-dya-line>Instagram te da seguidores. Una web te da clientes.</p>
-            </div>
-          </section>
-        </div>
+        <Eyebrow n="05">{m.eyebrow}</Eyebrow>
+        <h2 id="movimiento-titulo" className="h2 mt-5 max-w-[16ch] text-green">{m.title}</h2>
+        <p className="mt-4 max-w-[34rem] text-muted">{m.lead}</p>
       </div>
+
+      {/* A todo el ancho y sin marco: el fondo del lienzo es el mismo crema de la
+          página, así que las letras parecen flotar sobre el sitio. */}
+      <section
+        ref={rootRef}
+        className="dya-hero dya-hero--full mt-8 sm:mt-10"
+        data-dya-hero
+        data-dya-manual
+        aria-label={m.title}
+      >
+        <div className="dya-hero__stage">
+          <canvas className="dya-hero__canvas" data-dya-canvas aria-hidden="true" />
+          <p className="dya-hero__fallback" data-dya-fallback aria-hidden="true">{"la web que\nsoñaste."}</p>
+          <p className="dya-hero__line dya-reveal" data-dya-line />
+        </div>
+      </section>
     </section>
   );
 }

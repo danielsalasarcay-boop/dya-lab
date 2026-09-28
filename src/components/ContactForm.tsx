@@ -39,35 +39,38 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
     window.open(whatsappLink(message), "_blank", "noopener,noreferrer");
   }
 
-  const field = "mt-2 block w-full rounded-2xl border border-bone/25 bg-green-deep px-4 py-3.5 text-[16px] text-bone placeholder:text-mist/70 focus:border-coral-soft focus:outline-none focus-visible:outline-3 focus-visible:outline-coral";
+  const field = "mt-1.5 block w-full rounded-xl border border-bone/25 bg-green-deep px-3.5 py-2.5 text-[16px] text-bone placeholder:text-mist/70 focus:border-coral-soft focus:outline-none focus-visible:outline-3 focus-visible:outline-coral";
+  const label = "text-[13px] font-semibold";
   const err = (f: Field) =>
     errors[f] ? (
-      <p id={`${f}-error`} className="mt-2 text-sm text-coral-soft">
+      <p id={`${f}-error`} className="mt-1 text-[13px] text-coral-soft">
         {t.required}
       </p>
     ) : null;
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5">
+    <form onSubmit={onSubmit} noValidate className="grid gap-3 sm:grid-cols-2">
       <div>
-        <label htmlFor="name" className="text-[15px] font-semibold">{t.name}</label>
+        <label htmlFor="name" className={label}>{t.name}</label>
         <input id="name" name="name" autoComplete="name" className={field} aria-invalid={errors.name || undefined} aria-describedby={errors.name ? "name-error" : undefined} />
         {err("name")}
       </div>
       <div>
-        <label htmlFor="business" className="text-[15px] font-semibold">{t.business}</label>
+        <label htmlFor="business" className={label}>{t.business}</label>
         <input id="business" name="business" autoComplete="organization" placeholder={t.businessHint} className={field} aria-invalid={errors.business || undefined} aria-describedby={errors.business ? "business-error" : undefined} />
         {err("business")}
       </div>
-      <div>
-        <label htmlFor="need" className="text-[15px] font-semibold">{t.need}</label>
-        <textarea ref={needRef} id="need" name="need" rows={4} placeholder={t.needHint} className={`${field} resize-y`} aria-invalid={errors.need || undefined} aria-describedby={errors.need ? "need-error" : undefined} />
+      <div className="sm:col-span-2">
+        <label htmlFor="need" className={label}>{t.need}</label>
+        <textarea ref={needRef} id="need" name="need" rows={2} placeholder={t.needHint} className={`${field} resize-y`} aria-invalid={errors.need || undefined} aria-describedby={errors.need ? "need-error" : undefined} />
         {err("need")}
       </div>
-      <button type="submit" className="btn btn-coral w-full sm:w-auto">
-        {t.submit}
-      </button>
-      <p className="text-sm text-mist">{t.note}</p>
+      <div className="flex flex-col gap-2 sm:col-span-2 sm:flex-row sm:items-center sm:gap-4">
+        <button type="submit" className="btn btn-coral min-h-11 w-full sm:w-auto">
+          {t.submit}
+        </button>
+        <p className="text-[13px] text-mist">{t.note}</p>
+      </div>
     </form>
   );
 }

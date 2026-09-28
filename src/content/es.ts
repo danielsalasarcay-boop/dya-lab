@@ -17,9 +17,9 @@ export const es = {
   },
 
   nav: [
+    { href: "/#servicios", label: "Servicios" },
     { href: "/#trabajo", label: "Trabajo" },
     { href: "/#movimiento", label: "Movimiento" },
-    { href: "/#servicios", label: "Servicios" },
     { href: "/#proceso", label: "Proceso" },
     { href: "/#paquetes", label: "Paquetes" },
     { href: "/#preguntas", label: "Preguntas" },

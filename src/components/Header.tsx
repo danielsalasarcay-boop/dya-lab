@@ -9,14 +9,18 @@ import { site, whatsappLink } from "@/lib/site";
 import type { Dictionary } from "@/content/es";
 
 // Header interactivo:
-// - arriba: barra verde a todo el ancho; al bajar se convierte en una "isla" flotante;
-// - píldora que se desliza al enlace de la sección visible;
+// - arriba en la portada: crema, se funde con el hero; en /contacto (fondo verde) va en verde;
+// - al bajar se convierte en una "isla" verde flotante que se esconde al seguir bajando
+//   y vuelve en cuanto el usuario sube;
+// - píldora que sigue al cursor y, si no hay cursor, se queda en la sección visible;
 // - barra de progreso de lectura;
 // - móvil/tablet: menú a pantalla completa con enlaces en cascada.
 export function Header({ t }: { t: Dictionary }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [hover, setHover] = useState<string | null>(null);
   const [active, setActive] = useState<string | null>(null);
   const [pill, setPill] = useState<{ x: number; w: number } | null>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -27,11 +31,15 @@ export function Header({ t }: { t: Dictionary }) {
   // Estado "scrolled" + progreso de lectura (una sola escucha, con rAF).
   useEffect(() => {
     let raf = 0;
+    let lastY = window.scrollY;
     const onScroll = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         const y = window.scrollY;
         setScrolled(y > 24);
+        setHover(null); // el cursor no se mueve al hacer scroll: que la píldora vuelva a la sección
+        // Umbral de 6px para que un temblor del trackpad no la haga parpadear.
+        if (Math.abs(y - lastY) > 6) { setHidden(y > lastY && y > 480); lastY = y; }
         const max = document.documentElement.scrollHeight - window.innerHeight;
         barRef.current?.style.setProperty("--p", String(max > 0 ? Math.min(1, y / max) : 0));
       });
@@ -61,7 +69,7 @@ export function Header({ t }: { t: Dictionary }) {
   // Posición de la píldora bajo el enlace activo.
   useEffect(() => {
     const place = () => {
-      const key = pathname === "/contacto" ? "/contacto" : active;
+      const key = hover ?? active;
       const a = key && navRef.current?.querySelector<HTMLElement>(`a[href="${key}"]`);
       if (!a || !navRef.current) return setPill(null);
       const base = navRef.current.getBoundingClientRect();
@@ -71,7 +79,7 @@ export function Header({ t }: { t: Dictionary }) {
     place();
     window.addEventListener("resize", place);
     return () => window.removeEventListener("resize", place);
-  }, [active, scrolled, pathname]);
+  }, [active, hover, scrolled, pathname]);
 
   // Menú: bloquear scroll, Escape, foco.
   useEffect(() => {
@@ -88,34 +96,48 @@ export function Header({ t }: { t: Dictionary }) {
   }, [open]);
 
   const island = scrolled && !open;
+  // "light" solo arriba del todo en la portada, donde el hero es crema.
+  const tone = pathname === "/" && !island && !open ? "light" : "dark";
+  const onContact = pathname === "/contacto";
+  // "Contacto" ya lo cubre el botón; en escritorio no lo repetimos.
+  const deskNav = t.nav.filter((n) => n.href !== "/contacto");
 
   return (
-    <header className="site-header sticky top-0 z-40" data-island={island || undefined}>
+    <header
+      className="site-header sticky top-0 z-40"
+      data-island={island || undefined}
+      data-hidden={(island && hidden) || undefined}
+      data-tone={tone}
+      onFocusCapture={() => setHidden(false)}
+    >
       <a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-bone focus:px-4 focus:py-2 focus:text-green">
         {t.skip}
       </a>
       <div className="header-shell">
         <div className="header-bar relative flex items-center justify-between gap-4">
-          {/* Logo a color sobre placa blanca */}
-          <Link href="/#inicio" onClick={() => setOpen(false)} className="header-logo rounded-xl bg-paper px-3 py-1.5 text-green shadow-[0_1px_2px_rgb(0_0_0/0.15)]" aria-label="D&A Lab, ir al inicio">
-            <Logo className="h-7 w-auto sm:h-8" />
+          {/* Logo a color, sin placa: verde sobre crema, crema sobre verde; la flecha siempre coral */}
+          <Link href="/#inicio" onClick={() => setOpen(false)} className="header-logo relative z-50 -ml-1 rounded-lg px-1 py-1" aria-label="D&A Lab, ir al inicio">
+            <Logo className="h-8 w-auto sm:h-9" />
           </Link>
 
           <nav aria-label="Principal" className="hidden lg:block">
-            <ul ref={navRef} className="relative flex items-center gap-1 text-[15px] font-medium">
+            <ul ref={navRef} onMouseLeave={() => setHover(null)} className="relative flex items-center gap-0.5 text-[15px] font-medium">
               <span
                 aria-hidden
-                className="nav-pill absolute inset-y-0 rounded-full bg-bone/12"
+                className="nav-pill absolute inset-y-1.5 rounded-full"
                 style={{ transform: `translateX(${pill?.x ?? 0}px)`, width: pill?.w ?? 0, opacity: pill ? 1 : 0 }}
               />
-              {t.nav.map((item) => {
-                const on = active === item.href || pathname === item.href;
+              {deskNav.map((item) => {
+                const on = active === item.href;
                 return (
                   <li key={item.href}>
                     <a
                       href={item.href}
+                      onMouseEnter={() => setHover(item.href)}
+                      onFocus={() => setHover(item.href)}
+                      onBlur={() => setHover(null)}
                       aria-current={on ? "true" : undefined}
-                      className={`nav-link relative flex min-h-11 items-center rounded-full px-3.5 transition-colors ${on ? "text-bone" : "text-sage hover:text-bone"}`}
+                      className="nav-link relative flex min-h-11 items-center rounded-full px-3.5 transition-colors duration-300"
                     >
                       {item.label}
                     </a>
@@ -126,13 +148,21 @@ export function Header({ t }: { t: Dictionary }) {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href="/contacto" className="btn btn-coral btn-shine hidden min-h-10 px-5 text-[14px] sm:inline-flex">
-              {t.navCta} <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
-            </a>
+            {/* En /contacto el formulario ya está en pantalla: el botón pasa a WhatsApp directo */}
+            {onContact ? (
+              <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-shine group hidden min-h-10 px-5 text-[14px] sm:inline-flex">
+                <WhatsAppIcon className="size-4" /> WhatsApp
+              </a>
+            ) : (
+              <a href="/contacto" className="btn btn-coral btn-shine group hidden min-h-10 pl-5 pr-4 text-[14px] sm:inline-flex">
+                {t.navCta}
+                <span aria-hidden className="header-cta-arrow inline-flex size-6 items-center justify-center rounded-full bg-ink/10 text-[13px] transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+              </a>
+            )}
             <button
               ref={toggleRef}
               type="button"
-              className="relative z-50 inline-flex size-11 items-center justify-center rounded-full border border-bone/30 lg:hidden"
+              className="header-burger relative z-50 inline-flex size-11 items-center justify-center rounded-full border lg:hidden"
               aria-expanded={open}
               aria-controls="menu-movil"
               aria-label={open ? t.menuClose : t.menuOpen}

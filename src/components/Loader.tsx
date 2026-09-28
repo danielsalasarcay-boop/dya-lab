@@ -1,15 +1,16 @@
 import { Logo } from "./Logo";
 
-// Pantalla de carga con el logo vertical (isotipo + "D&A Lab" apilados).
-// Solo CSS: aparece al instante, se retira sola en ~1.2 s y nunca bloquea la
-// interacción. Una vez por sesión (ver script en layout) y se omite con
-// prefers-reduced-motion.
+// Pantalla de carga en cada visita. Solo CSS: aparece al instante, no bloquea
+// la interacción y se retira sola (~1.9 s) con un barrido hacia arriba.
+// Secuencia: monograma → corchetes coral entran desde los lados → "D&A Lab" →
+// barra de progreso → cortina. Se omite con "reducir movimiento".
 export function Loader() {
   return (
     <div className="loader" aria-hidden>
-      <div className="loader-logo text-green">
-        <Logo variant="mark" className="loader-mark w-[150px] sm:w-[190px]" title="" />
-        <Logo variant="word" className="loader-word mt-4 w-[150px] sm:w-[190px]" title="" />
+      <div className="loader-logo">
+        <Logo variant="mark" className="loader-mark w-[150px] text-bone sm:w-[190px]" title="" />
+        <Logo variant="word" mono className="loader-word mt-5 w-[140px] text-bone sm:w-[170px]" title="" />
+        <span className="loader-bar" />
       </div>
     </div>
   );

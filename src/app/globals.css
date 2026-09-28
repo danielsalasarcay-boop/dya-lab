@@ -60,24 +60,40 @@ body {
 }
 
 
-/* Pantalla de carga (logo vertical) */
+/* Pantalla de carga (en cada visita) */
 .loader {
   position: fixed; inset: 0; z-index: 100;
   display: grid; place-items: center;
-  background: var(--color-bone);
+  background: var(--color-green);
   pointer-events: none;
-  animation: loader-out 0.45s cubic-bezier(0.7, 0, 0.3, 1) 0.85s forwards;
+  clip-path: inset(0 0 0 0);
+  animation: loader-out 0.65s cubic-bezier(0.76, 0, 0.24, 1) 1.3s forwards;
 }
-.loader-logo { display: flex; flex-direction: column; align-items: center; }
-.loader-mark { animation: loader-mark 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-/* Solo opacidad: el <g> ya trae un transform como atributo y no se debe pisar. */
-.loader-mark .logo-accent { animation: loader-accent 0.5s ease-out 0.2s both; }
-.loader-word { animation: loader-word 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both; }
-@keyframes loader-mark { from { opacity: 0; transform: scale(0.92); } }
-@keyframes loader-accent { from { opacity: 0; } }
-@keyframes loader-word { from { opacity: 0; transform: translateY(10px); } }
-@keyframes loader-out { to { opacity: 0; visibility: hidden; } }
-.no-loader .loader { display: none; }
+.loader::before { /* patrón de corchetes de la marca */
+  content: ""; position: absolute; inset: 0; opacity: 0.9;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23dde8e1' stroke-opacity='0.07' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 14l-9 7 9 7M30 14l9 7-9 7M62 56l-9 7 9 7M72 56l9 7-9 7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 84px 84px;
+  animation: loader-pattern 2s linear both;
+}
+.loader-logo { position: relative; display: flex; flex-direction: column; align-items: center; animation: loader-lift 0.65s cubic-bezier(0.76, 0, 0.24, 1) 1.3s forwards; }
+.loader-mark { animation: loader-mark 0.7s cubic-bezier(0.2, 0.9, 0.2, 1) both; }
+.loader-mark .logo-accent path { transform-box: fill-box; transform-origin: center; animation: loader-bracket 0.6s cubic-bezier(0.2, 0.9, 0.2, 1.2) both; }
+.loader-mark .logo-accent path:nth-child(1) { --from: -260%; animation-delay: 0.25s; }
+.loader-mark .logo-accent path:nth-child(2) { --from: 260%; animation-delay: 0.33s; }
+.loader-mark .logo-accent path:nth-child(3) { --from: 260%; animation-delay: 0.41s; }
+.loader-word { animation: loader-word 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s both; }
+.loader-bar {
+  display: block; width: 120px; height: 2px; margin-top: 22px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-coral) 0 0) no-repeat 0 0 / 0% 100%, rgb(250 246 240 / 0.15);
+  animation: loader-bar 1.15s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+}
+@keyframes loader-mark { from { opacity: 0; transform: scale(0.86); filter: blur(6px); } }
+@keyframes loader-bracket { from { opacity: 0; transform: translateX(var(--from)) scale(0.6); } }
+@keyframes loader-word { from { opacity: 0; transform: translateY(12px); letter-spacing: 0.2em; } }
+@keyframes loader-bar { to { background-size: 100% 100%; } }
+@keyframes loader-pattern { from { transform: translateY(0); } to { transform: translateY(-42px); } }
+@keyframes loader-lift { to { transform: translateY(-40px); opacity: 0; } }
+@keyframes loader-out { to { clip-path: inset(0 0 100% 0); visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
 
 /* Patrón de corchetes < > del manual de marca (sobre fondos verdes) */
@@ -175,8 +191,8 @@ body {
 
 /* ===== Hero: entradas, collage 3D y brillo ===== */
 /* Retraso base: espera a que se retire la pantalla de carga (si se mostró). */
-:root { --hero-delay: 1.05s; }
-.no-loader { --hero-delay: 0.1s; }
+:root { --hero-delay: 1.45s; }
+@media (prefers-reduced-motion: reduce) { :root { --hero-delay: 0s; } }
 
 .hw { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
 .hw-in { display: inline-block; animation: hw-in 0.9s cubic-bezier(0.2, 0.9, 0.2, 1) both; animation-delay: calc(var(--hero-delay) + var(--i) * 70ms); }

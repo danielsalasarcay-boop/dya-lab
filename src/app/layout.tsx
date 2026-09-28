@@ -39,15 +39,10 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-// Muestra la pantalla de carga una sola vez por sesión. Corre antes de pintar.
-const loaderOnce = `try{var k="dal-loader";if(sessionStorage.getItem(k))document.documentElement.classList.add("no-loader");else sessionStorage.setItem(k,"1")}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${montserrat.variable} ${instrument.variable} ${jetbrains.variable} antialiased`} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: loaderOnce }} />
-      </head>
       <body>{children}</body>
     </html>
   );

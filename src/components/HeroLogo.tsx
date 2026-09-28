@@ -32,8 +32,10 @@ export function HeroLogo({ label, size = "md" }: { label: string; size?: "md" | 
 
     function build() {
       const r = canvas!.getBoundingClientRect();
-      W = Math.max(1, Math.round(r.width));
-      H = Math.max(1, Math.round(r.height));
+      // Tope de seguridad: si el CSS aún no cargó, el canvas no debe crecer sin límite
+      // (el tamaño intrínseco depende de W/H y alimentaría el ResizeObserver).
+      W = Math.min(640, Math.max(1, Math.round(r.width)));
+      H = Math.min(400, Math.max(1, Math.round(r.height)));
       const dpr = Math.min(devicePixelRatio || 1, 2);
       canvas!.width = W * dpr;
       canvas!.height = H * dpr;
@@ -159,17 +161,17 @@ export function HeroLogo({ label, size = "md" }: { label: string; size?: "md" | 
   return (
     <div
       ref={wrapRef}
-      className={size === "lg" ? "hero-logo flex flex-col items-center gap-5" : "hero-logo flex items-center gap-4 sm:gap-5"}
+      className={size === "lg" ? "hero-logo flex flex-col items-center gap-4" : "hero-logo flex items-center gap-4 sm:gap-5"}
       role="img"
       aria-label={label}
     >
       <canvas
         ref={canvasRef}
         aria-hidden
-        className={`shrink-0 touch-pan-y ${size === "lg" ? "h-[130px] w-[208px] sm:h-[190px] sm:w-[302px]" : "h-[74px] w-[118px] sm:h-[96px] sm:w-[153px]"}`}
+        className={`shrink-0 touch-pan-y ${size === "lg" ? "h-[110px] w-[175px] sm:h-[150px] sm:w-[238px] lg:h-[190px] lg:w-[302px]" : "h-[74px] w-[118px] sm:h-[96px] sm:w-[153px]"}`}
       />
       <div aria-hidden className="hero-logo-word">
-        <Logo variant="word" className={`h-auto text-green ${size === "lg" ? "w-[150px] sm:w-[200px]" : "w-[118px] sm:w-[150px]"}`} title="" />
+        <Logo variant="word" className={`h-auto text-green ${size === "lg" ? "w-[130px] sm:w-[170px] lg:w-[200px]" : "w-[118px] sm:w-[150px]"}`} title="" />
         <span className="mt-2 block h-[2px] w-full origin-left bg-coral hero-logo-line" />
       </div>
     </div>

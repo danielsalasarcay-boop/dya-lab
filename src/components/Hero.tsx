@@ -22,12 +22,12 @@ const SHOTS = {
 export function Hero({ t }: { t: Dictionary }) {
   const cases = t.work.cases;
   return (
-    <section id="inicio" className="hero relative overflow-hidden pb-16 pt-12 sm:pt-16 lg:pb-24">
-      <div className="wrap flex flex-col items-center">
-        <div className="hero-up" style={{ ["--i" as string]: 0 }}>
+    <section id="inicio" className="hero relative overflow-hidden pb-10 pt-4 sm:pt-6 lg:pb-14 lg:pt-6">
+      <div className="wrap flex w-full flex-col items-center gap-8 lg:flex-row lg:justify-center lg:gap-16 xl:gap-24">
+        <div className="hero-up shrink-0" style={{ ["--i" as string]: 0 }}>
           <HeroLogo label="D&A Lab" size="lg" />
         </div>
-        <div className="mt-10 w-full max-w-[760px] sm:mt-14">
+        <div className="w-full max-w-[520px] lg:max-w-[560px]">
           <HeroCollage
             trio={cases
               .filter((c) => c.slug in SHOTS)

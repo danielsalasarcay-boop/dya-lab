@@ -329,6 +329,7 @@ export const es = {
     },
     direct: "O directo",
     whatsapp: "WhatsApp",
+    phone: "Llamar por teléfono",
     email: "Correo",
     floating: "Escríbenos por WhatsApp",
     floatHover: "Escríbenos",
@@ -339,8 +340,6 @@ export const es = {
   footer: {
     colNav: "Navegación",
     available: "Disponibles para nuevos proyectos",
-    localTime: "Caracas",
-    madeIn: "Hecho en Venezuela",
     backToTop: "Volver arriba",
     tagline: "Webs y marcas para negocios que quieren vender.",
     rights: "Todos los derechos reservados.",

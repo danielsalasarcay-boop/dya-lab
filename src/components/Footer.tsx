@@ -2,7 +2,8 @@ import type { Dictionary } from "@/content/es";
 import { site, whatsappLink } from "@/lib/site";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { BackToTop, LocalTime } from "./FooterBits";
+import { PhoneIcon } from "./PhoneIcon";
+import { BackToTop } from "./FooterBits";
 
 // Footer compacto (tamaño original) con fondo moderno: rejilla de puntos que
 // se desvanece, halo de luz animado y grano sutil.
@@ -38,15 +39,14 @@ export function Footer({ t }: { t: Dictionary }) {
             <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-link gap-2">
               <WhatsAppIcon className="size-4" /> {site.whatsappDisplay}
             </a>
-            <a href={`mailto:${site.email}`} className="ft-link gap-2">
-              <span aria-hidden className="w-4 text-center font-mono text-coral-soft">@</span> {site.email}
+            <a href={`tel:${site.phone}`} className="ft-link gap-2">
+              <PhoneIcon className="size-4" /> {site.phoneDisplay}
             </a>
-            <div className="md:mt-2"><LocalTime label={f.localTime} /></div>
           </div>
         </div>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-bone/10 pt-4 text-[12px] text-mist sm:text-[13px] md:mt-8">
-          <p>© {new Date().getFullYear()} D&amp;A Lab<span className="hidden sm:inline"> · {t.footer.rights}</span> · {f.madeIn}</p>
+          <p>© {new Date().getFullYear()} D&amp;A Lab<span className="hidden sm:inline"> · {t.footer.rights}</span></p>
           <BackToTop label={f.backToTop} />
         </div>
       </div>

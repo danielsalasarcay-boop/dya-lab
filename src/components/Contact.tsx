@@ -3,6 +3,7 @@ import { site, whatsappLink } from "@/lib/site";
 import { Eyebrow } from "./Eyebrow";
 import { ContactForm } from "./ContactForm";
 import { WhatsAppIcon } from "./WhatsAppIcon";
+import { PhoneIcon } from "./PhoneIcon";
 
 export function Contact({ t }: { t: Dictionary }) {
   const c = t.contact;
@@ -14,7 +15,7 @@ export function Contact({ t }: { t: Dictionary }) {
           <h1 id="contacto-titulo" className="mt-4 font-display text-[34px] font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-[48px]">{c.title}</h1>
           <p className="mt-2 text-[15px] text-mist">{c.lead}</p>
 
-          {/* PENDIENTE: correo en src/lib/site.ts */}
+          {/* PENDIENTE: correo (oculto hasta tener el definitivo; está en src/lib/site.ts) */}
           <ul data-selectable className="mt-4 space-y-0.5" aria-label={c.direct}>
             <li>
               <a href={whatsappLink(c.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
@@ -24,9 +25,10 @@ export function Contact({ t }: { t: Dictionary }) {
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
-                <span aria-hidden className="w-5 text-center font-mono text-coral-soft">@</span>
-                {site.email}
+              <a href={`tel:${site.phone}`} className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
+                <PhoneIcon className="size-5" />
+                {site.phoneDisplay}
+                <span className="sr-only">({c.phone})</span>
               </a>
             </li>
           </ul>

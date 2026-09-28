@@ -25,7 +25,6 @@ export default function Home() {
         url: site.url,
         logo: `${site.url}/icon.svg`,
         description: t.meta.description,
-        email: site.email,
         areaServed: "VE",
         knowsAbout: ["Diseño web", "Desarrollo web", "Identidad visual", "Diseño de logos"],
         ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),

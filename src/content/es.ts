@@ -44,41 +44,33 @@ export const es = {
   origin: {
     eyebrow: "Por qué existe",
     aside: "Antes de diseñar preguntamos: ¿cómo te llega un pedido hoy?",
-    title: "No partimos de una plantilla. Partimos de cómo vendes tú.",
+    title: "No te entregamos un diseño. Te entregamos un sitio que atiende.",
     body: [
-      "Un negocio que recibe pedidos por WhatsApp no necesita la misma web que uno que cotiza contenedores para exportar.",
-      "Por eso lo primero que miramos es a quién le vendes y cómo te compra.",
+      "Cada negocio vende distinto: uno recibe pedidos por WhatsApp, otro cotiza contenedores para exportar. La web se arma sobre eso, no sobre una plantilla.",
+      "Nuestro trabajo es acortar el camino entre el que entra y el pedido.",
       "Lo demás —colores, letras, fotos— sale de ahí.",
     ],
-    waysLabel: "Tres formas de vender, tres sitios distintos",
-    ways: [
+    shiftLabel: "Dónde está la diferencia",
+    shifts: [
       {
-        id: "chat",
-        name: "Te escriben",
-        line: "El pedido se arma mensaje a mensaje, hasta cerrarlo.",
-        proof: "Como LOOPI",
+        from: "Una plantilla te acomoda a su forma",
+        to: "La tuya se arma sobre cómo vendes tú",
       },
       {
-        id: "catalogo",
-        name: "Te reservan",
-        line: "Miran el catálogo, eligen y apartan sin llamar.",
-        proof: "Como Quality Bikes",
+        from: "Un folleto en internet enseña lo que haces",
+        to: "El tuyo recibe el pedido, la cotización o la reserva",
       },
       {
-        id: "cotizacion",
-        name: "Te cotizan",
-        line: "Piden precio por volumen y esperan tu respuesta.",
-        proof: "Como Alimentos Mar Caribe",
+        from: "Te lo entregan y te dejan solo",
+        to: "Te queda el dominio, el sitio y los archivos",
       },
     ],
+    proof: "Así están hechos LOOPI, Quality Bikes y Alimentos Mar Caribe: tres formas de vender, tres sitios distintos.",
   },
 
   services: {
     eyebrow: "Qué hacemos",
     title: "Dos servicios. Se contratan juntos o por separado.",
-    cta: "Hablemos de esto",
-    ctaMessage: "¡Hola D&A Lab! 👋 Vi su página y me interesa {service} para mi negocio.",
-    together: "Juntos salen mejor: el logo y los colores se deciden mirando la web donde van a vivir.",
     items: [
       {
         n: "01",

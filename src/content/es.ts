@@ -299,30 +299,44 @@ export const es = {
   faq: {
     eyebrow: "Preguntas",
     title: "Lo que nos preguntan antes de empezar.",
+    lead: "La respuesta corta está a la vista. Toca una tarjeta para ver el detalle.",
+    more: "Ver detalle",
+    less: "Ocultar",
+    askTitle: "¿Tienes otra pregunta?",
+    askLead: "Escríbenos y te respondemos el mismo día.",
+    askCta: "Preguntar por WhatsApp",
+    askMessage: "Hola D&A Lab, tengo una pregunta antes de empezar: ",
+    // short = respuesta rápida visible; a = detalle (también va al JSON-LD).
     items: [
       {
         q: "¿Cuánto tarda?",
-        a: "Una web esencial, entre 2 y 3 semanas. Con identidad visual, entre 4 y 6. El tiempo corre desde que tenemos tus textos y fotos.",
+        short: "2 a 3 semanas",
+        a: "Una web esencial está lista en 2 a 3 semanas. El tiempo corre desde que tenemos tus textos y fotos.",
       },
       {
         q: "¿De quién es el dominio?",
-        a: "Tuyo. Se registra a tu nombre y al terminar te entregamos todos los accesos. Si un día quieres irte con otro proveedor, te llevas todo.",
+        short: "Tuyo",
+        a: "Se registra a tu nombre y al terminar te entregamos todos los accesos. Si un día quieres irte con otro proveedor, te llevas todo.",
       },
       {
-        q: "¿Qué pasa si quiero cambiar algo después?",
+        q: "¿Y si quiero cambiar algo después?",
+        short: "1er mes incluido",
         a: "Los ajustes pequeños del primer mes van por nuestra cuenta. Después, los cambios se cotizan aparte o con un plan de mantenimiento mensual.",
       },
       {
         q: "¿Incluye el logo?",
-        a: "El paquete Web + identidad, sí. Si ya tienes logo, lo usamos tal cual o lo preparamos para que se vea bien en la web.",
+        short: "En Web + identidad",
+        a: "El paquete Web + identidad lo incluye. Si ya tienes logo, lo usamos tal cual o lo preparamos para que se vea bien en la web.",
       },
       {
         q: "¿Quién paga el hosting?",
-        a: "Tú, directamente al proveedor y a tu nombre, así nunca dependes de nosotros. Antes de empezar te decimos cuánto cuesta; para la mayoría de sitios de este tipo es poco o nada.",
+        short: "Tú, a tu nombre",
+        a: "Lo pagas directamente al proveedor y queda a tu nombre, así nunca dependes de nosotros. Antes de empezar te decimos cuánto cuesta; para la mayoría de sitios de este tipo es poco o nada.",
       },
       {
         q: "¿Trabajan a distancia?",
-        a: "Sí. Todo el proceso funciona por videollamada y WhatsApp, estés en Venezuela o fuera.",
+        short: "Sí, 100 % remoto",
+        a: "Todo el proceso funciona por videollamada y WhatsApp, estés en Venezuela o fuera.",
       },
     ],
   },

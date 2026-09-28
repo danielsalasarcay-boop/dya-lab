@@ -41,62 +41,30 @@ export const es = {
     proof: "Sitios en producción para",
   },
 
-  origin: {
-    eyebrow: "Por qué existe",
-    aside: "Antes de diseñar preguntamos: ¿cómo te llega un pedido hoy?",
-    title: "No te entregamos un diseño. Te entregamos un sitio que atiende.",
-    body: [
-      "Cada negocio vende distinto: uno recibe pedidos por WhatsApp, otro cotiza contenedores para exportar. La web se arma sobre eso, no sobre una plantilla.",
-      "Nuestro trabajo es acortar el camino entre el que entra y el pedido.",
-      "Lo demás —colores, letras, fotos— sale de ahí.",
-    ],
-    shiftLabel: "Dónde está la diferencia",
-    shifts: [
-      {
-        from: "Una plantilla te acomoda a su forma",
-        to: "La tuya se arma sobre cómo vendes tú",
-      },
-      {
-        from: "Un folleto en internet enseña lo que haces",
-        to: "El tuyo recibe el pedido, la cotización o la reserva",
-      },
-      {
-        from: "Te lo entregan y te dejan solo",
-        to: "Te queda el dominio, el sitio y los archivos",
-      },
-    ],
-    proof: "Así están hechos LOOPI, Quality Bikes y Alimentos Mar Caribe: tres formas de vender, tres sitios distintos.",
-  },
-
   services: {
-    eyebrow: "Qué hacemos",
-    title: "Dos servicios. Se contratan juntos o por separado.",
-    items: [
+    title: {
+      a: "Una web bonita que no vende es un gasto.",
+      b: "Nosotros hacemos las que venden.",
+    },
+    lead: "No partimos de una plantilla. Partimos de cómo vendes tú. Dos servicios. Se contratan juntos o por separado.",
+    cards: [
       {
         n: "01",
-        name: "Diseño y desarrollo web a medida",
-        promise: "Un sitio que trabaja para tu negocio, no una tarjeta de presentación.",
-        includes: [
-          "Te escriben por WhatsApp desde cualquier parte del sitio",
-          "Piden cotización o hacen su reserva sin llamar ni esperar",
-          "Se usa bien en el teléfono, que es donde te buscan",
-          "Carga rápido, así nadie se va antes de ver tus productos",
-          "Te encuentran en Google y tu link se ve bien al compartirlo",
-          "El dominio y el sitio quedan a tu nombre, no al nuestro",
-        ],
+        eyebrow: "El porqué",
+        hook: "Nacimos en Venezuela, entendiendo que el cliente busca rapidez y suele comprar desde el celular.",
+        body: "Diseñamos sitios sin plantillas que cargan rápido, se entienden en segundos y terminan en una conversación real para cerrar la venta.",
       },
       {
         n: "02",
-        name: "Identidad visual y logos",
-        promise: "Que te reconozcan antes de leer tu nombre.",
-        includes: [
-          "Tu logo en todas sus versiones: horizontal, ícono, una tinta",
-          "Funciona igual en un aviso grande y en la foto de perfil",
-          "Colores y tipografías fijos: tu marca siempre se ve igual",
-          "Archivos listos para imprenta, redes y web, sin pedir conversiones",
-          "Una guía corta para que cualquiera que te diseñe siga la línea",
-          "Los originales son tuyos y los usas con quien quieras",
-        ],
+        eyebrow: "Servicio web",
+        hook: "Un sitio que trabaja para tu negocio, no una tarjeta de presentación.",
+        body: "Creado a la medida de tus productos, optimizado para celulares y conectado directamente para recibir pedidos por WhatsApp o cotizaciones.",
+      },
+      {
+        n: "03",
+        eyebrow: "Servicio de marca",
+        hook: "Que te reconozcan antes de leer tu nombre.",
+        body: "Creamos tu logo y sus versiones, definimos tus colores y tipografías, y te entregamos una guía corta con archivos listos para imprenta, redes y web.",
       },
     ],
   },

@@ -48,7 +48,7 @@ export function Motion({ t }: { t: Dictionary }) {
       <div className="wrap">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <Eyebrow n="04">{m.eyebrow}</Eyebrow>
+            <Eyebrow n="05">{m.eyebrow}</Eyebrow>
             <h2 id="movimiento-titulo" className="h2 mt-5 max-w-[16ch] text-green">{m.title}</h2>
           </div>
           <p className="max-w-[26rem] text-muted">{m.lead}</p>

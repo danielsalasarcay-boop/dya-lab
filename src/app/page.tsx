@@ -3,7 +3,6 @@ import { site } from "@/lib/site";
 import { Loader } from "@/components/Loader";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Origin } from "@/components/Origin";
 import { Services } from "@/components/Services";
 import { Work } from "@/components/Work";
 import { Motion } from "@/components/Motion";
@@ -67,7 +66,6 @@ export default function Home() {
       <Header t={t} />
       <main id="contenido">
         <Hero t={t} />
-        <Origin t={t} />
         <Services t={t} />
         <Work t={t} />
         <Motion t={t} />

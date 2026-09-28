@@ -18,7 +18,7 @@ export function Faq({ t }: { t: Dictionary }) {
       <div className="wrap">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <Eyebrow n="07">{f.eyebrow}</Eyebrow>
+            <Eyebrow n="08">{f.eyebrow}</Eyebrow>
             <h2 id="preguntas-titulo" className="h2 mt-5 max-w-[18ch] text-green">{f.title}</h2>
           </div>
           <p className="max-w-[24rem] text-muted">{f.lead}</p>

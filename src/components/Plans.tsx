@@ -5,7 +5,7 @@ export function Plans({ t }: { t: Dictionary }) {
   return (
     <section id="paquetes" aria-labelledby="paquetes-titulo" className="py-16 sm:py-20">
       <div className="wrap">
-        <Eyebrow n="06">{t.plans.eyebrow}</Eyebrow>
+        <Eyebrow n="07">{t.plans.eyebrow}</Eyebrow>
         <h2 id="paquetes-titulo" className="h2 mt-5 text-green">{t.plans.title}</h2>
         <p className="mt-4 max-w-[34rem] text-lg text-muted">
           {t.plans.lead} <span className="lg:hidden">{t.plans.swipeHint}</span>

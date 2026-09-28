@@ -387,3 +387,29 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
 
 /* Párrafo de la portada en serif editorial */
 .hero-lead { font-variation-settings: "opsz" 36; letter-spacing: -0.005em; }
+
+/* Sección 04: frase de cada historia como cita tecnológica (mono + coral + cursor) */
+#movimiento .dya-hero__line {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(14px, 1.45vw, 18px);
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+  color: var(--color-coral-ink);
+  text-wrap: balance;
+}
+#movimiento .dya-hero__line::before,
+#movimiento .dya-hero__line::after {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 2.1em; line-height: 0; vertical-align: -0.38em;
+  color: var(--color-coral);
+}
+#movimiento .dya-hero__line::before { content: "“"; margin-right: 0.18em; }
+#movimiento .dya-hero__line::after {
+  content: "”";
+  margin-left: 0.12em;
+}
+/* Aparece como si se escribiera en una terminal */
+#movimiento .dya-hero__line.is-on { animation: dya-type 1.1s steps(38, end) both; }
+@keyframes dya-type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { #movimiento .dya-hero__line.is-on { animation: none; } }

@@ -8,6 +8,8 @@ import qbMobile from "../../public/work/quality-bikes/quality-bikes-mobile-hero.
 import mcMobile from "../../public/work/mar-caribe/mar-caribe-mobile-hero.webp";
 import { HeroLogo } from "./HeroLogo";
 
+const HIDDEN_IN_HERO = ["casa-verde"];
+
 const SHOTS = {
   loopi: { img: loopiHero, mobile: loopiMobile },
   "quality-bikes": { img: qbHero, mobile: qbMobile },
@@ -59,8 +61,9 @@ export function Hero({ t }: { t: Dictionary }) {
           trio={cases
             .filter((c) => c.slug in SHOTS)
             .map((c) => ({ slug: c.slug, domain: c.domain, statusBg: c.statusBg, statusFg: c.statusFg, ...SHOTS[c.slug as keyof typeof SHOTS] }))}
+          // Videos que rotan en la ventana del frente (Casa Verde no se muestra en la portada).
           extras={cases
-            .filter((c) => !(c.slug in SHOTS))
+            .filter((c) => !(c.slug in SHOTS) && !HIDDEN_IN_HERO.includes(c.slug))
             .map((c) => ({ slug: c.slug, domain: c.domain, statusBg: c.statusBg, statusFg: c.statusFg }))}
         />
       </div>

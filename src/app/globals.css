@@ -16,7 +16,7 @@
   --color-line: rgb(31 77 56 / 0.14);
 
   --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-familjen), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
   --font-serif: var(--font-fraunces), Georgia, serif;
 
@@ -35,6 +35,8 @@ html {
 }
 
 body {
+  font-size: 1.03rem;
+  letter-spacing: 0.003em;
   background: var(--color-bone);
   color: var(--color-ink);
   font-family: var(--font-sans);

@@ -55,7 +55,6 @@ export function Motion({ t }: { t: Dictionary }) {
         </div>
 
         <div className="-mx-4 mt-8 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden" role="group" aria-label={m.storiesLabel}>
-          <span className="mr-1 shrink-0 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">{m.storiesLabel}</span>
           {m.stories.map((s) => (
             <button
               key={s.id}

@@ -50,11 +50,35 @@ export const es = {
       "Por eso lo primero que miramos es a quién le vendes y cómo te compra.",
       "Lo demás —colores, letras, fotos— sale de ahí.",
     ],
+    waysLabel: "Tres formas de vender, tres sitios distintos",
+    ways: [
+      {
+        id: "chat",
+        name: "Te escriben",
+        line: "El pedido se arma mensaje a mensaje, hasta cerrarlo.",
+        proof: "Como LOOPI",
+      },
+      {
+        id: "catalogo",
+        name: "Te reservan",
+        line: "Miran el catálogo, eligen y apartan sin llamar.",
+        proof: "Como Quality Bikes",
+      },
+      {
+        id: "cotizacion",
+        name: "Te cotizan",
+        line: "Piden precio por volumen y esperan tu respuesta.",
+        proof: "Como Alimentos Mar Caribe",
+      },
+    ],
   },
 
   services: {
     eyebrow: "Qué hacemos",
     title: "Dos servicios. Se contratan juntos o por separado.",
+    cta: "Hablemos de esto",
+    ctaMessage: "¡Hola D&A Lab! 👋 Vi su página y me interesa {service} para mi negocio.",
+    together: "Juntos salen mejor: el logo y los colores se deciden mirando la web donde van a vivir.",
     items: [
       {
         n: "01",

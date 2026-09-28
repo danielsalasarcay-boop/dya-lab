@@ -35,7 +35,7 @@ export function Footer({ t }: { t: Dictionary }) {
             </ul>
           </nav>
 
-          <div data-selectable className="flex flex-wrap items-center gap-x-5 md:flex-col md:items-start md:gap-0.5">
+          <div data-selectable className="ft-phones flex flex-nowrap items-center gap-x-4 whitespace-nowrap">
             <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-link gap-2">
               <WhatsAppIcon className="size-4" /> {site.whatsappDisplay}
             </a>

@@ -463,3 +463,7 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
 .ft-arrow { margin-left: 4px; font-size: 12px; opacity: 0.5; transition: transform 0.25s, opacity 0.25s; }
 .ft-link:hover .ft-arrow { opacity: 1; transform: translate(2px, -2px); }
 @media (prefers-reduced-motion: reduce) { .ft-aurora { animation: none; } }
+
+/* Números del footer: más pequeños y en una sola línea */
+.ft-phones .ft-link { font-size: 13px; min-height: 36px; }
+.ft-phones svg { width: 14px; height: 14px; }

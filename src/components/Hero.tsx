@@ -1,53 +1,75 @@
-import Image from "next/image";
 import type { Dictionary } from "@/content/es";
 import { Eyebrow } from "./Eyebrow";
-import { BrowserFrame, PhoneFrame } from "./Frames";
+import { HeroCollage } from "./HeroCollage";
 import loopiHero from "../../public/work/loopi/loopi-hero.webp";
 import qbHero from "../../public/work/quality-bikes/quality-bikes-hero.webp";
 import mcHero from "../../public/work/mar-caribe/mar-caribe-hero.webp";
 import loopiMobile from "../../public/work/loopi/loopi-mobile-hero.webp";
 
-export function Hero({ t }: { t: Dictionary }) {
-  const [loopi, qb, mc] = t.work.cases;
+// Titular que entra palabra por palabra (máscara). El texto completo sigue en el h1.
+function Words({ text, from, className = "" }: { text: string; from: number; className?: string }) {
   return (
-    <section id="inicio" className="relative overflow-hidden pb-16 pt-10 sm:pt-16 lg:pb-24">
+    <>
+      {text.split(" ").map((w, i) => (
+        <span key={i}>
+          <span className={`hw ${className}`}>
+            <span className="hw-in" style={{ ["--i" as string]: from + i }}>{w}</span>
+          </span>{" "}
+        </span>
+      ))}
+    </>
+  );
+}
+
+export function Hero({ t }: { t: Dictionary }) {
+  const cases = t.work.cases;
+  const [, qb, mc] = cases;
+  const nA = t.hero.titleA.split(" ").length;
+  const nB = t.hero.titleB.split(" ").length;
+  const after = nA + nB; // los elementos siguientes entran después del titular
+
+  return (
+    <section id="inicio" className="hero relative overflow-hidden pb-16 pt-10 sm:pt-16 lg:pb-24">
       <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
         <div>
-          <Eyebrow>{t.hero.eyebrow}</Eyebrow>
+          <div className="hero-up" style={{ ["--i" as string]: 0 }}>
+            <Eyebrow>{t.hero.eyebrow}</Eyebrow>
+          </div>
           <h1 className="display mt-6 text-[length:var(--text-display)] text-green">
-            {t.hero.titleA} <span className="text-coral-ink">{t.hero.titleB}</span>
+            <Words text={t.hero.titleA} from={1} />
+            <Words text={t.hero.titleB} from={1 + nA} className="text-coral-ink" />
           </h1>
-          <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-muted sm:text-xl">{t.hero.lead}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#trabajo" className="btn btn-coral">{t.hero.ctaWork}</a>
+          <p className="hero-up mt-6 max-w-[34rem] text-lg leading-relaxed text-muted sm:text-xl" style={{ ["--i" as string]: after + 1 }}>
+            {t.hero.lead}
+          </p>
+          <div className="hero-up mt-8 flex flex-wrap gap-3" style={{ ["--i" as string]: after + 2 }}>
+            <a href="#trabajo" className="btn btn-coral btn-shine">{t.hero.ctaWork}</a>
             <a href="#contacto" className="btn btn-ghost">{t.hero.ctaTalk}</a>
           </div>
-          <p className="mt-10 text-sm text-muted">
+          <p className="hero-up mt-10 text-sm text-muted" style={{ ["--i" as string]: after + 3 }}>
+            <span aria-hidden className="live-dot" />
             {t.hero.proof}{" "}
-            {t.work.cases.map((c, i) => (
+            {cases.map((c, i) => (
               <span key={c.slug}>
                 <a href={`#caso-${c.slug}`} className="font-semibold text-ink underline decoration-coral decoration-2 underline-offset-4 hover:text-green">
                   {c.name}
                 </a>
-                {i < t.work.cases.length - 1 ? (i === t.work.cases.length - 2 ? " y " : ", ") : "."}
+                {i < cases.length - 1 ? (i === cases.length - 2 ? " y " : ", ") : "."}
               </span>
             ))}
           </p>
         </div>
 
-        {/* Collage con capturas reales de los tres sitios: el trabajo es la imagen del hero. */}
-        <div className="relative mx-auto aspect-[1/0.86] w-full max-w-[640px]" aria-hidden>
-          <BrowserFrame domain={mc.domain} className="absolute right-0 top-0 w-[78%]">
-            <Image src={mcHero} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={65} preload />
-          </BrowserFrame>
-          <BrowserFrame domain={qb.domain} className="absolute right-[11%] top-[19%] w-[78%]">
-            <Image src={qbHero} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={65} loading="eager" />
-          </BrowserFrame>
-          <BrowserFrame domain={loopi.domain} className="absolute right-[22%] top-[38%] w-[78%]">
-            <Image src={loopiHero} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} loading="eager" />
-          </BrowserFrame>
-          <PhoneFrame src={loopiMobile} alt="" sizes="150px" className="absolute bottom-[-4%] right-[1%] w-[23%]" statusBg={loopi.statusBg} preload />
-        </div>
+        <HeroCollage
+          // Rotación del frente: los sitios que no están ya en las ventanas de atrás.
+          sites={cases
+            .filter((c) => c.slug !== qb.slug && c.slug !== mc.slug)
+            .map((c) => ({ slug: c.slug, domain: c.domain, statusBg: c.statusBg, statusFg: c.statusFg }))}
+          back={{ src: mcHero, domain: mc.domain }}
+          middle={{ src: qbHero, domain: qb.domain }}
+          front={loopiHero}
+          phone={loopiMobile}
+        />
       </div>
     </section>
   );

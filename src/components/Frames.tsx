@@ -79,10 +79,14 @@ export function PhoneFrame({
               <svg viewBox="0 0 27 12"><rect x="0.5" y="0.5" width="23" height="11" rx="3.2" fill="none" stroke="currentColor" strokeOpacity=".4" /><rect x="2" y="2" width="18" height="8" rx="2" /><path d="M25 4v4c.8-.3 1.3-1 1.3-2S25.8 4.3 25 4Z" fillOpacity=".4" /></svg>
             </span>
           </div>
-          {video ? (
-            <SiteVideo src={video.src} poster={video.poster} label={alt} />
+          {src ? (
+            <div className="relative">
+              <Image src={src} alt={alt} sizes={sizes} className="block h-auto w-full" quality={70} {...(preload ? { loading: "eager" as const } : {})} />
+              {/* En el hero: video superpuesto que aparece cuando empieza a reproducirse */}
+              {video && <SiteVideo src={video.src} poster={video.poster} label={alt} className="hero-live absolute inset-0 h-full object-cover" />}
+            </div>
           ) : (
-            src && <Image src={src} alt={alt} sizes={sizes} className="block h-auto w-full" quality={70} {...(preload ? { loading: "eager" as const } : {})} />
+            video && <SiteVideo src={video.src} poster={video.poster} label={alt} />
           )}
           <span aria-hidden className="iphone-island" />
         </div>

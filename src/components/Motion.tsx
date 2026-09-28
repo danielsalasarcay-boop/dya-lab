@@ -72,23 +72,13 @@ export function Motion({ t }: { t: Dictionary }) {
         </div>
 
         <div className="mt-5 overflow-hidden rounded-3xl border border-line">
-          {/* Markup del prompt (data-dya-*). El h1 original pasa a ser el h2 de la sección. */}
+          {/* Markup del prompt (data-dya-*). El h1 original pasa a ser el h2 de la sección.
+              Sin botón, notificaciones ni contador (el motor los omite si no existen). */}
           <section ref={rootRef} className="dya-hero" data-dya-hero data-dya-manual data-story={story} aria-label={m.title}>
             <div className="dya-hero__stage">
               <canvas className="dya-hero__canvas" data-dya-canvas aria-hidden="true" />
               <p className="dya-hero__fallback" data-dya-fallback aria-hidden="true">{"la web que\nsoñaste."}</p>
               <p className="dya-hero__line dya-reveal" data-dya-line>Instagram te da seguidores. Una web te da clientes.</p>
-              <div className="dya-hero__cta-wrap dya-reveal" data-dya-cta-wrap>
-                <a className="dya-hero__cta" data-dya-cta href="#contacto">Quiero mi web</a>
-              </div>
-            </div>
-            <div className="dya-hero__overlay" aria-live="polite">
-              <div className="dya-note dya-note--1 dya-reveal" data-dya-note />
-              <div className="dya-note dya-note--2 dya-reveal" data-dya-note />
-              <div className="dya-note dya-note--3 dya-reveal" data-dya-note />
-              <div className="dya-hero__count dya-reveal" data-dya-count>
-                <span data-dya-count-label>clientes nuevos</span> · <b data-dya-count-num>0</b>
-              </div>
             </div>
           </section>
         </div>

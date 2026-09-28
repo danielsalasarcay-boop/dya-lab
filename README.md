@@ -26,6 +26,10 @@ Pendientes marcados en el código: `grep -rn "PENDIENTE\|FALTA CONTEXTO\|CONFIRM
 `node scripts/capture.mjs` vuelve a tomar las capturas reales de los tres sitios
 (desktop 1440×900, móvil 390×844, hero con el mismo encuadre) y las guarda en WebP en `public/work/<cliente>/`.
 
+`node scripts/record.mjs [slug]` graba el video de cada sitio haciendo scroll (lento en los tramos con efecto,
+rápido en el resto) → `public/work/<cliente>/<cliente>-{desktop,mobile}.mp4` + póster. Son los que muestran las fichas.
+Para añadir un cliente: sumarlo en `SITES` del script y en `work.cases` de `src/content/es.ts`.
+
 `node scripts/og.mjs` regenera la imagen para redes (`src/app/opengraph-image.png`).
 
 ## Idiomas

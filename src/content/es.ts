@@ -83,13 +83,13 @@ export const es = {
 
   work: {
     eyebrow: "Trabajo",
-    title: "Tres negocios, tres formas de vender.",
+    title: "Cuatro negocios, cuatro formas de vender.",
     lead: "Sitios reales, en producción. Entra y úsalos.",
     visit: "Ver sitio",
-    desktopAlt: "Página de inicio de {name} en computadora",
-    mobileAlt: "Página de inicio de {name} en teléfono",
-    swipeHint: "Desliza para ver los tres →",
-    hoverHint: "Pasa el cursor por cada ficha para recorrer la página",
+    desktopAlt: "Recorrido por la web de {name} en computadora",
+    mobileAlt: "Recorrido por la web de {name} en teléfono",
+    swipeHint: "Desliza para ver los cuatro →",
+    hoverHint: "Pasa el cursor por cada ficha para verla en movimiento",
     cases: [
       {
         slug: "loopi",
@@ -129,6 +129,21 @@ export const es = {
         tags: ["Web", "B2B", "ES / EN"],
         accent: "#061A33",
         statusBg: "#000000",
+      },
+      {
+        slug: "casa-panza",
+        name: "Casa Panza",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
+        url: "https://danielsalasarcay-boop.github.io/casa-panza/",
+        domain: "casa-panza · github.io",
+        sector: "Alquiler vacacional · Los Roques",
+        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web (solo Instagram/WhatsApp)? ¿también hicieron su marca?
+        summary:
+          "Casa frente al mar en Gran Roque para hasta 10 huéspedes: la portada pasa de boceto a foto al hacer scroll, espacios y galería de la casa, comodidades incluidas y reserva directa por WhatsApp.",
+        tags: ["Web", "Galería", "Reservas"],
+        accent: "#2BB5B5",
+        statusBg: "#f8f2e2",
+        statusFg: "#1b1b1b",
       },
     ],
   },

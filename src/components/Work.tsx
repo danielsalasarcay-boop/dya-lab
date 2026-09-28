@@ -1,21 +1,13 @@
-import type { StaticImageData } from "next/image";
 import type { Dictionary } from "@/content/es";
 import { Eyebrow } from "./Eyebrow";
-import { BrowserFrame, PhoneFrame, ScrollShot } from "./Frames";
+import { BrowserFrame, PhoneFrame, SiteVideo } from "./Frames";
 import { CaseCard } from "./CaseCard";
 
-import loopiDesktop from "../../public/work/loopi/loopi-desktop-full.webp";
-import loopiMobile from "../../public/work/loopi/loopi-mobile-hero.webp";
-import qbDesktop from "../../public/work/quality-bikes/quality-bikes-desktop-full.webp";
-import qbMobile from "../../public/work/quality-bikes/quality-bikes-mobile-hero.webp";
-import mcDesktop from "../../public/work/mar-caribe/mar-caribe-desktop-full.webp";
-import mcMobile from "../../public/work/mar-caribe/mar-caribe-mobile-hero.webp";
-
-const shots: Record<string, { desktop: StaticImageData; mobile: StaticImageData }> = {
-  loopi: { desktop: loopiDesktop, mobile: loopiMobile },
-  "quality-bikes": { desktop: qbDesktop, mobile: qbMobile },
-  "mar-caribe": { desktop: mcDesktop, mobile: mcMobile },
-};
+// Videos grabados con scripts/record.mjs (recorrido con scroll de cada sitio).
+const media = (slug: string, fmt: "desktop" | "mobile") => ({
+  src: `/work/${slug}/${slug}-${fmt}.mp4`,
+  poster: `/work/${slug}/${slug}-${fmt}-poster.webp`,
+});
 
 export function Work({ t }: { t: Dictionary }) {
   return (
@@ -32,27 +24,23 @@ export function Work({ t }: { t: Dictionary }) {
         </div>
 
         {/* Móvil: carrusel deslizable; tablet/desktop: cuadrícula */}
-        <ul className="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
+        <ul className="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
           {t.work.cases.map((c) => {
-            const img = shots[c.slug];
+            const desktop = media(c.slug, "desktop");
             return (
               <CaseCard key={c.slug} id={`caso-${c.slug}`}>
                 <article className="card flex h-full flex-col overflow-hidden bg-paper">
                   {/* Captura web con recorrido + iPhone */}
                   <div className="relative bg-sage/60 px-4 pb-6 pt-4">
                     <BrowserFrame domain={c.domain}>
-                      <ScrollShot
-                        src={img.desktop}
-                        alt={t.work.desktopAlt.replace("{name}", c.name)}
-                        sizes="(min-width:1240px) 380px, (min-width:1024px) 30vw, (min-width:768px) 46vw, 92vw"
-                      />
+                      <SiteVideo src={desktop.src} poster={desktop.poster} label={t.work.desktopAlt.replace("{name}", c.name)} className="aspect-[16/10]" />
                     </BrowserFrame>
                     <PhoneFrame
-                      src={img.mobile}
+                      video={media(c.slug, "mobile")}
                       alt={t.work.mobileAlt.replace("{name}", c.name)}
-                      sizes="110px"
-                      className="absolute -bottom-1 right-3 w-[24%] max-w-[110px]"
+                      className="absolute -bottom-1 right-3 w-[22%] max-w-[130px]"
                       statusBg={c.statusBg}
+                      statusFg={c.statusFg}
                     />
                   </div>
 

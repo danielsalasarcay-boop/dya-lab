@@ -59,25 +59,6 @@ body {
   .card { @apply rounded-3xl border border-line bg-paper; }
 }
 
-/* Recorrido de página completa en los casos */
-.scrollshot-img {
-  transform: translateY(0);
-  transition: transform var(--dur, 8s) cubic-bezier(0.45, 0, 0.55, 1);
-  will-change: auto;
-}
-@media (hover: hover) {
-  .case:hover .scrollshot-img,
-  .case:focus-within .scrollshot-img {
-    transform: translateY(calc(-100% + 100cqh));
-  }
-}
-/* Táctil: recorrido automático de ida y vuelta mientras la ficha está en pantalla */
-@media (hover: none) {
-  .case.is-inview .scrollshot-img {
-    animation: scrollshot var(--dur, 8s) cubic-bezier(0.45, 0, 0.55, 1) 0.4s infinite alternate;
-  }
-}
-@keyframes scrollshot { to { transform: translateY(calc(-100% + 100cqh)); } }
 
 /* Pantalla de carga (logo vertical) */
 .loader {
@@ -129,7 +110,7 @@ body {
   border: 2.4cqw solid #050505; /* bisel negro */
   isolation: isolate;
 }
-.iphone-screen img { border-radius: 0 0 13.6cqw 13.6cqw; }
+.iphone-screen img, .iphone-screen video { border-radius: 0 0 13.6cqw 13.6cqw; }
 .iphone-island {
   position: absolute;
   top: 2.4cqw;

@@ -21,14 +21,20 @@ export function BrowserFrame({
   );
 }
 
-// Página completa dentro de un marco con proporción fija. Al pasar el cursor
-// (o enfocar el enlace del caso) se recorre la página de arriba a abajo.
-export function ScrollShot({ src, alt, sizes, ratio = "16 / 10" }: { src: StaticImageData; alt: string; sizes: string; ratio?: string }) {
-  const seconds = Math.min(14, Math.max(4, (src.height / src.width) * 1.1));
+// Video del sitio recorriéndose con scroll (efectos reales). No descarga nada
+// hasta que la ficha lo reproduce (preload="none"); mientras, muestra el póster.
+export function SiteVideo({ src, poster, label, className = "" }: { src: string; poster: string; label: string; className?: string }) {
   return (
-    <div className="scrollshot relative overflow-hidden" style={{ aspectRatio: ratio, containerType: "size", ["--dur" as string]: `${seconds}s` }}>
-      <Image src={src} alt={alt} sizes={sizes} className="scrollshot-img block h-auto w-full" quality={70} />
-    </div>
+    <video
+      className={`site-video block h-auto w-full ${className}`}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-label={label}
+    />
   );
 }
 
@@ -37,19 +43,24 @@ export function ScrollShot({ src, alt, sizes, ratio = "16 / 10" }: { src: Static
 // unidades de contenedor (cqw) para que escale igual a cualquier tamaño.
 export function PhoneFrame({
   src,
+  video,
   alt,
-  sizes,
+  sizes = "120px",
   className = "",
   preload = false,
   statusBg = "#000",
+  statusFg = "#fff",
 }: {
-  src: StaticImageData;
+  src?: StaticImageData;
+  /** Alternativa a src: video del sitio en móvil ({ src, poster }). */
+  video?: { src: string; poster: string };
   alt: string;
-  sizes: string;
+  sizes?: string;
   className?: string;
   preload?: boolean;
-  /** Color de fondo de la barra de estado (el tope de la captura). */
+  /** Colores de la barra de estado (según el tope del sitio). */
   statusBg?: string;
+  statusFg?: string;
 }) {
   return (
     <div className={`iphone ${className}`}>
@@ -60,7 +71,7 @@ export function PhoneFrame({
       <span aria-hidden className="iphone-btn iphone-btn-r iphone-btn-cam top-[55%] h-[8%]" />
       <div className="iphone-body">
         <div className="iphone-screen">
-          <div aria-hidden className="iphone-status" style={{ background: statusBg }}>
+          <div aria-hidden className="iphone-status" style={{ background: statusBg, color: statusFg }}>
             <span>9:41</span>
             <span className="iphone-status-icons">
               <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" /><rect x="5" y="5.5" width="3" height="6.5" rx="1" /><rect x="10" y="3" width="3" height="9" rx="1" /><rect x="15" y="0" width="3" height="12" rx="1" /></svg>
@@ -68,7 +79,11 @@ export function PhoneFrame({
               <svg viewBox="0 0 27 12"><rect x="0.5" y="0.5" width="23" height="11" rx="3.2" fill="none" stroke="currentColor" strokeOpacity=".4" /><rect x="2" y="2" width="18" height="8" rx="2" /><path d="M25 4v4c.8-.3 1.3-1 1.3-2S25.8 4.3 25 4Z" fillOpacity=".4" /></svg>
             </span>
           </div>
-          <Image src={src} alt={alt} sizes={sizes} className="block h-auto w-full" quality={70} {...(preload ? { loading: "eager" as const } : {})} />
+          {video ? (
+            <SiteVideo src={video.src} poster={video.poster} label={alt} />
+          ) : (
+            src && <Image src={src} alt={alt} sizes={sizes} className="block h-auto w-full" quality={70} {...(preload ? { loading: "eager" as const } : {})} />
+          )}
           <span aria-hidden className="iphone-island" />
         </div>
       </div>

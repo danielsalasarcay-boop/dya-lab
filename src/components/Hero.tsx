@@ -48,7 +48,7 @@ export function Hero({ t }: { t: Dictionary }) {
             <Words text={t.hero.titleA} from={1} />
             <Words text={t.hero.titleB} from={1 + nA} className="text-coral-ink" />
           </h1>
-          <p className="hero-up mt-6 max-w-[34rem] text-lg leading-relaxed text-muted sm:text-xl" style={{ ["--i" as string]: after + 1 }}>
+          <p className="hero-lead hero-up mt-6 max-w-[32rem] font-serif text-[19px] font-light leading-[1.5] text-muted sm:text-[22px]" style={{ ["--i" as string]: after + 1 }}>
             {t.hero.lead}
           </p>
           <div className="hero-up mt-8 flex flex-wrap gap-3" style={{ ["--i" as string]: after + 2 }}>

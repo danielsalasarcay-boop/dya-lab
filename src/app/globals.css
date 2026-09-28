@@ -18,6 +18,7 @@
   --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-serif: var(--font-fraunces), Georgia, serif;
 
   --text-display: clamp(2.4rem, 1.2rem + 5vw, 5.1rem);
   --text-h2: clamp(1.9rem, 1.2rem + 2.6vw, 3.3rem);
@@ -368,24 +369,9 @@ button:hover .burger span:nth-child(2) { width: 100%; }
   .wa-btn:hover .wa-label, .wa-btn:focus-visible .wa-label { max-width: 140px; opacity: 1; padding-left: 20px; }
   .wa-btn:hover .wa-wave { animation-play-state: paused; opacity: 0; }
 }
-/* Globito que aparece y se va */
-.wa-bubble {
-  position: absolute; right: 6px; bottom: calc(100% + 12px); margin: 0; white-space: nowrap;
-  background: var(--color-paper); color: var(--color-ink); font-weight: 600; font-size: 14px;
-  padding: 9px 14px; border-radius: 16px 16px 4px 16px; border: 1px solid var(--color-line);
-  box-shadow: 0 12px 28px -12px rgb(20 38 27 / 0.45); pointer-events: none;
-  opacity: 0; transform-origin: bottom right;
-  animation: wa-bubble 7s cubic-bezier(0.2, 1, 0.3, 1) 5s both;
-}
-@keyframes wa-bubble {
-  0% { opacity: 0; transform: translateY(8px) scale(0.7); }
-  8%, 88% { opacity: 1; transform: none; }
-  100% { opacity: 0; transform: translateY(-4px) scale(0.95); }
-}
 body:has(.mobile-menu[data-open]) .wa-float { opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) {
   .wa-float, .wa-wave, .wa-icon svg { animation: none !important; }
-  .wa-bubble { display: none; }
 }
 
 /* Logo de partículas del hero: el wordmark y su línea entran después del monograma */
@@ -398,3 +384,6 @@ body:has(.mobile-menu[data-open]) .wa-float { opacity: 0; pointer-events: none; 
 html { -webkit-tap-highlight-color: transparent; }
 body { -webkit-user-select: none; user-select: none; }
 input, textarea, [data-selectable] { -webkit-user-select: text; user-select: text; }
+
+/* Párrafo de la portada en serif editorial */
+.hero-lead { font-variation-settings: "opsz" 36; letter-spacing: -0.005em; }

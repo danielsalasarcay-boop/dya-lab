@@ -2,12 +2,11 @@ import { whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 // Botón flotante de WhatsApp con efectos: entrada con rebote, ondas que salen
-// del botón, "timbre" del ícono, globito "¿Hablamos?" que aparece y se va, y en
+// del botón, "timbre" del ícono y, en
 // desktop se estira al pasar el cursor mostrando el texto. Solo CSS.
-export function WhatsAppFloat({ label, message, hover, bubble }: { label: string; message: string; hover: string; bubble: string }) {
+export function WhatsAppFloat({ label, message, hover }: { label: string; message: string; hover: string }) {
   return (
     <div className="wa-float fixed bottom-4 right-4 z-50 md:bottom-6 md:right-6" style={{ marginBottom: "env(safe-area-inset-bottom)" }}>
-      <p aria-hidden className="wa-bubble">{bubble}</p>
       <a
         href={whatsappLink(message)}
         target="_blank"

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Montserrat, Instrument_Sans, JetBrains_Mono, Fraunces } from "next/font/google";
 import { getDictionary } from "@/content";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -7,6 +7,8 @@ import "./globals.css";
 // Montserrat = tipografía del logo (manual de marca). Texto corrido en Instrument Sans.
 const montserrat = Montserrat({ variable: "--font-montserrat", subsets: ["latin"], weight: ["600", "700", "800"], display: "swap" });
 const instrument = Instrument_Sans({ variable: "--font-instrument", subsets: ["latin"], display: "swap" });
+// Serif editorial para el párrafo de la portada.
+const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], style: ["normal", "italic"], axes: ["opsz"], display: "swap" });
 const jetbrains = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"], weight: ["500"], display: "swap" });
 
 const t = getDictionary("es");
@@ -42,7 +44,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${montserrat.variable} ${instrument.variable} ${jetbrains.variable} antialiased`} suppressHydrationWarning>
+    <html lang="es" className={`${montserrat.variable} ${instrument.variable} ${jetbrains.variable} ${fraunces.variable} antialiased`} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

@@ -355,7 +355,6 @@ export const es = {
     email: "Correo",
     floating: "Escríbenos por WhatsApp",
     floatHover: "Escríbenos",
-    floatBubble: "¿Hablamos? 👋",
     // Mensaje que llega prellenado al tocar el botón flotante o el número directo.
     whatsappGreeting: "¡Hola D&A Lab! 👋 Vi su página web y me gustaría hablar sobre un proyecto para mi negocio.",
   },

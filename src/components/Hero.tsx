@@ -1,5 +1,4 @@
 import type { Dictionary } from "@/content/es";
-import { Eyebrow } from "./Eyebrow";
 import { HeroCollage } from "./HeroCollage";
 import loopiHero from "../../public/work/loopi/loopi-hero.webp";
 import qbHero from "../../public/work/quality-bikes/quality-bikes-hero.webp";
@@ -32,10 +31,7 @@ export function Hero({ t }: { t: Dictionary }) {
     <section id="inicio" className="hero relative overflow-hidden pb-16 pt-10 sm:pt-16 lg:pb-24">
       <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
         <div>
-          <div className="hero-up" style={{ ["--i" as string]: 0 }}>
-            <Eyebrow>{t.hero.eyebrow}</Eyebrow>
-          </div>
-          <h1 className="display mt-6 text-[length:var(--text-display)] text-green">
+          <h1 className="display text-[length:var(--text-display)] text-green">
             <Words text={t.hero.titleA} from={1} />
             <Words text={t.hero.titleB} from={1 + nA} className="text-coral-ink" />
           </h1>
@@ -46,18 +42,6 @@ export function Hero({ t }: { t: Dictionary }) {
             <a href="#trabajo" className="btn btn-coral btn-shine">{t.hero.ctaWork}</a>
             <a href="#contacto" className="btn btn-ghost">{t.hero.ctaTalk}</a>
           </div>
-          <p className="hero-up mt-10 text-sm text-muted" style={{ ["--i" as string]: after + 3 }}>
-            <span aria-hidden className="live-dot" />
-            {t.hero.proof}{" "}
-            {cases.map((c, i) => (
-              <span key={c.slug}>
-                <a href={`#caso-${c.slug}`} className="font-semibold text-ink underline decoration-coral decoration-2 underline-offset-4 hover:text-green">
-                  {c.name}
-                </a>
-                {i < cases.length - 1 ? (i === cases.length - 2 ? " y " : ", ") : "."}
-              </span>
-            ))}
-          </p>
         </div>
 
         <HeroCollage

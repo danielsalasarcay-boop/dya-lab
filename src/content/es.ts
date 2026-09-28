@@ -18,6 +18,7 @@ export const es = {
 
   nav: [
     { href: "#trabajo", label: "Trabajo" },
+    { href: "#movimiento", label: "Movimiento" },
     { href: "#servicios", label: "Servicios" },
     { href: "#proceso", label: "Proceso" },
     { href: "#paquetes", label: "Paquetes" },
@@ -225,6 +226,7 @@ export const es = {
     eyebrow: "Paquetes",
     title: "Elige por dónde empezar.",
     lead: "Precios en dólares. Cada propuesta se confirma por escrito antes de empezar.",
+    swipeHint: "Desliza para ver los tres →",
     pricePlaceholder: "$---",
     cta: "Quiero este",
     featuredLabel: "El más completo",

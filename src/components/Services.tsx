@@ -8,7 +8,7 @@ export function Services({ t }: { t: Dictionary }) {
         <Eyebrow n="02">{t.services.eyebrow}</Eyebrow>
         <h2 id="servicios-titulo" className="h2 mt-5 max-w-[18ch] text-green">{t.services.title}</h2>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
           {t.services.items.map((s) => (
             <article key={s.n} className="card flex flex-col p-7 sm:p-10">
               <div className="flex items-baseline justify-between gap-4">

@@ -92,14 +92,14 @@ export function HeroCollage({
       <div className="hero-layer absolute right-0 top-0 w-[78%]" style={{ ["--d" as string]: 0.35, ["--i" as string]: 0 }}>
         <div className="hero-fly"><div className="hero-float" style={{ ["--f" as string]: "7.5s" }}>
           <BrowserFrame domain={back.domain}>
-            <Image src={back.src} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={65} preload />
+            <Image src={back.src} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} preload />
           </BrowserFrame>
         </div></div>
       </div>
       <div className="hero-layer absolute right-[11%] top-[19%] w-[78%]" style={{ ["--d" as string]: 0.7, ["--i" as string]: 1 }}>
         <div className="hero-fly"><div className="hero-float" style={{ ["--f" as string]: "8.5s" }}>
           <BrowserFrame domain={middle.domain}>
-            <Image src={middle.src} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={65} loading="eager" />
+            <Image src={middle.src} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} loading="eager" />
           </BrowserFrame>
         </div></div>
       </div>

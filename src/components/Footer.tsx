@@ -10,10 +10,10 @@ export function Footer({ t }: { t: Dictionary }) {
           <p className="mt-4 max-w-xs text-mist">{t.footer.tagline}</p>
         </div>
         <nav aria-label="Pie de página">
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-mist">
+          <ul className="flex flex-wrap gap-x-6 text-[15px] text-mist">
             {t.nav.map((n) => (
               <li key={n.href}>
-                <a href={n.href} className="hover:text-bone">{n.label}</a>
+                <a href={n.href} className="inline-flex min-h-11 items-center hover:text-bone">{n.label}</a>
               </li>
             ))}
           </ul>

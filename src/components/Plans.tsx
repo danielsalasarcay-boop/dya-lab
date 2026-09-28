@@ -7,13 +7,16 @@ export function Plans({ t }: { t: Dictionary }) {
       <div className="wrap">
         <Eyebrow n="06">{t.plans.eyebrow}</Eyebrow>
         <h2 id="paquetes-titulo" className="h2 mt-5 text-green">{t.plans.title}</h2>
-        <p className="mt-4 max-w-[34rem] text-lg text-muted">{t.plans.lead}</p>
+        <p className="mt-4 max-w-[34rem] text-lg text-muted">
+          {t.plans.lead} <span className="lg:hidden">{t.plans.swipeHint}</span>
+        </p>
 
-        <ul className="mt-12 grid gap-5 lg:grid-cols-3">
+        {/* Teléfono y tablet: carrusel deslizable; desktop: 3 columnas */}
+        <ul className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 pt-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
           {t.plans.items.map((p) => (
             <li
               key={p.id}
-              className={`relative flex flex-col rounded-3xl border p-7 sm:p-8 ${
+              className={`relative flex w-[84%] shrink-0 snap-start flex-col rounded-3xl border p-7 sm:w-[46%] sm:p-8 lg:w-auto ${
                 p.featured ? "border-green bg-green text-bone" : "border-line bg-paper"
               }`}
             >

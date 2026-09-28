@@ -15,16 +15,16 @@ export function Contact({ t }: { t: Dictionary }) {
           <p className="mt-2 text-[15px] text-mist">{c.lead}</p>
 
           {/* PENDIENTE: correo en src/lib/site.ts */}
-          <ul className="mt-5 space-y-2" aria-label={c.direct}>
+          <ul className="mt-4 space-y-0.5" aria-label={c.direct}>
             <li>
-              <a href={whatsappLink(c.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 font-semibold hover:text-coral-soft">
+              <a href={whatsappLink(c.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
                 <WhatsAppIcon className="size-5" />
                 {site.whatsappDisplay}
                 <span className="sr-only">{c.whatsapp}, (se abre en una pestaña nueva)</span>
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2.5 font-semibold hover:text-coral-soft">
+              <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
                 <span aria-hidden className="w-5 text-center font-mono text-coral-soft">@</span>
                 {site.email}
               </a>

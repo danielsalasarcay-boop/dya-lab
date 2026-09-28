@@ -83,12 +83,12 @@ export const es = {
 
   work: {
     eyebrow: "Trabajo",
-    title: "Cuatro negocios, cuatro formas de vender.",
+    title: "Seis proyectos, seis formas de vender.",
     lead: "Sitios reales, en producción. Entra y úsalos.",
     visit: "Ver sitio",
     desktopAlt: "Recorrido por la web de {name} en computadora",
     mobileAlt: "Recorrido por la web de {name} en teléfono",
-    swipeHint: "Desliza para ver los cuatro →",
+    swipeHint: "Desliza para ver los seis →",
     hoverHint: "Pasa el cursor por cada ficha para verla en movimiento",
     cases: [
       {
@@ -143,6 +143,35 @@ export const es = {
         tags: ["Web", "Galería", "Reservas"],
         accent: "#2BB5B5",
         statusBg: "#f8f2e2",
+        statusFg: "#1b1b1b",
+      },
+      {
+        slug: "casa-verde",
+        name: "Casa Verde",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
+        url: "https://danielsalasarcay-boop.github.io/casa-verde/",
+        domain: "casa-verde · github.io",
+        sector: "Casa vacacional · Los Roques",
+        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web? ¿también hicieron su marca?
+        summary:
+          "Casa de lujo frente al mar en Gran Roque con chef y bote privado 24/7: la fachada pasa del día a la noche al hacer scroll, comodidades, experiencia, vista aérea y ubicación.",
+        tags: ["Web", "Galería", "ES / EN"],
+        accent: "#1F8A5B",
+        statusBg: "#196091",
+      },
+      {
+        slug: "la-capital-del-cielo",
+        name: "La Capital del Cielo",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
+        url: "https://la-capital-del-cielo.vercel.app/",
+        domain: "la-capital-del-cielo · vercel.app",
+        sector: "Reservas de casas · Los Roques",
+        // FALTA CONTEXTO: ¿la marca/logo también es trabajo del estudio? El sitio aún tiene fotos pendientes (Casa 9, Macanao, experiencia).
+        summary:
+          "Marca que reúne casas privadas de lujo en Los Roques: ficha por propiedad con huéspedes y habitaciones, lo que incluye cada estadía, camisas propias a la venta y reserva por WhatsApp.",
+        tags: ["Web", "Catálogo", "Tienda"],
+        accent: "#7FA7E8",
+        statusBg: "#8890a0",
         statusFg: "#1b1b1b",
       },
     ],

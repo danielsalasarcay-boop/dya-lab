@@ -244,7 +244,7 @@ export const es = {
         id: "logo",
         name: "Logo",
         for: "Para que te reconozcan de un vistazo.",
-        from: false,
+        from: true,
         featured: false,
         includes: [
           "Logo diseñado desde cero, sin plantillas",

@@ -37,16 +37,10 @@ export const es = {
     titleA: "Webs y marcas para negocios que",
     titleB: "quieren vender.",
     lead: "Diseñamos tu sitio y tu identidad visual a la medida de cómo vendes: por catálogo, por WhatsApp o por cotización.",
-    ctaWork: "Ver trabajo",
-    ctaTalk: "Hablemos",
     proof: "Sitios en producción para",
   },
 
   services: {
-    title: {
-      a: "Una web bonita que no vende es un gasto.",
-      b: "Nosotros hacemos las que venden.",
-    },
     note: "Los dos servicios se contratan juntos o por separado.",
     cards: [
       {

@@ -8,9 +8,11 @@ export function Services({ t }: { t: Dictionary }) {
   return (
     <section id="servicios" aria-labelledby="servicios-titulo" className="bg-sage py-16 sm:py-20">
       <div className="wrap">
-        <h2 id="servicios-titulo" className="h2 max-w-[22ch] text-green">
-          {t.services.title.a} <span className="text-coral-ink">{t.services.title.b}</span>
-        </h2>
+        {/* Titular principal del sitio (antes en la portada) */}
+        <h1 id="servicios-titulo" className="display max-w-[20ch] text-[clamp(2.1rem,1.1rem+3.4vw,3.9rem)] text-green">
+          {t.hero.titleA} <span className="text-coral-ink">{t.hero.titleB}</span>
+        </h1>
+        <p className="hero-lead mt-5 max-w-[34rem] font-serif text-[19px] font-light leading-[1.5] text-muted sm:text-[22px]">{t.hero.lead}</p>
 
         <ul className="mt-10 grid gap-4 md:grid-cols-3 sm:mt-12">
           {t.services.cards.map((c, i) => {

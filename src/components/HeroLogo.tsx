@@ -15,7 +15,7 @@ const GREEN = "#1F4D38";
 const CORAL = "#F07A5A";
 const START_MS = 900; // espera a que se retire la pantalla de carga
 
-export function HeroLogo({ label }: { label: string }) {
+export function HeroLogo({ label, size = "md" }: { label: string; size?: "md" | "lg" }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -157,10 +157,19 @@ export function HeroLogo({ label }: { label: string }) {
   }, []);
 
   return (
-    <div ref={wrapRef} className="hero-logo flex items-center gap-4 sm:gap-5" role="img" aria-label={label}>
-      <canvas ref={canvasRef} aria-hidden className="h-[74px] w-[118px] shrink-0 touch-pan-y sm:h-[96px] sm:w-[153px]" />
+    <div
+      ref={wrapRef}
+      className={size === "lg" ? "hero-logo flex flex-col items-center gap-5" : "hero-logo flex items-center gap-4 sm:gap-5"}
+      role="img"
+      aria-label={label}
+    >
+      <canvas
+        ref={canvasRef}
+        aria-hidden
+        className={`shrink-0 touch-pan-y ${size === "lg" ? "h-[130px] w-[208px] sm:h-[190px] sm:w-[302px]" : "h-[74px] w-[118px] sm:h-[96px] sm:w-[153px]"}`}
+      />
       <div aria-hidden className="hero-logo-word">
-        <Logo variant="word" className="h-auto w-[118px] text-green sm:w-[150px]" title="" />
+        <Logo variant="word" className={`h-auto text-green ${size === "lg" ? "w-[150px] sm:w-[200px]" : "w-[118px] sm:w-[150px]"}`} title="" />
         <span className="mt-2 block h-[2px] w-full origin-left bg-coral hero-logo-line" />
       </div>
     </div>

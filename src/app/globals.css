@@ -301,19 +301,90 @@ body {
 
 /* Menú móvil a pantalla completa */
 .mobile-menu {
-  position: fixed; inset: 0; z-index: 45; background-color: var(--color-green);
-  clip-path: circle(0 at calc(100% - 38px) 32px); visibility: hidden;
-  transition: clip-path 0.55s cubic-bezier(0.77, 0, 0.18, 1), visibility 0s linear 0.55s;
+  position: fixed; inset: 0; z-index: 45; background: var(--color-green-deep); overflow: hidden;
+  clip-path: inset(0 0 100% 0 round 0 0 50% 50%); visibility: hidden;
+  transition: clip-path 0.6s cubic-bezier(0.77, 0, 0.18, 1), visibility 0s linear 0.6s;
 }
-.mobile-menu[data-open] { clip-path: circle(150% at calc(100% - 38px) 32px); visibility: visible; transition: clip-path 0.6s cubic-bezier(0.77, 0, 0.18, 1), visibility 0s; }
-.mm-item { opacity: 0; transform: translateY(18px); transition: opacity 0.3s, transform 0.3s; }
-.mobile-menu[data-open] .mm-item { opacity: 1; transform: none; transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.9, 0.2, 1); transition-delay: calc(0.18s + var(--i) * 55ms); }
+.mobile-menu[data-open] { clip-path: inset(0 0 0 0 round 0); visibility: visible; transition: clip-path 0.75s cubic-bezier(0.77, 0, 0.18, 1), visibility 0s; }
+.mm-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgb(221 232 225 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(221 232 225 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: linear-gradient(180deg, #000, transparent 85%); mask-image: linear-gradient(180deg, #000, transparent 85%);
+}
+.mm-glow {
+  position: absolute; width: 90vmax; height: 90vmax; right: -45vmax; top: -40vmax; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(240 122 90 / 0.16), transparent 70%);
+  transform: scale(0.6); opacity: 0; transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s;
+}
+.mobile-menu[data-open] .mm-glow { transform: scale(1); opacity: 1; transition-delay: 0.2s; }
+/* Entradas escalonadas */
+.mm-roll { transform: translateY(110%); transition: transform 0.4s ease-in; }
+.mm-num, .mm-arrow, .mm-fade { opacity: 0; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s; }
+.mm-line { border-bottom-color: transparent; transition: border-color 0.3s; }
+.mobile-menu[data-open] .mm-line { border-bottom-color: rgb(250 246 240 / 0.1); transition: border-color 0.6s ease calc(0.35s + var(--i) * 60ms); }
+.mobile-menu[data-open] .mm-roll { transform: none; transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.2, 1) calc(0.28s + var(--i) * 60ms); }
+.mobile-menu[data-open] .mm-num, .mobile-menu[data-open] .mm-arrow, .mobile-menu[data-open] .mm-fade {
+  opacity: 1; transform: none; transition: opacity 0.6s ease calc(0.4s + var(--i) * 60ms), transform 0.7s cubic-bezier(0.2, 0.9, 0.2, 1) calc(0.4s + var(--i) * 60ms);
+}
+/* Texto que rueda al pasar / tocar */
+.mm-word { transition: transform 0.5s cubic-bezier(0.7, 0, 0.2, 1); }
+.mm-link:hover .mm-word, .mm-link:focus-visible .mm-word { transform: translateY(-100%); }
+
+.mm-link .mm-arrow { transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1), color 0.3s, opacity 0.6s; }
+.mm-link:hover .mm-arrow, .mm-link:focus-visible .mm-arrow { transform: translateX(4px); color: var(--color-coral-soft); }
+.mm-link:active .mm-word { transform: translateY(-100%); }
+/* Hamburguesa de 3 rayitas → X */
+.burger { position: relative; display: block; width: 20px; height: 14px; }
+.burger span { position: absolute; left: 0; height: 2px; width: 100%; border-radius: 2px; background: var(--color-bone); transition: transform 0.45s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.25s, width 0.3s; }
+.burger span:nth-child(1) { top: 0; }
+.burger span:nth-child(2) { top: 6px; width: 70%; }
+.burger span:nth-child(3) { top: 12px; }
+button:hover .burger span:nth-child(2) { width: 100%; }
+.burger[data-open] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burger[data-open] span:nth-child(2) { opacity: 0; transform: translateX(8px); }
+.burger[data-open] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 .site-header:has(.mobile-menu[data-open]) .header-shell { background: transparent; }
 .site-header:has(.mobile-menu[data-open]) .header-bar { position: relative; z-index: 50; }
 
 @media (prefers-reduced-motion: reduce) {
-  .header-bar, .header-shell, .nav-pill, .mobile-menu, .mm-item { transition: none !important; }
+  .header-bar, .header-shell, .nav-pill, .mobile-menu, .mm-roll, .mm-num, .mm-arrow, .mm-fade, .mm-glow, .burger span { transition: none !important; }
 }
 
+
+/* ===== Botón flotante de WhatsApp ===== */
+.wa-float { transition: opacity 0.25s; animation: wa-in 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) calc(var(--hero-delay) + 0.9s) both; }
+@keyframes wa-in { from { opacity: 0; transform: scale(0.3) translateY(20px); } }
+.wa-btn { box-shadow: 0 12px 30px -8px rgb(20 38 27 / 0.55); transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.2, 1.3), box-shadow 0.25s; }
+.wa-btn:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -10px rgb(20 38 27 / 0.6); }
+.wa-btn:active { transform: scale(0.94); }
+.wa-wave { position: absolute; inset: -2px; border-radius: 999px; border: 2px solid #25d366; opacity: 0; pointer-events: none; animation: wa-wave 3.2s cubic-bezier(0.2, 0.6, 0.3, 1) 3s infinite; }
+.wa-wave--2 { animation-delay: 3.5s; }
+@keyframes wa-wave { 0% { opacity: 0.7; transform: scale(1); } 45%, 100% { opacity: 0; transform: scale(1.55); } }
+.wa-icon svg { animation: wa-ring 4.8s ease-in-out 3.5s infinite; transform-origin: 50% 60%; }
+@keyframes wa-ring { 0%, 76%, 100% { transform: rotate(0); } 80% { transform: rotate(-16deg) scale(1.08); } 84% { transform: rotate(14deg) scale(1.08); } 88% { transform: rotate(-9deg); } 92% { transform: rotate(5deg); } }
+/* Texto que aparece al pasar el cursor (desktop) */
+.wa-label { max-width: 0; overflow: hidden; white-space: nowrap; font-weight: 600; font-size: 15px; opacity: 0; transition: max-width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s, padding 0.45s; }
+@media (hover: hover) {
+  .wa-btn:hover .wa-label, .wa-btn:focus-visible .wa-label { max-width: 140px; opacity: 1; padding-left: 20px; }
+  .wa-btn:hover .wa-wave { animation-play-state: paused; opacity: 0; }
+}
+/* Globito que aparece y se va */
+.wa-bubble {
+  position: absolute; right: 6px; bottom: calc(100% + 12px); margin: 0; white-space: nowrap;
+  background: var(--color-paper); color: var(--color-ink); font-weight: 600; font-size: 14px;
+  padding: 9px 14px; border-radius: 16px 16px 4px 16px; border: 1px solid var(--color-line);
+  box-shadow: 0 12px 28px -12px rgb(20 38 27 / 0.45); pointer-events: none;
+  opacity: 0; transform-origin: bottom right;
+  animation: wa-bubble 7s cubic-bezier(0.2, 1, 0.3, 1) 5s both;
+}
+@keyframes wa-bubble {
+  0% { opacity: 0; transform: translateY(8px) scale(0.7); }
+  8%, 88% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(-4px) scale(0.95); }
+}
 body:has(.mobile-menu[data-open]) .wa-float { opacity: 0; pointer-events: none; }
-.wa-float { transition: opacity 0.25s, transform 0.2s; }
+@media (prefers-reduced-motion: reduce) {
+  .wa-float, .wa-wave, .wa-icon svg { animation: none !important; }
+  .wa-bubble { display: none; }
+}

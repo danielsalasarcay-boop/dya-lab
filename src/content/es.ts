@@ -28,6 +28,8 @@ export const es = {
   skip: "Saltar al contenido",
   menuOpen: "Abrir menú",
   menuClose: "Cerrar menú",
+  menuLabel: "Menú",
+  menuAvailable: "Disponibles",
 
   hero: {
     eyebrow: "Diseño web y de marca · Venezuela",
@@ -328,6 +330,8 @@ export const es = {
     whatsapp: "WhatsApp",
     email: "Correo",
     floating: "Escríbenos por WhatsApp",
+    floatHover: "Escríbenos",
+    floatBubble: "¿Hablamos? 👋",
     // Mensaje que llega prellenado al tocar el botón flotante o el número directo.
     whatsappGreeting: "¡Hola D&A Lab! 👋 Vi su página web y me gustaría hablar sobre un proyecto para mi negocio.",
   },

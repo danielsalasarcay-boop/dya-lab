@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import type { Dictionary } from "@/content/es";
 
 // Header interactivo:
@@ -133,9 +133,8 @@ export function Header({ t }: { t: Dictionary }) {
               aria-label={open ? t.menuClose : t.menuOpen}
               onClick={() => setOpen((v) => !v)}
             >
-              <span aria-hidden className="relative block h-3 w-5">
-                <span className={`absolute left-0 h-[2px] w-5 bg-bone transition-transform duration-300 ${open ? "top-[5px] rotate-45" : "top-0"}`} />
-                <span className={`absolute left-0 h-[2px] w-5 bg-bone transition-transform duration-300 ${open ? "top-[5px] -rotate-45" : "top-[10px]"}`} />
+              <span aria-hidden className="burger" data-open={open || undefined}>
+                <span /><span /><span />
               </span>
             </button>
           </div>
@@ -144,32 +143,53 @@ export function Header({ t }: { t: Dictionary }) {
         </div>
       </div>
 
-      {/* Menú a pantalla completa (móvil y tablet) */}
-      <div id="menu-movil" className="mobile-menu bracket-pattern lg:hidden" data-open={open || undefined} aria-hidden={!open} inert={!open}>
-        <nav aria-label="Principal móvil" className="wrap flex h-full flex-col pb-8 pt-24">
+      {/* Menú a pantalla completa (móvil y tablet): sobrio, tipografía mediana */}
+      <div id="menu-movil" className="mobile-menu lg:hidden" data-open={open || undefined} aria-hidden={!open} inert={!open}>
+        <div aria-hidden className="mm-grid" />
+        <div aria-hidden className="mm-glow" />
+        <nav aria-label="Principal móvil" className="wrap relative mx-auto flex h-full max-w-xl flex-col overflow-y-auto pb-6 pt-[92px]">
+          <p className="mm-fade mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-mist/70" style={{ ["--i" as string]: 0 }}>{t.menuLabel}</p>
           <ul className="flex flex-col">
-            {t.nav.map((item, i) => (
-              <li key={item.href} className="mm-item border-b border-bone/12" style={{ ["--i" as string]: i }}>
-                <a
-                  ref={i === 0 ? firstLinkRef : undefined}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="group flex min-h-16 items-center justify-between gap-4 font-display text-[32px] font-extrabold tracking-[-0.03em] text-bone sm:text-[40px]"
-                >
-                  <span className="flex items-baseline gap-3">
-                    <span className="font-mono text-[12px] font-medium tracking-[0.12em] text-coral-soft">0{i + 1}</span>
-                    {item.label}
-                  </span>
-                  <span aria-hidden className="text-coral-soft transition-transform group-hover:translate-x-1">→</span>
-                </a>
-              </li>
-            ))}
+            {t.nav.map((item, i) => {
+              const on = active === item.href.slice(1);
+              return (
+                <li key={item.href} className="mm-line border-b border-bone/10" style={{ ["--i" as string]: i }}>
+                  <a
+                    ref={i === 0 ? firstLinkRef : undefined}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={on ? "true" : undefined}
+                    className="mm-link group flex min-h-[54px] items-center gap-4"
+                  >
+                    <span className="mm-num w-6 shrink-0 font-mono text-[11px] text-mist/60" style={{ ["--i" as string]: i }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="mm-mask relative block overflow-hidden">
+                      <span className="mm-roll block" style={{ ["--i" as string]: i }}>
+                        <span className="mm-word block font-display text-[22px] font-semibold leading-[1.3] tracking-[-0.02em] text-bone">{item.label}</span>
+                        <span aria-hidden className="mm-word mm-word--alt absolute left-0 top-full block font-display text-[22px] font-semibold leading-[1.3] tracking-[-0.02em] text-coral-soft">{item.label}</span>
+                      </span>
+                    </span>
+                    {on && <span aria-hidden className="size-1.5 rounded-full bg-coral" />}
+                    <span aria-hidden className="mm-arrow ml-auto text-lg text-mist/70">→</span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
-          <div className="mm-item mt-auto flex flex-col gap-3 pt-8 sm:flex-row" style={{ ["--i" as string]: t.nav.length }}>
-            <a href="#contacto" onClick={() => setOpen(false)} className="btn btn-coral flex-1">{t.navCta}</a>
-            <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="btn flex-1 border border-bone/30 text-bone">
-              <WhatsAppIcon className="size-5" /> WhatsApp
+
+          <div className="mm-fade mt-auto pt-8" style={{ ["--i" as string]: t.nav.length }}>
+            <a href="#contacto" onClick={() => setOpen(false)} className="btn btn-coral w-full">
+              {t.navCta} <span aria-hidden>→</span>
             </a>
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-[14px] text-mist">
+              <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-bone">
+                <WhatsAppIcon className="size-4" /> {site.whatsappDisplay}
+              </a>
+              <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-mist/70">
+                <span aria-hidden className="live-dot !mr-0 !size-1.5" /> {t.menuAvailable}
+              </span>
+            </div>
           </div>
         </nav>
       </div>

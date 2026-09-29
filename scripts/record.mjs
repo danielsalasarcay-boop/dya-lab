@@ -17,7 +17,7 @@ const SITES = [
   { slug: "quality-bikes", url: "https://qualitybikesvzla.com", zones: [[0, 1250]], fast: 45 },
   { slug: "mar-caribe", url: "https://alimentosmarcaribe.com", zones: [[0, 2500]], fast: 75 },
   // Portada lápiz → foto y galería con brújula fija.
-  { slug: "casa-panza", url: "https://danielsalasarcay-boop.github.io/casa-panza/", zones: [[0, 1400], [3400, 5000]], fast: 50 },
+  { slug: "casa-panza", url: "https://danielsalasarcay-boop.github.io/casa-panza/index.html?v=20250428", zones: [[0, 1400], [3500, 5100]], fast: 55 },
   // Portada aérea con el logo.
   { slug: "la-capital-del-cielo", url: "https://la-capital-del-cielo.vercel.app/", zones: [[0, 900]], fast: 45 },
   // Fachada día → atardecer → noche y zoom aéreo de la galería.

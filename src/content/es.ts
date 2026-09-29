@@ -122,7 +122,7 @@ export const es = {
         sector: "Alquiler vacacional · Los Roques",
         // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web (solo Instagram/WhatsApp)? ¿también hicieron su marca?
         summary:
-          "Casa frente al mar en Gran Roque para hasta 10 huéspedes: la portada pasa de boceto a foto al hacer scroll, espacios y galería de la casa, comodidades incluidas y reserva directa por WhatsApp.",
+          "Casa frente al mar en Gran Roque para hasta 10 huéspedes: la portada pasa de boceto a foto al hacer scroll, espacios, galería, gastronomía de la casa, comodidades y reserva directa por WhatsApp.",
         tags: ["Web", "Galería", "Reservas"],
         accent: "#2BB5B5",
         statusBg: "#f8f2e2",

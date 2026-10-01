@@ -19,7 +19,8 @@ const SITES = [
   // Portada lápiz → foto y galería con brújula fija.
   { slug: "casa-panza", url: "https://danielsalasarcay-boop.github.io/casa-panza/index.html?v=20250428", zones: [[0, 1400], [3500, 5100]], fast: 55 },
   // Portada aérea con el logo.
-  { slug: "la-capital-del-cielo", url: "https://la-capital-del-cielo.vercel.app/", zones: [[0, 900]], fast: 45 },
+  // Página de casas: 6 propiedades y cierre aéreo con el hidroavión.
+  { slug: "la-capital-del-cielo", url: "https://la-capital-del-cielo.vercel.app/casas.html", zones: [[0, 3700]], fast: 28 },
   // Fachada día → atardecer → noche y zoom aéreo de la galería.
   { slug: "casa-verde", url: "https://danielsalasarcay-boop.github.io/casa-verde/", zones: [[0, 2000], [5100, 8600]], fast: 55 },
 ];

@@ -73,7 +73,7 @@ export const es = {
   work: {
     eyebrow: "Trabajo",
     title: "Portafolio",
-    lead: "Sitios reales, en producción. Entra y úsalos.",
+    lead: "Sitios reales, en producción.",
     visit: "Ver sitio",
     desktopAlt: "Recorrido por la web de {name} en computadora",
     mobileAlt: "Recorrido por la web de {name} en teléfono",

@@ -17,8 +17,7 @@ export function Services({ t }: { t: Dictionary }) {
             {t.hero.titleA} <span className="text-coral-ink">{t.hero.titleB}</span>
           </h1>
           <div>
-            <p className="hero-lead max-w-[34rem] font-serif text-[18px] leading-[1.5] text-muted sm:text-[19px]">{t.hero.lead}</p>
-            <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <p className="flex flex-wrap items-center gap-x-5 gap-y-3">
               <a href={whatsappLink(s.ctaMessage)} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-shine">
                 <WhatsAppIcon className="size-5" />
                 {s.cta}

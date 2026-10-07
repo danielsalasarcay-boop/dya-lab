@@ -116,9 +116,8 @@ export const es = {
       {
         slug: "casa-panza",
         name: "Casa Panza",
-        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
-        url: "https://danielsalasarcay-boop.github.io/casa-panza/",
-        domain: "casa-panza · github.io",
+        url: "https://www.casapanzalosroques.com",
+        domain: "casapanzalosroques.com",
         sector: "Alquiler vacacional · Los Roques",
         // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web (solo Instagram/WhatsApp)? ¿también hicieron su marca?
         summary:

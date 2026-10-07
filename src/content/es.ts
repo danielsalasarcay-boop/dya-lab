@@ -60,7 +60,7 @@ export const es = {
         n: "02",
         eyebrow: "Marca",
         big: "Una identidad que cobra vida.",
-        small: "Logo, colores y tipografía pensados para moverse con tu web y verse impecables en redes e imprenta.",
+        small: "Logo, colores y tipografía pensados para moverse con tu web y verse impecables en redes.",
         tags: ["Logo", "Identidad", "Motion"],
       },
     ],

@@ -757,3 +757,52 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
 .wm-sep { margin-inline: 2.25rem; color: var(--color-coral); letter-spacing: 0.1em; }
 @keyframes wm-run { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .wm-track { animation: none; } }
+
+/* ===== Escena de laboratorio (Nosotros) ===== */
+.lab-scene { isolation: isolate; }
+.lab-backdrop {
+  position: absolute; inset: 6% 2% 0; z-index: -1; border-radius: 50% 50% 28px 28px / 42% 42% 28px 28px;
+  background:
+    radial-gradient(60% 50% at 50% 55%, rgb(63 224 176 / 0.16), transparent 70%),
+    radial-gradient(40% 30% at 70% 30%, rgb(240 122 90 / 0.14), transparent 70%);
+}
+.lab-scene::after { /* sombra/reflejo en el piso */
+  content: ""; position: absolute; left: 18%; right: 18%; bottom: -10px; height: 26px; z-index: -1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.35), transparent);
+}
+.lab-fox { transform-origin: 50% 100%; }
+.lab-mix, .lab-wow { filter: drop-shadow(0 18px 24px rgb(5 20 12 / 0.35)); }
+.lab-glow { position: absolute; width: 26%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; opacity: 0; mix-blend-mode: screen; pointer-events: none; }
+.lab-glow-l { background: radial-gradient(closest-side, rgb(255 170 140 / 0.9), rgb(240 122 90 / 0.45) 45%, transparent 72%); }
+.lab-glow-r { background: radial-gradient(closest-side, rgb(170 255 228 / 0.9), rgb(63 224 176 / 0.45) 45%, transparent 72%); }
+.lab-bubble { position: absolute; width: 6px; height: 6px; border-radius: 50%; opacity: 0; pointer-events: none; box-shadow: 0 0 6px rgb(160 255 225 / 0.8); }
+.lab-pour { position: absolute; width: 7px; height: 7px; margin: -3px 0 0 -3px; border-radius: 50%; opacity: 0; pointer-events: none;
+  background: radial-gradient(circle at 35% 30%, #ffe2d6, #f07a5a 60%, #c4532f); box-shadow: 0 0 8px 2px rgb(240 122 90 / 0.7); }
+.lab-flash { position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; opacity: 0; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(closest-side, #fff, rgb(200 255 240 / 0.8) 30%, rgb(63 224 176 / 0.25) 60%, transparent 75%); }
+.lab-ring { position: absolute; width: 60%; aspect-ratio: 1; border-radius: 50%; opacity: 0; pointer-events: none; border: 2px solid rgb(200 255 240 / 0.85); box-shadow: 0 0 18px rgb(63 224 176 / 0.6); }
+.lab-poof { position: absolute; width: 74%; height: auto; opacity: 0; pointer-events: none; }
+.lab-spark { position: absolute; width: 6px; height: 6px; border-radius: 50%; opacity: 0; pointer-events: none; background: #d6fff2; box-shadow: 0 0 8px 2px rgb(63 224 176 / 0.8); }
+.lab-spark.is-coral { background: #ffe0d4; box-shadow: 0 0 8px 2px rgb(240 122 90 / 0.8); }
+/* Botón que nace de la explosión */
+.lab-cta-wrap { position: absolute; left: 50%; top: 6.5%; transform: translate(-50%, -50%) scale(0.2); opacity: 0; pointer-events: none; z-index: 5; }
+.lab-cta-wrap[data-on] {
+  opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1);
+  animation: lab-cta-rise 1.1s cubic-bezier(0.2, 0.9, 0.25, 1) both, lab-cta-float 3.4s ease-in-out 1.2s infinite;
+}
+@keyframes lab-cta-rise {
+  0% { opacity: 0; transform: translate(-50%, -50%) translate(var(--fx, 0px), var(--fy, 0px)) scale(0.2); }
+  35% { opacity: 1; transform: translate(-50%, -50%) translate(calc(var(--fx, 0px) * 0.6), calc(var(--fy, 0px) * 0.5)) scale(1.15); }
+  70% { transform: translate(-50%, -50%) translate(0, -6px) scale(0.96); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes lab-cta-float { 50% { translate: 0 -5px; } }
+.lab-cta {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 18px; border-radius: 999px;
+  font-weight: 600; font-size: 14px; color: var(--color-ink); white-space: nowrap;
+  background: linear-gradient(180deg, #ffd2c3, var(--color-coral));
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.5) inset, 0 0 0 4px rgb(240 122 90 / 0.18), 0 10px 24px -8px rgb(240 122 90 / 0.8), 0 0 30px rgb(63 224 176 / 0.25);
+  transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.2, 1.3), box-shadow 0.25s;
+}
+.lab-cta:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 0 0 1px rgb(255 255 255 / 0.6) inset, 0 0 0 6px rgb(240 122 90 / 0.22), 0 14px 28px -8px rgb(240 122 90 / 0.9), 0 0 40px rgb(63 224 176 / 0.35); }
+@media (prefers-reduced-motion: reduce) { .lab-cta-wrap[data-on] { animation: none; transition: none; } }

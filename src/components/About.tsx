@@ -1,8 +1,8 @@
-import Link from "next/link";
 import type { Dictionary } from "@/content/es";
 import { whatsappLink } from "@/lib/site";
 import { LogoCard } from "./LogoCard";
 import { WhatsAppIcon } from "./WhatsAppIcon";
+import { LabScene } from "./LabScene";
 
 // Página "Quiénes somos", corta y al grano: el logo animado con quiénes somos,
 // cómo trabajamos en tres líneas y un cierre directo a WhatsApp.
@@ -38,20 +38,21 @@ export function About({ t }: { t: Dictionary }) {
         </ol>
       </section>
 
-      <section aria-labelledby="nosotros-cta" className="about-col pb-20 pt-20 sm:pb-28">
-        <div className="about-cta flex flex-col gap-6 rounded-3xl p-7 sm:flex-row sm:items-center sm:justify-between sm:p-9">
-          <div>
-            <h2 id="nosotros-cta" className="font-display text-[clamp(1.8rem,1.4rem+1.5vw,2.4rem)] font-extrabold leading-none tracking-[-0.03em]">{a.ctaTitle}</h2>
-            <p className="mt-2 text-mist">{a.ctaLead}</p>
+      <section aria-labelledby="nosotros-cta" className="wrap overflow-x-clip pb-20 pt-16 sm:pb-24">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
+          <div className="about-cta flex flex-col gap-6 rounded-3xl p-7 sm:p-9">
+            <div>
+              <h2 id="nosotros-cta" className="font-display text-[clamp(1.8rem,1.4rem+1.5vw,2.6rem)] font-extrabold leading-none tracking-[-0.03em]">{a.ctaTitle}</h2>
+              <p className="mt-3 max-w-[30ch] text-mist">{a.ctaLead}</p>
+            </div>
+            <p>
+              <a href={whatsappLink(a.ctaMessage)} target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-shine">
+                <WhatsAppIcon className="size-5" /> {a.cta}
+              </a>
+            </p>
           </div>
-          <p className="flex flex-col items-start gap-2 sm:items-center">
-            <a href={whatsappLink(a.ctaMessage)} target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-shine">
-              <WhatsAppIcon className="size-5" /> {a.cta}
-            </a>
-            <Link href="/#trabajo" className="svc-link inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-mist hover:!text-bone">
-              {a.ctaWork} <span aria-hidden className="svc-arrow">→</span>
-            </Link>
-          </p>
+          {/* El zorro mezcla dos sustancias; la explosión deja el botón "Ver portafolio" */}
+          <LabScene cta={a.ctaWork} href="/#trabajo" />
         </div>
       </section>
     </div>

@@ -96,7 +96,7 @@ export function HeroCollage({ trio, extras }: { trio: Shot[]; extras: Site[] }) 
         <div key={shot.slug} className={`hero-layer hero-item hero-item-${j} absolute w-[78%]`}>
           <div className="hero-fly"><div className="hero-float">
             <BrowserFrame domain={shot.domain}>
-              <Image src={shot.img} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} preload={j === 0} loading="eager" />
+              <Image src={shot.img} alt="" sizes="(min-width:1024px) 440px, 66vw" quality={70} fetchPriority={j === 0 ? "high" : "low"} loading="eager" />
             </BrowserFrame>
           </div></div>
         </div>
@@ -133,7 +133,6 @@ export function HeroCollage({ trio, extras }: { trio: Shot[]; extras: Site[] }) 
                   sizes="150px"
                   statusBg={live && j === k ? site.statusBg : shot.statusBg}
                   statusFg={live && j === k ? site.statusFg : shot.statusFg}
-                  preload={j === 0}
                 />
               </div>
             ))}

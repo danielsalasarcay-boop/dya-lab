@@ -147,14 +147,14 @@ export function Mascot({ label }: { label: string }) {
             { opacity: 1, transform: "translateY(0) scale(0.95, 0.55)", offset: 0.55 },
             { opacity: 1, transform: "translateY(2px) scale(0.85, 1)" },
           ],
-          { duration: 1700, easing: "cubic-bezier(.45,0,.4,1)", fill: "forwards" },
+          { duration: 850, easing: "cubic-bezier(.45,0,.4,1)", fill: "forwards" },
         ));
         if (!alive) return;
 
         // 2) Se suelta (respingo del zorro) y cae hasta el borde de la sección
         kick.v = -9;
         const dist = g.edge - g.sy - dh;
-        const dur = 420 + Math.sqrt(Math.max(0, dist)) * 30;
+        const dur = 260 + Math.sqrt(Math.max(0, dist)) * 20;
         await done(drop.animate(
           [
             { transform: "translateY(2px) scale(0.85, 1)" },
@@ -188,7 +188,7 @@ export function Mascot({ label }: { label: string }) {
           ],
           { duration: 1500, easing: "cubic-bezier(.3,.7,.3,1)", fill: "forwards" },
         );
-        await wait(620);
+        await wait(420);
         if (!alive) return;
 
         // 4) La gota se abre en un portal: anillo luminoso con remolino
@@ -202,7 +202,7 @@ export function Mascot({ label }: { label: string }) {
           ],
           { duration: 5600, easing: "cubic-bezier(.25,.8,.25,1)", fill: "forwards" },
         );
-        await wait(700);
+        await wait(450);
         if (!alive) return;
 
         // 5) Del portal cuelgan gotitas que se estiran, se sueltan, caen con un
@@ -235,10 +235,10 @@ export function Mascot({ label }: { label: string }) {
         });
         await wait(4400);
         if (!alive) return;
-        await wait(1800 + Math.random() * 1800);
+        await wait(500 + Math.random() * 700);
       }
     };
-    const start = window.setTimeout(() => { void cycle(); }, 1600);
+    const start = window.setTimeout(() => { void cycle(); }, 700);
 
     return () => {
       alive = false;

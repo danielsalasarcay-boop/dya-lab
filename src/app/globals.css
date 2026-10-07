@@ -423,7 +423,7 @@ body { -webkit-user-select: none; user-select: none; }
 input, textarea, [data-selectable] { -webkit-user-select: text; user-select: text; }
 
 /* Párrafo de la portada en serif editorial */
-.hero-lead { font-variation-settings: "opsz" 36; letter-spacing: -0.005em; }
+.hero-lead { font-family: var(--font-young), Georgia, serif; letter-spacing: -0.01em; }
 
 /* Sección 04: frase de cada historia como cita tecnológica (mono + coral + cursor) */
 #movimiento .dya-hero__line {

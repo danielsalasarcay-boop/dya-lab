@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Familjen_Grotesk, JetBrains_Mono, Fraunces } from "next/font/google";
+import { Montserrat, Familjen_Grotesk, JetBrains_Mono, Fraunces, Young_Serif } from "next/font/google";
 import { getDictionary } from "@/content";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -10,6 +10,8 @@ const montserrat = Montserrat({ variable: "--font-montserrat", subsets: ["latin"
 const familjen = Familjen_Grotesk({ variable: "--font-familjen", subsets: ["latin"], display: "swap" });
 // Serif editorial para el párrafo de la portada.
 const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], style: ["normal", "italic"], axes: ["opsz"], display: "swap" });
+// Párrafo bajo el titular: serif con personalidad (no la típica de plantillas IA).
+const youngSerif = Young_Serif({ variable: "--font-young", subsets: ["latin"], weight: "400", display: "swap" });
 const jetbrains = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"], weight: ["500"], display: "swap" });
 
 const t = getDictionary("es");
@@ -45,7 +47,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${montserrat.variable} ${familjen.variable} ${jetbrains.variable} ${fraunces.variable} antialiased`} suppressHydrationWarning>
+    <html lang="es" className={`${montserrat.variable} ${familjen.variable} ${jetbrains.variable} ${fraunces.variable} ${youngSerif.variable} antialiased`} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

@@ -730,34 +730,6 @@ html[data-hero-turn="2"] .hero-item-1 .hero-float { --f: 7.5s; }
 html[data-hero-turn="2"] .hero-item-2 { right:22%;top:38%; z-index: 3; --d: 1.1; --i: 2; }
 html[data-hero-turn="2"] .hero-item-2 .hero-float { --f: 6.8s; }
 html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
-
-/* Divisor entre secciones: franja fina con los trabajos en carrusel */
-.wm {
-  overflow: hidden;
-  border-block: 1px solid var(--color-line);
-  padding-block: 1.1rem;
-  -webkit-mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-.wm-track { display: flex; width: max-content; animation: wm-run 48s linear infinite; }
-.wm--reverse .wm-track { animation-direction: reverse; }
-.wm:hover .wm-track { animation-play-state: paused; }
-.wm-list { display: flex; flex-shrink: 0; }
-.wm-list li {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: rgb(31 77 56 / 0.62);
-}
-.wm-sep { margin-inline: 2.25rem; color: var(--color-coral); letter-spacing: 0.1em; }
-@keyframes wm-run { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .wm-track { animation: none; } }
-
 /* ===== Escena de laboratorio (Nosotros) ===== */
 .lab-scene { isolation: isolate; }
 .lab-backdrop {

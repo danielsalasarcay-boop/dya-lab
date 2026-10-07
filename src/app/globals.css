@@ -770,7 +770,7 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
   content: ""; position: absolute; left: 18%; right: 18%; bottom: -10px; height: 26px; z-index: -1; border-radius: 50%;
   background: radial-gradient(closest-side, rgb(0 0 0 / 0.35), transparent);
 }
-.lab-fox { transform-origin: 50% 100%; }
+.lab-fox { transform-origin: 50% 100%; -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent 99%); mask-image: linear-gradient(180deg, #000 82%, transparent 99%); }
 .lab-mix, .lab-wow { filter: drop-shadow(0 18px 24px rgb(5 20 12 / 0.35)); }
 .lab-glow { position: absolute; width: 26%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; opacity: 0; mix-blend-mode: screen; pointer-events: none; }
 .lab-glow-l { background: radial-gradient(closest-side, rgb(255 170 140 / 0.9), rgb(240 122 90 / 0.45) 45%, transparent 72%); }

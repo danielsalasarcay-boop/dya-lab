@@ -57,10 +57,7 @@ export function Services({ t }: { t: Dictionary }) {
           ))}
         </ul>
 
-        <p className="flex flex-wrap items-center justify-between gap-3 pt-2 lg:col-span-12">
-          <span className="rounded-full bg-paper/60 px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-green ring-1 ring-line">
-            {s.join}
-          </span>
+        <p className="flex flex-wrap items-center justify-end gap-3 pt-2 lg:col-span-12">
           <a href="#paquetes" className="svc-link inline-flex min-h-11 items-center gap-2 font-semibold text-green">
             {s.ctaAlt} <span aria-hidden className="svc-arrow">→</span>
           </a>

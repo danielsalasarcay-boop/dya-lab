@@ -10,8 +10,8 @@ export function About({ t }: { t: Dictionary }) {
   const a = t.about;
   return (
     <div className="about-dark text-bone">
-      <section aria-labelledby="nosotros-titulo" className="about-col pt-14 sm:pt-24">
-        <div className="grid items-center gap-10 sm:grid-cols-[minmax(0,17rem)_1fr]">
+      <section aria-labelledby="nosotros-titulo" className="about-col pt-10 sm:pt-14">
+        <div className="grid items-center gap-8 sm:grid-cols-[minmax(0,12rem)_1fr]">
           <LogoCard label={a.logoLabel} />
           <header>
             <h1 id="nosotros-titulo" className="font-display text-[clamp(2rem,1.4rem+2vw,2.75rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-balance">
@@ -25,9 +25,9 @@ export function About({ t }: { t: Dictionary }) {
         </div>
       </section>
 
-      <section aria-labelledby="trabajamos-titulo" className="about-col mt-20">
+      <section aria-labelledby="trabajamos-titulo" className="about-col mt-10">
         <h2 id="trabajamos-titulo" className="about-h2">{a.philosophyTitle}</h2>
-        <ol className="mt-8 grid gap-6 sm:grid-cols-3 sm:gap-5">
+        <ol className="mt-5 grid gap-5 sm:grid-cols-3 sm:gap-5">
           {a.philosophy.map((p) => (
             <li key={p.n} className="border-t border-bone/15 pt-5">
               <span aria-hidden className="font-mono text-[12px] tracking-[0.14em] text-coral-soft">‹ {p.n} ›</span>
@@ -38,21 +38,21 @@ export function About({ t }: { t: Dictionary }) {
         </ol>
       </section>
 
-      <section aria-labelledby="nosotros-cta" className="wrap overflow-x-clip pb-20 pt-16 sm:pb-24">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
-          <div className="about-cta flex flex-col gap-6 rounded-3xl p-7 sm:p-9">
-            <div>
-              <h2 id="nosotros-cta" className="font-display text-[clamp(1.8rem,1.4rem+1.5vw,2.6rem)] font-extrabold leading-none tracking-[-0.03em]">{a.ctaTitle}</h2>
-              <p className="mt-3 max-w-[30ch] text-mist">{a.ctaLead}</p>
-            </div>
-            <p>
+      <section aria-labelledby="nosotros-cta" className="about-col overflow-x-clip pb-12 pt-8">
+        <div className="about-cta grid items-end gap-4 rounded-3xl px-6 pt-6 sm:grid-cols-[1fr_auto] sm:gap-6 sm:px-8 sm:pt-0">
+          <div className="sm:py-8">
+            <h2 id="nosotros-cta" className="font-display text-[clamp(1.7rem,1.3rem+1.4vw,2.3rem)] font-extrabold leading-none tracking-[-0.03em]">{a.ctaTitle}</h2>
+            <p className="mt-2 max-w-[30ch] text-mist">{a.ctaLead}</p>
+            <p className="mt-5">
               <a href={whatsappLink(a.ctaMessage)} target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-shine">
                 <WhatsAppIcon className="size-5" /> {a.cta}
               </a>
             </p>
           </div>
-          {/* El zorro mezcla dos sustancias; la explosión deja el botón "Ver portafolio" */}
-          <LabScene cta={a.ctaWork} href="/#trabajo" />
+          {/* El zorro vierte una sustancia en otra; el vapor forma el botón "Ver portafolio" */}
+          <div className="w-[200px] justify-self-center sm:w-[230px]">
+            <LabScene cta={a.ctaWork} href="/#trabajo" />
+          </div>
         </div>
       </section>
     </div>

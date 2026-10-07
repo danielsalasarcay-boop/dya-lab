@@ -45,7 +45,7 @@ export const es = {
     why: {
       eyebrow: "El porqué",
       big: "Una web genérica no se recuerda.",
-      small: "La tuya tiene que sentirse única desde el primer scroll.",
+      small: "Tu negocio tiene que sentirse único desde el primer scroll.",
     },
     listLabel: "Nuestros servicios",
     cards: [

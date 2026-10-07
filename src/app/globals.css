@@ -753,12 +753,51 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
   100% { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes lab-cta-float { 50% { translate: 0 -4px; } }
+/* Botón premium: borde de luz giratorio, brillo que sigue al cursor, magnético,
+   flecha que se desliza y destello periódico */
+@property --lab-spin { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 .lab-cta {
-  display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 16px; border-radius: 999px;
-  font-weight: 600; font-size: 13.5px; color: var(--color-ink); white-space: nowrap;
-  background: var(--color-coral);
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.35) inset, 0 8px 20px -8px rgb(240 122 90 / 0.8), 0 0 24px rgb(63 224 176 / 0.22);
-  transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.2, 1.3), box-shadow 0.25s;
+  --mx: 50%; --my: 50%; --tx: 0px; --ty: 0px;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 8px 0 18px; border-radius: 999px;
+  font-weight: 650; font-size: 14px; letter-spacing: -0.01em; color: var(--color-ink); white-space: nowrap;
+  background:
+    radial-gradient(90px circle at var(--mx) var(--my), rgb(255 255 255 / 0.55), transparent 60%),
+    linear-gradient(180deg, #ffb39e, var(--color-coral) 55%, #e2633f);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.35) inset, 0 10px 24px -10px rgb(240 122 90 / 0.9), 0 0 28px rgb(63 224 176 / 0.25);
+  transform: translate(var(--tx), var(--ty));
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1.2), box-shadow 0.3s;
 }
-.lab-cta:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgb(255 255 255 / 0.45) inset, 0 12px 24px -8px rgb(240 122 90 / 0.9), 0 0 32px rgb(63 224 176 / 0.3); }
+/* anillo de luz que gira alrededor */
+.lab-cta::before {
+  content: ""; position: absolute; inset: -2px; z-index: -2; border-radius: inherit;
+  background: conic-gradient(from var(--lab-spin), transparent 0 70%, rgb(190 255 235) 82%, #fff 88%, rgb(240 122 90) 94%, transparent 100%);
+  animation: lab-spin 3.2s linear infinite;
+}
+.lab-cta::after { /* relleno interior para que el anillo quede solo en el borde */
+  content: ""; position: absolute; inset: 1.5px; z-index: -1; border-radius: inherit;
+  background: radial-gradient(90px circle at var(--mx) var(--my), rgb(255 255 255 / 0.5), transparent 60%), linear-gradient(180deg, #ffb39e, var(--color-coral) 55%, #e2633f);
+}
+@keyframes lab-spin { to { --lab-spin: 360deg; } }
+.lab-cta-label { position: relative; }
+.lab-cta-label::after { /* destello que cruza el texto cada pocos segundos */
+  content: ""; position: absolute; inset: -6px -20px; pointer-events: none;
+  background: linear-gradient(105deg, transparent 40%, rgb(255 255 255 / 0.75) 50%, transparent 60%);
+  transform: translateX(-120%); animation: lab-shine 4s ease-in-out 1.2s infinite;
+}
+@keyframes lab-shine { 0%, 65% { transform: translateX(-120%); } 85%, 100% { transform: translateX(120%); } }
+.lab-cta-arrow {
+  position: relative; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; overflow: hidden;
+  background: var(--color-ink); color: var(--color-bone); font-size: 13px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1.3);
+}
+.lab-cta-arrow span { grid-area: 1 / 1; transition: transform 0.4s cubic-bezier(0.7, 0, 0.2, 1); }
+.lab-cta-arrow span:last-child { transform: translateX(-160%); }
+.lab-cta:hover { box-shadow: 0 0 0 1px rgb(255 255 255 / 0.5) inset, 0 16px 30px -10px rgb(240 122 90 / 1), 0 0 40px rgb(63 224 176 / 0.4); }
+.lab-cta:hover .lab-cta-arrow { transform: rotate(-45deg) scale(1.08); }
+.lab-cta:hover .lab-cta-arrow span:first-child { transform: translateX(160%); }
+.lab-cta:hover .lab-cta-arrow span:last-child { transform: translateX(0); }
+.lab-cta:active { transform: translate(var(--tx), var(--ty)) scale(0.96); }
+.lab-cta:focus-visible { outline: 3px solid var(--color-bone); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .lab-cta::before, .lab-cta-label::after { animation: none; } .lab-cta { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .lab-cta-wrap[data-on] { animation: none; opacity: 1; } }

@@ -190,8 +190,32 @@ export function LabScene({ cta, href }: { cta: string; href: string }) {
       {Array.from({ length: 14 }, (_, i) => <span key={`m${i}`} aria-hidden className={`lab-mote ${i % 3 === 0 ? "is-coral" : ""}`} />)}
       {/* Botón que se condensa del vapor */}
       <div className="lab-cta-wrap" data-on={revealed || undefined}>
-        <Link href={href} className="lab-cta" tabIndex={revealed ? 0 : -1} aria-hidden={!revealed}>
-          {cta} <span aria-hidden>→</span>
+        <Link
+          href={href}
+          className="lab-cta"
+          tabIndex={revealed ? 0 : -1}
+          aria-hidden={!revealed}
+          onPointerMove={(e) => {
+            // Efecto magnético: el botón y su brillo siguen al cursor
+            const el = e.currentTarget;
+            const r = el.getBoundingClientRect();
+            const x = e.clientX - r.left;
+            const y = e.clientY - r.top;
+            el.style.setProperty("--mx", `${x}px`);
+            el.style.setProperty("--my", `${y}px`);
+            el.style.setProperty("--tx", `${((x / r.width) - 0.5) * 8}px`);
+            el.style.setProperty("--ty", `${((y / r.height) - 0.5) * 6}px`);
+          }}
+          onPointerLeave={(e) => {
+            e.currentTarget.style.setProperty("--tx", "0px");
+            e.currentTarget.style.setProperty("--ty", "0px");
+          }}
+        >
+          <span className="lab-cta-label">{cta}</span>
+          <span aria-hidden className="lab-cta-arrow">
+            <span>→</span>
+            <span>→</span>
+          </span>
         </Link>
       </div>
     </div>

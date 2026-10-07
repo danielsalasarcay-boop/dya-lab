@@ -19,7 +19,7 @@ export function Work({ t }: { t: Dictionary }) {
             <h2 id="trabajo-titulo" className="h2 mt-5 max-w-[16ch] text-green">{t.work.title}</h2>
           </div>
           <p className="hero-lead max-w-[26rem] text-[17px] leading-[1.5] text-muted">
-            {t.work.lead} <span className="md:hidden">{t.work.swipeHint}</span> <span className="hidden [@media(hover:hover)]:inline">{t.work.hoverHint}.</span>
+            <span className="md:hidden">{t.work.swipeHint}</span> <span className="hidden [@media(hover:hover)]:inline">{t.work.hoverHint}.</span>
           </p>
         </div>
 

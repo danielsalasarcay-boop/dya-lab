@@ -72,7 +72,7 @@ export const es = {
 
   work: {
     eyebrow: "Trabajo",
-    title: "Seis proyectos, seis formas de vender.",
+    title: "Portafolio",
     lead: "Sitios reales, en producción. Entra y úsalos.",
     visit: "Ver sitio",
     desktopAlt: "Recorrido por la web de {name} en computadora",

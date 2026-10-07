@@ -203,7 +203,7 @@ export const es = {
   plans: {
     eyebrow: "Paquetes",
     title: "Elige por dónde empezar.",
-    lead: "Precios en dólares. Cada propuesta se confirma por escrito antes de empezar.",
+    lead: "Cada propuesta se confirma por escrito antes de empezar.",
     swipeHint: "Desliza para ver los tres →",
     pricePlaceholder: "$---",
     cta: "Quiero este",

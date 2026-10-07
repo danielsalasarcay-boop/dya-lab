@@ -1,6 +1,7 @@
 import type { Dictionary } from "@/content/es";
 import { Eyebrow } from "./Eyebrow";
 import { Mascot } from "./Mascot";
+import { TiltCard } from "./TiltCard";
 
 // Arriba: titular, párrafo y acciones. Abajo: tres tarjetas compactas en una fila
 // (web, marca y el porqué). La mascota se asoma por el borde derecho de la última.
@@ -18,7 +19,8 @@ export function Services({ t }: { t: Dictionary }) {
 
         <ul aria-label={s.listLabel} className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-12 lg:gap-5">
           {s.cards.map((c) => (
-            <li key={c.n} className="svc-card svc-glass svc-reveal flex flex-col rounded-3xl p-5 sm:p-6">
+            <li key={c.n} className="svc-reveal flex">
+              <TiltCard className="svc-card svc-glass flex w-full flex-col rounded-3xl p-5 sm:p-6">
               <article aria-labelledby={`svc-${c.n}`} className="flex grow flex-col">
                 <Eyebrow n={c.n}>{c.eyebrow}</Eyebrow>
                 <h2 id={`svc-${c.n}`} className="mt-3 font-display text-[21px] font-extrabold leading-[1.15] tracking-[-0.02em] text-green text-balance">
@@ -33,15 +35,16 @@ export function Services({ t }: { t: Dictionary }) {
                   ))}
                 </ul>
               </article>
+              </TiltCard>
             </li>
           ))}
 
-          <li className="relative">
-            <aside aria-label={s.why.eyebrow} className="svc-card svc-reveal bracket-pattern svc-why flex h-full flex-col rounded-3xl bg-green p-5 text-bone sm:p-6">
+          <li className="svc-reveal relative">
+            <TiltCard as="aside" aria-label={s.why.eyebrow} className="svc-card bracket-pattern svc-why flex h-full flex-col rounded-3xl bg-green p-5 text-bone sm:p-6">
               <Eyebrow tone="dark">{s.why.eyebrow}</Eyebrow>
               <p className="mt-3 max-w-[13ch] font-display text-[21px] font-extrabold leading-[1.15] tracking-[-0.02em] text-balance">{s.why.big}</p>
               <p className="mt-2 max-w-[17ch] text-[15px] leading-snug text-mist sm:max-w-[20ch]">{s.why.small}</p>
-            </aside>
+            </TiltCard>
             <Mascot label="Mascota de D&A Lab saludando" />
           </li>
         </ul>

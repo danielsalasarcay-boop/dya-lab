@@ -537,10 +537,33 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
   transition: opacity 0.4s, transform 0.6s;
 }
 .svc-why::before { background: radial-gradient(closest-side, rgb(249 166 143 / 0.28), transparent); opacity: 0.6; }
-@media (hover: hover) {
-  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgb(23 59 43 / 0.06), 0 28px 50px -24px rgb(23 59 43 / 0.4); }
-  .svc-card:hover::before { opacity: 1; transform: scale(1.15); }
+/* Hover premium (TiltCard): inclinación 3D + foco de luz + borde iluminado */
+.tilt {
+  --mx: 50%; --my: 50%; --rx: 0deg; --ry: 0deg;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.25, 1.15), box-shadow 0.5s ease;
+  will-change: transform;
 }
+.tilt[data-hover] { transition: transform 0.18s ease-out, box-shadow 0.5s ease; box-shadow: 0 2px 4px rgb(23 59 43 / 0.06), 0 34px 60px -28px rgb(23 59 43 / 0.55), 0 0 0 1px rgb(240 122 90 / 0.12); }
+.tilt-spot {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: inherit; opacity: 0;
+  background:
+    radial-gradient(320px circle at var(--mx) var(--my), rgb(240 122 90 / 0.13), transparent 55%),
+    radial-gradient(520px circle at var(--mx) var(--my), rgb(63 224 176 / 0.10), transparent 60%);
+  transition: opacity 0.5s ease;
+}
+.svc-why .tilt-spot { background: radial-gradient(340px circle at var(--mx) var(--my), rgb(249 166 143 / 0.28), transparent 50%), radial-gradient(520px circle at var(--mx) var(--my), rgb(63 224 176 / 0.14), transparent 60%); }
+.tilt::after { /* borde que se ilumina cerca del cursor */
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit; padding: 1px; opacity: 0;
+  background: radial-gradient(260px circle at var(--mx) var(--my), rgb(240 122 90 / 0.85), rgb(63 224 176 / 0.4) 40%, transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  transition: opacity 0.5s ease;
+}
+.tilt[data-hover] .tilt-spot, .tilt[data-hover]::after { opacity: 1; }
+.tilt > *:not(.tilt-spot) { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .tilt { transform: none !important; transition: none; } }
 .svc-arrow { display: inline-block; transition: transform 0.25s; }
 .svc-link:hover .svc-arrow, .svc-link:focus-visible .svc-arrow { transform: translateX(4px); }
 .svc-link:hover { color: var(--color-coral-ink); }

@@ -13,7 +13,7 @@ export function Services({ t }: { t: Dictionary }) {
       <div className="wrap">
         <header className="grid items-end gap-6 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
           {/* Titular principal del sitio (antes en la portada) */}
-          <h1 id="servicios-titulo" className="display max-w-[20ch] text-[clamp(2rem,1.1rem+3vw,3.4rem)] text-green">
+          <h1 id="servicios-titulo" className="display max-w-[22ch] text-[clamp(1.9rem,1.1rem+2.4vw,2.9rem)] text-green">
             {t.hero.titleA} <span className="text-coral-ink">{t.hero.titleB}</span>
           </h1>
           <div>

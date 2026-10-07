@@ -35,8 +35,8 @@ export const es = {
 
   hero: {
     eyebrow: "Diseño web y de marca · Venezuela",
-    titleA: "Webs y marcas para negocios que",
-    titleB: "quieren vender.",
+    titleA: "Desarrollo web premium con movimiento, creado desde cero para que tu marca sea",
+    titleB: "inolvidable.",
     lead: "Creamos webs a medida con animaciones y efectos al hacer scroll, y la marca que las acompaña: sitios que se ven increíbles en el teléfono, se recuerdan y convierten visitas en clientes.",
     proof: "Sitios en producción para",
   },

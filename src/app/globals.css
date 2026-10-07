@@ -577,67 +577,22 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
   70% { transform: translateX(-3%) rotate(-3deg); }
   100% { transform: none; clip-path: inset(-60% -20% -30% -60%); }
 }
-/* 2) Inclinación hacia el cursor */
-.mascot-tilt {
-  transform-origin: 100% 85%;
-  transform: rotate(calc(var(--tx) * -5deg)) translate(calc(var(--tx) * 4px), calc(var(--ty) * 3px));
-  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-/* 3) Respiración + asomarse con rebote cada pocos segundos */
-.mascot-idle { position: relative; transform-origin: 100% 88%; }
-.mascot.is-in .mascot-idle { animation: mascot-idle 7.5s cubic-bezier(0.45, 0, 0.55, 1) 1.4s infinite; }
-@keyframes mascot-idle {
-  0%, 100% { transform: translateY(0) rotate(0) scaleY(1); }
-  15% { transform: translateY(-1.5px) rotate(-0.6deg) scaleY(1.012); }
-  30% { transform: translateY(0) rotate(0) scaleY(1); }
-  45% { transform: translateY(-1.5px) rotate(-0.6deg) scaleY(1.012); }
-  58% { transform: translateY(0) rotate(0); }
-  66% { transform: translateX(-5%) rotate(-6deg); }
-  72% { transform: translateX(-3%) rotate(-3.5deg); }
-  77% { transform: translateX(-4.5%) rotate(-5deg); }
-  88% { transform: translateX(0) rotate(0.6deg); }
-  94% { transform: rotate(0); }
-}
+/* 2) Cuerpo: lo mueve el bucle de resortes en JS (Mascot.tsx) */
+.mascot-body { transform-origin: 100% 88%; will-change: transform; }
 
-/* Poción que se derrite (filtro gooey funde la gota colgante y la que cae) */
-.potion { position: absolute; left: 2%; top: 60%; width: 30px; height: 38%; filter: url(#mascot-goo); }
-.potion-hang, .potion-fall {
-  position: absolute; left: 9px; width: 11px; border-radius: 50%;
-  background: linear-gradient(180deg, #b9ffe9, #3fe0b0 45%, #14a07c);
-}
-.potion-hang { top: 0; height: 15px; transform-origin: 50% 0; transform: scaleY(0.2); opacity: 0; }
-.potion-fall { top: 0; height: 13px; opacity: 0; }
-.mascot.is-in .potion-hang { animation: potion-hang 3.6s cubic-bezier(0.5, 0, 0.5, 1) 1.6s infinite; }
-.mascot.is-in .potion-fall { animation: potion-fall 3.6s cubic-bezier(0.55, 0, 1, 0.45) 1.6s infinite; }
-@keyframes potion-hang {
-  0% { opacity: 1; transform: scaleY(0.25) scaleX(0.9); }
-  32% { opacity: 1; transform: scaleY(1.35) scaleX(0.85); border-radius: 45% 45% 50% 50% / 30% 30% 70% 70%; }
-  40% { opacity: 1; transform: scaleY(1.7) scaleX(0.6); }
-  44% { opacity: 1; transform: scaleY(0.35) scaleX(0.9); }
-  100% { opacity: 1; transform: scaleY(0.25) scaleX(0.9); }
-}
-@keyframes potion-fall {
-  0%, 41% { opacity: 0; top: 12px; transform: scale(0.9, 1); }
-  43% { opacity: 1; top: 14px; transform: scale(0.85, 1.25); }
-  66% { opacity: 1; top: calc(100% - 6px); transform: scale(0.75, 1.5); }
-  68%, 100% { opacity: 0; top: calc(100% - 4px); transform: scale(1.4, 0.4); }
-}
-/* Charco al tocar la tarjeta */
-.potion-puddle {
-  position: absolute; left: calc(var(--mw) * 0.02 - 2px); bottom: 4px; width: 38px; height: 7px; border-radius: 50%;
-  background: radial-gradient(closest-side, #8ef5d4, #2cc79b 60%, transparent);
-  box-shadow: 0 0 14px 3px rgb(63 224 176 / 0.45);
-  transform: scaleX(0); opacity: 0;
-}
-.mascot.is-in .potion-puddle { animation: potion-puddle 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) 1.6s infinite; }
-@keyframes potion-puddle {
-  0%, 66% { opacity: 0; transform: scaleX(0.1) scaleY(0.5); }
-  70% { opacity: 1; transform: scaleX(0.8) scaleY(1.2); }
-  82% { opacity: 0.9; transform: scaleX(1.25) scaleY(0.9); }
-  100% { opacity: 0; transform: scaleX(1.6) scaleY(0.6); }
+/* Poción: capa libre que cae desde el matraz hasta la sección Portafolio */
+.potion-flow { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.pf-drop, .pf-trail, .pf-splat, .pf-glow { position: absolute; opacity: 0; will-change: transform, opacity; }
+.pf-drop { transform-origin: 50% 0; height: auto; filter: drop-shadow(0 0 6px rgb(63 224 176 / 0.75)) drop-shadow(0 0 16px rgb(63 224 176 / 0.35)); }
+.pf-trail { height: 0; object-fit: cover; object-position: top; filter: blur(0.3px) drop-shadow(0 0 4px rgb(63 224 176 / 0.6)); }
+.pf-splat { height: auto; transform-origin: 50% 40%; filter: drop-shadow(0 0 10px rgb(63 224 176 / 0.55)); }
+.pf-glow {
+  border-radius: 50%; mix-blend-mode: screen;
+  background: radial-gradient(closest-side, rgb(120 255 210 / 0.55), rgb(63 224 176 / 0.22) 45%, transparent 75%);
+  filter: blur(6px);
 }
 @media (prefers-reduced-motion: reduce) {
   .mascot-enter { clip-path: none; transform: none; }
-  .mascot.is-in .mascot-enter, .mascot.is-in .mascot-idle, .mascot-tilt { animation: none; transition: none; transform: none; }
-  .potion, .potion-puddle { display: none; }
+  .mascot.is-in .mascot-enter { animation: none; transform: none; }
+  .potion-flow { display: none; }
 }

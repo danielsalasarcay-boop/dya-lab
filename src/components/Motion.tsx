@@ -94,7 +94,7 @@ export function Motion({ t }: { t: Dictionary }) {
       <Script src="/dya-hero/dya-hero.js" strategy="lazyOnload" onReady={() => setMotor(true)} />
 
       <div className="wrap">
-        <Eyebrow n="05">{m.eyebrow}</Eyebrow>
+        <Eyebrow n="03">{m.eyebrow}</Eyebrow>
         <h2 id="movimiento-titulo" className="h2 mt-5 max-w-[16ch] text-green">{m.title}</h2>
         <p className="mt-4 max-w-[34rem] text-muted">{m.lead}</p>
       </div>

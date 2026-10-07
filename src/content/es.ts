@@ -23,6 +23,7 @@ export const es = {
     { href: "/#proceso", label: "Proceso" },
     { href: "/#paquetes", label: "Paquetes" },
     { href: "/#preguntas", label: "Preguntas" },
+    { href: "/nosotros", label: "Nosotros" },
     { href: "/contacto", label: "Contacto" },
   ],
   navCta: "Hablemos",
@@ -326,6 +327,54 @@ export const es = {
     floatHover: "Escríbenos",
     // Mensaje que llega prellenado al tocar el botón flotante o el número directo.
     whatsappGreeting: "¡Hola D&A Lab! 👋 Vi su página web y me gustaría hablar sobre un proyecto para mi negocio.",
+  },
+
+  // Página /nosotros. CONFIRMAR: textos en borrador para que Daniel y Andy los ajusten.
+  about: {
+    metaTitle: "Quiénes somos — D&A Lab",
+    metaDescription: "D&A Lab es un estudio de diseño web y de identidad visual en Venezuela. Webs y marcas a medida, sin plantillas.",
+    logoLabel: "Logo de D&A Lab",
+    title: "Diseño a medida con precisión técnica.",
+    subtitle: "Para negocios que quieren verse bien y vender mejor.",
+    intro: [
+      "Somos D&A Lab, un estudio de diseño web y de identidad visual en Venezuela. Diseñamos y desarrollamos webs y marcas para negocios que venden por catálogo, por WhatsApp o por cotización.",
+      "Trabajamos sin plantillas ni constructores de sitios. Cada web y cada logo se hacen desde cero, a la medida de tu negocio y de cómo te llegan los pedidos.",
+      "Diseño y código salen del mismo equipo, así que lo que apruebas en la propuesta es lo que se publica.",
+    ],
+    servicesTitle: "Lo que hacemos",
+    services: [
+      {
+        eyebrow: "Web",
+        title: "Sitios que reciben pedidos.",
+        text: "Diseñados primero para el teléfono, con tu catálogo o tus servicios a la vista y el botón directo a WhatsApp. Incluyen formulario de contacto, dominio y publicación configurados, y quedan listos para Google y para compartir en redes. Con animaciones y movimiento para que tu web no se parezca a ninguna.",
+      },
+      {
+        eyebrow: "Marca",
+        title: "Una identidad que se reconoce.",
+        text: "Logo diseñado desde cero, con versiones horizontal, vertical e ícono, en color, blanco y negro. Paleta de colores, tipografías y los archivos listos para imprenta, redes y web.",
+      },
+      {
+        eyebrow: "Web + identidad",
+        title: "Las dos cosas, pensadas juntas.",
+        text: "Marca y web diseñadas a la vez para que hablen el mismo idioma, con una guía corta de uso de marca y tu catálogo de productos o servicios en la web.",
+      },
+    ],
+    servicesCta: "Ver paquetes",
+    drivesTitle: "Lo que nos mueve",
+    drives: [
+      "Una web genérica no se recuerda. Nos mueve hacer sitios que se sienten únicos desde el primer scroll: movimiento, detalle y una identidad que nadie más tiene.",
+      "Pero lo bonito no basta. Tu web tiene que cargar rápido en el celular, entenderse a la primera y llevar a tu cliente directo a escribirte.",
+    ],
+    philosophyTitle: "Cómo trabajamos",
+    philosophy: [
+      "Antes de diseñar entendemos tu negocio: qué vendes, a quién y por dónde te llegan los pedidos.",
+      "Cada propuesta se confirma por escrito antes de empezar, con alcance, precio y tiempos claros. Y te respondemos el mismo día hábil.",
+      "No mostramos maquetas: cada proyecto del portafolio está publicado y puedes entrar a usarlo.",
+    ],
+    ctaTitleA: "¿Listos para",
+    ctaTitleB: "el siguiente paso?",
+    ctaLead: "Cuéntanos qué vendes y qué quieres lograr.",
+    cta: "Empezar proyecto",
   },
 
   footer: {

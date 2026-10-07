@@ -69,7 +69,8 @@ export function Header({ t }: { t: Dictionary }) {
   // Posición de la píldora bajo el enlace activo.
   useEffect(() => {
     const place = () => {
-      const key = hover ?? active;
+      // En páginas propias (/nosotros) la píldora marca la ruta, no una sección.
+      const key = hover ?? active ?? (t.nav.some((n) => n.href === pathname) ? pathname : null);
       const a = key && navRef.current?.querySelector<HTMLElement>(`a[href="${key}"]`);
       if (!a || !navRef.current) return setPill(null);
       const base = navRef.current.getBoundingClientRect();
@@ -79,7 +80,7 @@ export function Header({ t }: { t: Dictionary }) {
     place();
     window.addEventListener("resize", place);
     return () => window.removeEventListener("resize", place);
-  }, [active, hover, scrolled, pathname]);
+  }, [active, hover, scrolled, pathname, t.nav]);
 
   // Menú: bloquear scroll, Escape, foco.
   useEffect(() => {
@@ -128,7 +129,7 @@ export function Header({ t }: { t: Dictionary }) {
                 style={{ transform: `translateX(${pill?.x ?? 0}px)`, width: pill?.w ?? 0, opacity: pill ? 1 : 0 }}
               />
               {deskNav.map((item) => {
-                const on = active === item.href;
+                const on = active === item.href || pathname === item.href;
                 return (
                   <li key={item.href}>
                     <a

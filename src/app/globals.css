@@ -453,7 +453,7 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
 
 /* ===== FAQ en tarjetas ===== */
 .faq-card {
-  border-radius: 1.5rem; border: 1px solid var(--color-line); background: var(--color-bone);
+  border-radius: 1.5rem; border: 1px solid var(--color-line); background: var(--color-paper);
   transition: background-color 0.3s, border-color 0.3s, box-shadow 0.35s, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 @media (hover: hover) { .faq-card:hover { transform: translateY(-2px); border-color: rgb(31 77 56 / 0.3); box-shadow: 0 16px 34px -22px rgb(20 38 27 / 0.45); } }

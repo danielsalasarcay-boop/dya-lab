@@ -3,7 +3,7 @@ import { Eyebrow } from "./Eyebrow";
 
 export function Plans({ t }: { t: Dictionary }) {
   return (
-    <section id="paquetes" aria-labelledby="paquetes-titulo" className="py-16 sm:py-20">
+    <section id="paquetes" aria-labelledby="paquetes-titulo" className="py-10 sm:py-12">
       <div className="wrap">
         <Eyebrow n="05">{t.plans.eyebrow}</Eyebrow>
         <h2 id="paquetes-titulo" className="h2 mt-5 text-green">{t.plans.title}</h2>

@@ -9,7 +9,7 @@ import { Mascot } from "./Mascot";
 export function Services({ t }: { t: Dictionary }) {
   const s = t.services;
   return (
-    <section id="servicios" aria-labelledby="servicios-titulo" className="svc-bg relative z-20 py-14 sm:py-16">
+    <section id="servicios" aria-labelledby="servicios-titulo" className="svc-bg relative z-20 py-10 sm:py-12">
       <div className="wrap">
         <header className="grid items-end gap-6 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
           {/* Titular principal del sitio (antes en la portada) */}

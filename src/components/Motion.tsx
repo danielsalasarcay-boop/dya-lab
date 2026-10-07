@@ -90,7 +90,7 @@ export function Motion({ t }: { t: Dictionary }) {
   }, [motor, visible, indice, m.stories]);
 
   return (
-    <section id="movimiento" aria-labelledby="movimiento-titulo" className="py-16 sm:py-20">
+    <section id="movimiento" aria-labelledby="movimiento-titulo" className="py-10 sm:py-12">
       <Script src="/dya-hero/dya-hero.js" strategy="lazyOnload" onReady={() => setMotor(true)} />
 
       <div className="wrap">

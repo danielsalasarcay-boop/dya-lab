@@ -11,7 +11,7 @@ const media = (slug: string, fmt: "desktop" | "mobile") => ({
 
 export function Work({ t }: { t: Dictionary }) {
   return (
-    <section id="trabajo" aria-labelledby="trabajo-titulo" className="py-16 sm:py-20">
+    <section id="trabajo" aria-labelledby="trabajo-titulo" className="py-10 sm:py-12">
       <div className="wrap">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>

@@ -588,7 +588,9 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
   background: linear-gradient(90deg, transparent, rgb(63 224 176 / 0.25) 20%, rgb(190 255 235) 50%, rgb(63 224 176 / 0.25) 80%, transparent);
   box-shadow: 0 0 10px 1px rgb(63 224 176 / 0.45);
 }
-.pf-edge, .pf-drop, .pf-drip, .pf-portal, .pf-blob { position: absolute; opacity: 0; will-change: transform, opacity; }
+.pf-spark { width: 4px; height: 4px; border-radius: 50%; background: #c8fff0; box-shadow: 0 0 6px 2px rgb(63 224 176 / 0.8); }
+.pf-drip { filter: drop-shadow(0 0 4px rgb(120 255 210 / 0.9)) drop-shadow(0 0 12px rgb(63 224 176 / 0.45)) !important; }
+.pf-edge, .pf-drop, .pf-drip, .pf-portal, .pf-blob, .pf-spark { position: absolute; opacity: 0; will-change: transform, opacity; }
 .pf-drop, .pf-drip { height: auto; transform-origin: 50% 0; filter: drop-shadow(0 0 5px rgb(63 224 176 / 0.7)) drop-shadow(0 0 12px rgb(63 224 176 / 0.3)); }
 .pf-blob {
   border-radius: 50%;
@@ -700,3 +702,31 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
   .lc::before, .lc-aurora, .lc-mark, .lc-mark .logo-accent path { animation: none; }
   .lc { transform: none; }
 }
+
+/* Hero: lugar de cada ventana según html[data-hero-turn] (decidido antes de pintar) */
+.hero-item, .hero-front-video { right: 0; top: 0; }
+.hero-front-video { right: 22%; top: 38%; z-index: 4; --d: 1.1; --i: 2; }
+.hero-front-video .hero-float { --f: 6.8s; }
+.hero-phone { z-index: 5; --d: 1.6; --i: 3; }
+.hero-phone-item { visibility: hidden; }
+html:not([data-hero-turn="1"]):not([data-hero-turn="2"]) .hero-item-0 { right:22%;top:38%; z-index: 3; --d: 1.1; --i: 2; }
+html:not([data-hero-turn="1"]):not([data-hero-turn="2"]) .hero-item-0 .hero-float { --f: 6.8s; }
+html:not([data-hero-turn="1"]):not([data-hero-turn="2"]) .hero-item-1 { right:11%;top:19%; z-index: 2; --d: 0.7; --i: 1; }
+html:not([data-hero-turn="1"]):not([data-hero-turn="2"]) .hero-item-1 .hero-float { --f: 8.5s; }
+html:not([data-hero-turn="1"]):not([data-hero-turn="2"]) .hero-item-2 { right:0;top:0; z-index: 1; --d: 0.35; --i: 0; }
+html:not([data-hero-turn="1"]):not([data-hero-turn="2"]) .hero-item-2 .hero-float { --f: 7.5s; }
+html:not([data-hero-turn="1"]):not([data-hero-turn="2"]) .hero-phone-0 { visibility: visible; }
+html[data-hero-turn="1"] .hero-item-0 { right:0;top:0; z-index: 1; --d: 0.35; --i: 0; }
+html[data-hero-turn="1"] .hero-item-0 .hero-float { --f: 7.5s; }
+html[data-hero-turn="1"] .hero-item-1 { right:22%;top:38%; z-index: 3; --d: 1.1; --i: 2; }
+html[data-hero-turn="1"] .hero-item-1 .hero-float { --f: 6.8s; }
+html[data-hero-turn="1"] .hero-item-2 { right:11%;top:19%; z-index: 2; --d: 0.7; --i: 1; }
+html[data-hero-turn="1"] .hero-item-2 .hero-float { --f: 8.5s; }
+html[data-hero-turn="1"] .hero-phone-1 { visibility: visible; }
+html[data-hero-turn="2"] .hero-item-0 { right:11%;top:19%; z-index: 2; --d: 0.7; --i: 1; }
+html[data-hero-turn="2"] .hero-item-0 .hero-float { --f: 8.5s; }
+html[data-hero-turn="2"] .hero-item-1 { right:0;top:0; z-index: 1; --d: 0.35; --i: 0; }
+html[data-hero-turn="2"] .hero-item-1 .hero-float { --f: 7.5s; }
+html[data-hero-turn="2"] .hero-item-2 { right:22%;top:38%; z-index: 3; --d: 1.1; --i: 2; }
+html[data-hero-turn="2"] .hero-item-2 .hero-float { --f: 6.8s; }
+html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }

@@ -48,6 +48,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${montserrat.variable} ${familjen.variable} ${jetbrains.variable} ${fraunces.variable} ${youngSerif.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        {/* Orden de las ventanas del hero: rota en cada visita, antes de pintar */}
+        <script dangerouslySetInnerHTML={{ __html: `try{var n=(+localStorage.getItem("dal-hero-turn")||0)+1;localStorage.setItem("dal-hero-turn",n);document.documentElement.dataset.heroTurn=n%3}catch(e){}` }} />
+      </head>
       <body>{children}</body>
     </html>
   );

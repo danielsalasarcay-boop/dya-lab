@@ -100,6 +100,7 @@ export function Mascot({ label }: { label: string }) {
     const portal = flow.querySelector<HTMLDivElement>(".pf-portal")!;
     const blob = flow.querySelector<HTMLDivElement>(".pf-blob")!;
     const drips = Array.from(flow.querySelectorAll<HTMLImageElement>(".pf-drip"));
+    const sparks = Array.from(flow.querySelectorAll<HTMLSpanElement>(".pf-spark"));
     const edgeLine = flow.querySelector<HTMLDivElement>(".pf-edge")!;
     let alive = true;
     let timer = 0;
@@ -129,9 +130,14 @@ export function Mascot({ label }: { label: string }) {
         const ew = Math.min(window.innerWidth * 0.7, 720);
         Object.assign(edgeLine.style, { width: `${ew}px`, left: `${g.sx - ew / 2}px`, top: `${g.edge - 1}px` });
         Object.assign(blob.style, { width: `${dw * 1.3}px`, height: `${dw * 0.55}px`, left: `${g.sx - dw * 0.65}px`, top: `${g.edge - dw * 0.3}px` });
+        const dripW = [dw * 0.95, dw * 0.72, dw * 0.55];
+        const dripX = [0, -pw * 0.18, pw * 0.2];
         drips.forEach((d, i) => {
-          const w = dw * (0.62 - i * 0.1);
-          Object.assign(d.style, { width: `${w}px`, left: `${g.sx - w / 2 + (i - 1) * pw * 0.14}px`, top: `${g.edge}px` });
+          Object.assign(d.style, { width: `${dripW[i]}px`, left: `${g.sx - dripW[i] / 2 + dripX[i]}px`, top: `${g.edge - 2}px` });
+        });
+        sparks.forEach((sp, i) => {
+          const k = Math.floor(i / 3);
+          Object.assign(sp.style, { left: `${g.sx + dripX[k] - 2}px`, top: `${g.edge + 62 + k * 4}px` });
         });
 
         // 1) Gota viscosa que se estira colgando del matraz
@@ -194,25 +200,40 @@ export function Mascot({ label }: { label: string }) {
             { opacity: 1, transform: "scale(1, 1)", offset: 0.82 },
             { opacity: 0, transform: "scale(0.05, 0.2)" },
           ],
-          { duration: 4200, easing: "cubic-bezier(.25,.8,.25,1)", fill: "forwards" },
+          { duration: 5600, easing: "cubic-bezier(.25,.8,.25,1)", fill: "forwards" },
         );
         await wait(700);
         if (!alive) return;
 
-        // 5) Del portal caen gotitas hacia Portafolio y se desvanecen antes del texto
-        const fallTo = 54;
+        // 5) Del portal cuelgan gotitas que se estiran, se sueltan, caen con un
+        //    leve tambaleo hacia Portafolio y se deshacen en chispas
         drips.forEach((d, i) => {
+          const fall = 58 + i * 6;
           d.animate(
             [
-              { opacity: 0, transform: "translateY(-6px) scale(0.5, 0.2)" },
-              { opacity: 1, transform: "translateY(-2px) scale(0.9, 0.7)", offset: 0.22 },
-              { opacity: 1, transform: `translateY(${fallTo * 0.35}px) scale(0.8, 1.15)`, offset: 0.6 },
-              { opacity: 0, transform: `translateY(${fallTo}px) scale(0.6, 1.3)` },
+              { opacity: 0, transform: "translateY(-4px) scale(0.5, 0.15)" },
+              { opacity: 1, transform: "translateY(-2px) scale(0.95, 0.45)", offset: 0.18 },
+              { opacity: 1, transform: "translateY(0) scale(0.8, 0.95)", offset: 0.36 },
+              { opacity: 1, transform: `translateY(${fall * 0.18}px) scale(0.92, 0.88)`, offset: 0.5 },
+              { opacity: 1, transform: `translateY(${fall * 0.55}px) scale(0.78, 1.18)`, offset: 0.72 },
+              { opacity: 0.9, transform: `translateY(${fall * 0.9}px) scale(0.86, 1.05)`, offset: 0.9 },
+              { opacity: 0, transform: `translateY(${fall}px) scale(0.4, 0.5)` },
             ],
-            { duration: 1500, delay: i * 520, easing: "cubic-bezier(.5,0,.9,.6)", fill: "forwards" },
+            { duration: 2100, delay: 150 + i * 650, easing: "cubic-bezier(.45,0,.7,.9)", fill: "forwards" },
           );
+          sparks.slice(i * 3, i * 3 + 3).forEach((sp, j) => {
+            const ang = (-120 + j * 60) * (Math.PI / 180);
+            sp.animate(
+              [
+                { opacity: 0, transform: "translate(0,0) scale(0.4)" },
+                { opacity: 1, transform: `translate(${Math.cos(ang) * 6}px, ${Math.sin(ang) * 6}px) scale(1)`, offset: 0.3 },
+                { opacity: 0, transform: `translate(${Math.cos(ang) * 14}px, ${Math.sin(ang) * 14 + 4}px) scale(0.2)` },
+              ],
+              { duration: 700, delay: 150 + i * 650 + 1890, easing: "cubic-bezier(.2,.8,.3,1)", fill: "forwards" },
+            );
+          });
         });
-        await wait(3600);
+        await wait(4400);
         if (!alive) return;
         await wait(1800 + Math.random() * 1800);
       }
@@ -227,7 +248,7 @@ export function Mascot({ label }: { label: string }) {
       window.clearTimeout(start);
       section.removeEventListener("pointermove", onMove as EventListener);
       section.removeEventListener("pointerleave", onLeave);
-      [drop, portal, blob, edgeLine, ...drips].forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
+      [drop, portal, blob, edgeLine, ...drips, ...sparks].forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
     };
   }, []);
 
@@ -255,8 +276,9 @@ export function Mascot({ label }: { label: string }) {
         <div className="pf-blob" />
         {[0, 1, 2].map((i) => (
           // eslint-disable-next-line @next/next/no-img-element
-          <img key={i} className="pf-drip" src="/brand/potion-drop-80.webp" alt="" loading="lazy" />
+          <img key={i} className="pf-drip" src="/brand/potion-drop-80.webp" srcSet="/brand/potion-drop-80.webp 80w, /brand/potion-drop-160.webp 160w" sizes="16px" alt="" loading="lazy" />
         ))}
+        {Array.from({ length: 9 }, (_, i) => <span key={`s${i}`} className="pf-spark" />)}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="pf-drop" src="/brand/potion-drop-80.webp" srcSet="/brand/potion-drop-80.webp 80w, /brand/potion-drop-160.webp 160w" sizes="20px" alt="" loading="lazy" />
       </div>

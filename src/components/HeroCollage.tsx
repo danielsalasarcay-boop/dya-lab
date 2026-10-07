@@ -7,21 +7,12 @@ import { BrowserFrame, PhoneFrame } from "./Frames";
 type Site = { slug: string; domain: string; statusBg: string; statusFg?: string };
 type Shot = Site & { img: StaticImageData; mobile: StaticImageData };
 
-// Orden de las 3 ventanas: cambia en cada visita (progresivo, guardado en el navegador).
-// En el servidor y en la hidratación se usa 0; luego React re-renderiza con el turno real
-// (queda cubierto por la pantalla de carga).
-let turn: number | null = null;
+// Orden de las 3 ventanas: cambia en cada visita. Lo decide un script en el <head>
+// (layout.tsx) ANTES de pintar, escribiendo html[data-hero-turn]; el CSS coloca cada
+// ventana según ese atributo. Así las imágenes nunca cambian de src tras hidratar
+// (antes eso provocaba una segunda descarga y retrasaba el LCP en móvil).
 function readTurn() {
-  if (turn === null) {
-    try {
-      const n = Number(localStorage.getItem("dal-hero-turn") ?? "-1") + 1;
-      localStorage.setItem("dal-hero-turn", String(n));
-      turn = n;
-    } catch {
-      turn = Math.floor(Math.random() * 3);
-    }
-  }
-  return turn;
+  return Number(document.documentElement.dataset.heroTurn ?? "0") || 0;
 }
 const noop = () => () => {};
 
@@ -33,12 +24,6 @@ const noop = () => () => {};
 export function HeroCollage({ trio, extras }: { trio: Shot[]; extras: Site[] }) {
   const k = useSyncExternalStore(noop, readTurn, () => 0) % trio.length;
   const frontShot = trio[k];
-  const middleShot = trio[(k + 1) % trio.length];
-  const backShot = trio[(k + 2) % trio.length];
-  const back = { src: backShot.img, domain: backShot.domain };
-  const middle = { src: middleShot.img, domain: middleShot.domain };
-  const front = frontShot.img;
-  const phone = frontShot.mobile;
   // Videos del frente: primero el sitio que está al frente, luego los demás proyectos.
   const sites: Site[] = [frontShot, ...extras];
   const rootRef = useRef<HTMLDivElement>(null);
@@ -106,53 +91,53 @@ export function HeroCollage({ trio, extras }: { trio: Shot[]; extras: Site[] }) 
   return (
     <div ref={rootRef} className="hero-collage relative mx-auto aspect-[1/0.86] w-full max-w-[640px]" aria-hidden>
       <div aria-hidden className="hero-glow" />
-      <div className="hero-layer absolute right-0 top-0 w-[78%]" style={{ ["--d" as string]: 0.35, ["--i" as string]: 0 }}>
-        <div className="hero-fly"><div className="hero-float" style={{ ["--f" as string]: "7.5s" }}>
-          <BrowserFrame domain={back.domain}>
-            <Image src={back.src} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} preload />
-          </BrowserFrame>
-        </div></div>
-      </div>
-      <div className="hero-layer absolute right-[11%] top-[19%] w-[78%]" style={{ ["--d" as string]: 0.7, ["--i" as string]: 1 }}>
-        <div className="hero-fly"><div className="hero-float" style={{ ["--f" as string]: "8.5s" }}>
-          <BrowserFrame domain={middle.domain}>
-            <Image src={middle.src} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} loading="eager" />
-          </BrowserFrame>
-        </div></div>
-      </div>
-      <div className="hero-layer absolute right-[22%] top-[38%] w-[78%]" style={{ ["--d" as string]: 1.1, ["--i" as string]: 2 }}>
-        <div className="hero-fly"><div className="hero-float" style={{ ["--f" as string]: "6.8s" }}>
-          <BrowserFrame domain={live ? site.domain : sites[0].domain}>
-            <div className="relative">
-              <Image src={front} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} loading="eager" />
-              {live && (
-                <video
-                  key={site.slug}
-                  className="hero-live absolute inset-0 h-full w-full object-cover"
-                  src={media("desktop").src}
-                  poster={media("desktop").poster}
-                  muted
-                  playsInline
-                  preload="auto"
-                  onEnded={() => setIdx((i) => (i + 1) % sites.length)}
-                />
-              )}
-            </div>
-          </BrowserFrame>
-        </div></div>
-      </div>
-      <div className="hero-layer absolute bottom-[-4%] right-[1%] w-[23%]" style={{ ["--d" as string]: 1.6, ["--i" as string]: 3 }}>
+      {/* Las 3 ventanas en orden fijo; su lugar (atrás / medio / frente) lo pone el CSS. */}
+      {trio.map((shot, j) => (
+        <div key={shot.slug} className={`hero-layer hero-item hero-item-${j} absolute w-[78%]`}>
+          <div className="hero-fly"><div className="hero-float">
+            <BrowserFrame domain={shot.domain}>
+              <Image src={shot.img} alt="" sizes="(min-width:1024px) 440px, 72vw" quality={70} preload={j === 0} loading="eager" />
+            </BrowserFrame>
+          </div></div>
+        </div>
+      ))}
+      {/* Video del frente: capa encima de la ventana delantera, solo cuando ya se reproduce */}
+      {live && (
+        <div className="hero-layer hero-front-video absolute w-[78%]">
+          <div className="hero-fly"><div className="hero-float">
+            <BrowserFrame domain={site.domain}>
+              <video
+                key={site.slug}
+                className="hero-live block aspect-[16/10] w-full object-cover"
+                src={media("desktop").src}
+                poster={media("desktop").poster}
+                muted
+                playsInline
+                preload="auto"
+                onEnded={() => setIdx((i) => (i + 1) % sites.length)}
+              />
+            </BrowserFrame>
+          </div></div>
+        </div>
+      )}
+      {/* iPhone: uno por sitio, superpuestos; se ve el del sitio que va al frente */}
+      <div className="hero-layer hero-phone absolute bottom-[-4%] right-[1%] w-[23%]">
         <div className="hero-fly"><div className="hero-float" style={{ ["--f" as string]: "5.9s" }}>
-          <PhoneFrame
-            key={live ? site.slug : "static"}
-            src={phone}
-            video={live ? media("mobile") : undefined}
-            alt=""
-            sizes="150px"
-            statusBg={live ? site.statusBg : sites[0].statusBg}
-            statusFg={live ? site.statusFg : sites[0].statusFg}
-            preload
-          />
+          <div className="relative">
+            {trio.map((shot, j) => (
+              <div key={shot.slug} className={`hero-phone-item hero-phone-${j} ${j === 0 ? "" : "absolute inset-0"}`}>
+                <PhoneFrame
+                  src={shot.mobile}
+                  video={live && j === k ? media("mobile") : undefined}
+                  alt=""
+                  sizes="150px"
+                  statusBg={live && j === k ? site.statusBg : shot.statusBg}
+                  statusFg={live && j === k ? site.statusFg : shot.statusFg}
+                  preload={j === 0}
+                />
+              </div>
+            ))}
+          </div>
         </div></div>
       </div>
     </div>

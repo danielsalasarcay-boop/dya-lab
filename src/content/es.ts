@@ -45,7 +45,7 @@ export const es = {
     why: {
       eyebrow: "El porqué",
       big: "Una web genérica no se recuerda.",
-      small: "La tuya tiene que sentirse única desde el primer scroll: movimiento, detalle y una identidad que nadie más tiene.",
+      small: "La tuya tiene que sentirse única desde el primer scroll.",
     },
     listLabel: "Nuestros servicios",
     cards: [
@@ -53,15 +53,15 @@ export const es = {
         n: "01",
         eyebrow: "Web",
         big: "Webs con movimiento que no se parecen a ninguna.",
-        small: "Diseño a medida con animaciones premium al hacer scroll, efectos interactivos y tecnología actual. Impecable en el teléfono y lista para vender.",
-        tags: ["Animaciones", "Scroll cinemático", "A medida", "Mobile first"],
+        small: "Animaciones premium al hacer scroll, efectos interactivos y tecnología actual. Impecable en el teléfono.",
+        tags: ["Animaciones", "A medida", "Mobile first"],
       },
       {
         n: "02",
         eyebrow: "Marca",
         big: "Una identidad que cobra vida.",
-        small: "Logo, colores y tipografía pensados para la pantalla: tu marca se mueve con tu web y se ve impecable en redes e imprenta.",
-        tags: ["Logo", "Identidad", "Motion", "Archivos"],
+        small: "Logo, colores y tipografía pensados para moverse con tu web y verse impecables en redes e imprenta.",
+        tags: ["Logo", "Identidad", "Motion"],
       },
     ],
     cta: "Cotiza por WhatsApp",

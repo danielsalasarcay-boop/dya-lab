@@ -558,45 +558,86 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
 @keyframes svc-in { from { opacity: 0; transform: translateY(28px) scale(0.98); } }
 
 /* ===== Mascota asomada en la tarjeta "El porqué" ===== */
-/* El corte vertical de la bata queda en el 92,7 % del ancho: se alinea con el borde
+/* El corte vertical de la bata está al 92,7 % del ancho: se alinea con el borde
    derecho de la tarjeta, así el zorro sale "desde atrás" y la pata agarra el borde. */
 .mascot {
+  --mw: 104px; --tx: 0; --ty: 0;
   position: absolute; z-index: 3; bottom: 0; right: calc(var(--mw) * -0.073);
-  --mw: 112px; width: var(--mw); pointer-events: none;
-  filter: drop-shadow(-10px 14px 16px rgb(10 30 20 / 0.35));
+  width: var(--mw); pointer-events: none;
 }
-@media (min-width: 640px) { .mascot { --mw: 140px; } }
-@media (min-width: 1024px) { .mascot { --mw: 156px; } }
-.mascot-body { position: relative; transform-origin: 100% 85%; }
-/* Entrada: se asoma desde detrás del borde */
-.mascot { clip-path: inset(-40% calc(var(--mw) * 0.073 - 1px) -10% -40%); }
-.mascot-body { transform: translateX(70%) rotate(8deg); transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.25, 1.15); }
-.mascot.is-in .mascot-body { transform: none; animation: mascot-wave 3.6s ease-in-out 1s infinite; }
-.mascot.is-in { clip-path: inset(-40% -10% -10% -40%); transition: clip-path 0s 0.9s; }
-@keyframes mascot-wave {
-  0%, 55%, 100% { transform: rotate(0deg); }
-  62% { transform: rotate(-5deg); }
-  70% { transform: rotate(2deg); }
-  78% { transform: rotate(-3deg); }
-  86% { transform: rotate(0deg); }
+@media (min-width: 768px) { .mascot { --mw: 120px; } }
+@media (min-width: 1024px) { .mascot { --mw: 150px; } }
+.mascot img { filter: drop-shadow(-8px 12px 14px rgb(10 30 20 / 0.32)); }
+
+/* 1) Entrada: se asoma desde detrás del borde (recortado hasta que termina) */
+.mascot-enter { clip-path: inset(-60% 7.3% -30% -60%); transform: translateX(78%); transform-origin: 100% 90%; }
+.mascot.is-in .mascot-enter { animation: mascot-enter 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; }
+@keyframes mascot-enter {
+  0% { transform: translateX(78%) rotate(10deg); }
+  70% { transform: translateX(-3%) rotate(-3deg); }
+  100% { transform: none; clip-path: inset(-60% -20% -30% -60%); }
 }
-/* Gotas de poción que caen del matraz */
-.mascot-drop {
-  position: absolute; left: calc(19% + var(--x)); top: 63%;
-  width: 7px; height: 9px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  background: radial-gradient(circle at 35% 30%, #c9fff0, #3fe0b0 55%, #149a78);
-  box-shadow: 0 0 10px 2px rgb(63 224 176 / 0.55);
-  opacity: 0;
+/* 2) Inclinación hacia el cursor */
+.mascot-tilt {
+  transform-origin: 100% 85%;
+  transform: rotate(calc(var(--tx) * -5deg)) translate(calc(var(--tx) * 4px), calc(var(--ty) * 3px));
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.mascot.is-in .mascot-drop { animation: mascot-drop 3.4s cubic-bezier(0.55, 0, 0.9, 0.5) calc(1.2s + var(--d)) infinite; }
-@keyframes mascot-drop {
-  0% { opacity: 0; transform: translateY(0) scale(0.6); }
-  8% { opacity: 1; transform: translateY(4px) scale(1); }
-  55% { opacity: 1; }
-  70%, 100% { opacity: 0; transform: translateY(150px) scale(0.8); }
+/* 3) Respiración + asomarse con rebote cada pocos segundos */
+.mascot-idle { position: relative; transform-origin: 100% 88%; }
+.mascot.is-in .mascot-idle { animation: mascot-idle 7.5s cubic-bezier(0.45, 0, 0.55, 1) 1.4s infinite; }
+@keyframes mascot-idle {
+  0%, 100% { transform: translateY(0) rotate(0) scaleY(1); }
+  15% { transform: translateY(-1.5px) rotate(-0.6deg) scaleY(1.012); }
+  30% { transform: translateY(0) rotate(0) scaleY(1); }
+  45% { transform: translateY(-1.5px) rotate(-0.6deg) scaleY(1.012); }
+  58% { transform: translateY(0) rotate(0); }
+  66% { transform: translateX(-5%) rotate(-6deg); }
+  72% { transform: translateX(-3%) rotate(-3.5deg); }
+  77% { transform: translateX(-4.5%) rotate(-5deg); }
+  88% { transform: translateX(0) rotate(0.6deg); }
+  94% { transform: rotate(0); }
+}
+
+/* Poción que se derrite (filtro gooey funde la gota colgante y la que cae) */
+.potion { position: absolute; left: 2%; top: 60%; width: 30px; height: 38%; filter: url(#mascot-goo); }
+.potion-hang, .potion-fall {
+  position: absolute; left: 9px; width: 11px; border-radius: 50%;
+  background: linear-gradient(180deg, #b9ffe9, #3fe0b0 45%, #14a07c);
+}
+.potion-hang { top: 0; height: 15px; transform-origin: 50% 0; transform: scaleY(0.2); opacity: 0; }
+.potion-fall { top: 0; height: 13px; opacity: 0; }
+.mascot.is-in .potion-hang { animation: potion-hang 3.6s cubic-bezier(0.5, 0, 0.5, 1) 1.6s infinite; }
+.mascot.is-in .potion-fall { animation: potion-fall 3.6s cubic-bezier(0.55, 0, 1, 0.45) 1.6s infinite; }
+@keyframes potion-hang {
+  0% { opacity: 1; transform: scaleY(0.25) scaleX(0.9); }
+  32% { opacity: 1; transform: scaleY(1.35) scaleX(0.85); border-radius: 45% 45% 50% 50% / 30% 30% 70% 70%; }
+  40% { opacity: 1; transform: scaleY(1.7) scaleX(0.6); }
+  44% { opacity: 1; transform: scaleY(0.35) scaleX(0.9); }
+  100% { opacity: 1; transform: scaleY(0.25) scaleX(0.9); }
+}
+@keyframes potion-fall {
+  0%, 41% { opacity: 0; top: 12px; transform: scale(0.9, 1); }
+  43% { opacity: 1; top: 14px; transform: scale(0.85, 1.25); }
+  66% { opacity: 1; top: calc(100% - 6px); transform: scale(0.75, 1.5); }
+  68%, 100% { opacity: 0; top: calc(100% - 4px); transform: scale(1.4, 0.4); }
+}
+/* Charco al tocar la tarjeta */
+.potion-puddle {
+  position: absolute; left: calc(var(--mw) * 0.02 - 2px); bottom: 4px; width: 38px; height: 7px; border-radius: 50%;
+  background: radial-gradient(closest-side, #8ef5d4, #2cc79b 60%, transparent);
+  box-shadow: 0 0 14px 3px rgb(63 224 176 / 0.45);
+  transform: scaleX(0); opacity: 0;
+}
+.mascot.is-in .potion-puddle { animation: potion-puddle 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) 1.6s infinite; }
+@keyframes potion-puddle {
+  0%, 66% { opacity: 0; transform: scaleX(0.1) scaleY(0.5); }
+  70% { opacity: 1; transform: scaleX(0.8) scaleY(1.2); }
+  82% { opacity: 0.9; transform: scaleX(1.25) scaleY(0.9); }
+  100% { opacity: 0; transform: scaleX(1.6) scaleY(0.6); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mascot { clip-path: none; }
-  .mascot-body, .mascot.is-in .mascot-body { transform: none; transition: none; animation: none; }
-  .mascot-drop { display: none; }
+  .mascot-enter { clip-path: none; transform: none; }
+  .mascot.is-in .mascot-enter, .mascot.is-in .mascot-idle, .mascot-tilt { animation: none; transition: none; transform: none; }
+  .potion, .potion-puddle { display: none; }
 }

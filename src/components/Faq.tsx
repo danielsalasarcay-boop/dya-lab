@@ -13,7 +13,7 @@ export function Faq({ t }: { t: Dictionary }) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="preguntas" aria-labelledby="preguntas-titulo" className="border-t border-line bg-paper py-16 sm:py-20">
+    <section id="preguntas" aria-labelledby="preguntas-titulo" className="bg-paper py-16 sm:py-20">
       {/* CONFIRMAR: cada respuesta en src/content/es.ts (faq) */}
       <div className="wrap">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">

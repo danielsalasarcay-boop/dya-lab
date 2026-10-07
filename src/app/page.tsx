@@ -11,9 +11,11 @@ import { Plans } from "@/components/Plans";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { WorkMarquee } from "@/components/WorkMarquee";
 
 export default function Home() {
   const t = getDictionary("es");
+  const trabajos = t.work.cases.map((c) => c.name);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -66,10 +68,13 @@ export default function Home() {
         <Hero t={t} />
         <Services t={t} />
         <Work t={t} />
+        <WorkMarquee names={trabajos} />
         <Motion t={t} />
         <Process t={t} />
         <Plans t={t} />
+        <WorkMarquee names={trabajos} reverse />
         <Faq t={t} />
+        <WorkMarquee names={trabajos} />
       </main>
       <Footer t={t} />
       <WhatsAppFloat label={t.contact.floating} message={t.contact.whatsappGreeting} hover={t.contact.floatHover} />

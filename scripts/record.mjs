@@ -19,8 +19,8 @@ const SITES = [
   // Portada lápiz → foto y galería con brújula fija.
   { slug: "casa-panza", url: "https://www.casapanzalosroques.com", zones: [[0, 1400], [3500, 5100]], fast: 55 },
   // Portada aérea con el logo.
-  // Página de casas: 6 propiedades y cierre aéreo con el hidroavión.
-  { slug: "la-capital-del-cielo", url: "https://la-capital-del-cielo.vercel.app/casas.html", zones: [[0, 3700]], fast: 28 },
+  // Portada aérea, casas, experiencia, camisas y cierre aéreo con el hidroavión.
+  { slug: "la-capital-del-cielo", url: "https://www.lacapitaldelcielo.com", zones: [[0, 900], [5200, 6300]], fast: 38 },
   // Fachada día → atardecer → noche y zoom aéreo de la galería.
   { slug: "casa-verde", url: "https://danielsalasarcay-boop.github.io/casa-verde/", zones: [[0, 2000], [5100, 8600]], fast: 55 },
 ];

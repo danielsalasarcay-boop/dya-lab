@@ -144,16 +144,15 @@ export const es = {
       {
         slug: "la-capital-del-cielo",
         name: "La Capital del Cielo",
-        // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
-        url: "https://la-capital-del-cielo.vercel.app/casas.html",
-        domain: "la-capital-del-cielo · vercel.app",
+        url: "https://www.lacapitaldelcielo.com",
+        domain: "lacapitaldelcielo.com",
         sector: "Reservas de casas · Los Roques",
         // FALTA CONTEXTO: ¿la marca/logo también es trabajo del estudio?
         summary:
-          "Marca que reúne casas privadas de lujo en Los Roques: seis propiedades con fotos, huéspedes y habitaciones, reserva directa en cada una y contacto por WhatsApp, correo o Instagram.",
-        tags: ["Web", "Catálogo", "Reservas"],
+          "Marca que reúne casas privadas de lujo en Los Roques: siete propiedades con ficha y reserva, lo que incluye cada estadía, camisas propias con carrito de compra y contacto por WhatsApp.",
+        tags: ["Web", "Reservas", "Tienda"],
         accent: "#7FA7E8",
-        statusBg: "#ffffff",
+        statusBg: "#9499ab",
         statusFg: "#1b1b1b",
       },
     ],

@@ -1,7 +1,5 @@
 import type { Dictionary } from "@/content/es";
-import { whatsappLink } from "@/lib/site";
 import { Eyebrow } from "./Eyebrow";
-import { WhatsAppIcon } from "./WhatsAppIcon";
 import { Mascot } from "./Mascot";
 
 // Arriba: titular, párrafo y acciones. Abajo: tres tarjetas compactas en una fila
@@ -11,22 +9,11 @@ export function Services({ t }: { t: Dictionary }) {
   return (
     <section id="servicios" aria-labelledby="servicios-titulo" className="svc-bg relative z-20 overflow-x-clip py-10 sm:py-12">
       <div className="wrap">
-        <header className="grid items-end gap-6 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
-          {/* Titular principal del sitio (antes en la portada) */}
-          <h1 id="servicios-titulo" className="display max-w-[22ch] text-[clamp(1.9rem,1.1rem+2.4vw,2.9rem)] text-green">
+        <header>
+          {/* Titular principal del sitio (antes en la portada): ancho completo, menos líneas */}
+          <h1 id="servicios-titulo" className="display max-w-[46ch] text-[clamp(1.9rem,1.1rem+2.4vw,2.9rem)] text-green">
             {t.hero.titleA} <span className="text-coral-ink">{t.hero.titleB}</span>
           </h1>
-          <div>
-            <p className="flex flex-wrap items-center gap-x-5 gap-y-3">
-              <a href={whatsappLink(s.ctaMessage)} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-shine">
-                <WhatsAppIcon className="size-5" />
-                {s.cta}
-              </a>
-              <a href="#paquetes" className="svc-link inline-flex min-h-11 items-center gap-2 font-semibold text-green">
-                {s.ctaAlt} <span aria-hidden className="svc-arrow">→</span>
-              </a>
-            </p>
-          </div>
         </header>
 
         <ul aria-label={s.listLabel} className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-12 lg:gap-5">

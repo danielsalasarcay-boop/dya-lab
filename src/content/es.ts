@@ -41,27 +41,34 @@ export const es = {
   },
 
   services: {
-    note: "Los dos servicios se contratan juntos o por separado.",
+    // El porqué no es un servicio: es el problema que resuelven los dos de abajo.
+    why: {
+      eyebrow: "El porqué",
+      big: "Tu cliente compra desde el celular.",
+      small: "Y no espera: si tu web tarda o confunde, se va con otro.",
+    },
+    listLabel: "Nuestros servicios",
     cards: [
       {
         n: "01",
-        eyebrow: "El porqué",
-        big: "Tu cliente compra desde el celular.",
-        small: "Y no espera: si tu web tarda o confunde, se va con otro.",
+        eyebrow: "Web",
+        big: "Un sitio que recibe pedidos.",
+        small: "Tu catálogo y tus precios a la vista, con el botón directo a WhatsApp, cotización o reserva.",
+        tags: ["Catálogo", "WhatsApp", "Cotización", "Reserva"],
       },
       {
         n: "02",
-        eyebrow: "Web",
-        big: "Un sitio que recibe pedidos.",
-        small: "A la medida de lo que vendes, listo para WhatsApp, cotización o reserva.",
-      },
-      {
-        n: "03",
         eyebrow: "Marca",
         big: "Un logo que se reconoce.",
         small: "Con sus versiones, tus colores y los archivos listos para imprenta, redes y web.",
+        tags: ["Logo", "Paleta", "Archivos"],
       },
     ],
+    join: "Juntos o por separado",
+    cta: "Cotiza por WhatsApp",
+    ctaMessage: "¡Hola D&A Lab! 👋 Quiero cotizar una web o una marca para mi negocio.",
+    ctaAlt: "Ver paquetes",
+    ctaNote: "Respondemos el mismo día hábil.",
   },
 
   work: {

@@ -502,3 +502,57 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
 /* Números del footer: más pequeños y en una sola línea */
 .ft-phones .ft-link { font-size: 13px; min-height: 36px; }
 .ft-phones svg { width: 14px; height: 14px; }
+
+/* Servicios (bento): sage con luz radial, tarjetas de vidrio y entrada al hacer scroll */
+.svc-bg {
+  background:
+    radial-gradient(60rem 30rem at 85% 0%, rgb(255 255 255 / 0.55), transparent 60%),
+    radial-gradient(40rem 26rem at 0% 100%, rgb(240 122 90 / 0.10), transparent 65%),
+    var(--color-sage);
+}
+.svc-glass {
+  background: rgb(255 255 255 / 0.72);
+  border: 1px solid rgb(255 255 255 / 0.8);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+}
+.svc-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgb(23 59 43 / 0.06), 0 12px 30px -18px rgb(23 59 43 / 0.25);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s;
+}
+/* Halo coral que se enciende en la esquina al pasar el cursor */
+.svc-card::before {
+  content: "";
+  position: absolute;
+  inset: -40% -40% auto auto;
+  width: 70%;
+  aspect-ratio: 1;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(240 122 90 / 0.22), transparent);
+  opacity: 0.35;
+  transition: opacity 0.4s, transform 0.6s;
+}
+.svc-why::before { background: radial-gradient(closest-side, rgb(249 166 143 / 0.28), transparent); opacity: 0.6; }
+@media (hover: hover) {
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgb(23 59 43 / 0.06), 0 28px 50px -24px rgb(23 59 43 / 0.4); }
+  .svc-card:hover::before { opacity: 1; transform: scale(1.15); }
+}
+.svc-arrow { display: inline-block; transition: transform 0.25s; }
+.svc-link:hover .svc-arrow, .svc-link:focus-visible .svc-arrow { transform: translateX(4px); }
+.svc-link:hover { color: var(--color-coral-ink); }
+
+/* Entrada con scroll sin JS: solo donde hay scroll-driven animations */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .svc-reveal {
+      animation: svc-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+@keyframes svc-in { from { opacity: 0; transform: translateY(28px) scale(0.98); } }

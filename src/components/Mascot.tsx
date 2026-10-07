@@ -127,8 +127,12 @@ export function Mascot({ label }: { label: string }) {
         const pw = Math.max(40, g.mw * 0.34);
         Object.assign(drop.style, { width: `${dw}px`, left: `${g.sx - dw / 2}px`, top: `${g.sy}px` });
         Object.assign(portal.style, { width: `${pw}px`, height: `${pw * 0.26}px`, left: `${g.sx - pw / 2}px`, top: `${g.edge - pw * 0.13}px` });
-        const ew = Math.min(window.innerWidth * 0.7, 720);
-        Object.assign(edgeLine.style, { width: `${ew}px`, left: `${g.sx - ew / 2}px`, top: `${g.edge - 1}px` });
+        // Línea de la división: centrada en la gota pero sin salirse de la pantalla
+        const ew = Math.min(window.innerWidth * 0.6, 640);
+        const rootLeft = root.getBoundingClientRect().left;
+        const maxLeft = document.documentElement.clientWidth - rootLeft - ew - 8;
+        const el = Math.min(g.sx - ew / 2, maxLeft);
+        Object.assign(edgeLine.style, { width: `${ew}px`, left: `${el}px`, top: `${g.edge - 1}px` });
         Object.assign(blob.style, { width: `${dw * 1.3}px`, height: `${dw * 0.55}px`, left: `${g.sx - dw * 0.65}px`, top: `${g.edge - dw * 0.3}px` });
         const dripW = [dw * 0.95, dw * 0.72, dw * 0.55];
         const dripX = [0, -pw * 0.18, pw * 0.2];

@@ -168,10 +168,10 @@ export function HeroLogo({ label, size = "md" }: { label: string; size?: "md" | 
       <canvas
         ref={canvasRef}
         aria-hidden
-        className={`shrink-0 touch-pan-y ${size === "lg" ? "h-[110px] w-[175px] sm:h-[150px] sm:w-[238px] lg:h-[190px] lg:w-[302px]" : "h-[74px] w-[118px] sm:h-[96px] sm:w-[153px]"}`}
+        className={`shrink-0 touch-pan-y ${size === "lg" ? "h-[120px] w-[190px] sm:h-[160px] sm:w-[254px] lg:h-[clamp(190px,30svh,300px)] lg:w-[clamp(302px,47.7svh,477px)]" : "h-[74px] w-[118px] sm:h-[96px] sm:w-[153px]"}`}
       />
       <div aria-hidden className="hero-logo-word">
-        <Logo variant="word" className={`h-auto text-green ${size === "lg" ? "w-[130px] sm:w-[170px] lg:w-[200px]" : "w-[118px] sm:w-[150px]"}`} title="" />
+        <Logo variant="word" className={`h-auto text-green ${size === "lg" ? "w-[140px] sm:w-[180px] lg:w-[clamp(200px,31svh,310px)]" : "w-[118px] sm:w-[150px]"}`} title="" />
         <span className="mt-2 block h-[2px] w-full origin-left bg-coral hero-logo-line" />
       </div>
     </div>

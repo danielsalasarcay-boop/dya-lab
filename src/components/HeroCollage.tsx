@@ -89,7 +89,7 @@ export function HeroCollage({ trio, extras }: { trio: Shot[]; extras: Site[] }) 
   });
 
   return (
-    <div ref={rootRef} className="hero-collage relative mx-auto aspect-[1/0.86] w-full max-w-[640px]" aria-hidden>
+    <div ref={rootRef} className="hero-collage relative mx-auto aspect-[1/0.86] w-full" aria-hidden>
       <div aria-hidden className="hero-glow" />
       {/* Las 3 ventanas en orden fijo; su lugar (atrás / medio / frente) lo pone el CSS. */}
       {trio.map((shot, j) => (

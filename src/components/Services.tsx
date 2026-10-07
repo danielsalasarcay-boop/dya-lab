@@ -2,6 +2,7 @@ import type { Dictionary } from "@/content/es";
 import { whatsappLink } from "@/lib/site";
 import { Eyebrow } from "./Eyebrow";
 import { WhatsAppIcon } from "./WhatsAppIcon";
+import { Mascot } from "./Mascot";
 
 // Bento en 12 columnas. Arriba: el titular con su CTA y, al lado, el porqué en
 // verde (llena el hueco que dejaba el titular solo). Abajo: los dos servicios,
@@ -26,15 +27,18 @@ export function Services({ t }: { t: Dictionary }) {
           </p>
         </header>
 
-        <aside aria-label={s.why.eyebrow} className="svc-card svc-reveal bracket-pattern svc-why flex flex-col justify-between gap-10 rounded-3xl bg-green p-7 text-bone sm:p-8 lg:col-span-5">
+        <div className="relative lg:col-span-5">
+        <aside aria-label={s.why.eyebrow} className="svc-card svc-reveal bracket-pattern svc-why flex h-full flex-col justify-between gap-10 rounded-3xl bg-green p-7 text-bone sm:p-8">
           <Eyebrow tone="dark">{s.why.eyebrow}</Eyebrow>
           <div>
-            <p className="font-display text-[clamp(1.6rem,1.2rem+1.4vw,2.2rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-balance">
+            <p className="font-display text-[clamp(1.6rem,1.2rem+1.4vw,2.2rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-balance lg:pr-36">
               {s.why.big}
             </p>
-            <p className="mt-4 max-w-[30ch] text-[16px] leading-snug text-mist">{s.why.small}</p>
+            <p className="mt-4 max-w-[60%] text-[16px] leading-snug text-mist sm:max-w-[30ch]">{s.why.small}</p>
           </div>
         </aside>
+        <Mascot label="Mascota de D&A Lab saludando" />
+        </div>
 
         <ul aria-label={s.listLabel} className="grid gap-4 sm:grid-cols-2 lg:col-span-12 lg:grid-cols-subgrid lg:gap-5">
           {s.cards.map((c, i) => (

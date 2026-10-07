@@ -556,3 +556,47 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
   }
 }
 @keyframes svc-in { from { opacity: 0; transform: translateY(28px) scale(0.98); } }
+
+/* ===== Mascota asomada en la tarjeta "El porqué" ===== */
+/* El corte vertical de la bata queda en el 92,7 % del ancho: se alinea con el borde
+   derecho de la tarjeta, así el zorro sale "desde atrás" y la pata agarra el borde. */
+.mascot {
+  position: absolute; z-index: 3; bottom: 0; right: calc(var(--mw) * -0.073);
+  --mw: 112px; width: var(--mw); pointer-events: none;
+  filter: drop-shadow(-10px 14px 16px rgb(10 30 20 / 0.35));
+}
+@media (min-width: 640px) { .mascot { --mw: 140px; } }
+@media (min-width: 1024px) { .mascot { --mw: 156px; } }
+.mascot-body { position: relative; transform-origin: 100% 85%; }
+/* Entrada: se asoma desde detrás del borde */
+.mascot { clip-path: inset(-40% calc(var(--mw) * 0.073 - 1px) -10% -40%); }
+.mascot-body { transform: translateX(70%) rotate(8deg); transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.25, 1.15); }
+.mascot.is-in .mascot-body { transform: none; animation: mascot-wave 3.6s ease-in-out 1s infinite; }
+.mascot.is-in { clip-path: inset(-40% -10% -10% -40%); transition: clip-path 0s 0.9s; }
+@keyframes mascot-wave {
+  0%, 55%, 100% { transform: rotate(0deg); }
+  62% { transform: rotate(-5deg); }
+  70% { transform: rotate(2deg); }
+  78% { transform: rotate(-3deg); }
+  86% { transform: rotate(0deg); }
+}
+/* Gotas de poción que caen del matraz */
+.mascot-drop {
+  position: absolute; left: calc(19% + var(--x)); top: 63%;
+  width: 7px; height: 9px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(circle at 35% 30%, #c9fff0, #3fe0b0 55%, #149a78);
+  box-shadow: 0 0 10px 2px rgb(63 224 176 / 0.55);
+  opacity: 0;
+}
+.mascot.is-in .mascot-drop { animation: mascot-drop 3.4s cubic-bezier(0.55, 0, 0.9, 0.5) calc(1.2s + var(--d)) infinite; }
+@keyframes mascot-drop {
+  0% { opacity: 0; transform: translateY(0) scale(0.6); }
+  8% { opacity: 1; transform: translateY(4px) scale(1); }
+  55% { opacity: 1; }
+  70%, 100% { opacity: 0; transform: translateY(150px) scale(0.8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mascot { clip-path: none; }
+  .mascot-body, .mascot.is-in .mascot-body { transform: none; transition: none; animation: none; }
+  .mascot-drop { display: none; }
+}

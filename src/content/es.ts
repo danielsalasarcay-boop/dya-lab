@@ -35,7 +35,7 @@ export const es = {
 
   hero: {
     eyebrow: "Diseño web y de marca · Venezuela",
-    titleA: "Desarrollo web premium con movimiento, creado desde cero para que tu marca sea",
+    titleA: "Desarrollo web premium con movimiento, para que tu marca sea",
     titleB: "inolvidable.",
     proof: "Sitios en producción para",
   },

@@ -122,7 +122,7 @@ export function LabScene({ cta, href }: { cta: string; href: string }) {
           const sx = fr.left - sr.left + (fr.width * TUBE.x) / 100;
           const sy = fr.top - sr.top + (fr.height * (TUBE.y - 8)) / 100;
           const tx = sr.width / 2;
-          const ty = 22;
+          const ty = 28;
           await Promise.all(
             motes.map((m, i) => {
               const spread = (Math.random() - 0.5) * 40;
@@ -213,8 +213,8 @@ export function LabScene({ cta, href }: { cta: string; href: string }) {
         >
           <span className="lab-cta-label">{cta}</span>
           <span aria-hidden className="lab-cta-arrow">
-            <span>→</span>
-            <span>→</span>
+            <span><svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg></span>
+            <span><svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg></span>
           </span>
         </Link>
       </div>

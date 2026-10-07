@@ -95,102 +95,126 @@ export function Mascot({ label }: { label: string }) {
       section.addEventListener("pointerleave", onLeave);
     }
 
-    // ---------- Poción que cae hasta Portafolio ----------
+    // ---------- Poción: gota → portal en el borde → gotitas en Portafolio ----------
     const drop = flow.querySelector<HTMLImageElement>(".pf-drop")!;
-    const splat = flow.querySelector<HTMLImageElement>(".pf-splat")!;
-    const glow = flow.querySelector<HTMLDivElement>(".pf-glow")!;
-    const trail = flow.querySelector<HTMLImageElement>(".pf-trail")!;
+    const portal = flow.querySelector<HTMLDivElement>(".pf-portal")!;
+    const blob = flow.querySelector<HTMLDivElement>(".pf-blob")!;
+    const drips = Array.from(flow.querySelectorAll<HTMLImageElement>(".pf-drip"));
+    const edgeLine = flow.querySelector<HTMLDivElement>(".pf-edge")!;
     let alive = true;
     let timer = 0;
     const wait = (ms: number) => new Promise<void>((r) => { timer = window.setTimeout(r, ms); });
+    const done = (a: Animation) => a.finished.then(() => {}, () => {});
 
     const geometry = () => {
       const r = root.getBoundingClientRect();
-      const mh = r.height;
       const mw = r.width;
       const sx = mw * FLASK.x;
-      const sy = mh * FLASK.y;
-      // Cae en el margen superior de la sección Portafolio (sin tapar textos).
-      const target = document.querySelector<HTMLElement>("#trabajo");
-      let landY = mh + 140;
-      if (target) landY = target.getBoundingClientRect().top - r.top + 30;
-      return { mw, sx, sy, landY: Math.max(landY, sy + 120) };
+      const sy = r.height * FLASK.y;
+      // El portal se abre justo en el borde entre esta sección y Portafolio.
+      const next = document.querySelector<HTMLElement>("#trabajo");
+      const edge = next ? next.getBoundingClientRect().top - r.top : r.height + 80;
+      return { mw, sx, sy, edge: Math.max(edge, sy + 80) };
     };
 
     const cycle = async () => {
       while (alive) {
         if (!visible || document.hidden) { await wait(600); continue; }
         const g = geometry();
-        const dw = Math.max(16, g.mw * 0.13);
+        const dw = Math.max(12, g.mw * 0.085);
         const dh = dw * 2.8;
-        const sw = Math.max(150, g.mw * 1.3);
-        const sh = sw * 0.456;
+        const pw = Math.max(40, g.mw * 0.34);
         Object.assign(drop.style, { width: `${dw}px`, left: `${g.sx - dw / 2}px`, top: `${g.sy}px` });
-        Object.assign(trail.style, { width: `${dw * 0.7}px`, left: `${g.sx - dw * 0.35}px` });
-        Object.assign(splat.style, { width: `${sw}px`, left: `${g.sx - sw / 2}px`, top: `${g.landY - sh * 0.42}px` });
-        Object.assign(glow.style, { width: `${sw * 1.6}px`, height: `${sw * 0.9}px`, left: `${g.sx - sw * 0.8}px`, top: `${g.landY - sw * 0.45}px` });
+        Object.assign(portal.style, { width: `${pw}px`, height: `${pw * 0.26}px`, left: `${g.sx - pw / 2}px`, top: `${g.edge - pw * 0.13}px` });
+        const ew = Math.min(window.innerWidth * 0.7, 720);
+        Object.assign(edgeLine.style, { width: `${ew}px`, left: `${g.sx - ew / 2}px`, top: `${g.edge - 1}px` });
+        Object.assign(blob.style, { width: `${dw * 1.3}px`, height: `${dw * 0.55}px`, left: `${g.sx - dw * 0.65}px`, top: `${g.edge - dw * 0.3}px` });
+        drips.forEach((d, i) => {
+          const w = dw * (0.62 - i * 0.1);
+          Object.assign(d.style, { width: `${w}px`, left: `${g.sx - w / 2 + (i - 1) * pw * 0.14}px`, top: `${g.edge}px` });
+        });
 
         // 1) Gota viscosa que se estira colgando del matraz
-        await drop.animate(
+        await done(drop.animate(
           [
             { opacity: 0, transform: "translateY(0) scale(0.6, 0.12)" },
             { opacity: 1, transform: "translateY(0) scale(0.95, 0.55)", offset: 0.55 },
             { opacity: 1, transform: "translateY(2px) scale(0.85, 1)" },
           ],
-          { duration: 1500, easing: "cubic-bezier(.45,0,.4,1)", fill: "forwards" },
-        ).finished.catch(() => {});
+          { duration: 1700, easing: "cubic-bezier(.45,0,.4,1)", fill: "forwards" },
+        ));
         if (!alive) return;
 
-        // 2) Se suelta: respingo del zorro y caída con gravedad
+        // 2) Se suelta (respingo del zorro) y cae hasta el borde de la sección
         kick.v = -9;
-        const dist = g.landY - g.sy - dh * 0.75;
-        const dur = 380 + Math.sqrt(Math.max(0, dist)) * 30;
-        const fall = drop.animate(
+        const dist = g.edge - g.sy - dh;
+        const dur = 420 + Math.sqrt(Math.max(0, dist)) * 30;
+        await done(drop.animate(
           [
             { transform: "translateY(2px) scale(0.85, 1)" },
-            { transform: `translateY(${dist * 0.25}px) scale(0.8, 1.15)`, offset: 0.35 },
-            { transform: `translateY(${dist}px) scale(0.7, 1.35)` },
+            { transform: `translateY(${dist * 0.3}px) scale(0.8, 1.12)`, offset: 0.4 },
+            { transform: `translateY(${dist}px) scale(0.72, 1.28)` },
           ],
           { duration: dur, easing: "cubic-bezier(.55,0,1,.6)", fill: "forwards" },
-        );
-        // estela fina que se rompe tras la gota
-        trail.style.top = `${g.sy + dh * 0.1}px`;
-        trail.animate(
-          [
-            { opacity: 0.9, height: `${dh * 0.3}px`, transform: "translateY(0)" },
-            { opacity: 0, height: `${dh * 0.9}px`, transform: `translateY(${dist * 0.4}px)` },
-          ],
-          { duration: dur * 0.8, easing: "ease-in", fill: "forwards" },
-        );
-        await fall.finished.catch(() => {});
+        ));
         if (!alive) return;
-        drop.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 90, fill: "forwards" });
 
-        // 3) Impacto: salpicadura elástica + destello radiactivo
-        glow.animate(
+        // 3) Se queda pegada en el borde: la división se enciende y ondula,
+        //    y la gota se aplasta en una gotita que brilla
+        edgeLine.animate(
           [
-            { opacity: 0, transform: "scale(0.4)" },
-            { opacity: 1, transform: "scale(1)", offset: 0.15 },
-            { opacity: 0.55, transform: "scale(1.05)", offset: 0.6 },
-            { opacity: 0, transform: "scale(1.2)" },
+            { opacity: 0, transform: "scaleX(0.02)" },
+            { opacity: 1, transform: "scaleX(0.35)", offset: 0.12 },
+            { opacity: 0.85, transform: "scaleX(0.8)", offset: 0.45 },
+            { opacity: 0, transform: "scaleX(1)" },
           ],
-          { duration: 3600, easing: "cubic-bezier(.2,.8,.2,1)", fill: "forwards" },
+          { duration: 2600, easing: "cubic-bezier(.2,.8,.2,1)", fill: "forwards" },
         );
-        // 4) Se derrite: se hunde y escurre; 5) se evapora
-        await splat.animate(
+        drop.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 120, fill: "forwards" });
+        blob.animate(
           [
-            { opacity: 0, transform: "scale(0.15, 0.05)", filter: "brightness(1.8)" },
-            { opacity: 1, transform: "scale(1.12, 0.82)", filter: "brightness(1.5)", offset: 0.07 },
-            { opacity: 1, transform: "scale(0.96, 1.06)", filter: "brightness(1.15)", offset: 0.13 },
-            { opacity: 1, transform: "scale(1.02, 0.98)", filter: "brightness(1.05)", offset: 0.19 },
-            { opacity: 1, transform: "scale(1, 1) translateY(0)", filter: "brightness(1)", offset: 0.3 },
-            { opacity: 0.95, transform: "scale(1.03, 1.16) translateY(5px)", filter: "brightness(0.95)", offset: 0.72 },
-            { opacity: 0, transform: "scale(1.06, 1.3) translateY(12px)", filter: "brightness(0.8)" },
+            { opacity: 0, transform: "scale(0.4, 1.4)" },
+            { opacity: 1, transform: "scale(1.25, 0.7)", offset: 0.12 },
+            { opacity: 1, transform: "scale(0.95, 1.08)", offset: 0.24 },
+            { opacity: 1, transform: "scale(1, 1)", offset: 0.34 },
+            { opacity: 1, transform: "scale(1.6, 0.6)", offset: 0.5 },
+            { opacity: 0, transform: "scale(2.6, 0.3)" },
           ],
-          { duration: 4200, easing: "linear", fill: "forwards" },
-        ).finished.catch(() => {});
+          { duration: 1500, easing: "cubic-bezier(.3,.7,.3,1)", fill: "forwards" },
+        );
+        await wait(620);
         if (!alive) return;
-        await wait(1600 + Math.random() * 1600);
+
+        // 4) La gota se abre en un portal: anillo luminoso con remolino
+        portal.animate(
+          [
+            { opacity: 0, transform: "scale(0.05, 0.2)" },
+            { opacity: 1, transform: "scale(1.08, 1.05)", offset: 0.12 },
+            { opacity: 1, transform: "scale(1, 1)", offset: 0.2 },
+            { opacity: 1, transform: "scale(1, 1)", offset: 0.82 },
+            { opacity: 0, transform: "scale(0.05, 0.2)" },
+          ],
+          { duration: 4200, easing: "cubic-bezier(.25,.8,.25,1)", fill: "forwards" },
+        );
+        await wait(700);
+        if (!alive) return;
+
+        // 5) Del portal caen gotitas hacia Portafolio y se desvanecen antes del texto
+        const fallTo = 54;
+        drips.forEach((d, i) => {
+          d.animate(
+            [
+              { opacity: 0, transform: "translateY(-6px) scale(0.5, 0.2)" },
+              { opacity: 1, transform: "translateY(-2px) scale(0.9, 0.7)", offset: 0.22 },
+              { opacity: 1, transform: `translateY(${fallTo * 0.35}px) scale(0.8, 1.15)`, offset: 0.6 },
+              { opacity: 0, transform: `translateY(${fallTo}px) scale(0.6, 1.3)` },
+            ],
+            { duration: 1500, delay: i * 520, easing: "cubic-bezier(.5,0,.9,.6)", fill: "forwards" },
+          );
+        });
+        await wait(3600);
+        if (!alive) return;
+        await wait(1800 + Math.random() * 1800);
       }
     };
     const start = window.setTimeout(() => { void cycle(); }, 1600);
@@ -203,7 +227,7 @@ export function Mascot({ label }: { label: string }) {
       window.clearTimeout(start);
       section.removeEventListener("pointermove", onMove as EventListener);
       section.removeEventListener("pointerleave", onLeave);
-      [drop, splat, glow, trail].forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
+      [drop, portal, blob, edgeLine, ...drips].forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
     };
   }, []);
 
@@ -224,13 +248,15 @@ export function Mascot({ label }: { label: string }) {
           />
         </div>
       </div>
-      {/* Capa de la poción: sale del matraz y cae hasta la sección Portafolio */}
+      {/* Capa de la poción: gota → portal en el borde de la sección → gotitas en Portafolio */}
       <div ref={flowRef} className="potion-flow">
-        <div className="pf-glow" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="pf-trail" src="/brand/potion-drop-80.webp" alt="" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="pf-splat" src="/brand/potion-splat-600.webp" srcSet="/brand/potion-splat-600.webp 600w, /brand/potion-splat-1100.webp 1100w" sizes="260px" alt="" loading="lazy" />
+        <div className="pf-edge" />
+        <div className="pf-portal"><span className="pf-portal-swirl" /></div>
+        <div className="pf-blob" />
+        {[0, 1, 2].map((i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img key={i} className="pf-drip" src="/brand/potion-drop-80.webp" alt="" loading="lazy" />
+        ))}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="pf-drop" src="/brand/potion-drop-80.webp" srcSet="/brand/potion-drop-80.webp 80w, /brand/potion-drop-160.webp 160w" sizes="20px" alt="" loading="lazy" />
       </div>

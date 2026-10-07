@@ -286,7 +286,7 @@ body {
   --h-border: rgb(250 246 240 / 0.28);
 }
 .site-header[data-tone="light"] {
-  --h-ink: var(--color-green); --h-link: rgb(31 77 56 / 0.72); --h-pill: rgb(31 77 56 / 0.08);
+  --h-ink: var(--color-green); --h-link: rgb(31 77 56 / 0.86); --h-pill: rgb(31 77 56 / 0.08);
   --h-border: rgb(31 77 56 / 0.25);
 }
 .header-shell {
@@ -580,17 +580,40 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
 /* 2) Cuerpo: lo mueve el bucle de resortes en JS (Mascot.tsx) */
 .mascot-body { transform-origin: 100% 88%; will-change: transform; }
 
-/* Poción: capa libre que cae desde el matraz hasta la sección Portafolio */
+/* Poción: capa libre que cae desde el matraz hasta el borde de Portafolio */
 .potion-flow { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
-.pf-drop, .pf-trail, .pf-splat, .pf-glow { position: absolute; opacity: 0; will-change: transform, opacity; }
-.pf-drop { transform-origin: 50% 0; height: auto; filter: drop-shadow(0 0 6px rgb(63 224 176 / 0.75)) drop-shadow(0 0 16px rgb(63 224 176 / 0.35)); }
-.pf-trail { height: 0; object-fit: cover; object-position: top; filter: blur(0.3px) drop-shadow(0 0 4px rgb(63 224 176 / 0.6)); }
-.pf-splat { height: auto; transform-origin: 50% 40%; filter: drop-shadow(0 0 10px rgb(63 224 176 / 0.55)); }
-.pf-glow {
-  border-radius: 50%; mix-blend-mode: screen;
-  background: radial-gradient(closest-side, rgb(120 255 210 / 0.55), rgb(63 224 176 / 0.22) 45%, transparent 75%);
-  filter: blur(6px);
+/* La línea que divide las secciones se enciende cuando la gota la toca */
+.pf-edge {
+  height: 2px; border-radius: 2px; transform-origin: 50% 50%;
+  background: linear-gradient(90deg, transparent, rgb(63 224 176 / 0.25) 20%, rgb(190 255 235) 50%, rgb(63 224 176 / 0.25) 80%, transparent);
+  box-shadow: 0 0 10px 1px rgb(63 224 176 / 0.45);
 }
+.pf-edge, .pf-drop, .pf-drip, .pf-portal, .pf-blob { position: absolute; opacity: 0; will-change: transform, opacity; }
+.pf-drop, .pf-drip { height: auto; transform-origin: 50% 0; filter: drop-shadow(0 0 5px rgb(63 224 176 / 0.7)) drop-shadow(0 0 12px rgb(63 224 176 / 0.3)); }
+.pf-blob {
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 40% 35%, #d9fff3, #5ff0c4 40%, #18a883 80%);
+  box-shadow: 0 0 10px 2px rgb(63 224 176 / 0.6);
+}
+/* Portal: anillo fino luminoso con un remolino oscuro adentro */
+.pf-portal {
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 50%, #062b20 0 38%, #0d4a37 52%, transparent 66%);
+  box-shadow:
+    0 0 0 1.5px rgb(170 255 228 / 0.95),
+    0 0 0 3px rgb(63 224 176 / 0.55),
+    0 0 14px 4px rgb(63 224 176 / 0.5),
+    0 0 34px 10px rgb(63 224 176 / 0.18),
+    inset 0 2px 6px rgb(0 0 0 / 0.55);
+  overflow: hidden;
+}
+.pf-portal-swirl {
+  position: absolute; inset: -40% 10%; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent, rgb(63 224 176 / 0.55), transparent 35%, rgb(180 255 230 / 0.35), transparent 70%);
+  animation: pf-swirl 1.6s linear infinite;
+  mix-blend-mode: screen;
+}
+@keyframes pf-swirl { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
   .mascot-enter { clip-path: none; transform: none; }
   .mascot.is-in .mascot-enter { animation: none; transform: none; }

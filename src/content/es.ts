@@ -37,7 +37,7 @@ export const es = {
     eyebrow: "Diseño web y de marca · Venezuela",
     titleA: "Webs y marcas para negocios que",
     titleB: "quieren vender.",
-    lead: "Diseñamos tu sitio y tu identidad visual a la medida de cómo vendes: por catálogo, por WhatsApp o por cotización.",
+    lead: "Creamos webs a medida con animaciones y efectos al hacer scroll, y la marca que las acompaña: sitios que se ven increíbles en el teléfono, se recuerdan y convierten visitas en clientes.",
     proof: "Sitios en producción para",
   },
 

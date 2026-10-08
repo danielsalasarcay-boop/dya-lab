@@ -62,10 +62,12 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
         {err("need")}
       </div>
       <div className="flex flex-col gap-2 sm:col-span-2 sm:flex-row sm:items-center sm:gap-4">
-        <button type="submit" className="btn btn-coral min-h-11 w-full sm:w-auto">
+        <button type="submit" className="btn btn-coral min-h-11 w-full shrink-0 whitespace-nowrap sm:w-auto">
           {t.submit}
         </button>
-        <p className="text-[13px] text-mist">{t.note}</p>
+        <p className="text-[13px] text-mist">
+          {t.note} <a href="/privacidad" className="underline underline-offset-2 hover:text-bone">{t.privacyLink}</a>.
+        </p>
       </div>
     </form>
   );

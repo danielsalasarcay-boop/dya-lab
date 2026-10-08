@@ -77,9 +77,8 @@ export function Footer({ t }: { t: Dictionary }) {
           <div className="flex flex-col items-center gap-3 md:flex-row md:gap-6">
             <nav aria-label={f.legal}>
               <ul className="flex flex-col items-center gap-x-6 sm:flex-row">
-                {/* PENDIENTE: enlazar a /privacidad y /terminos cuando existan esas páginas */}
-                <li><span className="ft-legal">{f.privacy}</span></li>
-                <li><span className="ft-legal">{f.terms}</span></li>
+                <li><a href="/privacidad" className="ft-legal">{f.privacy}</a></li>
+                <li><a href="/terminos" className="ft-legal">{f.terms}</a></li>
               </ul>
             </nav>
             <BackToTop label={f.backToTop} />

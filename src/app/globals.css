@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* CSS del hero de partículas (sección Movimiento), copiado literal del prompt */
+@import "./dya-hero.css";
 
 @theme {
   /* Manual de marca D&A Lab */

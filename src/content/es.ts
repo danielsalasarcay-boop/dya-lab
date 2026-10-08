@@ -54,7 +54,7 @@ export const es = {
         eyebrow: "Web",
         big: "Webs con movimiento que no se parecen a ninguna.",
         small: "Animaciones premium al hacer scroll, efectos interactivos y tecnología actual. Impecable en el teléfono.",
-        tags: ["Animaciones", "A medida", "Mobile first"],
+        tags: ["Animaciones", "A medida"],
       },
       {
         n: "02",

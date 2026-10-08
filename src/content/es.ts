@@ -354,6 +354,10 @@ export const es = {
     backToTop: "Volver arriba",
     tagline: "Desarrollo web premium con movimiento, para que tu marca sea inolvidable.",
     rights: "Todos los derechos reservados.",
+    social: "Redes sociales",
+    legal: "Legal",
+    privacy: "Política de Privacidad",
+    terms: "Términos del Servicio",
   },
 };
 

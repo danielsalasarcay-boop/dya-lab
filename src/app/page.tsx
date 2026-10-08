@@ -1,5 +1,5 @@
 import { getDictionary } from "@/content";
-import { site } from "@/lib/site";
+import { sameAs, site } from "@/lib/site";
 import { Loader } from "@/components/Loader";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -27,7 +27,7 @@ export default function Home() {
         description: t.meta.description,
         areaServed: "VE",
         knowsAbout: ["Diseño web", "Desarrollo web", "Identidad visual", "Diseño de logos"],
-        ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),
+        ...(sameAs.length ? { sameAs } : {}),
       },
       {
         "@type": "ItemList",

@@ -4,6 +4,13 @@ import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { PhoneIcon } from "./PhoneIcon";
 import { BackToTop } from "./FooterBits";
+import { BehanceIcon, InstagramIcon, LinkedInIcon } from "./SocialIcons";
+
+const socials = [
+  { name: "Instagram", href: site.social.instagram, Icon: InstagramIcon },
+  { name: "LinkedIn", href: site.social.linkedin, Icon: LinkedInIcon },
+  { name: "Behance", href: site.social.behance, Icon: BehanceIcon },
+];
 
 // Footer compacto (tamaño original) con fondo moderno: rejilla de puntos que
 // se desvanece, halo de luz animado y grano sutil.
@@ -25,29 +32,58 @@ export function Footer({ t }: { t: Dictionary }) {
             </p>
           </div>
 
-          <nav aria-label={f.colNav} className="md:max-w-[26rem]">
-            <ul className="flex flex-wrap gap-x-5 gap-y-0">
+          {/* 8 enlaces en 2 columnas de 4: grid-flow-col llena primero la columna izquierda */}
+          <nav aria-label={f.colNav}>
+            <ul className="grid grid-flow-col grid-cols-2 grid-rows-4 gap-x-10 gap-y-1 md:gap-x-12">
               {t.nav.map((n) => (
                 <li key={n.href}>
-                  <a href={n.href} className="ft-link">{n.label}</a>
+                  <a href={n.href} className="ft-link ft-nav">{n.label}</a>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <div data-selectable className="ft-phones flex flex-nowrap items-center gap-x-4 whitespace-nowrap">
-            <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-link gap-2">
-              <WhatsAppIcon className="size-4" /> {site.whatsappDisplay}
-            </a>
-            <a href={`tel:${site.phone}`} className="ft-link gap-2">
-              <PhoneIcon className="size-4" /> {site.phoneDisplay}
-            </a>
+          <div className="flex flex-col gap-4">
+            <div data-selectable className="ft-phones flex flex-col items-start gap-y-1">
+              <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-link gap-2">
+                <WhatsAppIcon className="size-4" /> {site.whatsappDisplay}
+              </a>
+              <a href={`tel:${site.phone}`} className="ft-link gap-2">
+                <PhoneIcon className="size-4" /> {site.phoneDisplay}
+              </a>
+            </div>
+            <ul aria-label={f.social} className="-ml-2.5 flex items-center gap-1">
+              {socials.map(({ name, href, Icon }) => (
+                <li key={name}>
+                  {/* Sin URL todavía: se muestra el icono sin enlace */}
+                  {href ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={name} className="ft-social">
+                      <Icon className="size-6" />
+                    </a>
+                  ) : (
+                    <span role="img" aria-label={name} className="ft-social">
+                      <Icon className="size-6" />
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-between gap-4 border-t border-bone/10 pt-4 text-[12px] text-mist sm:text-[13px] md:mt-8">
-          <p>© {new Date().getFullYear()} D&amp;A Lab<span className="hidden sm:inline"> · {t.footer.rights}</span></p>
-          <BackToTop label={f.backToTop} />
+        {/* Barra inferior: apilada y centrada en móvil, repartida a los lados en escritorio */}
+        <div className="mt-8 flex flex-col items-center gap-3 border-t border-bone/10 pt-5 text-center text-[12px] text-mist/75 sm:text-[13px] md:flex-row md:justify-between md:text-left">
+          <p>© {new Date().getFullYear()} D&amp;A Lab<span className="hidden sm:inline"> · {f.rights}</span></p>
+          <div className="flex flex-col items-center gap-3 md:flex-row md:gap-6">
+            <nav aria-label={f.legal}>
+              <ul className="flex flex-col items-center gap-x-6 sm:flex-row">
+                {/* PENDIENTE: enlazar a /privacidad y /terminos cuando existan esas páginas */}
+                <li><span className="ft-legal">{f.privacy}</span></li>
+                <li><span className="ft-legal">{f.terms}</span></li>
+              </ul>
+            </nav>
+            <BackToTop label={f.backToTop} />
+          </div>
         </div>
       </div>
     </footer>

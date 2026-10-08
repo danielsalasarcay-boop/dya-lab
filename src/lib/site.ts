@@ -13,9 +13,16 @@ export const site = {
   // PENDIENTE: correo de contacto.
   email: "hola@tu-dominio.com",
   locale: "es_VE",
-  // PENDIENTE: perfiles públicos del estudio (Instagram, LinkedIn…). Se usan en JSON-LD.
-  sameAs: [] as string[],
+  // PENDIENTE: URLs de los perfiles del estudio. Mientras estén vacías, el icono
+  // del footer apunta a "#". Las que tengan URL se usan también en el JSON-LD.
+  social: {
+    instagram: "",
+    linkedin: "",
+    behance: "",
+  },
 } as const;
+
+export const sameAs = Object.values(site.social).filter(Boolean);
 
 export function whatsappLink(text?: string) {
   const base = `https://wa.me/${site.whatsapp}`;

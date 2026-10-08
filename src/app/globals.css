@@ -505,6 +505,20 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
 .ft-phones .ft-link { font-size: 13px; min-height: 36px; }
 .ft-phones svg { width: 14px; height: 14px; }
 
+/* Nav del footer en columnas: área táctil de 44px y hover en coral (versión AA sobre verde) */
+.ft-nav { min-height: 44px; }
+.ft-nav:hover { color: var(--color-coral-soft); }
+
+/* Redes: 24px de icono dentro de un área táctil de 44px */
+.ft-social { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 9999px; color: var(--color-mist); transition: color 0.25s, transform 0.25s; }
+.ft-social:hover { color: var(--color-coral-soft); transform: scale(1.1); }
+.ft-social:focus-visible { outline: 2px solid var(--color-coral-soft); outline-offset: 2px; }
+
+/* Enlaces legales de la barra inferior: discretos, sin competir con la nav */
+.ft-legal { display: inline-flex; align-items: center; min-height: 44px; transition: color 0.25s; }
+.ft-legal:hover { color: var(--color-bone); }
+@media (prefers-reduced-motion: reduce) { .ft-social:hover { transform: none; } }
+
 /* Servicios (bento): sage con luz radial, tarjetas de vidrio y entrada al hacer scroll */
 .svc-bg {
   background:

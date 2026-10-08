@@ -18,7 +18,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
 *{margin:0;box-sizing:border-box}
 body{width:1200px;height:630px;background:#FAF6F0;font-family:Montserrat;overflow:hidden;position:relative}
 .logo{position:absolute;left:64px;top:56px;width:250px}
-h1{position:absolute;left:64px;top:170px;width:560px;font-size:64px;line-height:1.02;letter-spacing:-.035em;color:#1F4D38;font-weight:800}
+h1{position:absolute;left:64px;top:170px;width:560px;font-size:54px;line-height:1.02;letter-spacing:-.035em;color:#1F4D38;font-weight:800}
 h1 em{font-style:normal;color:#B04A2E}
 .tag{position:absolute;left:64px;bottom:56px;font:500 17px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:#5B605C}
 .tag b{color:#B04A2E;font-weight:500}
@@ -29,21 +29,21 @@ h1 em{font-style:normal;color:#B04A2E}
 </style></head><body>
 <div class="band"></div>
 <div class="logo">${logo}</div>
-<h1>Webs y marcas para negocios que <em>quieren vender.</em></h1>
+<h1>Desarrollo web premium con movimiento, para que tu marca sea <em>inolvidable.</em></h1>
 <p class="tag"><b>‹</b> Diseño web y de marca · Venezuela <b>›</b></p>
 <div class="f" style="right:-40px;top:48px"><i></i><img src="${mc}"></div>
 <div class="f" style="right:20px;top:170px"><i></i><img src="${qb}"></div>
 <div class="f" style="right:80px;top:292px"><i></i><img src="${loopi}"></div>
 </body></html>`;
 
-const browser = await chromium.launch();
+const browser = await chromium.launch().catch(() => chromium.launch({ channel: "msedge" }));
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 await page.setContent(html, { waitUntil: "networkidle" });
 await page.evaluate(() => document.fonts.ready);
 await page.screenshot({ path: "src/app/opengraph-image.png" });
 await browser.close();
 await copyFile("src/app/opengraph-image.png", "src/app/twitter-image.png");
-const alt = "D&A Lab — Webs y marcas para negocios que quieren vender";
+const alt = "D&A Lab — Desarrollo web premium con movimiento, para que tu marca sea inolvidable";
 await writeFile("src/app/opengraph-image.alt.txt", alt);
 await writeFile("src/app/twitter-image.alt.txt", alt);
 console.log("ok");

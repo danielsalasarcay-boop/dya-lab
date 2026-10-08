@@ -13,7 +13,7 @@ export const es = {
     title: "D&A Lab — Diseño web y de marca para negocios que venden",
     description:
       "Estudio de diseño web y de identidad visual en Venezuela. Sitios a medida y logos para negocios que venden por catálogo, por WhatsApp o por cotización.",
-    ogAlt: "D&A Lab — Webs y marcas para negocios que quieren vender",
+    ogAlt: "D&A Lab — Desarrollo web premium con movimiento, para que tu marca sea inolvidable",
   },
 
   nav: [
@@ -352,7 +352,7 @@ export const es = {
     colNav: "Navegación",
     available: "Disponibles para nuevos proyectos",
     backToTop: "Volver arriba",
-    tagline: "Webs y marcas para negocios que quieren vender.",
+    tagline: "Desarrollo web premium con movimiento, para que tu marca sea inolvidable.",
     rights: "Todos los derechos reservados.",
   },
 };

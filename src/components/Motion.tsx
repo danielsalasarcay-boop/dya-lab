@@ -4,7 +4,6 @@ import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary } from "@/content/es";
 import { Eyebrow } from "./Eyebrow";
-import "../app/dya-hero.css";
 
 type InitFn = (root: HTMLElement, opts?: { story?: string }) => () => void;
 declare global {

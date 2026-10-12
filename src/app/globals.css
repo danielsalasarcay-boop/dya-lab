@@ -885,3 +885,9 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
 .wa-btn--ig .wa-icon svg { animation-delay: 6s; }
 .wa-float > .wa-btn--ig { animation: wa-in 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) calc(var(--hero-delay) + 0.75s) both; }
 @media (prefers-reduced-motion: reduce) { .wa-float > .wa-btn--ig { animation: none; } }
+
+/* Ventana de video del frente: invisible hasta que el video realmente se reproduce.
+   (iOS en ahorro de batería bloquea el autoplay: sin esto se veía un marco blanco
+   tapando la captura.) */
+.hero-front-video { opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+.hero-front-video:has(.hero-live.is-playing) { opacity: 1; }

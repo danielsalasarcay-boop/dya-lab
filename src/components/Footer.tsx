@@ -18,24 +18,38 @@ const socials = [
 export function Footer({ t }: { t: Dictionary }) {
   const f = t.footer;
   return (
-    <footer className="site-footer relative isolate overflow-hidden bg-green-deep pb-24 pt-10 text-bone md:pb-8 md:pt-12">
+    <footer className="site-footer relative isolate overflow-hidden bg-green-deep pb-20 pt-7 text-bone md:pb-8 md:pt-12">
       <div aria-hidden className="ft-dots" />
       <div aria-hidden className="ft-aurora" />
       <div aria-hidden className="ft-grain" />
 
       <div className="wrap relative">
-        <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between md:gap-8">
-          <div>
-            <Logo mono className="h-9 w-auto text-bone" />
-            <p className="mt-3 hidden max-w-[30ch] text-[15px] text-mist md:block">{f.tagline}</p>
-            <p className="mt-3 flex items-center gap-2 text-[13px] text-mist">
-              <span aria-hidden className="live-dot !mr-0 !size-2" /> {f.available}
-            </p>
+        <div className="grid gap-5 md:flex md:items-start md:justify-between md:gap-8">
+          {/* Logo (+ redes en móvil, en la misma fila) */}
+          <div className="flex items-center justify-between gap-4 md:block">
+            <div>
+              <Logo mono className="h-8 w-auto text-bone md:h-9" />
+              <p className="mt-3 hidden max-w-[30ch] text-[15px] text-mist md:block">{f.tagline}</p>
+              <p className="mt-2 flex items-center gap-2 text-[12px] text-mist md:mt-3 md:text-[13px]">
+                <span aria-hidden className="live-dot !mr-0 !size-2" /> {f.available}
+              </p>
+            </div>
+            <div className="md:hidden">
+              <ul aria-label={f.social} className="flex items-center gap-1 md:-ml-2.5">
+              {socials.map(({ name, href, Icon }) => (
+                <li key={name}>
+                  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={name} className="ft-social">
+                    <Icon className="size-6" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+            </div>
           </div>
 
           {/* 8 enlaces en 2 columnas de 4: grid-flow-col llena primero la columna izquierda */}
           <nav aria-label={f.colNav}>
-            <ul className="grid grid-flow-col grid-cols-2 grid-rows-4 gap-x-10 gap-y-1 md:gap-x-12">
+            <ul className="grid grid-flow-col grid-cols-2 grid-rows-4 gap-x-8 md:gap-x-12 md:gap-y-1">
               {t.nav.map((n) => (
                 <li key={n.href}>
                   <a href={n.href} className="ft-link ft-nav">{n.label}</a>
@@ -45,7 +59,7 @@ export function Footer({ t }: { t: Dictionary }) {
           </nav>
 
           <div className="flex flex-col gap-4">
-            <div data-selectable className="ft-phones flex flex-col items-start gap-y-1">
+            <div data-selectable className="ft-phones flex flex-wrap items-center gap-x-5 md:flex-col md:items-start md:gap-y-1">
               <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-link gap-2">
                 <WhatsAppIcon className="size-4" /> {site.whatsappDisplay}
               </a>
@@ -53,37 +67,30 @@ export function Footer({ t }: { t: Dictionary }) {
                 <PhoneIcon className="size-4" /> {site.phoneDisplay}
               </a>
             </div>
-            <ul aria-label={f.social} className="-ml-2.5 flex items-center gap-1">
+            <div className="hidden md:block">
+              <ul aria-label={f.social} className="flex items-center gap-1 md:-ml-2.5">
               {socials.map(({ name, href, Icon }) => (
                 <li key={name}>
-                  {/* Sin URL todavía: se muestra el icono sin enlace */}
-                  {href ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={name} className="ft-social">
-                      <Icon className="size-6" />
-                    </a>
-                  ) : (
-                    <span role="img" aria-label={name} className="ft-social">
-                      <Icon className="size-6" />
-                    </span>
-                  )}
+                  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={name} className="ft-social">
+                    <Icon className="size-6" />
+                  </a>
                 </li>
               ))}
             </ul>
+            </div>
           </div>
         </div>
 
-        {/* Barra inferior: apilada y centrada en móvil, repartida a los lados en escritorio */}
-        <div className="mt-8 flex flex-col items-center gap-3 border-t border-bone/10 pt-5 text-center text-[12px] text-mist/75 sm:text-[13px] md:flex-row md:justify-between md:text-left">
+        {/* Barra inferior: una sola franja también en móvil */}
+        <div className="mt-5 flex flex-col items-start gap-1 border-t border-bone/10 pr-20 pt-4 text-[12px] text-mist/75 md:mt-8 md:flex-row md:items-center md:justify-between md:gap-4 md:pr-0 md:pt-5 md:text-[13px]">
           <p>© {new Date().getFullYear()} D&amp;A Lab<span className="hidden sm:inline"> · {f.rights}</span></p>
-          <div className="flex flex-col items-center gap-3 md:flex-row md:gap-6">
-            <nav aria-label={f.legal}>
-              <ul className="flex flex-col items-center gap-x-6 sm:flex-row">
-                <li><a href="/privacidad" className="ft-legal">{f.privacy}</a></li>
-                <li><a href="/terminos" className="ft-legal">{f.terms}</a></li>
-              </ul>
-            </nav>
-            <BackToTop label={f.backToTop} />
-          </div>
+          <nav aria-label={f.legal}>
+            <ul className="flex gap-x-5">
+              <li><a href="/privacidad" className="ft-legal">{f.privacy}</a></li>
+              <li><a href="/terminos" className="ft-legal">{f.terms}</a></li>
+            </ul>
+          </nav>
+          <div className="hidden md:block"><BackToTop label={f.backToTop} /></div>
         </div>
       </div>
     </footer>

@@ -506,7 +506,8 @@ input, textarea, [data-selectable] { -webkit-user-select: text; user-select: tex
 .ft-phones svg { width: 14px; height: 14px; }
 
 /* Nav del footer en columnas: área táctil de 44px y hover en coral (versión AA sobre verde) */
-.ft-nav { min-height: 44px; }
+.ft-nav { min-height: 38px; }
+@media (min-width: 768px) { .ft-nav { min-height: 44px; } }
 .ft-nav:hover { color: var(--color-coral-soft); }
 
 /* Redes: 24px de icono dentro de un área táctil de 44px */

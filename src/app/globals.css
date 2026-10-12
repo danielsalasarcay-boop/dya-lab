@@ -950,6 +950,13 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
 .site-video-cover { opacity: 1; transition: opacity 0.45s ease; pointer-events: none; }
 .case.is-playing .site-video-cover { opacity: 0; transition: opacity 0.35s ease 0.12s; }
 
+/* Ficha "Tu proyecto": fondo crema cálido con borde punteado coral */
+.np-card {
+  background:
+    radial-gradient(120% 60% at 100% 0%, rgb(240 122 90 / 0.16), transparent 60%),
+    linear-gradient(180deg, #fff7f1, #fbeee4);
+  border: 1.5px dashed rgb(240 122 90 / 0.55);
+}
 /* Ficha "Tu proyecto": dominio que se escribe y bloques que se construyen en bucle */
 .np-type { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; border-right: 1.5px solid var(--color-coral-soft); max-width: 0; animation: np-type 7s steps(14, end) infinite, np-caret 0.8s step-end infinite; }
 @keyframes np-type { 0% { max-width: 0; } 22%, 85% { max-width: 14ch; } 100% { max-width: 0; } }

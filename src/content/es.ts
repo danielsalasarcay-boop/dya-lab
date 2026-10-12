@@ -348,7 +348,7 @@ export const es = {
       {
         q: "¿Quién asume el costo del hosting?",
         short: "Nosotros nos encargamos",
-        a: "Contratamos y gestionamos el hosting a través de nuestro proveedor de confianza, así que el cliente no tiene que preocuparse por pagos ni configuraciones. Al cumplirse el año, si desea mantener el sitio en línea, la renovación del servicio tiene un costo de $20 anuales.",
+        a: "Contratamos y gestionamos el hosting a través de nuestro proveedor de confianza, así que el cliente no tiene que preocuparse por pagos ni configuraciones. Al cumplirse el año, si desea mantener el sitio en línea, la renovación del servicio tiene un costo de $20 anuales. Le avisaremos con un mes de antelación para que pueda decidir con tiempo.",
       },
       {
         q: "¿Trabajan de forma remota?",

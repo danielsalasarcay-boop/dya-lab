@@ -58,15 +58,23 @@ export function Work({ t }: { t: Dictionary }) {
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href={c.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-auto inline-flex items-center gap-2 pt-6 text-[15px] font-semibold text-green hover:text-coral-ink"
-                      aria-label={`${t.work.visit}: ${c.name} (se abre en una pestaña nueva)`}
-                    >
-                      {t.work.visit} <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
-                    </a>
+                    <div className="mt-auto flex items-center justify-between gap-3 pt-6">
+                      <a
+                        href={c.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-[15px] font-semibold text-green hover:text-coral-ink"
+                        aria-label={`${t.work.visit}: ${c.name} (se abre en una pestaña nueva)`}
+                      >
+                        {t.work.visit} <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+                      </a>
+                      {"plan" in c && c.plan && (
+                        <a href="#paquetes" className={`plan-badge plan-badge--${c.plan}`} title={`Hecho con el plan ${c.plan === "premium" ? "Premium" : "Esencial"}`}>
+                          <span aria-hidden className="plan-badge-gem" />
+                          {c.plan === "premium" ? "Premium" : "Esencial"}
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </article>
               </CaseCard>

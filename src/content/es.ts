@@ -99,6 +99,7 @@ export const es = {
           "Tienda de mini lumpias saladas y dulces: el cliente elige sabores y salsas, arma su pedido y lo envía por WhatsApp. Delivery, horario y pagos en la misma página.",
         tags: ["Web", "Catálogo", "Pedidos"],
         accent: "#E71600",
+        plan: "esencial" as const,
         statusBg: "#e61600",
       },
       {
@@ -167,6 +168,7 @@ export const es = {
           "Web para un estudio de arquitectura de hotelería, desarrollos y vivienda: el boceto de la portada se abre al hacer scroll y cada proyecto se arma de trazo a boceto a render. Proceso, cobertura y contacto por WhatsApp.",
         tags: ["Web", "Arquitectura", "ES / EN"],
         accent: "#F15A22",
+        plan: "premium" as const,
         statusBg: "#efeeea",
         statusFg: "#1b1b1b",
       },

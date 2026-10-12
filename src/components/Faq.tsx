@@ -21,7 +21,7 @@ export function Faq({ t }: { t: Dictionary }) {
             <Eyebrow n="06">{f.eyebrow}</Eyebrow>
             <h2 id="preguntas-titulo" className="h2 mt-5 max-w-[18ch] text-green">{f.title}</h2>
           </div>
-          <p className="max-w-[24rem] text-muted">{f.lead}</p>
+          <p className="hero-lead max-w-[24rem] text-[17px] leading-[1.5] text-muted">{f.lead}</p>
         </div>
 
         <ul className="mt-10 grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">

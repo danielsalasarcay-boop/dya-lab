@@ -95,7 +95,7 @@ export function Motion({ t }: { t: Dictionary }) {
       <div className="wrap">
         <Eyebrow n="03">{m.eyebrow}</Eyebrow>
         <h2 id="movimiento-titulo" className="h2 mt-5 max-w-[16ch] text-green">{m.title}</h2>
-        <p className="mt-4 max-w-[34rem] text-muted">{m.lead}</p>
+        <p className="hero-lead mt-4 max-w-[34rem] text-[17px] leading-[1.5] text-muted">{m.lead}</p>
       </div>
 
       {/* A todo el ancho y sin marco: el fondo del lienzo es el mismo crema de la

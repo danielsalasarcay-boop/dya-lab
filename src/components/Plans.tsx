@@ -9,7 +9,7 @@ export function Plans({ t }: { t: Dictionary }) {
       <div className="wrap">
         <Eyebrow n="05">{pl.eyebrow}</Eyebrow>
         <h2 id="paquetes-titulo" className="h2 mt-5 text-green">{pl.title}</h2>
-        <p className="mt-4 max-w-[34rem] text-lg text-muted">
+        <p className="hero-lead mt-4 max-w-[34rem] text-[17px] leading-[1.5] text-muted">
           {pl.lead} <span className="lg:hidden">{pl.swipeHint}</span>
         </p>
 

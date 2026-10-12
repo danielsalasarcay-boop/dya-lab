@@ -233,7 +233,7 @@ export const es = {
         id: "premium",
         name: "Premium",
         for: "Tu web a la carta: el precio final depende de lo que elijas.",
-        price: "$420",
+        price: "$500",
         from: true,
         featured: true,
         includes: [
@@ -252,8 +252,7 @@ export const es = {
         id: "logo",
         name: "Logo",
         for: "Para que te reconozcan de un vistazo.",
-        // PRECIO PENDIENTE: el dueño no ha definido el precio del logo.
-        price: "Consultar",
+        price: "$40",
         from: false,
         featured: false,
         includes: [

@@ -50,10 +50,14 @@ export function Plans({ t }: { t: Dictionary }) {
                 <a
                   href={`/contacto?plan=${encodeURIComponent(p.name)}`}
                   data-plan={p.name}
-                  className={`btn mt-8 w-full ${p.featured ? "btn-coral" : "btn-primary"}`}
+                  className={`plan-cta mt-8 ${p.featured ? "plan-cta--coral" : ""}`}
                   aria-label={`${pl.cta}: ${p.name}`}
                 >
-                  {pl.cta}
+                  <span className="plan-cta-fill" aria-hidden />
+                  <span className="plan-cta-label">{pl.cta}</span>
+                  <span aria-hidden className="plan-cta-arrow">
+                    <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                  </span>
                 </a>
                 </TiltCard>
               </li>

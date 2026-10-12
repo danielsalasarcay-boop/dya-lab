@@ -842,3 +842,38 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
 .lab-cta:focus-visible { outline: 3px solid var(--color-bone); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .lab-cta::before, .lab-cta-label::after { animation: none; } .lab-cta { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .lab-cta-wrap[data-on] { animation: none; opacity: 1; } }
+
+/* ===== Botón "Quiero este" (paquetes) =====
+   Píldora con flecha en círculo; al pasar el cursor el círculo se expande y llena
+   el botón desde la derecha, el texto cambia de color y la flecha gira en diagonal. */
+.plan-cta {
+  --bg: var(--color-green); --fg: var(--color-bone); --dot: var(--color-coral); --dot-fg: var(--color-ink);
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; min-height: 52px; padding: 6px 6px 6px 22px; border-radius: 999px;
+  background: var(--bg); color: var(--fg); font-weight: 650; font-size: 15px; letter-spacing: -0.01em;
+  box-shadow: 0 10px 24px -14px rgb(23 59 43 / 0.7);
+  transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.2, 1.3), box-shadow 0.3s;
+}
+.plan-cta--coral { --bg: var(--color-coral); --fg: var(--color-ink); --dot: var(--color-ink); --dot-fg: var(--color-coral); box-shadow: 0 10px 24px -12px rgb(240 122 90 / 0.8); }
+.plan-cta-label { position: relative; z-index: 1; transition: color 0.3s ease 0s; }
+.plan-cta-arrow {
+  position: relative; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--dot); color: var(--dot-fg); flex-shrink: 0;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1.3), background-color 0.3s, color 0.3s;
+}
+.plan-cta-fill {
+  position: absolute; z-index: 0; right: 6px; top: 50%; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--dot); transform: translateY(-50%) scale(1);
+  transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1);
+}
+@media (hover: hover) {
+  .plan-cta:hover .plan-cta-fill { transform: translateY(-50%) scale(14); }
+  .plan-cta:hover .plan-cta-label { color: var(--dot-fg); transition: color 0.25s ease 0.32s; }
+  .plan-cta:hover .plan-cta-arrow { transform: rotate(-45deg); background: var(--dot-fg); color: var(--dot); }
+  .plan-cta:hover { box-shadow: 0 16px 30px -14px rgb(23 59 43 / 0.8); }
+}
+.plan-cta:active { transform: scale(0.97); }
+.plan-cta:focus-visible { outline: 3px solid var(--color-coral); outline-offset: 3px; }
+.tilt-dark .plan-cta:focus-visible { outline-color: var(--color-bone); }
+@media (prefers-reduced-motion: reduce) { .plan-cta-fill, .plan-cta-label, .plan-cta-arrow { transition: none; } }

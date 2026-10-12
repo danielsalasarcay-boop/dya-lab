@@ -242,16 +242,17 @@ body {
 
 .hero-collage { perspective: 1400px; --px: 0; --py: 0; }
 .hero-layer {
-  transform: translate3d(calc(var(--px) * var(--d) * 22px), calc(var(--py) * var(--d) * 16px), 0)
-    rotateY(calc(var(--px) * 5deg)) rotateX(calc(var(--py) * -4deg));
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Parallax suave: poco desplazamiento y casi sin giro, con transición larga */
+  transform: translate3d(calc(var(--px) * var(--d) * 9px), calc(var(--py) * var(--d) * 6px), 0)
+    rotateY(calc(var(--px) * 1.6deg)) rotateX(calc(var(--py) * -1.2deg));
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
 }
 /* Solo transform (sin opacidad) para no retrasar el LCP */
 .hero-fly { animation: hero-fly 1.1s cubic-bezier(0.2, 0.9, 0.25, 1) both; animation-delay: calc(var(--hero-delay) + 0.15s + var(--i) * 120ms); }
-@keyframes hero-fly { from { transform: translate3d(60px, 50px, 0) rotate(3deg) scale(0.94); } }
+@keyframes hero-fly { from { transform: translate3d(28px, 24px, 0) rotate(1.2deg) scale(0.97); } }
 .hero-float { animation: hero-float var(--f, 7s) ease-in-out infinite alternate; animation-delay: calc(var(--hero-delay) + 1.4s); }
-@keyframes hero-float { from { transform: translateY(0); } to { transform: translateY(-9px); } }
+@keyframes hero-float { from { transform: translateY(0); } to { transform: translateY(-4px); } }
 
 .hero-glow {
   position: absolute; inset: -18% -12%; z-index: -1; pointer-events: none;
@@ -921,11 +922,30 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
 .ft-chip:hover { background: rgb(250 246 240 / 0.1); border-color: rgb(240 122 90 / 0.45); transform: translateY(-1px); }
 .ft-chip:hover .ft-chip-arrow { opacity: 1; transform: translate(2px, -2px); color: var(--color-coral-soft); }
 .ft-phones { gap: 8px !important; }
-.ft-logo { position: relative; overflow: hidden; }
+/* Logo del footer (mismo tamaño): corchetes coral que "respiran" como un cursor de
+   código, brillo que cruza las letras y, al pasar el cursor, los corchetes se abren
+   y el logo se eleva con un halo. */
+.ft-logo { position: relative; display: inline-block; padding: 4px 6px; margin: -4px -6px; border-radius: 12px; transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.2, 1.3); }
+.ft-logo svg { overflow: visible; filter: drop-shadow(0 0 0 rgb(240 122 90 / 0)); transition: filter 0.4s; }
+.ft-logo .logo-accent path { transform-box: fill-box; transform-origin: center; animation: ft-bracket 3.6s ease-in-out infinite; transition: translate 0.45s cubic-bezier(0.2, 0.9, 0.2, 1.3); }
+.ft-logo .logo-accent path:nth-child(2) { animation-delay: 0.15s; }
+.ft-logo .logo-accent path:nth-child(3) { animation-delay: 0.3s; }
+@keyframes ft-bracket { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
 .ft-logo::after {
-  content: ""; position: absolute; inset: -20% -40%; pointer-events: none;
-  background: linear-gradient(105deg, transparent 42%, rgb(255 255 255 / 0.45) 50%, transparent 58%);
-  transform: translateX(-100%); animation: ft-logo-shine 6s ease-in-out 2s infinite;
+  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(105deg, transparent 40%, rgb(255 255 255 / 0.35) 50%, transparent 60%);
+  background-size: 250% 100%; background-position: 130% 0;
+  -webkit-mask: linear-gradient(#000 0 0); mix-blend-mode: overlay;
+  animation: ft-logo-shine 6s ease-in-out 2s infinite;
 }
-@keyframes ft-logo-shine { 0%, 70% { transform: translateX(-100%); } 90%, 100% { transform: translateX(100%); } }
-@media (prefers-reduced-motion: reduce) { .ft-beam, .ft-logo::after { animation: none; } }
+@keyframes ft-logo-shine { 0%, 70% { background-position: 130% 0; } 90%, 100% { background-position: -30% 0; } }
+.ft-logo:hover { transform: translateY(-2px); }
+.ft-logo:hover svg { filter: drop-shadow(0 0 10px rgb(240 122 90 / 0.45)); }
+.ft-logo:hover .logo-accent path:nth-child(1) { translate: -10% 0; animation-play-state: paused; opacity: 1; }
+.ft-logo:hover .logo-accent path:nth-child(2), .ft-logo:hover .logo-accent path:nth-child(3) { translate: 10% 0; animation-play-state: paused; opacity: 1; }
+.ft-logo:focus-visible { outline: 2px solid var(--color-coral-soft); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .ft-beam, .ft-logo::after, .ft-logo .logo-accent path { animation: none; } }
+
+/* Fichas del portafolio: portada encima del video */
+.site-video-cover { opacity: 1; transition: opacity 0.45s ease; pointer-events: none; }
+.case.is-playing .site-video-cover { opacity: 0; transition: opacity 0.35s ease 0.12s; }

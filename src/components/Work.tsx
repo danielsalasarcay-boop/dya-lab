@@ -33,7 +33,7 @@ export function Work({ t }: { t: Dictionary }) {
                   {/* Captura web con recorrido + iPhone */}
                   <div className="relative bg-sage/60 px-4 pb-6 pt-4">
                     <BrowserFrame domain={c.domain}>
-                      <SiteVideo src={desktop.src} poster={desktop.poster} label={t.work.desktopAlt.replace("{name}", c.name)} className="aspect-[16/10]" />
+                      <SiteVideo src={desktop.src} poster={desktop.poster} label={t.work.desktopAlt.replace("{name}", c.name)} className="aspect-[16/10]" cover />
                     </BrowserFrame>
                     <PhoneFrame
                       video={media(c.slug, "mobile")}

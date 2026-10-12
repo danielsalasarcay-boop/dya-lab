@@ -23,8 +23,8 @@ export function BrowserFrame({
 
 // Video del sitio recorriéndose con scroll (efectos reales). No descarga nada
 // hasta que la ficha lo reproduce (preload="none"); mientras, muestra el póster.
-export function SiteVideo({ src, poster, label, className = "" }: { src: string; poster: string; label: string; className?: string }) {
-  return (
+export function SiteVideo({ src, poster, label, className = "", cover = false }: { src: string; poster: string; label: string; className?: string; cover?: boolean }) {
+  const video = (
     <video
       className={`site-video block h-auto w-full ${className}`}
       src={src}
@@ -35,6 +35,16 @@ export function SiteVideo({ src, poster, label, className = "" }: { src: string;
       preload="none"
       aria-label={label}
     />
+  );
+  if (!cover) return video;
+  // Portada encima del video: se desvanece al reproducir y vuelve suave al soltar
+  // (CaseCard rebobina el video a 0 mientras la portada lo tapa).
+  return (
+    <div className="site-video-wrap relative">
+      {video}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={poster} alt="" aria-hidden className="site-video-cover absolute inset-0 h-full w-full object-cover object-top" loading="lazy" />
+    </div>
   );
 }
 
@@ -86,7 +96,7 @@ export function PhoneFrame({
               {video && <SiteVideo src={video.src} poster={video.poster} label={alt} className="hero-live absolute inset-0 h-full object-cover" />}
             </div>
           ) : (
-            video && <SiteVideo src={video.src} poster={video.poster} label={alt} />
+            video && <SiteVideo src={video.src} poster={video.poster} label={alt} cover />
           )}
           <span aria-hidden className="iphone-island" />
         </div>

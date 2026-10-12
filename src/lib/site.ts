@@ -18,7 +18,7 @@ export const site = {
   social: {
     instagram: "https://www.instagram.com/dalabs.vzla",
     instagramHandle: "@dalabs.vzla",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/company/d-alabs/",
     behance: "",
   },
 } as const;

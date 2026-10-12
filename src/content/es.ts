@@ -205,6 +205,7 @@ export const es = {
     lead: "Cada propuesta se confirma por escrito antes de empezar.",
     swipeHint: "Desliza para ver los tres →",
     cta: "Quiero este",
+    ctaMessage: "¡Hola D&A Lab! 👋 Me interesa el plan {plan} ({price}). ¿Me cuentan cómo empezamos?",
     featuredLabel: "Personalizado",
     fromLabel: "Desde",
     currency: "USD",

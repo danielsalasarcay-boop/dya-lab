@@ -1,4 +1,5 @@
 import type { Dictionary } from "@/content/es";
+import { whatsappLink } from "@/lib/site";
 import { Eyebrow } from "./Eyebrow";
 import { TiltCard } from "./TiltCard";
 
@@ -48,10 +49,12 @@ export function Plans({ t }: { t: Dictionary }) {
                 </ul>
 
                 <a
-                  href={`/contacto?plan=${encodeURIComponent(p.name)}`}
+                  href={whatsappLink(pl.ctaMessage.replace("{plan}", p.name).replace("{price}", `${p.from ? `${pl.fromLabel.toLowerCase()} ` : ""}${p.price} ${pl.currency}`))}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   data-plan={p.name}
                   className={`plan-cta mt-8 ${p.featured ? "plan-cta--coral" : ""}`}
-                  aria-label={`${pl.cta}: ${p.name}`}
+                  aria-label={`${pl.cta}: ${p.name} (se abre WhatsApp en una pestaña nueva)`}
                 >
                   <span className="plan-cta-fill" aria-hidden />
                   <span className="plan-cta-label">{pl.cta}</span>

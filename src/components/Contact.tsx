@@ -4,6 +4,7 @@ import { Eyebrow } from "./Eyebrow";
 import { ContactForm } from "./ContactForm";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { PhoneIcon } from "./PhoneIcon";
+import { InstagramIcon } from "./SocialIcons";
 
 export function Contact({ t }: { t: Dictionary }) {
   const c = t.contact;
@@ -29,6 +30,13 @@ export function Contact({ t }: { t: Dictionary }) {
                 <PhoneIcon className="size-5" />
                 {site.phoneDisplay}
                 <span className="sr-only">({c.phone})</span>
+              </a>
+            </li>
+            <li>
+              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
+                <InstagramIcon className="size-5" />
+                {site.social.instagramHandle}
+                <span className="sr-only">(Instagram, se abre en una pestaña nueva)</span>
               </a>
             </li>
           </ul>

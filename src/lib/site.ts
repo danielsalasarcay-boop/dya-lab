@@ -16,13 +16,14 @@ export const site = {
   // PENDIENTE: URLs de los perfiles del estudio. Mientras estén vacías, el icono
   // del footer apunta a "#". Las que tengan URL se usan también en el JSON-LD.
   social: {
-    instagram: "",
+    instagram: "https://www.instagram.com/dalabs.vzla",
+    instagramHandle: "@dalabs.vzla",
     linkedin: "",
     behance: "",
   },
 } as const;
 
-export const sameAs = Object.values(site.social).filter(Boolean);
+export const sameAs = [site.social.instagram, site.social.linkedin, site.social.behance].filter(Boolean);
 
 export function whatsappLink(text?: string) {
   const base = `https://wa.me/${site.whatsapp}`;

@@ -6,11 +6,12 @@ import { PhoneIcon } from "./PhoneIcon";
 import { BackToTop } from "./FooterBits";
 import { BehanceIcon, InstagramIcon, LinkedInIcon } from "./SocialIcons";
 
+// Solo se muestran las redes que ya tienen URL (sin perfiles "fantasma").
 const socials = [
   { name: "Instagram", href: site.social.instagram, Icon: InstagramIcon },
   { name: "LinkedIn", href: site.social.linkedin, Icon: LinkedInIcon },
   { name: "Behance", href: site.social.behance, Icon: BehanceIcon },
-];
+].filter((s) => s.href);
 
 // Footer compacto (tamaño original) con fondo moderno: rejilla de puntos que
 // se desvanece, halo de luz animado y grano sutil.

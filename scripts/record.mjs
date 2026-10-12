@@ -14,7 +14,8 @@ const FPS = 30;
 const SITES = [
   // zones: tramos de scroll (px) con efecto, se recorren despacio. El resto va rápido.
   { slug: "loopi", url: "https://loopivzla.com", zones: [[0, 1300]], fast: 45 },
-  { slug: "quality-bikes", url: "https://qualitybikesvzla.com", zones: [[0, 1250]], fast: 45 },
+  // Plano → moto (efecto) y el showroom con las motos disponibles.
+  { slug: "quality-bikes", url: "https://qualitybikesvzla.com/", zones: [[0, 1250], [1250, 4100]], fast: 45 },
   { slug: "mar-caribe", url: "https://alimentosmarcaribe.com", zones: [[0, 2500]], fast: 75 },
   // Portada lápiz → foto y galería con brújula fija.
   { slug: "casa-panza", url: "https://www.casapanzalosroques.com", zones: [[0, 1400], [3500, 5100]], fast: 55 },

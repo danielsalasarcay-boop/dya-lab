@@ -76,7 +76,7 @@ export const es = {
     visit: "Ver sitio",
     desktopAlt: "Recorrido por la web de {name} en computadora",
     mobileAlt: "Recorrido por la web de {name} en teléfono",
-    swipeHint: "Desliza para ver los seis →",
+    swipeHint: "Desliza para ver los siete →",
     hoverHint: "Pasa el cursor por cada ficha para verla en movimiento",
     cases: [
       {
@@ -133,20 +133,6 @@ export const es = {
         statusFg: "#1b1b1b",
       },
       {
-        slug: "casa-verde",
-        name: "Casa Verde",
-        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
-        url: "https://danielsalasarcay-boop.github.io/casa-verde/",
-        domain: "casa-verde · github.io",
-        sector: "Casa vacacional · Los Roques",
-        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web? ¿también hicieron su marca?
-        summary:
-          "Casa de lujo frente al mar en Gran Roque con chef y bote privado 24/7: la fachada pasa del día a la noche al hacer scroll, comodidades, experiencia, vista aérea y ubicación.",
-        tags: ["Web", "Galería", "ES / EN"],
-        accent: "#1F8A5B",
-        statusBg: "#196091",
-      },
-      {
         slug: "la-capital-del-cielo",
         name: "La Capital del Cielo",
         url: "https://www.lacapitaldelcielo.com",
@@ -159,6 +145,35 @@ export const es = {
         accent: "#7FA7E8",
         statusBg: "#9499ab",
         statusFg: "#1b1b1b",
+      },
+      {
+        slug: "caraquena",
+        name: "Caraqueña Studio",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
+        url: "https://caraquena.vercel.app/",
+        domain: "caraquena · vercel.app",
+        sector: "Estudio de arquitectura · Caracas",
+        // FALTA CONTEXTO: ¿la marca/logo también es trabajo del estudio?
+        summary:
+          "Web para un estudio de arquitectura de hotelería, desarrollos y vivienda: el boceto de la portada se abre al hacer scroll y cada proyecto se arma de trazo a boceto a render. Proceso, cobertura y contacto por WhatsApp.",
+        tags: ["Web", "Arquitectura", "ES / EN"],
+        accent: "#F15A22",
+        statusBg: "#efeeea",
+        statusFg: "#1b1b1b",
+      },
+      {
+        slug: "casa-verde",
+        name: "Casa Verde",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
+        url: "https://danielsalasarcay-boop.github.io/casa-verde/",
+        domain: "casa-verde · github.io",
+        sector: "Casa vacacional · Los Roques",
+        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web? ¿también hicieron su marca?
+        summary:
+          "Casa de lujo frente al mar en Gran Roque con chef y bote privado 24/7: la fachada pasa del día a la noche al hacer scroll, comodidades, experiencia, vista aérea y ubicación.",
+        tags: ["Web", "Galería", "ES / EN"],
+        accent: "#1F8A5B",
+        statusBg: "#196091",
       },
     ],
   },

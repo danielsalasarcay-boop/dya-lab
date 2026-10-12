@@ -22,6 +22,8 @@ const SITES = [
   // Portada aérea con el logo.
   // Portada aérea, casas, experiencia, camisas y cierre aéreo con el hidroavión.
   { slug: "la-capital-del-cielo", url: "https://www.lacapitaldelcielo.com", zones: [[0, 900], [5200, 6300]], fast: 38 },
+  // Boceto que se abre en círculo y proyectos que pasan de trazo a boceto a render.
+  { slug: "caraquena", url: "https://caraquena.vercel.app/index.html", zones: [[0, 1950], [3600, 9300]], fast: 60 },
   // Fachada día → atardecer → noche y zoom aéreo de la galería.
   { slug: "casa-verde", url: "https://danielsalasarcay-boop.github.io/casa-verde/", zones: [[0, 2000], [5100, 8600]], fast: 55 },
 ];

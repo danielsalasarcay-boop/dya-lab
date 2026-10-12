@@ -217,7 +217,7 @@ export const es = {
       {
         name: "Lanzamiento",
         time: "1 día",
-        line: "Publicamos en tu dominio y te entregamos los accesos: todo queda a tu nombre.",
+        line: "Publicamos en tu dominio y nos encargamos del hosting para que no tengas que preocuparte por nada.",
       },
     ],
   },
@@ -250,7 +250,7 @@ export const es = {
           "Versión en español e inglés",
           "Rápida y optimizada para Google",
           "Google Maps y enlaces a tus redes",
-          "Dominio y hosting configurados a tu nombre",
+          "Dominio y hosting configurados, primer año incluido",
         ],
       },
       {
@@ -347,8 +347,8 @@ export const es = {
       },
       {
         q: "¿Quién asume el costo del hosting?",
-        short: "El cliente, a su nombre",
-        a: "Nosotros lo configuramos, pero queda contratado a nombre del cliente, lo que garantiza su independencia. El costo del proveedor se informa antes de iniciar; para la mayoría de los sitios de este tipo es mínimo o nulo.",
+        short: "Nosotros nos encargamos",
+        a: "Contratamos y gestionamos el hosting a través de Namecheap, nuestro proveedor de confianza, así que el cliente no tiene que preocuparse por pagos ni configuraciones. Al cumplirse el año, si desea mantener el sitio en línea, la renovación del servicio tiene un costo de $20 anuales.",
       },
       {
         q: "¿Trabajan de forma remota?",

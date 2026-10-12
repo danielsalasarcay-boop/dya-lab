@@ -82,6 +82,16 @@ export function Plans({ t }: { t: Dictionary }) {
               </div>
             ))}
           </div>
+          {/* Opción ilimitada: productos y fotos sin tope */}
+          <div className="mt-6 flex flex-col gap-3 rounded-2xl bg-green px-5 py-4 text-bone sm:flex-row sm:items-center sm:justify-between">
+            <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="rounded-full bg-coral px-2.5 py-0.5 font-mono text-[11px] font-medium uppercase tracking-wider text-ink">{pl.extras.unlimited.label}</span>
+              <span className="text-mist">{pl.extras.unlimited.text}</span>
+            </p>
+            <p className="shrink-0 font-display text-2xl font-bold">
+              {pl.extras.unlimited.price} <span className="font-mono text-[11px] font-normal text-mist">{pl.currency}</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>

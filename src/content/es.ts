@@ -284,6 +284,11 @@ export const es = {
           ],
         },
       ],
+      unlimited: {
+        label: "Ilimitado",
+        text: "Todos los productos y todas las fotos que quieras.",
+        price: "+$450",
+      },
     },
   },
 

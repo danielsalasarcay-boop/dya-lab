@@ -70,8 +70,14 @@ export function Work({ t }: { t: Dictionary }) {
                       </a>
                       {"plan" in c && c.plan && (
                         <a href="#paquetes" className={`plan-badge plan-badge--${c.plan}`} title={`Hecho con el plan ${c.plan === "premium" ? "Premium" : "Esencial"}`}>
-                          <span aria-hidden className="plan-badge-gem" />
-                          {c.plan === "premium" ? "Premium" : "Esencial"}
+                          <svg aria-hidden viewBox="0 0 16 16" className="plan-badge-ic">
+                            {c.plan === "premium" ? (
+                              <path d="M8 1.5l1.6 4.3 4.4.3-3.4 2.8 1.1 4.3L8 10.8l-3.7 2.4 1.1-4.3L2 6.1l4.4-.3z" />
+                            ) : (
+                              <path d="M8 1.8l5.4 3.1v6.2L8 14.2 2.6 11.1V4.9z" />
+                            )}
+                          </svg>
+                          <span className="plan-badge-txt">{c.plan === "premium" ? "Premium" : "Esencial"}</span>
                         </a>
                       )}
                     </div>

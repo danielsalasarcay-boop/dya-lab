@@ -1,5 +1,6 @@
 import type { Dictionary } from "@/content/es";
 import { Eyebrow } from "./Eyebrow";
+import { TiltCard } from "./TiltCard";
 
 export function Plans({ t }: { t: Dictionary }) {
   const pl = t.plans;
@@ -17,12 +18,12 @@ export function Plans({ t }: { t: Dictionary }) {
           {pl.items.map((p) => {
             const numeric = p.price.startsWith("$");
             return (
-              <li
-                key={p.id}
-                className={`relative flex w-[84%] shrink-0 snap-start flex-col rounded-3xl border p-7 sm:w-[46%] sm:p-8 lg:w-auto ${
-                  p.featured ? "border-green bg-green text-bone" : "border-line bg-paper"
-                }`}
-              >
+              <li key={p.id} className="flex w-[84%] shrink-0 snap-start sm:w-[46%] lg:w-auto">
+                <TiltCard
+                  className={`relative flex w-full flex-col rounded-3xl border p-7 sm:p-8 ${
+                    p.featured ? "tilt-dark border-green bg-green text-bone" : "border-line bg-paper"
+                  }`}
+                >
                 {p.featured && (
                   <p className="absolute -top-3 left-7 rounded-full bg-coral px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-wider text-ink">
                     {pl.featuredLabel}
@@ -32,7 +33,7 @@ export function Plans({ t }: { t: Dictionary }) {
                 <p className={`mt-2 ${p.featured ? "text-mist" : "text-muted"}`}>{p.for}</p>
 
                 <p className="mt-7 flex items-baseline gap-2">
-                  {p.from && <span className={`text-sm ${p.featured ? "text-mist" : "text-muted"}`}>{pl.fromLabel}</span>}
+                  {p.from && <span className="rounded-full bg-coral px-2.5 py-0.5 font-mono text-[12px] font-medium uppercase tracking-[0.1em] text-ink">{pl.fromLabel}</span>}
                   <span className={`display ${numeric ? "text-[56px]" : "text-[34px]"}`}>{p.price}</span>
                   {numeric && <span className={`font-mono text-[12px] tracking-[0.1em] ${p.featured ? "text-mist" : "text-muted"}`}>{pl.currency}</span>}
                 </p>
@@ -54,6 +55,7 @@ export function Plans({ t }: { t: Dictionary }) {
                 >
                   {pl.cta}
                 </a>
+                </TiltCard>
               </li>
             );
           })}

@@ -1,12 +1,29 @@
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
+import { InstagramIcon } from "./SocialIcons";
 
-// Botón flotante de WhatsApp con efectos: entrada con rebote, ondas que salen
-// del botón, "timbre" del ícono y, en
-// desktop se estira al pasar el cursor mostrando el texto. Solo CSS.
+// Botones flotantes (Instagram arriba, WhatsApp abajo) con los mismos efectos:
+// entrada con rebote, ondas que salen del botón, "timbre" del ícono y, en
+// desktop, se estiran al pasar el cursor mostrando el texto. Solo CSS.
 export function WhatsAppFloat({ label, message, hover }: { label: string; message: string; hover: string }) {
   return (
-    <div className="wa-float fixed bottom-4 right-4 z-50 md:bottom-6 md:right-6" style={{ marginBottom: "env(safe-area-inset-bottom)" }}>
+    <div className="wa-float fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3 md:bottom-6 md:right-6" style={{ marginBottom: "env(safe-area-inset-bottom)" }}>
+      {site.social.instagram && (
+        <a
+          href={site.social.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Síguenos en Instagram (se abre en una pestaña nueva)"
+          className="wa-btn wa-btn--ig group relative flex h-14 items-center rounded-full border-2 border-bone text-white md:h-16"
+        >
+          <span aria-hidden className="wa-wave" />
+          <span aria-hidden className="wa-wave wa-wave--2" />
+          <span aria-hidden className="wa-label">Síguenos</span>
+          <span className="wa-icon grid size-[52px] shrink-0 place-items-center md:size-[60px]">
+            <InstagramIcon className="size-7" />
+          </span>
+        </a>
+      )}
       <a
         href={whatsappLink(message)}
         target="_blank"

@@ -877,3 +877,11 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
 .plan-cta:focus-visible { outline: 3px solid var(--color-coral); outline-offset: 3px; }
 .tilt-dark .plan-cta:focus-visible { outline-color: var(--color-bone); }
 @media (prefers-reduced-motion: reduce) { .plan-cta-fill, .plan-cta-label, .plan-cta-arrow { transition: none; } }
+
+/* Botón flotante de Instagram (mismos efectos que WhatsApp, colores de Instagram) */
+.wa-btn--ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 95%); }
+.wa-btn--ig .wa-wave { border-color: #e1306c; animation-delay: 4.6s; }
+.wa-btn--ig .wa-wave--2 { animation-delay: 5.1s; }
+.wa-btn--ig .wa-icon svg { animation-delay: 6s; }
+.wa-float > .wa-btn--ig { animation: wa-in 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) calc(var(--hero-delay) + 0.75s) both; }
+@media (prefers-reduced-motion: reduce) { .wa-float > .wa-btn--ig { animation: none; } }

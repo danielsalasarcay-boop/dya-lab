@@ -210,8 +210,8 @@ export const es = {
     currency: "USD",
     items: [
       {
-        id: "standard",
-        name: "Standard",
+        id: "esencial",
+        name: "Esencial",
         for: "Todo lo que tu negocio necesita para vender en línea.",
         price: "$420",
         from: false,
@@ -304,7 +304,7 @@ export const es = {
       {
         q: "¿Cuál es el plazo de entrega?",
         short: "De 2 a 3 semanas",
-        a: "Un sitio del plan Standard se entrega en un plazo de 2 a 3 semanas, contado a partir de la recepción de los textos y las fotografías del cliente.",
+        a: "Un sitio del plan Esencial se entrega en un plazo de 2 a 3 semanas, contado a partir de la recepción de los textos y las fotografías del cliente.",
       },
       {
         q: "¿A nombre de quién se registra el dominio?",

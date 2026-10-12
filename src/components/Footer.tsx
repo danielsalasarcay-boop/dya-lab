@@ -22,13 +22,14 @@ export function Footer({ t }: { t: Dictionary }) {
       <div aria-hidden className="ft-dots" />
       <div aria-hidden className="ft-aurora" />
       <div aria-hidden className="ft-grain" />
+      <div aria-hidden className="ft-beam" />
 
       <div className="wrap relative">
         <div className="grid gap-5 md:flex md:items-start md:justify-between md:gap-8">
           {/* Logo (+ redes en móvil, en la misma fila) */}
           <div className="flex items-center justify-between gap-4 md:block">
             <div>
-              <Logo mono className="h-8 w-auto text-bone md:h-9" />
+              <span className="ft-logo inline-block"><Logo mono className="h-8 w-auto text-bone md:h-9" /></span>
               <p className="mt-3 hidden max-w-[30ch] text-[15px] text-mist md:block">{f.tagline}</p>
               <p className="mt-2 flex items-center gap-2 text-[12px] text-mist md:mt-3 md:text-[13px]">
                 <span aria-hidden className="live-dot !mr-0 !size-2" /> {f.available}
@@ -49,6 +50,7 @@ export function Footer({ t }: { t: Dictionary }) {
 
           {/* 8 enlaces en 2 columnas de 4: grid-flow-col llena primero la columna izquierda */}
           <nav aria-label={f.colNav}>
+            <p className="ft-title mb-1 hidden md:block">{f.colNav}</p>
             <ul className="grid grid-flow-col grid-cols-2 grid-rows-4 gap-x-8 md:gap-x-12 md:gap-y-1">
               {t.nav.map((n) => (
                 <li key={n.href}>
@@ -58,13 +60,16 @@ export function Footer({ t }: { t: Dictionary }) {
             </ul>
           </nav>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
+            <p className="ft-title hidden md:block">{f.colContact}</p>
             <div data-selectable className="ft-phones flex flex-wrap items-center gap-x-5 md:flex-col md:items-start md:gap-y-1">
-              <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-link gap-2">
-                <WhatsAppIcon className="size-4" /> {site.whatsappDisplay}
+              <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-chip">
+                <span className="ft-chip-ic"><WhatsAppIcon className="size-3.5" /></span> {site.whatsappDisplay}
+                <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
-              <a href={`tel:${site.phone}`} className="ft-link gap-2">
-                <PhoneIcon className="size-4" /> {site.phoneDisplay}
+              <a href={`tel:${site.phone}`} className="ft-chip">
+                <span className="ft-chip-ic"><PhoneIcon className="size-3.5" /></span> {site.phoneDisplay}
+                <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
             </div>
             <div className="hidden md:block">

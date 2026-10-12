@@ -40,12 +40,19 @@ export function Plans({ t }: { t: Dictionary }) {
                 </p>
 
                 <ul className={`mt-7 flex-1 space-y-2.5 border-t pt-6 ${p.featured ? "border-bone/20" : "border-line"}`}>
-                  {p.includes.map((item) => (
-                    <li key={item} className="flex gap-3 leading-snug">
-                      <span aria-hidden className={`font-mono ${p.featured ? "text-coral-soft" : "text-coral-ink"}`}>›</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
+                  {p.includes.map((item) =>
+                    item.endsWith(":") ? (
+                      // Línea de encabezado ("Todo lo del plan Esencial, y además:")
+                      <li key={item} className={`rounded-xl px-3 py-2 text-[14px] font-semibold ${p.featured ? "bg-bone/10 text-bone" : "bg-sage text-green"}`}>
+                        {item}
+                      </li>
+                    ) : (
+                      <li key={item} className="flex gap-3 leading-snug">
+                        <span aria-hidden className={`font-mono ${p.featured ? "text-coral-soft" : "text-coral-ink"}`}>›</span>
+                        <span>{item}</span>
+                      </li>
+                    ),
+                  )}
                 </ul>
 
                 <a

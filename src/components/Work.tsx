@@ -2,6 +2,7 @@ import type { Dictionary } from "@/content/es";
 import { Eyebrow } from "./Eyebrow";
 import { BrowserFrame, PhoneFrame, SiteVideo } from "./Frames";
 import { CaseCard } from "./CaseCard";
+import { NextProjectCard } from "./NextProjectCard";
 
 // Videos grabados con scripts/record.mjs (recorrido con scroll de cada sitio).
 const media = (slug: string, fmt: "desktop" | "mobile") => ({
@@ -71,6 +72,8 @@ export function Work({ t }: { t: Dictionary }) {
               </CaseCard>
             );
           })}
+          {/* Ficha final: "tu proyecto" (cierra la cuadrícula y vende el siguiente) */}
+          <NextProjectCard t={t.work.next} />
         </ul>
       </div>
     </section>

@@ -77,6 +77,15 @@ export const es = {
     desktopAlt: "Recorrido por la web de {name} en computadora",
     mobileAlt: "Recorrido por la web de {name} en teléfono",
     swipeHint: "Desliza para ver los siete →",
+    next: {
+      label: "Próximo proyecto",
+      domain: "tu-negocio.com",
+      title: "Tu negocio podría ser el próximo.",
+      text: "Una web a medida, con movimiento y lista para vender. Cuéntanos qué haces y empezamos a diseñarla.",
+      cta: "Empecemos tu web",
+      message: "¡Hola D&A Lab! 👋 Vi su portafolio y quiero que mi negocio sea su próximo proyecto.",
+      building: "En construcción",
+    },
     hoverHint: "Pasa el cursor por cada ficha para verla en movimiento",
     cases: [
       {

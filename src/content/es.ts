@@ -103,30 +103,20 @@ export const es = {
         statusBg: "#e61600",
       },
       {
-        slug: "quality-bikes",
-        name: "Quality Bikes",
-        url: "https://qualitybikesvzla.com",
-        domain: "qualitybikesvzla.com",
-        sector: "Motos · Caracas",
-        // FALTA CONTEXTO: ¿qué necesitaba Quality Bikes al llegar (no tenía web, tenía una vieja, vendía solo por Instagram)?
+        slug: "caraquena",
+        name: "Caraqueña Studio",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
+        url: "https://caraquena.vercel.app/",
+        domain: "caraquena · vercel.app",
+        sector: "Estudio de arquitectura · Caracas",
+        // FALTA CONTEXTO: ¿la marca/logo también es trabajo del estudio?
         summary:
-          "Motos de alta cilindrada de ocho marcas: el showroom de hoy con ficha por moto, reserva de los modelos que vienen en camino y contacto directo por WhatsApp.",
-        tags: ["Web", "Catálogo", "Reservas"],
-        accent: "#003462",
-        statusBg: "#050505",
-      },
-      {
-        slug: "mar-caribe",
-        name: "Alimentos Mar Caribe",
-        url: "https://alimentosmarcaribe.com",
-        domain: "alimentosmarcaribe.com",
-        sector: "Exportación de mariscos · Zulia",
-        // FALTA CONTEXTO: ¿el sitio reemplazó a uno anterior? ¿qué le pedían los importadores que no tenían (fichas técnicas, idioma)?
-        summary:
-          "Web bilingüe para un exportador de camarón y pescado: fichas por especie con tallas y empaques, mercados, certificaciones y cotización para mayoristas.",
-        tags: ["Web", "B2B", "ES / EN"],
-        accent: "#061A33",
-        statusBg: "#000000",
+          "Web para un estudio de arquitectura de hotelería, desarrollos y vivienda: el boceto de la portada se abre al hacer scroll y cada proyecto se arma de trazo a boceto a render. Proceso, cobertura y contacto por WhatsApp.",
+        tags: ["Web", "Arquitectura", "ES / EN"],
+        accent: "#F15A22",
+        plan: "premium" as const,
+        statusBg: "#efeeea",
+        statusFg: "#1b1b1b",
       },
       {
         slug: "casa-panza",
@@ -157,20 +147,30 @@ export const es = {
         statusFg: "#1b1b1b",
       },
       {
-        slug: "caraquena",
-        name: "Caraqueña Studio",
-        // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
-        url: "https://caraquena.vercel.app/",
-        domain: "caraquena · vercel.app",
-        sector: "Estudio de arquitectura · Caracas",
-        // FALTA CONTEXTO: ¿la marca/logo también es trabajo del estudio?
+        slug: "quality-bikes",
+        name: "Quality Bikes",
+        url: "https://qualitybikesvzla.com",
+        domain: "qualitybikesvzla.com",
+        sector: "Motos · Caracas",
+        // FALTA CONTEXTO: ¿qué necesitaba Quality Bikes al llegar (no tenía web, tenía una vieja, vendía solo por Instagram)?
         summary:
-          "Web para un estudio de arquitectura de hotelería, desarrollos y vivienda: el boceto de la portada se abre al hacer scroll y cada proyecto se arma de trazo a boceto a render. Proceso, cobertura y contacto por WhatsApp.",
-        tags: ["Web", "Arquitectura", "ES / EN"],
-        accent: "#F15A22",
-        plan: "premium" as const,
-        statusBg: "#efeeea",
-        statusFg: "#1b1b1b",
+          "Motos de alta cilindrada de ocho marcas: el showroom de hoy con ficha por moto, reserva de los modelos que vienen en camino y contacto directo por WhatsApp.",
+        tags: ["Web", "Catálogo", "Reservas"],
+        accent: "#003462",
+        statusBg: "#050505",
+      },
+      {
+        slug: "mar-caribe",
+        name: "Alimentos Mar Caribe",
+        url: "https://alimentosmarcaribe.com",
+        domain: "alimentosmarcaribe.com",
+        sector: "Exportación de mariscos · Zulia",
+        // FALTA CONTEXTO: ¿el sitio reemplazó a uno anterior? ¿qué le pedían los importadores que no tenían (fichas técnicas, idioma)?
+        summary:
+          "Web bilingüe para un exportador de camarón y pescado: fichas por especie con tallas y empaques, mercados, certificaciones y cotización para mayoristas.",
+        tags: ["Web", "B2B", "ES / EN"],
+        accent: "#061A33",
+        statusBg: "#000000",
       },
       {
         slug: "casa-verde",

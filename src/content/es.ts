@@ -119,6 +119,19 @@ export const es = {
         statusFg: "#1b1b1b",
       },
       {
+        slug: "quality-bikes",
+        name: "Quality Bikes",
+        url: "https://qualitybikesvzla.com",
+        domain: "qualitybikesvzla.com",
+        sector: "Motos · Caracas",
+        // FALTA CONTEXTO: ¿qué necesitaba Quality Bikes al llegar (no tenía web, tenía una vieja, vendía solo por Instagram)?
+        summary:
+          "Motos de alta cilindrada de ocho marcas: el showroom de hoy con ficha por moto, reserva de los modelos que vienen en camino y contacto directo por WhatsApp.",
+        tags: ["Web", "Catálogo", "Reservas"],
+        accent: "#003462",
+        statusBg: "#050505",
+      },
+      {
         slug: "casa-panza",
         name: "Casa Panza",
         url: "https://www.casapanzalosroques.com",
@@ -145,19 +158,6 @@ export const es = {
         accent: "#7FA7E8",
         statusBg: "#9499ab",
         statusFg: "#1b1b1b",
-      },
-      {
-        slug: "quality-bikes",
-        name: "Quality Bikes",
-        url: "https://qualitybikesvzla.com",
-        domain: "qualitybikesvzla.com",
-        sector: "Motos · Caracas",
-        // FALTA CONTEXTO: ¿qué necesitaba Quality Bikes al llegar (no tenía web, tenía una vieja, vendía solo por Instagram)?
-        summary:
-          "Motos de alta cilindrada de ocho marcas: el showroom de hoy con ficha por moto, reserva de los modelos que vienen en camino y contacto directo por WhatsApp.",
-        tags: ["Web", "Catálogo", "Reservas"],
-        accent: "#003462",
-        statusBg: "#050505",
       },
       {
         slug: "mar-caribe",

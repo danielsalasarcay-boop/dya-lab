@@ -1,7 +1,8 @@
 // Textos legales: Política de Privacidad (/privacidad) y Términos del Servicio (/terminos).
 // Cada sección es una lista de bloques: un string es un párrafo, un array de strings es una lista.
-// CONFIRMAR: anticipo (50 %), plazos de conservación (12 y 6 meses) y de respuesta (15 días hábiles).
-// PENDIENTE: cuando haya correo real en site.ts, sumarlo a las secciones de contacto.
+// Sin números de teléfono: el contacto va por el botón de WhatsApp del sitio o por Instagram.
+
+import { site } from "@/lib/site";
 
 export type LegalBlock = string | string[];
 export type LegalDoc = {
@@ -12,214 +13,110 @@ export type LegalDoc = {
   sections: { h: string; blocks: LegalBlock[] }[];
 };
 
-const whatsapp = "+58 412 970 2711";
-const updated = "8 de octubre de 2026";
+const contacto = `por WhatsApp desde el botón de este sitio o por Instagram (${site.social.instagramHandle})`;
+const updated = "12 de octubre de 2026";
 
 export const privacy: LegalDoc = {
   metaTitle: "Política de Privacidad — D&A Lab",
-  metaDescription: "Qué datos trata D&A Lab cuando visitas su sitio o le escribes por WhatsApp, para qué los usa y cómo ejercer tus derechos.",
+  metaDescription: "Qué datos trata D&A Lab, para qué los usa y cómo ejercer tus derechos.",
   title: "Política de Privacidad",
   updated,
   sections: [
     {
-      h: "Quién es el responsable",
+      h: "Qué datos tratamos",
       blocks: [
-        `Este sitio pertenece a D&A Lab, estudio de diseño web y de marca con sede en Venezuela. Para cualquier consulta sobre tus datos escríbenos por WhatsApp al ${whatsapp}.`,
-      ],
-    },
-    {
-      h: "Qué datos recogemos",
-      blocks: [
-        "El sitio no tiene registro de usuarios, no vende en línea y no usa cookies. Solo tratamos:",
+        "D&A Lab es un estudio de diseño web y de marca con sede en Venezuela. El sitio no tiene registro de usuarios ni usa cookies. Solo tratamos:",
         [
-          "Los datos que tú nos envías al contactarnos: tu nombre, el nombre y la actividad de tu negocio, lo que necesitas y tu número de teléfono o WhatsApp.",
-          "Datos técnicos que registra nuestro proveedor de alojamiento al visitar el sitio: dirección IP, tipo de navegador, páginas visitadas, fecha y hora.",
+          "Lo que nos envías al contactarnos: nombre, datos de tu negocio y lo que necesitas.",
+          "Datos técnicos de la visita que registra nuestro proveedor de alojamiento (IP, navegador, páginas vistas).",
         ],
+        "El formulario no guarda nada: abre WhatsApp con tu mensaje y solo nos llega si decides enviarlo.",
       ],
     },
     {
-      h: "Cómo funciona el formulario de contacto",
+      h: "Para qué los usamos",
       blocks: [
-        "Al pulsar «Enviar por WhatsApp», el formulario no guarda tus datos en nuestro sitio: abre WhatsApp con tu mensaje ya escrito. Los datos nos llegan solo si decides enviarlo desde WhatsApp.",
-      ],
-    },
-    {
-      h: "Para qué usamos tus datos",
-      blocks: [
-        "Para responder tu consulta, prepararte una propuesta, coordinar y ejecutar el proyecto si lo contratas, y cumplir obligaciones legales o contables. No vendemos ni alquilamos tus datos, ni los usamos para publicidad de terceros.",
-      ],
-    },
-    {
-      h: "Base del tratamiento",
-      blocks: [
-        "Tu consentimiento al escribirnos; las gestiones previas a un contrato o el contrato que firmes con nosotros; y nuestro interés legítimo en mantener el sitio seguro y funcionando.",
+        "Para responderte, preparar tu propuesta y ejecutar el proyecto. No vendemos tus datos ni los usamos para publicidad.",
       ],
     },
     {
       h: "Con quién se comparten",
       blocks: [
-        "Solo con los proveedores necesarios para operar:",
-        [
-          "Vercel Inc. (Estados Unidos): alojamiento del sitio y registros técnicos.",
-          "WhatsApp / Meta Platforms: mensajería, según su propia política de privacidad.",
-          "Autoridades, cuando la ley venezolana lo exija.",
-        ],
-        "Estos proveedores pueden tratar datos fuera de Venezuela. Solo usamos servicios que ofrecen garantías razonables de seguridad.",
+        "Solo con los servicios necesarios para operar: Vercel (alojamiento) y WhatsApp (mensajería), que pueden tratarlos fuera de Venezuela, y con las autoridades cuando la ley lo exija.",
       ],
     },
     {
       h: "Cuánto tiempo los guardamos",
       blocks: [
-        "Las consultas que no se convierten en proyecto se eliminan a los 12 meses. Los datos de clientes se conservan mientras dure la relación y luego el tiempo que exijan las obligaciones legales y fiscales. Los registros técnicos se rigen por los plazos de Vercel.",
-      ],
-    },
-    {
-      h: "Almacenamiento local",
-      blocks: [
-        "El sitio guarda en tu navegador un único valor técnico que alterna la animación de la portada. No te identifica y puedes borrarlo limpiando los datos del navegador. No usamos cookies de análisis ni de publicidad.",
+        "Las consultas que no se convierten en proyecto se borran a los 12 meses. Los datos de clientes se guardan mientras dure la relación y lo que exija la ley.",
       ],
     },
     {
       h: "Tus derechos",
       blocks: [
-        `Conforme al artículo 28 de la Constitución de la República Bolivariana de Venezuela (habeas data) y, cuando aplique, a la normativa de tu país, puedes pedir acceso, rectificación, actualización o eliminación de tus datos, y retirar tu consentimiento. Escríbenos por WhatsApp al ${whatsapp} y te respondemos en un máximo de 15 días hábiles.`,
+        `Puedes pedir acceso, corrección o eliminación de tus datos (art. 28 de la Constitución venezolana) escribiéndonos ${contacto}. Respondemos en un máximo de 15 días hábiles.`,
       ],
-    },
-    {
-      h: "Seguridad",
-      blocks: [
-        "Usamos conexiones cifradas (HTTPS) y limitamos el acceso a tus datos a las personas del equipo que los necesitan. Ningún sistema es 100 % seguro, pero actuamos con diligencia ante cualquier incidente.",
-      ],
-    },
-    {
-      h: "Menores de edad",
-      blocks: ["Nuestros servicios están dirigidos a negocios y mayores de 18 años. No recogemos a sabiendas datos de menores."],
     },
     {
       h: "Cambios",
-      blocks: [
-        "Si cambiamos esta política (por ejemplo, al añadir herramientas de analítica), publicaremos la nueva versión aquí con su fecha de actualización.",
-      ],
+      blocks: ["Si cambiamos esta política, publicaremos la nueva versión aquí con su fecha."],
     },
   ],
 };
 
 export const terms: LegalDoc = {
   metaTitle: "Términos del Servicio — D&A Lab",
-  metaDescription: "Condiciones de uso del sitio de D&A Lab y de contratación de proyectos de diseño web y de marca: pagos, propiedad intelectual y entrega de archivos.",
+  metaDescription: "Condiciones para contratar proyectos de diseño web y de marca con D&A Lab.",
   title: "Términos del Servicio",
   updated,
   sections: [
     {
-      h: "Aceptación",
+      h: "Alcance",
       blocks: [
-        "Al usar este sitio aceptas estos términos. Si contratas un proyecto con D&A Lab, también aplican la propuesta escrita y lo acordado para ese proyecto.",
+        "Al usar este sitio aceptas estos términos. Los precios y plazos publicados son orientativos; cada proyecto se rige por su propuesta escrita, que es válida aceptada por WhatsApp o correo.",
       ],
     },
     {
-      h: "Qué es este sitio",
+      h: "Pagos y plazos",
       blocks: [
-        "Es un portafolio informativo de los servicios de diseño web e identidad visual de D&A Lab. Los paquetes, plazos y precios publicados son orientativos y no constituyen una oferta vinculante.",
+        "Se paga un 50 % para empezar y el resto antes de la entrega final. El plazo corre desde que recibimos el anticipo y todo el material (textos y fotos). Si el proyecto queda sin respuesta más de 30 días, se pausa.",
       ],
     },
     {
-      h: "Uso permitido",
+      h: "Propiedad de lo entregado",
       blocks: [
-        "Puedes navegar y compartir el sitio. No puedes copiar, descargar de forma masiva, modificar ni reutilizar su código, animaciones, textos, logos o casos del portafolio sin autorización escrita.",
-      ],
-    },
-    {
-      h: "Propiedad del sitio",
-      blocks: [
-        "El diseño, el código, las animaciones, los textos y la marca D&A Lab pertenecen a D&A Lab. Los trabajos del portafolio pertenecen a sus respectivos clientes y se exhiben con su autorización o como muestra del trabajo realizado.",
-      ],
-    },
-    {
-      h: "Cómo se contrata un proyecto",
-      blocks: [
-        "Todo proyecto empieza con una propuesta escrita: alcance, entregables, plazo, precio y forma de pago. La aceptación por escrito, incluso por WhatsApp o correo, tiene plena validez conforme a la Ley sobre Mensajes de Datos y Firmas Electrónicas. Lo que no esté en la propuesta se cotiza aparte.",
-      ],
-    },
-    {
-      h: "Pagos",
-      blocks: [
-        "Salvo acuerdo distinto, se paga un anticipo del 50 % para iniciar y el saldo antes de la entrega final. Los plazos se cuentan desde que recibimos el anticipo y todo el material del cliente (textos, fotos, accesos). Si el cliente deja el proyecto sin respuesta más de 30 días, D&A Lab puede darlo por pausado y cotizar su reactivación.",
-      ],
-    },
-    {
-      h: "Propiedad intelectual de los entregables",
-      blocks: [
-        "Una vez pagado el precio total, D&A Lab cede al cliente, de forma exclusiva, por todo el tiempo de protección y para todo el mundo, los derechos patrimoniales de explotación sobre los entregables finales aprobados: logo, identidad visual y diseño del sitio. El cliente podrá usarlos, reproducirlos, modificarlos y registrarlos como marca.",
-        "Mientras exista saldo pendiente, D&A Lab conserva todos los derechos y el cliente solo tiene una licencia de uso revocable. Los derechos morales del autor se mantienen conforme a la Ley sobre el Derecho de Autor.",
-      ],
-    },
-    {
-      h: "Entrega de activos digitales",
-      blocks: [
-        "Al pagar el total, el cliente recibe:",
-        [
-          "Logo en formato vectorial (AI, SVG o PDF) y en PNG, en las versiones y variantes acordadas.",
-          "Paleta de colores, tipografías y guía corta de uso, cuando el paquete la incluya.",
-          "El sitio publicado y todos los accesos: dominio, hosting y repositorio, a nombre del cliente.",
-        ],
-        "Los archivos se entregan por enlace de descarga. D&A Lab los guarda 6 meses después de la entrega; luego su resguardo es responsabilidad del cliente.",
-      ],
-    },
-    {
-      h: "Lo que no se cede",
-      blocks: [
-        "No se ceden las propuestas o bocetos descartados, que siguen siendo de D&A Lab, ni los archivos de trabajo intermedios, salvo que se coticen aparte. Tampoco las herramientas, plantillas, componentes y código genérico que D&A Lab usa en varios proyectos: sobre ellos el cliente recibe una licencia de uso perpetua y no exclusiva, solo para su propio sitio.",
-      ],
-    },
-    {
-      h: "Componentes de terceros",
-      blocks: [
-        "Tipografías, librerías de código abierto, íconos e imágenes de stock mantienen sus propias licencias. D&A Lab informará cuáles se usan. Si alguna requiere licencia de pago, su costo corre por cuenta del cliente, previo aviso.",
-      ],
-    },
-    {
-      h: "Portafolio",
-      blocks: [
-        "D&A Lab puede mostrar el proyecto terminado en su sitio, redes y presentaciones, con el nombre del cliente. El cliente puede pedir por escrito, antes de la entrega final, que no se publique o que se publique sin su nombre.",
-      ],
-    },
-    {
-      h: "Material del cliente",
-      blocks: [
-        "El cliente garantiza que tiene derechos sobre los textos, fotos, logos y marcas que entrega, y asume la responsabilidad frente a reclamos de terceros por ese material.",
+        "Con el pago total, el cliente recibe los derechos sobre el logo, la identidad visual y el diseño de su sitio. Las herramientas y el código reutilizable de D&A Lab se ceden solo como licencia de uso para ese sitio. Los bocetos descartados siguen siendo de D&A Lab.",
       ],
     },
     {
       h: "Dominio, hosting y cambios",
       blocks: [
-        "El dominio y el hosting se contratan a nombre del cliente y su costo corre por su cuenta. Los ajustes menores durante el primer mes después de la entrega están incluidos. Después, los cambios se cotizan aparte o mediante un plan de mantenimiento.",
+        "El dominio se registra a nombre del cliente. El hosting lo gestiona D&A Lab: el primer año va incluido y luego se renueva por $20 al año, con aviso un mes antes. Los ajustes menores del primer mes tras la entrega están incluidos; después se cotizan aparte o con un plan de mantenimiento.",
       ],
     },
     {
-      h: "Limitación de responsabilidad",
+      h: "Material del cliente",
       blocks: [
-        "D&A Lab responde por el trabajo contratado hasta el monto efectivamente pagado por el proyecto. No responde por caídas o cambios de proveedores externos (hosting, dominio, WhatsApp u otras plataformas), lucro cesante ni resultados comerciales, y no garantiza posiciones en buscadores ni ventas. Este sitio se ofrece «tal cual», sin garantía de disponibilidad continua.",
+        "El cliente garantiza que tiene derecho a usar los textos, fotos y marcas que entrega.",
       ],
     },
     {
-      h: "Enlaces externos",
-      blocks: ["El sitio enlaza a WhatsApp y a sitios de clientes. D&A Lab no controla ni responde por su contenido o sus políticas."],
-    },
-    {
-      h: "Ley y jurisdicción",
+      h: "Portafolio",
       blocks: [
-        "Estos términos se rigen por las leyes de la República Bolivariana de Venezuela. Las partes intentarán resolver cualquier diferencia de buena fe; de no lograrlo, se someten a los tribunales competentes de Venezuela, salvo que una norma imperativa de protección al consumidor disponga otra cosa.",
+        "Podemos mostrar el proyecto terminado en nuestro portafolio y redes, salvo que el cliente pida lo contrario por escrito antes de la entrega.",
       ],
     },
     {
-      h: "Cambios",
+      h: "Responsabilidad",
       blocks: [
-        "D&A Lab puede actualizar estos términos publicando la nueva versión aquí. Los proyectos en curso se rigen por la versión vigente al aceptar su propuesta.",
+        "Respondemos por el trabajo contratado hasta el monto pagado. No respondemos por fallas de servicios de terceros (hosting, dominio, WhatsApp) ni garantizamos ventas o posiciones en Google.",
       ],
     },
     {
-      h: "Contacto",
-      blocks: [`Escríbenos por WhatsApp al ${whatsapp}.`],
+      h: "Ley aplicable",
+      blocks: [
+        `Estos términos se rigen por las leyes de Venezuela. Para cualquier consulta, escríbenos ${contacto}.`,
+      ],
     },
   ],
 };

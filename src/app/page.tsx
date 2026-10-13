@@ -8,6 +8,7 @@ import { Work } from "@/components/Work";
 import { Motion } from "@/components/Motion";
 import { Process } from "@/components/Process";
 import { Plans } from "@/components/Plans";
+import { Care } from "@/components/Care";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
@@ -69,6 +70,7 @@ export default function Home() {
         <Motion t={t} />
         <Process t={t} />
         <Plans t={t} />
+        <Care t={t} />
         <Faq t={t} />
       </main>
       <Footer t={t} />

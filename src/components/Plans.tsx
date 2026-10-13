@@ -76,30 +76,27 @@ export function Plans({ t }: { t: Dictionary }) {
           })}
         </ul>
 
-        {/* Extras del Premium: precio por tamaño de catálogo y fotos */}
-        <div className="mt-8 rounded-3xl border border-line bg-paper p-6 sm:p-8 lg:mt-10">
-          <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
+        {/* Extras del Premium: se cotizan en privado */}
+        <div className="mt-8 flex flex-col gap-5 rounded-3xl border border-dashed border-coral/60 bg-[linear-gradient(180deg,#fff7f1,#fbeee4)] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8 lg:mt-10">
+          <div className="min-w-0 flex-1">
             <h3 className="font-display text-xl font-bold tracking-[-0.02em] text-green">{pl.extras.title}</h3>
-            <p className="text-[15px] text-muted">{pl.extras.lead}</p>
+            <p className="hero-lead mt-1 text-[16px] text-muted">{pl.extras.lead}</p>
           </div>
-          <div className="mt-5 grid gap-6 md:grid-cols-3 md:gap-8">
-            {pl.extras.groups.map((g) => (
-              <div key={g.name}>
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-coral-ink">{g.name}</p>
-                <dl className="mt-2 divide-y divide-line">
-                  {g.rows.map((r) => (
-                    <div key={r.label} className="flex items-baseline justify-between gap-4 py-2.5">
-                      <dt className="text-ink">{r.label}</dt>
-                      <dd className="font-display text-lg font-bold text-green">
-                        {r.price} <span className="font-mono text-[11px] font-normal text-muted">{pl.currency}</span>
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            ))}
+          <div className="w-full shrink-0 sm:w-[270px]">
+            <a
+              href={whatsappLink(pl.extras.message)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="plan-cta plan-cta--coral"
+              aria-label={`${pl.extras.cta} (se abre WhatsApp en una pestaña nueva)`}
+            >
+              <span className="plan-cta-fill" aria-hidden />
+              <span className="plan-cta-label">{pl.extras.cta}</span>
+              <span aria-hidden className="plan-cta-arrow">
+                <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+              </span>
+            </a>
           </div>
-          <p className="mt-4 text-[13px] text-muted">{pl.extras.footnote}</p>
         </div>
 
         {/* Mantenimiento: después del primer año */}

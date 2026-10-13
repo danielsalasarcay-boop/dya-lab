@@ -243,7 +243,6 @@ export const es = {
         price: "$420",
         from: false,
         featured: false,
-        note: "Pago único",
         includes: [
           "5 secciones y 3 animaciones",
           "Tienda de hasta 10 productos con pedido por WhatsApp",
@@ -259,7 +258,6 @@ export const es = {
         price: "$650",
         from: true,
         featured: true,
-        note: "Pago único",
         includes: [
           "Todo lo del Esencial, y además:",
           "10 secciones y 5 animaciones creadas para tu marca",
@@ -286,32 +284,10 @@ export const es = {
       },
     ],
     extras: {
-      title: "Extras del plan Premium",
-      lead: "Amplía tu web: se suman al precio del Premium.",
-      footnote: "Más de 100 productos se cotiza aparte.",
-      groups: [
-        {
-          name: "Productos",
-          rows: [
-            { label: "Hasta 60 productos", price: "+$100" },
-            { label: "Hasta 100 productos", price: "+$180" },
-          ],
-        },
-        {
-          name: "Fotos",
-          rows: [
-            { label: "+25 fotos", price: "+$40" },
-            { label: "+50 fotos", price: "+$70" },
-          ],
-        },
-        {
-          name: "Secciones",
-          rows: [
-            { label: "+1 sección", price: "+$25" },
-            { label: "+2 secciones", price: "+$50" },
-          ],
-        },
-      ],
+      title: "¿Necesitas más productos, fotos o secciones?",
+      lead: "El Premium crece contigo: lo ajustamos a tu medida y te cotizamos sin sorpresas.",
+      cta: "Cotizar a mi medida",
+      message: "¡Hola D&A Lab! 👋 Me interesa el plan Premium y necesitaría más productos, fotos o secciones. ¿Me cotizan?",
     },
     care: {
       eyebrow: "Mantenimiento",

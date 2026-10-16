@@ -17,9 +17,6 @@ export function About({ t }: { t: Dictionary }) {
             <h1 id="nosotros-titulo" className="font-display text-[clamp(2rem,1.4rem+2vw,2.75rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-balance">
               {a.title}
             </h1>
-            <p className="mt-3 font-display text-[clamp(1.25rem,1.05rem+0.9vw,1.7rem)] font-medium leading-[1.25] tracking-[-0.02em] text-mist">
-              {a.subtitle}
-            </p>
             <p className="mt-5 text-[16px] leading-[1.65] text-mist/80">{a.intro}</p>
             <p className="mt-3 text-[16px] leading-[1.65] text-mist/80">{a.team}</p>
           </header>

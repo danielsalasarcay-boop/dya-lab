@@ -21,6 +21,7 @@ export function About({ t }: { t: Dictionary }) {
               {a.subtitle}
             </p>
             <p className="mt-5 text-[16px] leading-[1.65] text-mist/80">{a.intro}</p>
+            <p className="mt-3 text-[16px] leading-[1.65] text-mist/80">{a.team}</p>
           </header>
         </div>
       </section>

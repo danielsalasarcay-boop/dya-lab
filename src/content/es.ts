@@ -401,7 +401,6 @@ export const es = {
     metaDescription: "D&A Lab es un estudio de diseño web y de identidad visual en Venezuela. Webs y marcas a medida, sin plantillas.",
     logoLabel: "Logo de D&A Lab",
     title: "Diseño a medida con precisión técnica.",
-    subtitle: "Para negocios que quieren verse bien y vender mejor.",
     intro: "Somos un estudio de diseño web y de marca en Venezuela. Hacemos webs y logos desde cero, sin plantillas, para negocios que venden por catálogo, por WhatsApp o por cotización.",
     team: "Somos un equipo pequeño de diseño y desarrollo. Hablas directo con quien hace tu proyecto, todo hecho a mano y por escrito antes de empezar.",
     philosophyTitle: "Cómo trabajamos",

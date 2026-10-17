@@ -73,7 +73,7 @@ export function Footer({ t }: { t: Dictionary }) {
               </a>
             </div>
             <div className="hidden md:block">
-              <ul aria-label={f.social} className="flex items-center gap-1 md:-ml-2.5">
+              <ul aria-label={f.social} className="flex items-center justify-center gap-1">
               {socials.map(({ name, href, Icon }) => (
                 <li key={name}>
                   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={name} className="ft-social">

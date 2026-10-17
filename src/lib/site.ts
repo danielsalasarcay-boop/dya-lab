@@ -4,12 +4,12 @@ export const site = {
   name: "D&A Lab",
   // PENDIENTE: dominio definitivo. Se puede sobreescribir con NEXT_PUBLIC_SITE_URL en Vercel.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://dya-lab.vercel.app",
-  // WhatsApp del estudio: +58 412 970 2711 (formato internacional sin "+" ni espacios).
-  whatsapp: "584129702711",
-  whatsappDisplay: "+58 412 970 2711",
+  // WhatsApp del estudio: +58 412 303 0332 (formato internacional sin "+" ni espacios).
+  whatsapp: "584123030332",
+  whatsappDisplay: "+58 412 303 0332",
   // Teléfono para llamadas (distinto al WhatsApp, que siempre va al número de arriba).
-  phone: "+584123030332",
-  phoneDisplay: "+58 412 303 0332",
+  phone: "+584129702711",
+  phoneDisplay: "+58 412 970 2711",
   // PENDIENTE: correo de contacto.
   email: "hola@tu-dominio.com",
   locale: "es_VE",

@@ -38,7 +38,7 @@
       notes: [
         ['search', 'Te encontraron en Google', 'Búsqueda: “cerca de mí”'],
         ['layout', 'Tu web está en línea', 'Diseñada a tu medida'],
-        ['chat', 'Nuevo pedido', 'Llegó armado a tu WhatsApp']
+        ['chat', 'Nuevo mensaje', 'Llegó directo a tu WhatsApp']
       ]
     },
     plantilla: {
@@ -72,17 +72,17 @@
     },
     chat: {
       words: [
-        { text: '¿precio?', style: 'green' },
-        { text: '¿delivery?', style: 'green' },
-        { text: '¡pedido!', style: 'accent' }
+        { text: '¿diseño?', style: 'green' },
+        { text: '¿movimiento?', style: 'green' },
+        { text: '¡tu web!', style: 'accent' }
       ],
-      line: 'Tu web responde lo que preguntan, antes de que escriban.',
-      cta: 'Quiero vender así',
-      counter: 'pedidos hoy',
+      line: 'Tu web se ve distinta, se mueve distinto y se acuerdan de ella.',
+      cta: 'Quiero mi web',
+      counter: 'visitas hoy',
       notes: [
-        ['list', 'Catálogo con precios', 'Sin “precio al DM”'],
-        ['pin', 'Zona de delivery', 'Confirmada al instante'],
-        ['chat', 'Pedido armado', 'Llegó listo a tu WhatsApp']
+        ['layout', 'Diseño a tu medida', 'Sin plantillas'],
+        ['eye', 'Animación al hacer scroll', 'Fluida también en celular'],
+        ['chat', 'Contacto directo', 'Llegó a tu WhatsApp']
       ]
     },
     mundo: {
@@ -96,7 +96,7 @@
       notes: [
         ['invoice', 'Cotización recibida', 'Distribuidor · España'],
         ['globe', 'Sitio bilingüe', 'Español e inglés'],
-        ['plane', 'Pedido internacional', 'Miami · 2 contenedores']
+        ['plane', 'Nuevo contacto', 'Miami · Estados Unidos']
       ]
     }
   };

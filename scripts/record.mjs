@@ -26,6 +26,8 @@ const SITES = [
   { slug: "caraquena", url: "https://caraquena.vercel.app/index.html", zones: [[0, 1950], [3600, 9300]], fast: 60 },
   // Fachada día → atardecer → noche y zoom aéreo de la galería.
   { slug: "casa-verde", url: "https://danielsalasarcay-boop.github.io/casa-verde/", zones: [[0, 2000], [5100, 8600]], fast: 55 },
+  // Portada, inventario destacado y cierre con contacto.
+  { slug: "orlando-wheels", url: "https://autos-landing.vercel.app/", zones: [[0, 1200]], fast: 50 },
 ];
 
 const FORMATS = {

@@ -1046,6 +1046,9 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
 
 /* Sección Mantenimiento: botones compactos */
 .care-cta { min-height: 46px; }
+/* Botón del formulario de contacto: ancho completo en teléfono, a su medida desde sm */
+.contact-cta { min-height: 48px; cursor: pointer; }
+@media (min-width: 640px) { .contact-cta { width: auto; gap: 18px; } }
 .care-mini {
   display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 999px; white-space: nowrap;
   font-size: 13.5px; font-weight: 650; background: var(--color-green); color: var(--color-bone);

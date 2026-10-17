@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary } from "@/content/es";
 import { whatsappLink } from "@/lib/site";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 type Field = "name" | "business" | "need";
 
@@ -62,8 +63,13 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
         {err("need")}
       </div>
       <div className="flex flex-col gap-2 sm:col-span-2 sm:flex-row sm:items-center sm:gap-4">
-        <button type="submit" className="btn btn-coral min-h-11 w-full shrink-0 whitespace-nowrap sm:w-auto">
-          {t.submit}
+        {/* Mismo botón que "Quiero este" y "Tu proyecto": círculo que llena el botón y flecha que gira */}
+        <button type="submit" className="plan-cta plan-cta--coral contact-cta shrink-0 whitespace-nowrap">
+          <span className="plan-cta-fill" aria-hidden />
+          <span className="plan-cta-label flex items-center gap-2"><WhatsAppIcon className="size-4" /> {t.submit}</span>
+          <span aria-hidden className="plan-cta-arrow">
+            <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+          </span>
         </button>
         <p className="text-[13px] text-mist">
           {t.note} <a href="/privacidad" className="underline underline-offset-2 hover:text-bone">{t.privacyLink}</a>.

@@ -5,7 +5,7 @@ import { ContactForm } from "./ContactForm";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { PhoneIcon } from "./PhoneIcon";
 import { MailIcon } from "./MailIcon";
-import { InstagramIcon } from "./SocialIcons";
+import { InstagramIcon, LinkedInIcon } from "./SocialIcons";
 
 export function Contact({ t }: { t: Dictionary }) {
   const c = t.contact;
@@ -48,6 +48,14 @@ export function Contact({ t }: { t: Dictionary }) {
                 <span className="ft-chip-ic"><InstagramIcon className="size-4" /></span>
                 {site.social.instagramHandle}
                 <span className="sr-only">(Instagram, se abre en una pestaña nueva)</span>
+                <span aria-hidden className="ft-chip-arrow">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className="ft-chip ft-chip--lg">
+                <span className="ft-chip-ic"><LinkedInIcon className="size-4" /></span>
+                LinkedIn
+                <span className="sr-only">(se abre en una pestaña nueva)</span>
                 <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
             </li>

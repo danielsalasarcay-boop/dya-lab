@@ -63,10 +63,20 @@ export function Work({ t }: { t: Dictionary }) {
                         href={c.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-[15px] font-semibold text-green hover:text-coral-ink"
+                        className="visit-cta text-[15px] font-semibold text-green"
                         aria-label={`${t.work.visit}: ${c.name} (se abre en una pestaña nueva)`}
                       >
-                        {t.work.visit} <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+                        <span aria-hidden className="visit-cta-label">
+                          {[...t.work.visit].map((ch, i) => (
+                            <span key={i} className="visit-cta-ch" style={{ "--i": i } as React.CSSProperties} data-ch={ch}>
+                              {ch === " " ? "\u00a0" : ch}
+                            </span>
+                          ))}
+                        </span>
+                        <span aria-hidden className="visit-cta-arrow">
+                          <span>→</span>
+                          <span>→</span>
+                        </span>
                       </a>
                       {"plan" in c && c.plan && (
                         <a href="#paquetes" className={`plan-badge plan-badge--${c.plan}`} title={`Hecho con el plan ${c.plan === "premium" ? "Premium" : "Esencial"}`}>

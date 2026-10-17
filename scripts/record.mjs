@@ -27,7 +27,7 @@ const SITES = [
   // Fachada día → atardecer → noche y zoom aéreo de la galería.
   { slug: "casa-verde", url: "https://danielsalasarcay-boop.github.io/casa-verde/", zones: [[0, 2000], [5100, 8600]], fast: 55 },
   // Portada, inventario destacado y cierre con contacto.
-  { slug: "orlando-wheels", url: "https://autos-landing.vercel.app/", zones: [[0, 1200]], fast: 50 },
+  { slug: "orlando-wheels", url: "https://www.orlandowheels.store/", zones: [[0, 4000]], fast: 55 },
 ];
 
 const FORMATS = {

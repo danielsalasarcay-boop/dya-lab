@@ -189,9 +189,8 @@ export const es = {
       {
         slug: "orlando-wheels",
         name: "Orlando Wheels",
-        // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
-        url: "https://autos-landing.vercel.app/",
-        domain: "autos-landing · vercel.app",
+        url: "https://www.orlandowheels.store/",
+        domain: "orlandowheels.store",
         sector: "Venta de vehículos · Orlando",
         summary:
           "Compra y venta de deportivos clásicos, sedanes, camionetas y motos: inventario por categoría con ficha de cada vehículo, favoritos y contacto directo por WhatsApp.",

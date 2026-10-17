@@ -18,7 +18,7 @@ export const es = {
 
   nav: [
     { href: "/#servicios", label: "Servicios" },
-    { href: "/#trabajo", label: "Trabajo" },
+    { href: "/#trabajo", label: "Proyectos" },
     { href: "/#movimiento", label: "Movimiento" },
     { href: "/#proceso", label: "Proceso" },
     { href: "/#paquetes", label: "Paquetes" },
@@ -72,7 +72,7 @@ export const es = {
 
   work: {
     eyebrow: "Trabajo",
-    title: "Portafolio",
+    title: "Proyectos",
     visit: "Ver sitio",
     desktopAlt: "Recorrido por la web de {name} en computadora",
     mobileAlt: "Recorrido por la web de {name} en teléfono",
@@ -83,7 +83,7 @@ export const es = {
       title: "Tu negocio podría ser el próximo.",
       text: "Una web a medida, con movimiento y lista para vender. Cuéntanos qué haces y empezamos a diseñarla.",
       cta: "Empecemos tu web",
-      message: "¡Hola D&A Lab! 👋 Vi su portafolio y quiero que mi negocio sea su próximo proyecto.",
+      message: "¡Hola D&A Lab! 👋 Vi sus proyectos y quiero que mi negocio sea el próximo.",
       building: "En construcción",
     },
     hoverHint: "Pasa el cursor por cada ficha para verla en movimiento",
@@ -419,13 +419,13 @@ export const es = {
     philosophy: [
       { n: "01", title: "Entendemos tu negocio", text: "Qué vendes, a quién y por dónde te llegan los pedidos." },
       { n: "02", title: "Todo por escrito", text: "Alcance, precio y tiempos claros antes de empezar." },
-      { n: "03", title: "Proyectos reales", text: "Todo el portafolio está publicado: entra y úsalo." },
+      { n: "03", title: "Proyectos reales", text: "Cada sitio está publicado: entra y úsalo." },
     ],
     ctaTitle: "¿Empezamos?",
     ctaLead: "Cuéntanos qué vendes. Te respondemos el mismo día hábil.",
     cta: "Escríbenos por WhatsApp",
     ctaMessage: "¡Hola D&A Lab! 👋 Vi su página y quiero contarles sobre mi negocio.",
-    ctaWork: "Ver portafolio",
+    ctaWork: "Ver proyectos",
   },
 
   footer: {

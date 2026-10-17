@@ -76,7 +76,7 @@ export const es = {
     visit: "Ver sitio",
     desktopAlt: "Recorrido por la web de {name} en computadora",
     mobileAlt: "Recorrido por la web de {name} en teléfono",
-    swipeHint: "Desliza para ver los siete →",
+    swipeHint: "Desliza para ver los ocho →",
     next: {
       label: "Próximo proyecto",
       domain: "tu-negocio.com",
@@ -185,6 +185,19 @@ export const es = {
         tags: ["Web", "Galería", "ES / EN"],
         accent: "#1F8A5B",
         statusBg: "#196091",
+      },
+      {
+        slug: "orlando-wheels",
+        name: "Orlando Wheels",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
+        url: "https://autos-landing.vercel.app/",
+        domain: "autos-landing · vercel.app",
+        sector: "Venta de vehículos · Orlando",
+        summary:
+          "Compra y venta de deportivos clásicos, sedanes, camionetas y motos: inventario por categoría con ficha de cada vehículo, favoritos y contacto directo por WhatsApp.",
+        tags: ["Web", "Catálogo", "Favoritos"],
+        accent: "#FF3B1F",
+        statusBg: "#07080b",
       },
     ],
   },

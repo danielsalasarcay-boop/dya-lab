@@ -426,6 +426,7 @@ export const es = {
     cta: "Escríbenos por WhatsApp",
     ctaMessage: "¡Hola D&A Lab! 👋 Vi su página y quiero contarles sobre mi negocio.",
     ctaWork: "Ver proyectos",
+    ctaEmail: "o escríbenos a",
   },
 
   footer: {

@@ -1,7 +1,8 @@
 import type { Dictionary } from "@/content/es";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { LogoCard } from "./LogoCard";
 import { WhatsAppIcon } from "./WhatsAppIcon";
+import { MailIcon } from "./MailIcon";
 import { LabScene } from "./LabScene";
 
 // Página "Quiénes somos", corta y al grano: el logo animado con quiénes somos,
@@ -44,6 +45,12 @@ export function About({ t }: { t: Dictionary }) {
             <p className="mt-5">
               <a href={whatsappLink(a.ctaMessage)} target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-shine">
                 <WhatsAppIcon className="size-5" /> {a.cta}
+              </a>
+            </p>
+            <p className="mt-4 text-[15px] text-mist">
+              {a.ctaEmail}{" "}
+              <a href={`mailto:${site.email}`} className="inline-flex items-center gap-1.5 font-semibold text-bone underline decoration-coral decoration-[1.5px] underline-offset-4 hover:text-coral-soft">
+                <MailIcon className="size-4" /> {site.email}
               </a>
             </p>
           </div>

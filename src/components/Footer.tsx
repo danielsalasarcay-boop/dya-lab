@@ -4,6 +4,7 @@ import { site, whatsappLink } from "@/lib/site";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { PhoneIcon } from "./PhoneIcon";
+import { MailIcon } from "./MailIcon";
 import { BackToTop } from "./FooterBits";
 import { BehanceIcon, InstagramIcon, LinkedInIcon } from "./SocialIcons";
 
@@ -69,6 +70,10 @@ export function Footer({ t }: { t: Dictionary }) {
               </a>
               <a href={`tel:${site.phone}`} className="ft-chip">
                 <span className="ft-chip-ic"><PhoneIcon className="size-3.5" /></span> {site.phoneDisplay}
+                <span aria-hidden className="ft-chip-arrow">↗</span>
+              </a>
+              <a href={`mailto:${site.email}`} className="ft-chip">
+                <span className="ft-chip-ic"><MailIcon className="size-3.5" /></span> {site.email}
                 <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
             </div>

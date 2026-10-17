@@ -10,8 +10,8 @@ export const site = {
   // Teléfono para llamadas (distinto al WhatsApp, que siempre va al número de arriba).
   phone: "+584129702711",
   phoneDisplay: "+58 412 970 2711",
-  // PENDIENTE: correo de contacto.
-  email: "hola@tu-dominio.com",
+  // Correo del estudio.
+  email: "dalabs@gmail.com",
   locale: "es_VE",
   // PENDIENTE: URLs de los perfiles del estudio. Mientras estén vacías, el icono
   // del footer apunta a "#". Las que tengan URL se usan también en el JSON-LD.

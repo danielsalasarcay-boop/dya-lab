@@ -31,8 +31,16 @@ export function Work({ t }: { t: Dictionary }) {
             return (
               <CaseCard key={c.slug} id={`caso-${c.slug}`}>
                 <article className="card flex h-full flex-col overflow-hidden bg-paper">
-                  {/* Captura web con recorrido + iPhone */}
-                  <div className="relative bg-sage/60 px-4 pb-6 pt-4">
+                  {/* Captura web con recorrido + iPhone: clic lleva al sitio. Fuera del orden de
+                      tabulación porque "Ver sitio" ya es el enlace accesible de la ficha. */}
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabIndex={-1}
+                    aria-hidden
+                    className="case-media relative block cursor-pointer bg-sage/60 px-4 pb-6 pt-4"
+                  >
                     <BrowserFrame domain={c.domain}>
                       <SiteVideo src={desktop.src} poster={desktop.poster} label={t.work.desktopAlt.replace("{name}", c.name)} className="aspect-[16/10]" cover />
                     </BrowserFrame>
@@ -43,7 +51,7 @@ export function Work({ t }: { t: Dictionary }) {
                       statusBg={c.statusBg}
                       statusFg={c.statusFg}
                     />
-                  </div>
+                  </a>
 
                   <div className="flex flex-1 flex-col p-6">
                     <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">

@@ -922,6 +922,10 @@ html[data-hero-turn="2"] .hero-phone-2 { visibility: visible; }
 .ft-chip:hover { background: rgb(250 246 240 / 0.1); border-color: rgb(240 122 90 / 0.45); transform: translateY(-1px); }
 .ft-chip:hover .ft-chip-arrow { opacity: 1; transform: translate(2px, -2px); color: var(--color-coral-soft); }
 .ft-phones { gap: 8px !important; }
+/* Variante más grande para la página de contacto */
+.ft-chip--lg { min-height: 48px; gap: 10px; padding: 0 16px 0 7px; font-size: 15px; font-weight: 600; }
+.ft-chip--lg .ft-chip-ic { width: 34px; height: 34px; }
+.ft-chip--lg .ft-chip-arrow { font-size: 13px; }
 /* Logo del footer (mismo tamaño): corchetes coral que "respiran" como un cursor de
    código, brillo que cruza las letras y, al pasar el cursor, los corchetes se abren
    y el logo se eleva con un halo. */

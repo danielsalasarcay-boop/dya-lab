@@ -100,8 +100,6 @@ export function Header({ t }: { t: Dictionary }) {
   // "light" solo arriba del todo en la portada, donde el hero es crema.
   const tone = pathname === "/" && !island && !open ? "light" : "dark";
   const onContact = pathname === "/contacto";
-  // "Contacto" ya lo cubre el botón; en escritorio no lo repetimos.
-  const deskNav = t.nav.filter((n) => n.href !== "/contacto");
 
   return (
     <header
@@ -122,13 +120,13 @@ export function Header({ t }: { t: Dictionary }) {
           </Link>
 
           <nav aria-label="Principal" className="hidden lg:block">
-            <ul ref={navRef} onMouseLeave={() => setHover(null)} className="relative flex items-center gap-0.5 text-[15px] font-medium">
+            <ul ref={navRef} onMouseLeave={() => setHover(null)} className="relative flex items-center gap-0.5 text-[14px] font-medium xl:text-[15px]">
               <span
                 aria-hidden
                 className="nav-pill absolute inset-y-1.5 rounded-full"
                 style={{ transform: `translateX(${pill?.x ?? 0}px)`, width: pill?.w ?? 0, opacity: pill ? 1 : 0 }}
               />
-              {deskNav.map((item) => {
+              {t.nav.map((item) => {
                 const on = active === item.href || pathname === item.href;
                 return (
                   <li key={item.href}>
@@ -138,7 +136,7 @@ export function Header({ t }: { t: Dictionary }) {
                       onFocus={() => setHover(item.href)}
                       onBlur={() => setHover(null)}
                       aria-current={on ? "true" : undefined}
-                      className="nav-link relative flex min-h-11 items-center rounded-full px-3.5 transition-colors duration-300"
+                      className="nav-link relative flex min-h-11 items-center rounded-full px-2 transition-colors duration-300 xl:px-3.5"
                     >
                       {item.label}
                     </a>

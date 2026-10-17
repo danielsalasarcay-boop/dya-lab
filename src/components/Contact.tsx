@@ -4,6 +4,7 @@ import { Eyebrow } from "./Eyebrow";
 import { ContactForm } from "./ContactForm";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { PhoneIcon } from "./PhoneIcon";
+import { MailIcon } from "./MailIcon";
 import { InstagramIcon } from "./SocialIcons";
 
 export function Contact({ t }: { t: Dictionary }) {
@@ -16,27 +17,38 @@ export function Contact({ t }: { t: Dictionary }) {
           <h1 id="contacto-titulo" className="mt-4 font-display text-[34px] font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-[48px]">{c.title}</h1>
           <p className="mt-2 text-[15px] text-mist">{c.lead}</p>
 
-          {/* PENDIENTE: correo (oculto hasta tener el definitivo; está en src/lib/site.ts) */}
-          <ul data-selectable className="mt-4 space-y-0.5" aria-label={c.direct}>
+          {/* Mismas fichas que el footer: icono en círculo coral y flecha que sale al pasar el cursor */}
+          <ul data-selectable className="mt-5 flex flex-col items-start gap-2.5" aria-label={c.direct}>
             <li>
-              <a href={whatsappLink(c.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
-                <WhatsAppIcon className="size-5" />
+              <a href={whatsappLink(c.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-chip ft-chip--lg">
+                <span className="ft-chip-ic"><WhatsAppIcon className="size-4" /></span>
                 {site.whatsappDisplay}
                 <span className="sr-only">{c.whatsapp}, (se abre en una pestaña nueva)</span>
+                <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
             </li>
             <li>
-              <a href={`tel:${site.phone}`} className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
-                <PhoneIcon className="size-5" />
+              <a href={`tel:${site.phone}`} className="ft-chip ft-chip--lg">
+                <span className="ft-chip-ic"><PhoneIcon className="size-4" /></span>
                 {site.phoneDisplay}
                 <span className="sr-only">({c.phone})</span>
+                <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
             </li>
             <li>
-              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2.5 font-semibold hover:text-coral-soft">
-                <InstagramIcon className="size-5" />
+              <a href={`mailto:${site.email}`} className="ft-chip ft-chip--lg">
+                <span className="ft-chip-ic"><MailIcon className="size-4" /></span>
+                {site.email}
+                <span className="sr-only">(correo)</span>
+                <span aria-hidden className="ft-chip-arrow">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="ft-chip ft-chip--lg">
+                <span className="ft-chip-ic"><InstagramIcon className="size-4" /></span>
                 {site.social.instagramHandle}
                 <span className="sr-only">(Instagram, se abre en una pestaña nueva)</span>
+                <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
             </li>
           </ul>

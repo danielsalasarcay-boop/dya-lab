@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary } from "@/content/es";
+import { legalMeta } from "@/content/legal-meta";
+import { makeRef } from "@/lib/consent";
 import { whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
-type Field = "name" | "business" | "need";
+type Field = "name" | "business" | "need" | "acceptTerms" | "acceptPrivacy";
 
 export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
   const [errors, setErrors] = useState<Partial<Record<Field, boolean>>>({});
@@ -25,14 +27,34 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
       business: String(data.get("business") ?? "").trim(),
       need: String(data.get("need") ?? "").trim(),
     };
-    const nextErrors = { name: !values.name, business: !values.business, need: !values.need };
+    const acceptTerms = data.get("acceptTerms") === "on";
+    const acceptPrivacy = data.get("acceptPrivacy") === "on";
+    const nextErrors = { name: !values.name, business: !values.business, need: !values.need, acceptTerms: !acceptTerms, acceptPrivacy: !acceptPrivacy };
     setErrors(nextErrors);
     const firstInvalid = (Object.keys(nextErrors) as Field[]).find((k) => nextErrors[k]);
     if (firstInvalid) {
       e.currentTarget.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)?.focus();
       return;
     }
-    const message = t.message.replace("{name}", values.name).replace("{business}", values.business).replace("{need}", values.need);
+    // Prueba de aceptación: se envía en segundo plano (keepalive) para no frenar la
+    // apertura de WhatsApp; el código de referencia va en el mensaje para poder cruzarlos.
+    const ref = makeRef();
+    fetch("/api/consentimiento", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({
+        ref,
+        name: values.name,
+        business: values.business,
+        acceptTerms,
+        acceptPrivacy,
+        termsVersion: legalMeta.terms.version,
+        privacyVersion: legalMeta.privacy.version,
+        page: window.location.pathname + window.location.search,
+      }),
+    }).catch(() => {});
+    const message = t.message.replace("{name}", values.name).replace("{business}", values.business).replace("{need}", values.need).replace("{ref}", ref);
     window.open(whatsappLink(message), "_blank", "noopener,noreferrer");
   }
 
@@ -41,7 +63,7 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
   const err = (f: Field) =>
     errors[f] ? (
       <p id={`${f}-error`} className="mt-1 text-[13px] text-coral-soft">
-        {t.required}
+        {f === "acceptTerms" ? t.consent.termsRequired : f === "acceptPrivacy" ? t.consent.privacyRequired : t.required}
       </p>
     ) : null;
 
@@ -62,6 +84,34 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
         <textarea ref={needRef} id="need" name="need" rows={2} placeholder={t.needHint} className={`${field} resize-y`} aria-invalid={errors.need || undefined} aria-describedby={errors.need ? "need-error" : undefined} />
         {err("need")}
       </div>
+      {/* Dos casillas separadas, sin marcar por defecto, cada una con su documento */}
+      <div className="grid gap-2 sm:col-span-2">
+        {([
+          ["acceptTerms", t.consent.termsPre, t.consent.termsLink, t.consent.termsPost, legalMeta.terms.path],
+          ["acceptPrivacy", t.consent.privacyPre, t.consent.privacyLink, t.consent.privacyPost, legalMeta.privacy.path],
+        ] as const).map(([id, pre, link, post, href]) => (
+          <div key={id}>
+            <div className="flex items-start gap-2.5">
+              <input
+                id={id}
+                name={id}
+                type="checkbox"
+                className="consent-box mt-0.5"
+                aria-invalid={errors[id] || undefined}
+                aria-describedby={errors[id] ? `${id}-error` : undefined}
+              />
+              <label htmlFor={id} className="text-[14px] leading-snug text-mist">
+                {pre}{" "}
+                <a href={href} target="_blank" rel="noopener noreferrer" className="font-semibold text-bone underline decoration-coral underline-offset-2 hover:text-coral-soft">
+                  {link}
+                </a>
+                {post}
+              </label>
+            </div>
+            {err(id)}
+          </div>
+        ))}
+      </div>
       <div className="flex flex-col gap-2 sm:col-span-2 sm:flex-row sm:items-center sm:gap-4">
         {/* Mismo botón que "Quiero este" y "Tu proyecto": círculo que llena el botón y flecha que gira */}
         <button type="submit" className="plan-cta plan-cta--coral contact-cta shrink-0 whitespace-nowrap">
@@ -71,9 +121,7 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
             <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
           </span>
         </button>
-        <p className="text-[13px] text-mist">
-          {t.note} <a href="/privacidad" className="underline underline-offset-2 hover:text-bone">{t.privacyLink}</a>.
-        </p>
+        <p className="text-[13px] text-mist">{t.note}</p>
       </div>
     </form>
   );

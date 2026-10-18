@@ -392,9 +392,20 @@ export const es = {
       need: "¿Qué necesitas?",
       needHint: "Web, logo, las dos… lo que tengas en mente",
       submit: "Enviar por WhatsApp",
-      note: "Al enviar se abre WhatsApp con tu mensaje listo y aceptas nuestra",
-      privacyLink: "Política de Privacidad",
-      message: "Hola D&A Lab, soy {name} de {business}. Necesito: {need}",
+      note: "Al enviar se abre WhatsApp con tu mensaje listo.",
+      // Dos casillas separadas (nunca una sola para todo). El texto completo de cada una
+      // (pre + enlace + post) queda guardado en el registro de consentimientos.
+      consent: {
+        termsPre: "He leído y acepto los",
+        termsLink: "Términos y Condiciones",
+        termsPost: ".",
+        privacyPre: "He leído y acepto la",
+        privacyLink: "Política de Privacidad",
+        privacyPost: " y autorizo el tratamiento de mis datos para responder mi consulta.",
+        termsRequired: "Para enviar debes aceptar los Términos y Condiciones",
+        privacyRequired: "Para enviar debes aceptar la Política de Privacidad",
+      },
+      message: "Hola D&A Lab, soy {name} de {business}. Necesito: {need}\n\nRef. {ref}",
       required: "Completa este campo",
     },
     direct: "O directo",
@@ -438,8 +449,10 @@ export const es = {
     rights: "Todos los derechos reservados.",
     social: "Redes sociales",
     legal: "Legal",
-    privacy: "Política de Privacidad",
-    terms: "Términos del Servicio",
+    privacy: "Privacidad",
+    terms: "Términos",
+    cookies: "Cookies",
+    refunds: "Reembolsos",
   },
 };
 

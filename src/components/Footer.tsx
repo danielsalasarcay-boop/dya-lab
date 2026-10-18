@@ -95,9 +95,11 @@ export function Footer({ t }: { t: Dictionary }) {
         <div className="mt-5 flex flex-col items-start gap-1 border-t border-bone/10 pr-20 pt-4 text-[12px] text-mist/75 md:mt-8 md:flex-row md:items-center md:justify-between md:gap-4 md:pr-0 md:pt-5 md:text-[13px]">
           <p>© {new Date().getFullYear()} D&amp;A Lab<span className="hidden sm:inline"> · {f.rights}</span></p>
           <nav aria-label={f.legal}>
-            <ul className="flex gap-x-5">
-              <li><a href="/privacidad" className="ft-legal">{f.privacy}</a></li>
+            <ul className="flex flex-wrap gap-x-4 gap-y-1 md:gap-x-5">
               <li><a href="/terminos" className="ft-legal">{f.terms}</a></li>
+              <li><a href="/privacidad" className="ft-legal">{f.privacy}</a></li>
+              <li><a href="/cookies" className="ft-legal">{f.cookies}</a></li>
+              <li><a href="/reembolsos" className="ft-legal">{f.refunds}</a></li>
             </ul>
           </nav>
           <div className="hidden md:block"><BackToTop label={f.backToTop} /></div>

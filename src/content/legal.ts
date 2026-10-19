@@ -1,5 +1,5 @@
-// Textos legales: Términos y Condiciones (/terminos), Política de Privacidad (/privacidad),
-// Política de Cookies (/cookies) y Política de Reembolsos (/reembolsos).
+// Textos legales: Términos y Condiciones (/terminos), Política de Privacidad (/privacidad)
+// y Política de Cookies (/cookies).
 // Cada sección es una lista de bloques: un string es un párrafo, un array de strings es una lista.
 // Sin números de teléfono: el contacto va por correo, el botón de WhatsApp del sitio o Instagram.
 //
@@ -51,15 +51,15 @@ export const terms: LegalDoc = {
     {
       h: "Precios y propuesta",
       blocks: [
-        "Los precios publicados están en dólares estadounidenses (USD) y son de referencia: cada proyecto se rige por su propuesta escrita, con alcance, precio y plazo. La propuesta se considera aceptada cuando la confirmas por escrito (correo o WhatsApp) y pagas el anticipo.",
+        "Los precios publicados están en dólares estadounidenses (USD) y son de referencia: cada proyecto se rige por su propuesta escrita, con alcance, precio y plazo. La propuesta se considera aceptada cuando la confirmas por escrito (correo o WhatsApp).",
         "Puedes pagar en dólares o en bolívares al tipo de cambio oficial del Banco Central de Venezuela del día del pago.",
       ],
     },
     {
       h: "Pagos y plazos",
       blocks: [
-        "Se paga un 50 % para empezar y el resto antes de la publicación o entrega final. El plazo corre desde que recibimos el anticipo y todo el material (textos y fotos).",
-        "Si el proyecto queda sin respuesta del cliente más de 30 días, se pausa; si pasan 90 días, se da por terminado y aplica la Política de Reembolsos.",
+        "El proyecto se paga completo (100 %) al terminarlo, cuando lo apruebas y antes de publicar el sitio o entregar los archivos finales. No publicamos el sitio ni entregamos archivos hasta recibir el pago.",
+        "El plazo corre desde que confirmas la propuesta y nos envías todo el material (textos y fotos). Si el proyecto queda sin respuesta del cliente más de 30 días, se pausa; si pasan 90 días, se da por terminado y retomarlo se cotiza de nuevo.",
       ],
     },
     {
@@ -108,7 +108,10 @@ export const terms: LegalDoc = {
     },
     {
       h: "Reembolsos",
-      blocks: ["Las cancelaciones y devoluciones se rigen por nuestra Política de Reembolsos, publicada en /reembolsos."],
+      blocks: [
+        "Como pagas después de ver y aprobar el trabajo terminado, no hay reembolsos una vez hecho el pago. Si algo no cumple lo acordado en la propuesta, lo corregimos sin costo.",
+        "El dominio, el hosting y los planes de mantenimiento ya pagados no se reembolsan por el período en curso. Puedes cancelar el mantenimiento para el siguiente período avisando antes de la renovación.",
+      ],
     },
     {
       h: "Ley aplicable y reclamos",
@@ -253,53 +256,4 @@ export const cookies: LegalDoc = {
   ],
 };
 
-export const refunds: LegalDoc = {
-  ...legalMeta.refunds,
-  metaTitle: "Política de Reembolsos — D&A Lab",
-  metaDescription: "Cuándo y cómo se devuelve el dinero de un proyecto de diseño web o de marca con D&A Lab.",
-  title: "Política de Reembolsos",
-  updated,
-  sections: [
-    {
-      h: "Cómo funciona el pago",
-      blocks: [
-        "Cada proyecto se paga en dos partes: 50 % de anticipo para empezar y 50 % antes de la publicación o entrega final. El anticipo reserva tu lugar en nuestra agenda y cubre el trabajo inicial.",
-      ],
-    },
-    {
-      h: "Si cancelas",
-      blocks: [
-        [
-          "Antes de que empecemos a trabajar: te devolvemos el 100 % del anticipo, menos lo ya pagado a terceros a tu nombre (por ejemplo, el dominio).",
-          "Después de presentarte la primera propuesta de diseño: el anticipo no se devuelve, porque cubre el trabajo hecho. Te entregamos lo avanzado hasta ese momento.",
-          "Después de la entrega final: no hay reembolso, pero sí los ajustes incluidos en tu plan.",
-        ],
-      ],
-    },
-    {
-      h: "Si no cumplimos",
-      blocks: [
-        "Si no entregamos lo acordado en la propuesta escrita, primero lo corregimos sin costo. Si aun así no podemos cumplir, te devolvemos la parte proporcional al trabajo no entregado.",
-      ],
-    },
-    {
-      h: "Lo que no es reembolsable",
-      blocks: [
-        [
-          "Dominio, hosting y otros servicios de terceros una vez contratados.",
-          "Planes de mantenimiento por el período en curso. Puedes cancelarlos para el siguiente período avisando antes de la renovación.",
-          "Proyectos dados por terminados tras 90 días sin respuesta del cliente.",
-        ],
-      ],
-    },
-    {
-      h: "Cómo pedir un reembolso",
-      blocks: [
-        `Escríbenos ${contacto} indicando tu nombre, el proyecto y el motivo. Te respondemos en un máximo de 15 días hábiles y, si procede, devolvemos el dinero por el mismo medio de pago en un máximo de 15 días hábiles más.`,
-        "Esto no limita los derechos que te dé la ley venezolana.",
-      ],
-    },
-  ],
-};
-
-export const legalDocs = { terms, privacy, cookies, refunds };
+export const legalDocs = { terms, privacy, cookies };

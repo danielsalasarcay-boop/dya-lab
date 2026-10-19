@@ -452,7 +452,6 @@ export const es = {
     privacy: "Privacidad",
     terms: "Términos",
     cookies: "Cookies",
-    refunds: "Reembolsos",
   },
 };
 

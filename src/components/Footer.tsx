@@ -99,7 +99,6 @@ export function Footer({ t }: { t: Dictionary }) {
               <li><a href="/terminos" className="ft-legal">{f.terms}</a></li>
               <li><a href="/privacidad" className="ft-legal">{f.privacy}</a></li>
               <li><a href="/cookies" className="ft-legal">{f.cookies}</a></li>
-              <li><a href="/reembolsos" className="ft-legal">{f.refunds}</a></li>
             </ul>
           </nav>
           <div className="hidden md:block"><BackToTop label={f.backToTop} /></div>

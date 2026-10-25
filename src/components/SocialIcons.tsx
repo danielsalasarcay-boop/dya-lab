@@ -1,4 +1,4 @@
-// Iconos lineales 24x24 (trazo, sin relleno) para el footer. Siguen el estilo de PhoneIcon.
+// Iconos lineales 24x24 (trazo, sin relleno) para el footer. Mismo estilo que MailIcon.
 type P = { className?: string };
 const base = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round" } as const;
 

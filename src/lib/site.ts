@@ -7,9 +7,6 @@ export const site = {
   // WhatsApp del estudio: +58 412 303 0332 (formato internacional sin "+" ni espacios).
   whatsapp: "584123030332",
   whatsappDisplay: "+58 412 303 0332",
-  // Teléfono para llamadas (distinto al WhatsApp, que siempre va al número de arriba).
-  phone: "+584129702711",
-  phoneDisplay: "+58 412 970 2711",
   // Correo del estudio.
   email: "dalabs@gmail.com",
   locale: "es_VE",

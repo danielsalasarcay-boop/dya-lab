@@ -3,7 +3,6 @@ import type { Dictionary } from "@/content/es";
 import { site, whatsappLink } from "@/lib/site";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { PhoneIcon } from "./PhoneIcon";
 import { MailIcon } from "./MailIcon";
 import { BackToTop } from "./FooterBits";
 import { BehanceIcon, InstagramIcon, LinkedInIcon } from "./SocialIcons";
@@ -66,10 +65,6 @@ export function Footer({ t }: { t: Dictionary }) {
             <div data-selectable className="ft-phones flex flex-wrap items-center gap-x-5 md:flex-col md:items-start md:gap-y-1">
               <a href={whatsappLink(t.contact.whatsappGreeting)} target="_blank" rel="noopener noreferrer" className="ft-chip">
                 <span className="ft-chip-ic"><WhatsAppIcon className="size-3.5" /></span> {site.whatsappDisplay}
-                <span aria-hidden className="ft-chip-arrow">↗</span>
-              </a>
-              <a href={`tel:${site.phone}`} className="ft-chip">
-                <span className="ft-chip-ic"><PhoneIcon className="size-3.5" /></span> {site.phoneDisplay}
                 <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
               <a href={`mailto:${site.email}`} className="ft-chip">

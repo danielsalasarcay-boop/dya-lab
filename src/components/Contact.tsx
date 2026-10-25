@@ -3,7 +3,6 @@ import { site, whatsappLink } from "@/lib/site";
 import { Eyebrow } from "./Eyebrow";
 import { ContactForm } from "./ContactForm";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { PhoneIcon } from "./PhoneIcon";
 import { MailIcon } from "./MailIcon";
 import { InstagramIcon, LinkedInIcon } from "./SocialIcons";
 
@@ -24,14 +23,6 @@ export function Contact({ t }: { t: Dictionary }) {
                 <span className="ft-chip-ic"><WhatsAppIcon className="size-4" /></span>
                 {site.whatsappDisplay}
                 <span className="sr-only">{c.whatsapp}, (se abre en una pestaña nueva)</span>
-                <span aria-hidden className="ft-chip-arrow">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href={`tel:${site.phone}`} className="ft-chip ft-chip--lg">
-                <span className="ft-chip-ic"><PhoneIcon className="size-4" /></span>
-                {site.phoneDisplay}
-                <span className="sr-only">({c.phone})</span>
                 <span aria-hidden className="ft-chip-arrow">↗</span>
               </a>
             </li>

@@ -27,7 +27,7 @@ export default function Home() {
         logo: `${site.url}/icon.svg`,
         description: t.meta.description,
         areaServed: "VE",
-        knowsAbout: ["Diseño web", "Desarrollo web", "Identidad visual", "Diseño de logos"],
+        knowsAbout: ["Diseño web", "Desarrollo web", "Tiendas en línea", "Animación web"],
         ...(sameAs.length ? { sameAs } : {}),
       },
       {

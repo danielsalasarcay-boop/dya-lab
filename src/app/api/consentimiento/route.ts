@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { put } from "@vercel/blob";
+import { head, put } from "@vercel/blob";
 import { getDictionary } from "@/content";
 import { privacy, terms, type LegalDoc } from "@/content/legal";
 import { REF_PATTERN, consentLabel } from "@/lib/consent";
@@ -55,14 +55,17 @@ export async function POST(request: Request) {
   };
 
   const month = now.toISOString().slice(0, 7).replace("-", "/");
+  const pathname = `consentimientos/${month}/${ref}.json`;
   try {
-    await put(`consentimientos/${month}/${ref}.json`, JSON.stringify(record, null, 2), {
+    await put(pathname, JSON.stringify(record, null, 2), {
       access: "private",
       contentType: "application/json",
       addRandomSuffix: false,
       allowOverwrite: false,
     });
   } catch (error) {
+    // Reintento del navegador después de un guardado que sí llegó: el registro ya existe.
+    if (await head(pathname).then(() => true, () => false)) return Response.json({ ok: true, ref });
     console.error("[consentimiento] no se pudo guardar", ref, error);
     return Response.json({ ok: false }, { status: 500 });
   }

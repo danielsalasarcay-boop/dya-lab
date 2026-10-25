@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "D&A Lab — Diseño web y de marca",
+    name: "D&A Lab — Diseño web",
     short_name: "D&A Lab",
     lang: "es",
     start_url: "/",

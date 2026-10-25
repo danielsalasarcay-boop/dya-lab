@@ -14,8 +14,8 @@ export function Plans({ t }: { t: Dictionary }) {
           {pl.lead} <span className="lg:hidden">{pl.swipeHint}</span>
         </p>
 
-        {/* Teléfono y tablet: carrusel deslizable; desktop: 3 columnas */}
-        <ul className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 pt-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
+        {/* Teléfono y tablet: carrusel deslizable; desktop: 2 columnas */}
+        <ul className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 pt-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:mt-10 lg:grid lg:max-w-[60rem] lg:grid-cols-2 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
           {pl.items.map((p) => {
             const numeric = p.price.startsWith("$");
             return (
@@ -38,7 +38,6 @@ export function Plans({ t }: { t: Dictionary }) {
                   <span className={`display ${numeric ? "text-[56px]" : "text-[34px]"}`}>{p.price}</span>
                   {numeric && <span className={`font-mono text-[12px] tracking-[0.1em] ${p.featured ? "text-mist" : "text-muted"}`}>{pl.currency}</span>}
                 </p>
-                {p.note && <p className={`mt-1 text-[13px] ${p.featured ? "text-mist" : "text-muted"}`}>{p.note}</p>}
 
                 <ul className={`mt-7 flex-1 space-y-2.5 border-t pt-6 ${p.featured ? "border-bone/20" : "border-line"}`}>
                   {p.includes.map((item) =>

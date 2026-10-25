@@ -9,8 +9,27 @@ import { WhatsAppIcon } from "./WhatsAppIcon";
 
 type Field = "name" | "business" | "need" | "acceptTerms" | "acceptPrivacy";
 
+async function saveConsent(body: Record<string, unknown>) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch("/api/consentimiento", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(4000),
+      });
+      // 2xx = guardado; 409 = ya existía (un reintento después de un guardado que sí llegó).
+      if (res.ok || res.status === 409) return true;
+      if (res.status < 500) return false;
+    } catch {}
+    await new Promise((r) => setTimeout(r, 600));
+  }
+  return false;
+}
+
 export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
   const [errors, setErrors] = useState<Partial<Record<Field, boolean>>>({});
+  const [sending, setSending] = useState(false);
   const needRef = useRef<HTMLTextAreaElement>(null);
 
   // Los botones de "Paquetes" llevan a /contacto?plan=…: prellenamos el campo con el plan elegido.
@@ -36,26 +55,38 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
       e.currentTarget.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)?.focus();
       return;
     }
-    // Prueba de aceptación: se envía en segundo plano (keepalive) para no frenar la
-    // apertura de WhatsApp; el código de referencia va en el mensaje para poder cruzarlos.
+    // Prueba de aceptación: se guarda ANTES de ir a WhatsApp (hasta 3 intentos). La pestaña
+    // se abre ya, dentro del clic, porque si se abriera después de esperar al servidor el
+    // navegador la bloquearía; cuando termina el guardado se lleva a WhatsApp.
+    // Aunque el servidor fallara, el mensaje lleva la referencia y las versiones aceptadas.
     const ref = makeRef();
-    fetch("/api/consentimiento", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      keepalive: true,
-      body: JSON.stringify({
-        ref,
-        name: values.name,
-        business: values.business,
-        acceptTerms,
-        acceptPrivacy,
-        termsVersion: legalMeta.terms.version,
-        privacyVersion: legalMeta.privacy.version,
-        page: window.location.pathname + window.location.search,
-      }),
-    }).catch(() => {});
-    const message = t.message.replace("{name}", values.name).replace("{business}", values.business).replace("{need}", values.need).replace("{ref}", ref);
-    window.open(whatsappLink(message), "_blank", "noopener,noreferrer");
+    const message = t.message
+      .replace("{name}", values.name)
+      .replace("{business}", values.business)
+      .replace("{need}", values.need)
+      .replace("{ref}", ref)
+      .replace("{terms}", legalMeta.terms.version)
+      .replace("{privacy}", legalMeta.privacy.version);
+    const tab = window.open("", "_blank");
+    setSending(true);
+    saveConsent({
+      ref,
+      name: values.name,
+      business: values.business,
+      acceptTerms,
+      acceptPrivacy,
+      termsVersion: legalMeta.terms.version,
+      privacyVersion: legalMeta.privacy.version,
+      page: window.location.pathname + window.location.search,
+    }).finally(() => {
+      setSending(false);
+      if (tab) {
+        tab.opener = null;
+        tab.location.href = whatsappLink(message);
+      } else {
+        window.location.href = whatsappLink(message);
+      }
+    });
   }
 
   const field = "mt-1.5 block w-full rounded-xl border border-bone/25 bg-green-deep px-3.5 py-2.5 text-[16px] text-bone placeholder:text-mist/70 focus:border-coral-soft focus:outline-none focus-visible:outline-3 focus-visible:outline-coral";
@@ -114,9 +145,9 @@ export function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
       </div>
       <div className="flex flex-col gap-2 sm:col-span-2 sm:flex-row sm:items-center sm:gap-4">
         {/* Mismo botón que "Quiero este" y "Tu proyecto": círculo que llena el botón y flecha que gira */}
-        <button type="submit" className="plan-cta plan-cta--coral contact-cta shrink-0 whitespace-nowrap">
+        <button type="submit" disabled={sending} aria-busy={sending || undefined} className="plan-cta plan-cta--coral contact-cta shrink-0 whitespace-nowrap">
           <span className="plan-cta-fill" aria-hidden />
-          <span className="plan-cta-label flex items-center gap-2"><WhatsAppIcon className="size-4" /> {t.submit}</span>
+          <span className="plan-cta-label flex items-center gap-2"><WhatsAppIcon className="size-4" /> {sending ? t.sending : t.submit}</span>
           <span aria-hidden className="plan-cta-arrow">
             <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
           </span>

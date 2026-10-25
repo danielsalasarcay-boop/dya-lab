@@ -4,7 +4,7 @@ import { Mascot } from "./Mascot";
 import { TiltCard } from "./TiltCard";
 
 // Arriba: titular, párrafo y acciones. Abajo: tres tarjetas compactas en una fila
-// (web, marca y el porqué). La mascota se asoma por el borde derecho de la última.
+// (web, tienda y el porqué). La mascota se asoma por el borde derecho de la última.
 export function Services({ t }: { t: Dictionary }) {
   const s = t.services;
   return (

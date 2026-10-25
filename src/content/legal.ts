@@ -25,19 +25,19 @@ export type LegalDoc = {
 };
 
 const contacto = `por correo a ${site.email}, por WhatsApp desde el botón de este sitio o por Instagram (${site.social.instagramHandle})`;
-const updated = "18 de octubre de 2026";
+const updated = "25 de octubre de 2026";
 
 export const terms: LegalDoc = {
   ...legalMeta.terms,
   metaTitle: "Términos y Condiciones — D&A Lab",
-  metaDescription: "Condiciones para usar este sitio y contratar proyectos de diseño web y de marca con D&A Lab.",
+  metaDescription: "Condiciones para usar este sitio y contratar proyectos de diseño y desarrollo web con D&A Lab.",
   title: "Términos y Condiciones",
   updated,
   sections: [
     {
       h: "Quiénes somos",
       blocks: [
-        `D&A Lab es un estudio de diseño web y de identidad visual con sede en Venezuela. Contacto: ${site.email}.`,
+        `D&A Lab es un estudio de diseño y desarrollo web con sede en Venezuela. Solo hacemos sitios web: no diseñamos logos ni identidad de marca. Contacto: ${site.email}.`,
       ],
     },
     {
@@ -77,7 +77,7 @@ export const terms: LegalDoc = {
     {
       h: "Propiedad de lo entregado",
       blocks: [
-        "Con el pago total, el cliente recibe los derechos sobre el logo, la identidad visual y el diseño de su sitio. Las herramientas y el código reutilizable de D&A Lab se ceden solo como licencia de uso para ese sitio. Los bocetos y propuestas descartados siguen siendo de D&A Lab.",
+        "Con el pago total, el cliente recibe los derechos sobre el diseño de su sitio y los textos e imágenes hechos para él. Las herramientas y el código reutilizable de D&A Lab se ceden solo como licencia de uso para ese sitio. Los bocetos y propuestas descartados siguen siendo de D&A Lab.",
         "Hasta que el proyecto esté pagado por completo, los derechos sobre el trabajo siguen siendo de D&A Lab.",
       ],
     },
@@ -86,6 +86,14 @@ export const terms: LegalDoc = {
       blocks: [
         "El cliente garantiza que tiene derecho a usar los textos, fotos, logos y marcas que nos entrega, y responde frente a terceros si no es así.",
         "Si usamos fotos de bancos de imágenes o generadas por inteligencia artificial, lo indicamos y usamos solo material con licencia que permita su uso comercial.",
+      ],
+    },
+    {
+      h: "Confidencialidad",
+      blocks: [
+        "Todo lo que nos compartes para tu proyecto es confidencial: información de tu negocio, precios, clientes, proveedores, accesos y contraseñas, y cualquier material que aún no sea público. No lo divulgamos, no lo vendemos y no lo usamos para nada distinto a tu proyecto, ni durante el trabajo ni después de terminarlo.",
+        "Solo lo compartimos con los servicios estrictamente necesarios para hacer y publicar tu sitio (alojamiento y dominio), o si una autoridad lo exige por ley; en ese caso te avisamos, salvo que la ley lo impida. Al terminar te entregamos los accesos y te recomendamos cambiar las contraseñas.",
+        "Lo único que mostramos en nuestro portafolio es lo que ya está publicado en tu sitio, como explica el punto siguiente.",
       ],
     },
     {
@@ -104,6 +112,13 @@ export const terms: LegalDoc = {
       h: "Responsabilidad",
       blocks: [
         "Respondemos por el trabajo contratado hasta el monto pagado por ese proyecto. No respondemos por fallas de servicios de terceros (hosting, dominio, WhatsApp, redes sociales) ni garantizamos ventas, visitas o posiciones en Google.",
+      ],
+    },
+    {
+      h: "Fuerza mayor",
+      blocks: [
+        "Ninguna de las partes responde por retrasos o incumplimientos causados por hechos ajenos a su control que no pudo prever ni evitar (causa extraña no imputable, artículo 1.272 del Código Civil): cortes de electricidad o de internet, caídas de servicios de terceros (alojamiento, dominio, WhatsApp, redes sociales), desastres naturales, enfermedad grave, conflictos o decisiones de autoridades.",
+        "Quien se vea afectado avisa a la otra parte lo antes posible. Los plazos se extienden por el tiempo que dure el impedimento y, si dura más de 30 días seguidos, cualquiera de las dos puede dar por terminado el proyecto sin penalidad.",
       ],
     },
     {
@@ -138,7 +153,7 @@ export const privacy: LegalDoc = {
     {
       h: "Responsable",
       blocks: [
-        `D&A Lab, estudio de diseño web y de marca con sede en Venezuela, es responsable de los datos que nos das. Contacto para temas de privacidad: ${site.email}.`,
+        `D&A Lab, estudio de diseño y desarrollo web con sede en Venezuela, es responsable de los datos que nos das. Contacto para temas de privacidad: ${site.email}.`,
       ],
     },
     {
@@ -147,7 +162,7 @@ export const privacy: LegalDoc = {
         "Solo pedimos lo necesario para responderte. El sitio no tiene registro de usuarios ni usa cookies.",
         [
           "Formulario de contacto: tu nombre, el nombre de tu negocio y lo que necesitas.",
-          "Registro de aceptación: cuando envías el formulario guardamos la fecha y hora, las versiones de los Términos y de esta Política que aceptaste, el texto de cada casilla, tu nombre y negocio, la dirección IP, el navegador y un código de referencia que va en tu mensaje de WhatsApp. No guardamos lo que escribiste en \"¿Qué necesitas?\": eso solo viaja en tu mensaje.",
+          "Registro de aceptación: cuando envías el formulario guardamos la fecha y hora, las versiones de los Términos y de esta Política que aceptaste, el texto de cada casilla, tu nombre y negocio, la dirección IP, el navegador y un código de referencia que va en tu mensaje de WhatsApp. No guardamos lo que escribiste en \"¿Qué necesitas?\": eso solo viaja en tu mensaje. Tu mensaje de WhatsApp también lleva ese código y las versiones que aceptaste.",
           "Si nos escribes por WhatsApp, correo o redes: tu número o usuario y lo que nos cuentes.",
           "Si nos contratas: los datos necesarios para la propuesta, la facturación y el proyecto.",
           "Datos técnicos que registra nuestro proveedor de alojamiento (IP, navegador, páginas vistas) para seguridad y funcionamiento.",
@@ -222,7 +237,7 @@ export const cookies: LegalDoc = {
   metaTitle: "Política de Cookies — D&A Lab",
   metaDescription: "Este sitio no usa cookies. Qué guarda en tu navegador y por qué no hace falta aceptarlo.",
   title: "Política de Cookies",
-  updated,
+  updated: "18 de octubre de 2026",
   sections: [
     {
       h: "Este sitio no usa cookies",

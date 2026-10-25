@@ -10,9 +10,9 @@
 
 export const es = {
   meta: {
-    title: "D&A Lab — Diseño web y de marca para negocios que venden",
+    title: "D&A Lab — Diseño web para negocios que venden",
     description:
-      "Estudio de diseño web y de identidad visual en Venezuela. Sitios a medida y logos para negocios que venden por catálogo, por WhatsApp o por cotización.",
+      "Estudio de diseño y desarrollo web en Venezuela. Sitios a medida con movimiento para negocios que venden por catálogo, por WhatsApp o por cotización.",
     ogAlt: "D&A Lab — Desarrollo web premium con movimiento, para que tu marca sea inolvidable",
   },
 
@@ -34,7 +34,7 @@ export const es = {
   menuAvailable: "Disponibles",
 
   hero: {
-    eyebrow: "Diseño web y de marca · Venezuela",
+    eyebrow: "Diseño web · Venezuela",
     titleA: "Desarrollo web premium con movimiento, para que tu marca sea",
     titleB: "inolvidable.",
     proof: "Sitios en producción para",
@@ -58,14 +58,14 @@ export const es = {
       },
       {
         n: "02",
-        eyebrow: "Marca",
-        big: "Una identidad que cobra vida.",
-        small: "Logo, colores y tipografía pensados para moverse con tu web y verse impecables en redes.",
-        tags: ["Logo", "Identidad", "Motion"],
+        eyebrow: "Tienda",
+        big: "Tu catálogo, listo para vender por WhatsApp.",
+        small: "Ficha por producto, categorías y pedido directo a tu WhatsApp, en español e inglés.",
+        tags: ["Catálogo", "WhatsApp", "ES / EN"],
       },
     ],
     cta: "Cotiza por WhatsApp",
-    ctaMessage: "¡Hola D&A Lab! 👋 Quiero cotizar una web o una marca para mi negocio.",
+    ctaMessage: "¡Hola D&A Lab! 👋 Quiero cotizar una web para mi negocio.",
     ctaAlt: "Ver paquetes",
     ctaNote: "Respondemos el mismo día hábil.",
   },
@@ -94,7 +94,7 @@ export const es = {
         url: "https://loopivzla.com",
         domain: "loopivzla.com",
         sector: "Comida · Caracas",
-        // FALTA CONTEXTO: ¿qué usaba LOOPI para vender antes de la web (solo Instagram, catálogo en PDF…)? ¿También hicieron su marca/logo? Si es así, añadir la etiqueta "Marca".
+        // FALTA CONTEXTO: ¿qué usaba LOOPI para vender antes de la web (solo Instagram, catálogo en PDF…)?
         summary:
           "Tienda de mini lumpias saladas y dulces: el cliente elige sabores y salsas, arma su pedido y lo envía por WhatsApp. Delivery, horario y pagos en la misma página.",
         tags: ["Web", "Catálogo", "Pedidos"],
@@ -109,7 +109,6 @@ export const es = {
         url: "https://caraquena.vercel.app/",
         domain: "caraquena · vercel.app",
         sector: "Estudio de arquitectura · Caracas",
-        // FALTA CONTEXTO: ¿la marca/logo también es trabajo del estudio?
         summary:
           "Web para un estudio de arquitectura de hotelería, desarrollos y vivienda: el boceto de la portada se abre al hacer scroll y cada proyecto se arma de trazo a boceto a render. Proceso, cobertura y contacto por WhatsApp.",
         tags: ["Web", "Arquitectura", "ES / EN"],
@@ -137,7 +136,7 @@ export const es = {
         url: "https://www.casapanzalosroques.com",
         domain: "casapanzalosroques.com",
         sector: "Alquiler vacacional · Los Roques",
-        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web (solo Instagram/WhatsApp)? ¿también hicieron su marca?
+        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web (solo Instagram/WhatsApp)?
         summary:
           "Casa frente al mar en Gran Roque para hasta 10 huéspedes: la portada pasa de boceto a foto al hacer scroll, espacios, galería, gastronomía de la casa, comodidades y reserva directa por WhatsApp.",
         tags: ["Web", "Galería", "Reservas"],
@@ -151,7 +150,6 @@ export const es = {
         url: "https://www.lacapitaldelcielo.com",
         domain: "lacapitaldelcielo.com",
         sector: "Reservas de casas · Los Roques",
-        // FALTA CONTEXTO: ¿la marca/logo también es trabajo del estudio?
         summary:
           "Marca que reúne casas privadas de lujo en Los Roques: siete propiedades con ficha y reserva, lo que incluye cada estadía, camisas propias con carrito de compra y contacto por WhatsApp.",
         tags: ["Web", "Reservas", "Tienda"],
@@ -179,7 +177,7 @@ export const es = {
         url: "https://danielsalasarcay-boop.github.io/casa-verde/",
         domain: "casa-verde · github.io",
         sector: "Casa vacacional · Los Roques",
-        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web? ¿también hicieron su marca?
+        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web?
         summary:
           "Casa de lujo frente al mar en Gran Roque con chef y bote privado 24/7: la fachada pasa del día a la noche al hacer scroll, comodidades, experiencia, vista aérea y ubicación.",
         tags: ["Web", "Galería", "ES / EN"],
@@ -224,12 +222,12 @@ export const es = {
     ],
   },
 
-  // PRECIO PENDIENTE en los tres planes. CONFIRMAR: alcance de cada uno.
+  // PRECIO PENDIENTE en los dos planes. CONFIRMAR: alcance de cada uno.
   plans: {
     eyebrow: "Paquetes",
     title: "Elige por dónde empezar.",
     lead: "Cada propuesta se confirma por escrito antes de empezar.",
-    swipeHint: "Desliza para ver los tres →",
+    swipeHint: "Desliza para ver los dos →",
     cta: "Quiero este",
     ctaMessage: "¡Hola D&A Lab! 👋 Me interesa el plan {plan} ({price}). ¿Me cuentan cómo empezamos?",
     featuredLabel: "Personalizado",
@@ -264,22 +262,6 @@ export const es = {
           "Tienda de hasta 30 productos con variantes (tallas, sabores, colores)",
           "Buscador y filtros por categoría",
           "40 fotos y 3 rondas de ajustes",
-        ],
-      },
-      {
-        id: "logo",
-        name: "Logo",
-        for: "Para que te reconozcan de un vistazo.",
-        price: "$120",
-        from: false,
-        featured: false,
-        note: "$90 si lo contratas junto con una web",
-        includes: [
-          "Logo diseñado desde cero, sin plantillas",
-          "Versiones horizontal, vertical e ícono",
-          "Variantes a color, en blanco y en negro",
-          "Paleta de colores y tipografías",
-          "Archivos listos para imprenta, redes y web",
         ],
       },
     ],
@@ -350,11 +332,6 @@ export const es = {
         a: "Durante el proyecto se incluyen 2 rondas de ajustes en el plan Esencial y 3 en el Premium. Después de la entrega, el Plan Cuidado ($30 por trimestre) incluye 3 cambios pequeños cada trimestre: precios, fotos, textos o un producto.",
       },
       {
-        q: "¿El servicio incluye el diseño del logo?",
-        short: "$120, o $90 con tu web",
-        a: "El logo se contrata aparte por $120, o por $90 si se contrata junto con una web. Si la empresa ya cuenta con un logo, se utiliza tal como está o se adapta para su correcta visualización en la web.",
-      },
-      {
         q: "¿Quién asume el costo del hosting?",
         short: "1er año incluido",
         a: "El primer año de dominio y hosting está incluido en ambos planes y queda a nombre del cliente. Después, se renueva con el Plan Cuidado ($30 por trimestre, o $100 al año) o con Solo en línea ($20 al año).",
@@ -369,7 +346,7 @@ export const es = {
 
   contact: {
     metaTitle: "Contacto — D&A Lab",
-    metaDescription: "Cuéntanos qué vendes y te respondemos por WhatsApp con los próximos pasos para tu web o tu marca.",
+    metaDescription: "Cuéntanos qué vendes y te respondemos por WhatsApp con los próximos pasos para tu web.",
     eyebrow: "Contacto",
     title: "Cuéntanos qué vendes.",
     lead: "Te respondemos por WhatsApp con los próximos pasos.",
@@ -378,7 +355,7 @@ export const es = {
       business: "Tu negocio",
       businessHint: "Nombre y a qué se dedica",
       need: "¿Qué necesitas?",
-      needHint: "Web, logo, las dos… lo que tengas en mente",
+      needHint: "Qué vendes, qué secciones quieres… lo que tengas en mente",
       submit: "Enviar por WhatsApp",
       note: "Al enviar se abre WhatsApp con tu mensaje listo.",
       // Dos casillas separadas (nunca una sola para todo). El texto completo de cada una
@@ -393,7 +370,8 @@ export const es = {
         termsRequired: "Para enviar debes aceptar los Términos y Condiciones",
         privacyRequired: "Para enviar debes aceptar la Política de Privacidad",
       },
-      message: "Hola D&A Lab, soy {name} de {business}. Necesito: {need}\n\nRef. {ref}",
+      message: "Hola D&A Lab, soy {name} de {business}. Necesito: {need}\n\nRef. {ref} · Acepto los Términos y Condiciones (v. {terms}) y la Política de Privacidad (v. {privacy}).",
+      sending: "Abriendo WhatsApp…",
       required: "Completa este campo",
     },
     direct: "O directo",
@@ -408,10 +386,10 @@ export const es = {
   // Página /nosotros. CONFIRMAR: textos en borrador para que Daniel y Andy los ajusten.
   about: {
     metaTitle: "Quiénes somos — D&A Lab",
-    metaDescription: "D&A Lab es un estudio de diseño web y de identidad visual en Venezuela. Webs y marcas a medida, sin plantillas.",
+    metaDescription: "D&A Lab es un estudio de diseño y desarrollo web en Venezuela. Webs a medida, sin plantillas.",
     logoLabel: "Logo de D&A Lab",
     title: "Diseño a medida con precisión técnica.",
-    intro: "Somos un estudio de diseño web y de marca en Venezuela. Hacemos webs y logos desde cero, sin plantillas, para negocios que venden por catálogo, por WhatsApp o por cotización.",
+    intro: "Somos un estudio de diseño y desarrollo web en Venezuela. Hacemos webs desde cero, sin plantillas, para negocios que venden por catálogo, por WhatsApp o por cotización.",
     team: "Somos un equipo pequeño de diseño y desarrollo. Hablas directo con quien hace tu proyecto, todo hecho a mano y por escrito antes de empezar.",
     philosophyTitle: "Cómo trabajamos",
     philosophy: [

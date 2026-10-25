@@ -161,6 +161,12 @@ export const terms: LegalDoc = {
       ],
     },
     {
+      h: "Acuerdo completo",
+      blocks: [
+        "Estos términos, junto con la propuesta escrita de cada proyecto, forman todo lo acordado entre las partes. No valen promesas ni acuerdos de palabra que no consten por escrito (correo o WhatsApp).",
+      ],
+    },
+    {
       h: "Ley aplicable y reclamos",
       blocks: [
         `Estos términos se rigen por las leyes de la República Bolivariana de Venezuela. Si tienes un reclamo, escríbenos ${contacto} y te respondemos en un máximo de 15 días hábiles. Esto no limita tu derecho a acudir a la Superintendencia Nacional para la Defensa de los Derechos Socioeconómicos (SUNDDE) ni a los tribunales competentes. Para cualquier controversia, las partes eligen como domicilio especial la ciudad de Caracas, a cuyos tribunales se someten, sin perjuicio del fuero que la ley reconozca al consumidor.`,

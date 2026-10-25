@@ -4,8 +4,8 @@
 // Sin números de teléfono: el contacto va por correo, el botón de WhatsApp del sitio o Instagram.
 //
 // IMPORTANTE: al cambiar el texto de un documento, sube su versión en legal-meta.ts (fecha
-// AAAA-MM-DD) y su `updated`. El registro de consentimientos guarda la versión y una huella (SHA-256) del texto
-// aceptado; el texto de cada versión queda en el historial de git de este archivo.
+// AAAA-MM-DD) y su `updated`. El mensaje de WhatsApp del formulario lleva la versión aceptada;
+// el texto de cada versión queda en el historial de git de este archivo.
 //
 // PENDIENTE: si D&A Lab se registra como firma personal o compañía, añadir razón social y RIF
 // en "Quiénes somos" de los Términos y en "Responsable" de la Privacidad.
@@ -44,7 +44,7 @@ export const terms: LegalDoc = {
       h: "Aceptación",
       blocks: [
         "Estos términos regulan el uso de este sitio y la contratación de nuestros servicios. Al marcar la casilla de aceptación del formulario, o al aceptar una propuesta por escrito, declaras que los leíste y los aceptas.",
-        "La aceptación por medios electrónicos (casillas, correo o WhatsApp) tiene la misma validez que una firma en papel, conforme a la Ley sobre Mensajes de Datos y Firmas Electrónicas. Guardamos un registro de cada aceptación, como explica la Política de Privacidad.",
+        "La aceptación por medios electrónicos (casillas, correo o WhatsApp) tiene la misma validez que una firma en papel, conforme a la Ley sobre Mensajes de Datos y Firmas Electrónicas. El mensaje que nos envías desde el formulario indica las versiones que aceptaste y sirve como constancia; no guardamos registros aparte.",
         "Debes ser mayor de edad y tener capacidad para contratar, o actuar en nombre de un negocio con autorización para hacerlo.",
       ],
     },
@@ -179,10 +179,9 @@ export const privacy: LegalDoc = {
     {
       h: "Qué datos tratamos",
       blocks: [
-        "Solo pedimos lo necesario para responderte. El sitio no tiene registro de usuarios ni usa cookies.",
+        "Solo tratamos lo que tú decides enviarnos. El sitio no tiene registro de usuarios, no usa cookies, no tiene analítica y no guarda en ningún servidor lo que escribes en el formulario.",
         [
-          "Formulario de contacto: tu nombre, el nombre de tu negocio y lo que necesitas.",
-          "Registro de aceptación: cuando envías el formulario guardamos la fecha y hora, las versiones de los Términos y de esta Política que aceptaste, el texto de cada casilla, tu nombre y negocio, la dirección IP, el navegador y un código de referencia que va en tu mensaje de WhatsApp. No guardamos lo que escribiste en \"¿Qué necesitas?\": eso solo viaja en tu mensaje. Tu mensaje de WhatsApp también lleva ese código y las versiones que aceptaste.",
+          "Formulario de contacto: tu nombre, tu negocio y lo que necesitas se usan solo para armar, dentro de tu navegador, un mensaje de WhatsApp que tú decides enviar. Ese mensaje incluye las versiones de los Términos y de esta Política que aceptaste. Si no lo envías, no recibimos nada.",
           "Si nos escribes por WhatsApp, correo o redes: tu número o usuario y lo que nos cuentes.",
           "Si nos contratas: los datos necesarios para la propuesta, la facturación y el proyecto.",
           "Datos técnicos que registra nuestro proveedor de alojamiento (IP, navegador, páginas vistas) para seguridad y funcionamiento.",
@@ -194,7 +193,6 @@ export const privacy: LegalDoc = {
       blocks: [
         [
           "Responderte, preparar tu propuesta y ejecutar el proyecto.",
-          "Demostrar cuándo y cómo aceptaste nuestros Términos y esta Política, si alguna autoridad o tú mismo nos lo pide.",
           "Cumplir obligaciones legales y fiscales.",
         ],
         "No vendemos tus datos, no los usamos para publicidad y no te enviaremos mensajes promocionales sin tu permiso.",
@@ -211,7 +209,7 @@ export const privacy: LegalDoc = {
       blocks: [
         "Solo con los servicios necesarios para operar, y con las autoridades cuando la ley lo exija:",
         [
-          "Vercel Inc. (alojamiento del sitio y almacenamiento del registro de aceptación), con servidores en Estados Unidos.",
+          "Vercel Inc. (alojamiento del sitio), con servidores en Estados Unidos.",
           "WhatsApp (Meta Platforms), si eliges escribirnos por ahí.",
           "Google (Gmail), si nos escribes por correo.",
         ],
@@ -224,21 +222,20 @@ export const privacy: LegalDoc = {
         [
           "Consultas que no se convierten en proyecto: 12 meses.",
           "Datos de clientes: mientras dure la relación y lo que exijan las leyes fiscales.",
-          "Registro de aceptación: 5 años desde tu último contacto con nosotros, para poder demostrar tu consentimiento.",
         ],
       ],
     },
     {
       h: "Seguridad",
       blocks: [
-        "El sitio funciona solo con conexión cifrada (HTTPS) y el registro de aceptación se guarda en un almacenamiento privado al que solo accede D&A Lab.",
+        "El sitio funciona solo con conexión cifrada (HTTPS). Las conversaciones contigo quedan solo en nuestras cuentas de WhatsApp y correo, a las que solo accede D&A Lab.",
       ],
     },
     {
       h: "Tus derechos",
       blocks: [
         `Según el artículo 28 de la Constitución (habeas data) puedes saber qué datos tenemos sobre ti y para qué, pedir que los actualicemos, corrijamos o eliminemos, y retirar tu consentimiento. Escríbenos ${contacto}. Respondemos en un máximo de 15 días hábiles.`,
-        "Si pides eliminar tus datos, podemos conservar el registro de aceptación y lo que exija la ley mientras sea necesario para atender reclamos o requerimientos de autoridades.",
+        "Si pides eliminar tus datos, solo conservaremos lo que exija la ley (por ejemplo, datos de facturación).",
       ],
     },
     {

@@ -357,9 +357,8 @@ export const es = {
       need: "¿Qué necesitas?",
       needHint: "Qué vendes, qué secciones quieres… lo que tengas en mente",
       submit: "Enviar por WhatsApp",
-      note: "Al enviar se abre WhatsApp con tu mensaje listo.",
-      // Dos casillas separadas (nunca una sola para todo). El texto completo de cada una
-      // (pre + enlace + post) queda guardado en el registro de consentimientos.
+      note: "Al enviar se abre WhatsApp con tu mensaje listo. No guardamos nada hasta que lo envíes.",
+      // Dos casillas separadas (nunca una sola para todo), sin marcar por defecto.
       consent: {
         termsPre: "He leído y acepto los",
         termsLink: "Términos y Condiciones",
@@ -370,8 +369,7 @@ export const es = {
         termsRequired: "Para enviar debes aceptar los Términos y Condiciones",
         privacyRequired: "Para enviar debes aceptar la Política de Privacidad",
       },
-      message: "Hola D&A Lab, soy {name} de {business}. Necesito: {need}\n\nRef. {ref} · Acepto los Términos y Condiciones (v. {terms}) y la Política de Privacidad (v. {privacy}).",
-      sending: "Abriendo WhatsApp…",
+      message: "Hola D&A Lab, soy {name} de {business}. Necesito: {need}\n\nAcepto los Términos y Condiciones (v. {terms}) y la Política de Privacidad (v. {privacy}).",
       required: "Completa este campo",
     },
     direct: "O directo",

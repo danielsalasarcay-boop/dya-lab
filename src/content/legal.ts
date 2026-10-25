@@ -52,7 +52,7 @@ export const terms: LegalDoc = {
       h: "Precios y propuesta",
       blocks: [
         "Los precios publicados están en dólares estadounidenses (USD) y son de referencia: cada proyecto se rige por su propuesta escrita, con alcance, precio y plazo. La propuesta se considera aceptada cuando la confirmas por escrito (correo o WhatsApp).",
-        "Puedes pagar en dólares o en bolívares al tipo de cambio oficial del Banco Central de Venezuela del día del pago.",
+        "Los precios en dólares son referenciales. El precio es el mismo cualquiera sea la moneda de pago: si pagas en bolívares, se calcula a la tasa oficial del Banco Central de Venezuela del día del pago.",
       ],
     },
     {
@@ -149,9 +149,21 @@ export const terms: LegalDoc = {
       ],
     },
     {
+      h: "Si nos contratas desde otro país",
+      blocks: [
+        "Nuestros servicios se prestan desde Venezuela y se rigen por la ley venezolana. Si usas el sitio o nos contratas desde otro país, eres responsable de cumplir las leyes de tu país.",
+      ],
+    },
+    {
+      h: "Uso del sitio",
+      blocks: [
+        "No está permitido usar el sitio o nuestros canales de contacto con fines ilícitos o fraudulentos, enviar mensajes masivos no solicitados, intentar acceder sin autorización a sus sistemas ni copiar su contenido de forma automatizada.",
+      ],
+    },
+    {
       h: "Ley aplicable y reclamos",
       blocks: [
-        `Estos términos se rigen por las leyes de la República Bolivariana de Venezuela. Si tienes un reclamo, escríbenos ${contacto} y te respondemos en un máximo de 15 días hábiles. Esto no limita tu derecho a acudir a la Superintendencia Nacional para la Defensa de los Derechos Socioeconómicos (SUNDDE) ni a los tribunales competentes.`,
+        `Estos términos se rigen por las leyes de la República Bolivariana de Venezuela. Si tienes un reclamo, escríbenos ${contacto} y te respondemos en un máximo de 15 días hábiles. Esto no limita tu derecho a acudir a la Superintendencia Nacional para la Defensa de los Derechos Socioeconómicos (SUNDDE) ni a los tribunales competentes. Para cualquier controversia, las partes eligen como domicilio especial la ciudad de Caracas, a cuyos tribunales se someten, sin perjuicio del fuero que la ley reconozca al consumidor.`,
       ],
     },
     {

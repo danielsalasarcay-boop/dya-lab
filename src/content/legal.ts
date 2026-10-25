@@ -59,7 +59,20 @@ export const terms: LegalDoc = {
       h: "Pagos y plazos",
       blocks: [
         "El proyecto se paga completo (100 %) al terminarlo, cuando lo apruebas y antes de publicar el sitio o entregar los archivos finales. No publicamos el sitio ni entregamos archivos hasta recibir el pago.",
-        "El plazo corre desde que confirmas la propuesta y nos envías todo el material (textos y fotos). Si el proyecto queda sin respuesta del cliente más de 30 días, se pausa; si pasan 90 días, se da por terminado y retomarlo se cotiza de nuevo.",
+        "El plazo corre desde que confirmas la propuesta y nos envías todo el material (textos y fotos). Si el proyecto queda sin respuesta del cliente más de 30 días, se pausa; si pasan 90 días, se da por terminado como una cancelación del cliente (ver el punto siguiente) y retomarlo se cotiza de nuevo.",
+      ],
+    },
+    {
+      h: "Cancelación",
+      blocks: [
+        "Puedes cancelar el proyecto en cualquier momento avisándonos por escrito (correo o WhatsApp). Como solo cobramos al terminar, al cancelar se paga el trabajo ya hecho:",
+        [
+          "Antes de que te presentemos la dirección visual (el diseño inicial y la estructura del sitio): no pagas nada.",
+          "Después de presentarte la dirección visual: pagas el 45 % del precio de la propuesta.",
+          "En ambos casos, si ya registramos el dominio a tu nombre, pagas también su costo y te lo entregamos con sus accesos.",
+        ],
+        "Lo hecho hasta la cancelación sigue siendo de D&A Lab: no se publica ni se entrega, y no puedes usarlo ni pedírselo a otro proveedor como base.",
+        "Si somos nosotros quienes cancelamos el proyecto por una causa que no sea tuya, no pagas nada y te devolvemos todo el material que nos diste.",
       ],
     },
     {
@@ -122,9 +135,16 @@ export const terms: LegalDoc = {
       ],
     },
     {
+      h: "Garantía de 30 días",
+      blocks: [
+        "Durante los 30 días siguientes a la publicación del sitio corregimos sin costo cualquier error o falla del trabajo que hicimos, o cualquier punto que no cumpla lo acordado en la propuesta. Avísanos dentro de ese plazo por escrito.",
+        "La garantía no cubre cambios nuevos (textos, fotos, secciones o funciones distintas a las acordadas), ni fallas causadas por cambios hechos por el cliente o por terceros, ni caídas de servicios externos. Pasados los 30 días, las correcciones y los cambios se cubren con un plan de mantenimiento o se cotizan aparte.",
+      ],
+    },
+    {
       h: "Reembolsos",
       blocks: [
-        "Como pagas después de ver y aprobar el trabajo terminado, no hay reembolsos una vez hecho el pago. Si algo no cumple lo acordado en la propuesta, lo corregimos sin costo.",
+        "Como pagas después de ver y aprobar el trabajo terminado, no hay reembolsos una vez hecho el pago.",
         "El dominio, el hosting y los planes de mantenimiento ya pagados no se reembolsan por el período en curso. Puedes cancelar el mantenimiento para el siguiente período avisando antes de la renovación.",
       ],
     },

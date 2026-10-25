@@ -11,11 +11,11 @@ export function Plans({ t }: { t: Dictionary }) {
         <Eyebrow n="05">{pl.eyebrow}</Eyebrow>
         <h2 id="paquetes-titulo" className="h2 mt-5 text-green">{pl.title}</h2>
         <p className="hero-lead mt-4 max-w-[34rem] text-[17px] leading-[1.5] text-muted">
-          {pl.lead} <span className="lg:hidden">{pl.swipeHint}</span>
+          {pl.lead} <span className="sm:hidden">{pl.swipeHint}</span>
         </p>
 
-        {/* Teléfono y tablet: carrusel deslizable; desktop: 2 columnas */}
-        <ul className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 pt-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:mt-10 lg:grid lg:max-w-[60rem] lg:grid-cols-2 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
+        {/* Teléfono: carrusel deslizable; tablet y desktop: las dos fichas centradas */}
+        <ul className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 pt-4 [scrollbar-width:none] sm:-mx-6 sm:justify-center sm:scroll-px-6 sm:px-6 lg:mx-auto lg:mt-10 lg:grid lg:max-w-[60rem] lg:grid-cols-2 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
           {pl.items.map((p) => {
             const numeric = p.price.startsWith("$");
             return (

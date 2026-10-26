@@ -177,6 +177,8 @@ export const es = {
         url: "https://danielsalasarcay-boop.github.io/casa-verde/",
         domain: "casa-verde · github.io",
         sector: "Casa vacacional · Los Roques",
+        // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
+        soon: "Próximamente",
         // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web?
         summary:
           "Casa de lujo frente al mar en Gran Roque con chef y bote privado 24/7: la fachada pasa del día a la noche al hacer scroll, comodidades, experiencia, vista aérea y ubicación.",

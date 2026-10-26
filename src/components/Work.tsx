@@ -57,7 +57,14 @@ export function Work({ t }: { t: Dictionary }) {
                     <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
                       <span className="text-coral-ink">Cliente</span> · {c.sector}
                     </p>
-                    <h3 className="mt-2 font-display text-[24px] font-bold leading-tight tracking-[-0.02em] text-green">{c.name}</h3>
+                    <div className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                      <h3 className="font-display text-[24px] font-bold leading-tight tracking-[-0.02em] text-green">{c.name}</h3>
+                      {"soon" in c && c.soon && (
+                        <span className="rounded-full bg-coral px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wider text-ink">
+                          {c.soon}
+                        </span>
+                      )}
+                    </div>
                     <p className="mt-3 text-[15px] leading-relaxed text-muted">{c.summary}</p>
                     <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Qué incluyó">
                       {c.tags.map((tag) => (

@@ -30,7 +30,7 @@ h1 em{font-style:normal;color:#B04A2E}
 <div class="band"></div>
 <div class="logo">${logo}</div>
 <h1>Desarrollo web premium con movimiento, para que tu marca sea <em>inolvidable.</em></h1>
-<p class="tag"><b>‹</b> Diseño web y de marca · Venezuela <b>›</b></p>
+<p class="tag"><b>‹</b> Diseño web a medida · Venezuela <b>›</b></p>
 <div class="f" style="right:-40px;top:48px"><i></i><img src="${mc}"></div>
 <div class="f" style="right:20px;top:170px"><i></i><img src="${qb}"></div>
 <div class="f" style="right:80px;top:292px"><i></i><img src="${loopi}"></div>

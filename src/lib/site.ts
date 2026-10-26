@@ -2,8 +2,8 @@
 
 export const site = {
   name: "D&A Lab",
-  // PENDIENTE: dominio definitivo. Se puede sobreescribir con NEXT_PUBLIC_SITE_URL en Vercel.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://dya-lab.vercel.app",
+  // Dominio definitivo (Namecheap → Vercel). Se puede sobreescribir con NEXT_PUBLIC_SITE_URL en Vercel.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.dalabsvzla.com",
   // WhatsApp del estudio: +58 412 303 0332 (formato internacional sin "+" ni espacios).
   whatsapp: "584123030332",
   whatsappDisplay: "+58 412 303 0332",

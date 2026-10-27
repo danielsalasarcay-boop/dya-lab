@@ -24,8 +24,9 @@ const SITES = [
   { slug: "la-capital-del-cielo", url: "https://www.lacapitaldelcielo.com", zones: [[0, 900], [5200, 6300]], fast: 38 },
   // Boceto que se abre en círculo y proyectos que pasan de trazo a boceto a render.
   { slug: "caraquena", url: "https://caraquena.vercel.app/index.html", zones: [[0, 1950], [3600, 9300]], fast: 60 },
-  // Fachada día → atardecer → noche y zoom aéreo de la galería.
-  { slug: "casa-verde", url: "https://danielsalasarcay-boop.github.io/casa-verde/", zones: [[0, 2000], [5100, 8600]], fast: 55 },
+  // Ventana → cielo → casa de día a noche, la lancha en planta y los tres cuartos.
+  // slowMul: tramos de efecto muy largos; se recorren al doble de paso para no alargar el video.
+  { slug: "casa-verde", url: "https://casa-verde-project.github.io/casa-verde-jesko/", zones: [[0, 10400], [11000, 14600]], fast: 60, slowMul: 2 },
 ];
 
 const FORMATS = {
@@ -67,7 +68,7 @@ for (const site of SITES.filter((s) => !only || s.slug === only)) {
     const inZone = (v) => site.zones.some(([a, b]) => v >= a && v < b);
     while (y < total) {
       const slow = inZone(y);
-      y = Math.min(total, y + (slow ? cfg.slow : site.fast));
+      y = Math.min(total, y + (slow ? cfg.slow * (site.slowMul ?? 1) : site.fast));
       await page.evaluate((v) => window.scrollTo(0, v), y);
       await page.waitForTimeout(slow ? 90 : 45);
       await shot();

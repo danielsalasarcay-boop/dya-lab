@@ -18,6 +18,8 @@ export function Plans({ t }: { t: Dictionary }) {
         <ul className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 pt-4 [scrollbar-width:none] sm:-mx-6 sm:justify-center sm:scroll-px-6 sm:px-6 lg:mx-auto lg:mt-10 lg:grid lg:max-w-[60rem] lg:grid-cols-2 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
           {pl.items.map((p) => {
             const numeric = p.price.startsWith("$");
+            // Rango de precio ("$420–500"): un poco más pequeño para que quepa en la ficha del teléfono.
+            const range = p.price.includes("–");
             return (
               <li key={p.id} className="flex w-[84%] shrink-0 snap-start sm:w-[46%] lg:w-auto">
                 <TiltCard
@@ -35,7 +37,7 @@ export function Plans({ t }: { t: Dictionary }) {
 
                 <p className="mt-7 flex items-baseline gap-2">
                   {p.from && <span className="rounded-full bg-coral px-2.5 py-0.5 font-mono text-[12px] font-medium uppercase tracking-[0.1em] text-ink">{pl.fromLabel}</span>}
-                  <span className={`display ${numeric ? "text-[56px]" : "text-[34px]"}`}>{p.price}</span>
+                  <span className={`display ${numeric ? (range ? "whitespace-nowrap text-[38px] sm:text-[50px]" : "text-[56px]") : "text-[34px]"}`}>{p.price}</span>
                   {numeric && <span className={`font-mono text-[12px] tracking-[0.1em] ${p.featured ? "text-mist" : "text-muted"}`}>{pl.currency}</span>}
                 </p>
 

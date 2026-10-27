@@ -26,7 +26,9 @@ const SITES = [
   { slug: "caraquena", url: "https://caraquena.vercel.app/index.html", zones: [[0, 1950], [3600, 9300]], fast: 60 },
   // Ventana → cielo → casa de día a noche, la lancha en planta y los tres cuartos.
   // slowMul: tramos de efecto muy largos; se recorren al doble de paso para no alargar el video.
-  { slug: "casa-verde", url: "https://casa-verde-project.github.io/casa-verde-jesko/", zones: [[0, 10400], [11000, 14600]], fast: 60, slowMul: 2 },
+  // mobile: en el teléfono las secciones caen más arriba y el paso rápido se veía brusco.
+  { slug: "casa-verde", url: "https://casa-verde-project.github.io/casa-verde-jesko/", zones: [[0, 10400], [11000, 14600]], fast: 60, slowMul: 2,
+    mobile: { zones: [[0, 9960], [10550, 14100]], fast: 30, slowMul: 1.3 } },
 ];
 
 const FORMATS = {
@@ -43,6 +45,8 @@ for (const site of SITES.filter((s) => !only || s.slug === only)) {
     await rm(tmp, { recursive: true, force: true });
     await mkdir(tmp, { recursive: true });
 
+    // Ajustes por formato (p. ej. site.mobile) pisan los del sitio.
+    const s = { ...site, ...site[fmt] };
     const ctx = await browser.newContext(cfg.ctx);
     const page = await ctx.newPage();
     await page.goto(site.url, { waitUntil: "networkidle", timeout: 90000 });
@@ -65,10 +69,10 @@ for (const site of SITES.filter((s) => !only || s.slug === only)) {
 
     await hold(24); // pausa inicial en el hero
     let y = 0;
-    const inZone = (v) => site.zones.some(([a, b]) => v >= a && v < b);
+    const inZone = (v) => s.zones.some(([a, b]) => v >= a && v < b);
     while (y < total) {
       const slow = inZone(y);
-      y = Math.min(total, y + (slow ? cfg.slow * (site.slowMul ?? 1) : site.fast));
+      y = Math.min(total, y + (slow ? cfg.slow * (s.slowMul ?? 1) : s.fast));
       await page.evaluate((v) => window.scrollTo(0, v), y);
       await page.waitForTimeout(slow ? 90 : 45);
       await shot();

@@ -28,7 +28,7 @@ const SITES = [
   // slowMul: tramos de efecto muy largos; se recorren al doble de paso para no alargar el video.
   // mobile: en el teléfono las secciones caen más arriba y el paso rápido se veía brusco.
   { slug: "casa-verde", url: "https://casa-verde-project.github.io/casa-verde-jesko/", zones: [[0, 10400], [11000, 14600]], fast: 60, slowMul: 2,
-    mobile: { zones: [[0, 9960], [10550, 14100]], fast: 30, slowMul: 1.3 } },
+    mobile: { zones: [[0, 9960], [10550, 14100]], fast: 45, slowMul: 2.2 } },
 ];
 
 const FORMATS = {

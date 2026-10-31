@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: cookies.metaTitle,
   description: cookies.metaDescription,
   alternates: { canonical: "/cookies" },
+  robots: { index: false, follow: true },
   openGraph: { url: "/cookies", title: cookies.metaTitle, description: cookies.metaDescription },
 };
 

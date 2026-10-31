@@ -23,7 +23,7 @@ const SITES = [
   // Portada aérea, casas, experiencia, camisas y cierre aéreo con el hidroavión.
   { slug: "la-capital-del-cielo", url: "https://www.lacapitaldelcielo.com", zones: [[0, 900], [5200, 6300]], fast: 38 },
   // Boceto que se abre en círculo y proyectos que pasan de trazo a boceto a render.
-  { slug: "caraquena", url: "https://caraquena.vercel.app/index.html", zones: [[0, 1950], [3600, 9300]], fast: 60 },
+  { slug: "caraquena", url: "https://caraquena.com/", zones: [[0, 1950], [3600, 9300]], fast: 60 },
   // Ventana → cielo → casa de día a noche, la lancha en planta y los tres cuartos.
   // slowMul: tramos de efecto muy largos; se recorren al doble de paso para no alargar el video.
   // mobile: en el teléfono las secciones caen más arriba y el paso rápido se veía brusco.

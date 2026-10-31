@@ -106,8 +106,8 @@ export const es = {
         slug: "caraquena",
         name: "Caraqueña Studio",
         // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
-        url: "https://caraquena.vercel.app/",
-        domain: "caraquena · vercel.app",
+        url: "https://caraquena.com/",
+        domain: "caraquena.com",
         sector: "Estudio de arquitectura · Caracas",
         summary:
           "Web para un estudio de arquitectura de hotelería, desarrollos y vivienda: el boceto de la portada se abre al hacer scroll y cada proyecto se arma de trazo a boceto a render. Proceso, cobertura y contacto por WhatsApp.",

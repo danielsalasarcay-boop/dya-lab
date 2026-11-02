@@ -76,7 +76,7 @@ export const es = {
     visit: "Ver sitio",
     desktopAlt: "Recorrido por la web de {name} en computadora",
     mobileAlt: "Recorrido por la web de {name} en teléfono",
-    swipeHint: "Desliza para ver los siete →",
+    swipeHint: "Desliza para ver los ocho →",
     next: {
       label: "Próximo proyecto",
       domain: "tu-negocio.com",
@@ -169,6 +169,22 @@ export const es = {
         tags: ["Web", "B2B", "ES / EN"],
         accent: "#061A33",
         statusBg: "#000000",
+      },
+      {
+        slug: "terravita",
+        name: "Terravita",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
+        url: "https://danielsalasarcay-boop.github.io/terravita/",
+        domain: "terravita · github.io",
+        sector: "Taller de arcilla y cerámica",
+        // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
+        soon: "En construcción",
+        summary:
+          "Catálogo de piezas hechas a mano, eventos para cumpleaños, empresas y despedidas, clases semanales de torno y modelado, y una ilustración que lleva el barro del torno al horno al hacer scroll. Encargos y reservas por WhatsApp.",
+        tags: ["Web", "Catálogo", "Eventos"],
+        accent: "#96411B",
+        statusBg: "#FFF5DE",
+        statusFg: "#1b1b1b",
       },
       {
         slug: "casa-verde",

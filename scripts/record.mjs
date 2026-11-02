@@ -24,6 +24,9 @@ const SITES = [
   { slug: "la-capital-del-cielo", url: "https://www.lacapitaldelcielo.com", zones: [[0, 900], [5200, 6300]], fast: 38 },
   // Boceto que se abre en círculo y proyectos que pasan de trazo a boceto a render.
   { slug: "caraquena", url: "https://caraquena.com/", zones: [[0, 1950], [3600, 9300]], fast: 60 },
+  // Portada con video y «Del barro a tu pieza» (la arcilla se vuelve taza, jarrón y sale del horno).
+  { slug: "terravita", url: "https://danielsalasarcay-boop.github.io/terravita/", zones: [[0, 2600], [6700, 9170]], fast: 55,
+    mobile: { zones: [[0, 2500], [5950, 7630]], fast: 45 } },
   // Ventana → cielo → casa de día a noche, la lancha en planta y los tres cuartos.
   // slowMul: tramos de efecto muy largos; se recorren al doble de paso para no alargar el video.
   // mobile: en el teléfono las secciones caen más arriba y el paso rápido se veía brusco.

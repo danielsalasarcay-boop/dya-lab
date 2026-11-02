@@ -171,6 +171,22 @@ export const es = {
         statusBg: "#000000",
       },
       {
+        slug: "casa-verde",
+        name: "Casa Verde",
+        // PENDIENTE: pasar a https cuando GitHub emita el certificado.
+        url: "http://casaverdelosroques.com/",
+        domain: "casaverdelosroques.com",
+        sector: "Casa vacacional · Los Roques",
+        // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
+        soon: "En construcción",
+        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web?
+        summary:
+          "Casa completa frente al mar en Gran Roque para hasta diez huéspedes, con lancha propia y equipo en casa: la ventana se abre a la casa, que pasa del día a la noche al hacer scroll, la lancha en planta, tres cuartos, espacios, ubicación y reserva por WhatsApp.",
+        tags: ["Web", "Galería", "Reservas"],
+        accent: "#1F8A5B",
+        statusBg: "#196091",
+      },
+      {
         slug: "terravita",
         name: "Terravita",
         // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
@@ -185,22 +201,6 @@ export const es = {
         accent: "#96411B",
         statusBg: "#FFF5DE",
         statusFg: "#1b1b1b",
-      },
-      {
-        slug: "casa-verde",
-        name: "Casa Verde",
-        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
-        url: "https://casa-verde-project.github.io/casa-verde-jesko/",
-        domain: "casa-verde · github.io",
-        sector: "Casa vacacional · Los Roques",
-        // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
-        soon: "En construcción",
-        // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web?
-        summary:
-          "Casa completa frente al mar en Gran Roque para hasta diez huéspedes, con lancha propia y equipo en casa: la ventana se abre a la casa, que pasa del día a la noche al hacer scroll, la lancha en planta, tres cuartos, espacios, ubicación y reserva por WhatsApp.",
-        tags: ["Web", "Galería", "Reservas"],
-        accent: "#1F8A5B",
-        statusBg: "#196091",
       },
     ],
   },

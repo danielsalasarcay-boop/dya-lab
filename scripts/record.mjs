@@ -27,11 +27,11 @@ const SITES = [
   // Portada con video y «Del barro a tu pieza» (la arcilla se vuelve taza, jarrón y sale del horno).
   { slug: "terravita", url: "https://danielsalasarcay-boop.github.io/terravita/", zones: [[0, 2600], [6700, 9170]], fast: 55,
     mobile: { zones: [[0, 2500], [5950, 7630]], fast: 45 } },
-  // Ventana → cielo → casa de día a noche, la lancha en planta y los tres cuartos.
+  // Ventana → cielo → casa de día a noche, los tres cuartos y la lancha en planta.
   // slowMul: tramos de efecto muy largos; se recorren al doble de paso para no alargar el video.
   // mobile: en el teléfono las secciones caen más arriba y el paso rápido se veía brusco.
-  { slug: "casa-verde", url: "https://casa-verde-project.github.io/casa-verde-jesko/", zones: [[0, 10400], [11000, 14600]], fast: 60, slowMul: 2,
-    mobile: { zones: [[0, 9960], [10550, 14100]], fast: 45, slowMul: 2.2 } },
+  { slug: "casa-verde", url: "https://casaverdelosroques.com/", zones: [[0, 5440], [6848, 9295], [10228, 15188]], fast: 60, slowMul: 2,
+    mobile: { zones: [[0, 5233], [7019, 9337], [10186, 14912]], fast: 45, slowMul: 2.2 } },
 ];
 
 const FORMATS = {

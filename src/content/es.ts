@@ -173,15 +173,14 @@ export const es = {
       {
         slug: "casa-verde",
         name: "Casa Verde",
-        // PENDIENTE: pasar a https cuando GitHub emita el certificado.
-        url: "http://casaverdelosroques.com/",
+        url: "https://casaverdelosroques.com/",
         domain: "casaverdelosroques.com",
         sector: "Casa vacacional · Los Roques",
         // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
         soon: "En construcción",
         // FALTA CONTEXTO: ¿cómo recibían reservas antes de la web?
         summary:
-          "Casa completa frente al mar en Gran Roque para hasta diez huéspedes, con lancha propia y equipo en casa: la ventana se abre a la casa, que pasa del día a la noche al hacer scroll, la lancha en planta, tres cuartos, espacios, ubicación y reserva por WhatsApp.",
+          "Casa completa frente al mar en Gran Roque para hasta diez huéspedes, con lancha propia y equipo en casa: la ventana se abre a la casa, que pasa del día a la noche al hacer scroll, tres cuartos con tres baños, espacios, la lancha en planta, preguntas frecuentes, ubicación y reserva por WhatsApp.",
         tags: ["Web", "Galería", "Reservas"],
         accent: "#1F8A5B",
         statusBg: "#196091",

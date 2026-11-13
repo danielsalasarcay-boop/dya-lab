@@ -28,6 +28,9 @@ const SITES = [
   // Portada con video y «Del barro a tu pieza» (la arcilla se vuelve taza, jarrón y sale del horno).
   { slug: "terravita", url: "https://danielsalasarcay-boop.github.io/terravita/", zones: [[0, 2600], [6700, 9170]], fast: 55,
     mobile: { zones: [[0, 2500], [5950, 7630]], fast: 45 } },
+  // Logo que se dibuja en la portada, zoom por el ojo del corocoro y la firma que se traza hasta el final.
+  { slug: "casa-coro-coro", url: "https://casa-coro-coro.vercel.app/", zones: [[0, 700], [1150, 3450], [4800, 5330]], fast: 55, locale: "es-VE",
+    mobile: { zones: [[0, 800], [1850, 4020], [5800, 6428]], fast: 45 } },
   // Ventana → cielo → casa de día a noche, los tres cuartos, espacios y la lancha en planta.
   // slowMul: tramos de efecto muy largos; se recorren al doble de paso para no alargar el video.
   // mobile: en el teléfono las secciones caen más arriba y el paso rápido se veía brusco.
@@ -51,7 +54,8 @@ for (const site of SITES.filter((s) => !only || s.slug === only)) {
 
     // Ajustes por formato (p. ej. site.mobile) pisan los del sitio.
     const s = { ...site, ...site[fmt] };
-    const ctx = await browser.newContext(cfg.ctx);
+    // locale: sitios que eligen idioma según el navegador (se graban en español).
+    const ctx = await browser.newContext({ ...cfg.ctx, ...(s.locale && { locale: s.locale }) });
     const page = await ctx.newPage();
     await page.goto(site.url, { waitUntil: "networkidle", timeout: 90000 });
     // Precarga: recorrer la página para que las imágenes perezosas ya estén.

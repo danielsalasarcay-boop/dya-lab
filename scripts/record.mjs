@@ -31,6 +31,9 @@ const SITES = [
   // Logo que se dibuja en la portada, zoom por el ojo del corocoro y la firma que se traza hasta el final.
   { slug: "casa-coro-coro", url: "https://casa-coro-coro.vercel.app/", zones: [[0, 700], [1150, 3450], [4800, 5330]], fast: 55, locale: "es-VE",
     mobile: { zones: [[0, 800], [1850, 4020], [5800, 6428]], fast: 45 } },
+  // El 9 se dibuja a trazos y con el scroll se vuelve de madera, gana grosor y gira (Three.js).
+  { slug: "casa-nueve", url: "https://casa-nueve.vercel.app/", zones: [[0, 1450]], fast: 38, locale: "es-VE",
+    mobile: { zones: [[0, 1200]], fast: 32 } },
   // Ventana → cielo → casa de día a noche, los tres cuartos, espacios y la lancha en planta.
   // slowMul: tramos de efecto muy largos; se recorren al doble de paso para no alargar el video.
   // mobile: en el teléfono las secciones caen más arriba y el paso rápido se veía brusco.

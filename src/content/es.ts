@@ -76,7 +76,7 @@ export const es = {
     visit: "Ver sitio",
     desktopAlt: "Recorrido por la web de {name} en computadora",
     mobileAlt: "Recorrido por la web de {name} en teléfono",
-    swipeHint: "Desliza para ver los nueve →",
+    swipeHint: "Desliza para ver los diez →",
     next: {
       label: "Próximo proyecto",
       domain: "tu-negocio.com",
@@ -186,19 +186,19 @@ export const es = {
         statusBg: "#196091",
       },
       {
-        slug: "casa-coro-coro",
-        name: "Casa Coro Coro",
+        slug: "casa-nueve",
+        name: "Casa Nueve",
         // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
-        url: "https://casa-coro-coro.vercel.app/",
-        domain: "casa-coro-coro.vercel.app",
+        url: "https://casa-nueve.vercel.app/",
+        domain: "casa-nueve.vercel.app",
         sector: "Casa vacacional · Los Roques",
         // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
         soon: "En construcción",
         summary:
-          "Casa privada en Gran Roque con cinco habitaciones con baño privado y aire acondicionado, y staff incluido: el logo se dibuja al abrir, el scroll entra por el ojo del corocoro, espacios y comodidades, ubicación y reserva directa por WhatsApp, en español e inglés.",
-        tags: ["Web", "Reservas", "ES / EN"],
-        accent: "#0F3D3E",
-        statusBg: "#F6F0E4",
+          "Casa privada frente al mar en Madrisqui para diez huéspedes en cinco habitaciones, con staff de tres personas, chef e internet Starlink: el 9 se dibuja al abrir y con el scroll se vuelve de madera y gira, habitaciones, galería, lo que incluye la estadía, ubicación y reserva directa por WhatsApp.",
+        tags: ["Web", "3D", "Reservas"],
+        accent: "#9A5A2E",
+        statusBg: "#FFFFFF",
         statusFg: "#1b1b1b",
       },
       {
@@ -215,6 +215,22 @@ export const es = {
         tags: ["Web", "Catálogo", "Eventos"],
         accent: "#96411B",
         statusBg: "#FFF5DE",
+        statusFg: "#1b1b1b",
+      },
+      {
+        slug: "casa-coro-coro",
+        name: "Casa Coro Coro",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
+        url: "https://casa-coro-coro.vercel.app/",
+        domain: "casa-coro-coro.vercel.app",
+        sector: "Casa vacacional · Los Roques",
+        // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
+        soon: "En construcción",
+        summary:
+          "Casa privada en Gran Roque con cinco habitaciones con baño privado y aire acondicionado, y staff incluido: el logo se dibuja al abrir, el scroll entra por el ojo del corocoro, espacios y comodidades, ubicación y reserva directa por WhatsApp, en español e inglés.",
+        tags: ["Web", "Reservas", "ES / EN"],
+        accent: "#0F3D3E",
+        statusBg: "#F6F0E4",
         statusFg: "#1b1b1b",
       },
     ],

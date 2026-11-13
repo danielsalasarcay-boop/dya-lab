@@ -186,22 +186,6 @@ export const es = {
         statusBg: "#196091",
       },
       {
-        slug: "terravita",
-        name: "Terravita",
-        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
-        url: "https://danielsalasarcay-boop.github.io/terravita/",
-        domain: "terravita · github.io",
-        sector: "Taller de arcilla y cerámica",
-        // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
-        soon: "En construcción",
-        summary:
-          "Catálogo de piezas hechas a mano, eventos para cumpleaños, empresas y despedidas, clases semanales de torno y modelado, y una ilustración que lleva el barro del torno al horno al hacer scroll. Encargos y reservas por WhatsApp.",
-        tags: ["Web", "Catálogo", "Eventos"],
-        accent: "#96411B",
-        statusBg: "#FFF5DE",
-        statusFg: "#1b1b1b",
-      },
-      {
         slug: "casa-coro-coro",
         name: "Casa Coro Coro",
         // PENDIENTE: dominio propio. Por ahora el sitio vive en Vercel.
@@ -215,6 +199,22 @@ export const es = {
         tags: ["Web", "Reservas", "ES / EN"],
         accent: "#0F3D3E",
         statusBg: "#F6F0E4",
+        statusFg: "#1b1b1b",
+      },
+      {
+        slug: "terravita",
+        name: "Terravita",
+        // PENDIENTE: dominio propio. Por ahora el sitio vive en GitHub Pages.
+        url: "https://danielsalasarcay-boop.github.io/terravita/",
+        domain: "terravita · github.io",
+        sector: "Taller de arcilla y cerámica",
+        // Etiqueta naranja junto al nombre mientras el sitio no está terminado.
+        soon: "En construcción",
+        summary:
+          "Catálogo de piezas hechas a mano, eventos para cumpleaños, empresas y despedidas, clases semanales de torno y modelado, y una ilustración que lleva el barro del torno al horno al hacer scroll. Encargos y reservas por WhatsApp.",
+        tags: ["Web", "Catálogo", "Eventos"],
+        accent: "#96411B",
+        statusBg: "#FFF5DE",
         statusFg: "#1b1b1b",
       },
     ],
